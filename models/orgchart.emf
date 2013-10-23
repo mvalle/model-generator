@@ -1,0 +1,11 @@
+@namespace(uri="orgchart", prefix="")
+package orgchart;
+
+class Company {
+	val Person[*] employees;
+}
+
+class Person {
+	attr String name;
+	ref Person[*] manages;
+}

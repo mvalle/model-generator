@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Company xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="orgchart">
+  <employees name="John"/>
+  <employees name="Tom" manages="//@employees.0"/>
+</Company>

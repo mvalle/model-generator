@@ -1,0 +1,12 @@
+operation Person create() {
+
+}
+
+@disabled true
+@generate 100
+operation Company create() {
+	var nick = new Person;
+	nick.name = "Nick";
+	self.employees.add(nick);
+	nick.println();
+}

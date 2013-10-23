@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Modelgen
+Bundle-SymbolicName: uk.ac.york.cs.mv525.modelgen
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: uk.ac.york.cs.mv525.modelgen.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;bundle-version="2.9.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.9.0",
+ org.eclipse.epsilon.eol.engine;bundle-version="1.1.0";resolution:=optional,
+ org.eclipse.epsilon.emc.emf;bundle-version="1.1.0";resolution:=optional,
+ org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
