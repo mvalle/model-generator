@@ -32,32 +32,7 @@ public class Playground {
 		
 		Resource metamodel = pg.readMetaModel(metamodellocation);
 		
-		for(EObject eobj: metamodel.getContents()) {
-			printETree(eobj, 0);
-		}
-			
 		
-	}
-	
-	private static void printETree(EObject eobjs, int d){
-
-		try {
-			ENamedElement enes = (ENamedElement) eobjs;
-		
-			System.out.println(indent(d)+enes.getName()+" : "+enes.eClass().getName());
-		 
-			for(EObject eobj: eobjs.eContents()) {
-
-				printETree(eobj, d+1);		
-
-			}
-		}
-		catch (ClassCastException ex)
-		{	}
-		
-		
-		
-	}
 	
 	private static String indent(int level) {
 		if(level > 0) {
