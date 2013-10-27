@@ -25,7 +25,7 @@ public class Parser extends ResourceOperator {
 
 	private EPackage ePackage;
 	public ArrayList<EClass> eClasses;
-	private ArrayList<EReference> eReferences;
+	public ArrayList<EReference> eReferences;
 	private Resource metaModel;
 
 	public Parser(String metamodelLocation) throws IOException {

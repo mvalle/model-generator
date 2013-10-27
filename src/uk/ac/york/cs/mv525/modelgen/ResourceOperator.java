@@ -21,6 +21,7 @@ public class ResourceOperator {
 	protected static String getModelDir(String modelName) {
 		return getModelDir() + "/" + modelName;
 	}
+	
 	protected static Resource readMetaModel(String location) throws IOException {
 
 		Resource resource = getResourceSet().createResource(
