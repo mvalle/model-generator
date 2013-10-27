@@ -21,10 +21,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-public class Parser {
+public class Parser extends ResourceOperator {
 
 	private EPackage ePackage;
-	private ArrayList<EClass> eClasses;
+	public ArrayList<EClass> eClasses;
 	private ArrayList<EReference> eReferences;
 	private Resource metaModel;
 
@@ -36,7 +36,12 @@ public class Parser {
 	}
 
 	public void parse() throws Exception {
+		
 
+		// Read metamodel
+		// Scan for classes
+		// Scan for references
+		
 		findEPackage();
 
 		for (EObject eobj : metaModel.getContents()) {
@@ -46,11 +51,15 @@ public class Parser {
 		printEClasses();
 		printEReferences();
 	}
+	
+	public EPackage getEPackage() {
+		return ePackage;
+	}
+	
 
 	private void findEPackage() {
 		ePackage = (EPackage) metaModel.getContents().get(0);
 	}
-
 	private void walkETree(EObject eobjs) {
 
 		try {
@@ -69,7 +78,6 @@ public class Parser {
 		}
 
 	}
-
 	private void printEClasses() {
 
 		for (EClass e : eClasses) {
@@ -84,22 +92,5 @@ public class Parser {
 		}
 
 	}
-
-	private Resource readMetaModel(String location) throws IOException {
-
-		Resource resource = getResourceSet().createResource(
-				URI.createFileURI(location));
-		resource.load(null);
-
-		return resource;
-
-	}
-
-	private ResourceSet getResourceSet() {
-		ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("*", new XMIResourceFactoryImpl());
-
-		return resourceSet;
-	}
+	
 }
