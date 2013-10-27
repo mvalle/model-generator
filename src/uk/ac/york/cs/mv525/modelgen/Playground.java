@@ -20,6 +20,18 @@ public class Playground {
 	}
 	
 	public static void main(String[] args) throws Exception {
+
+		String workingdir = System.getProperty("user.dir");
+		String modeldir = "models";
+		String metamodelname = "orgchart.ecore";
+
+		String metamodellocation = workingdir+"/"+modeldir+"/"+metamodelname;
+		
+		Generator g = new Generator(metamodellocation);
+		
+		g.generate();
+		
+		/*
 		Playground pg = new Playground();
 		
 		String workingdir = System.getProperty("user.dir");
@@ -31,8 +43,8 @@ public class Playground {
 		/////////////////////////
 		
 		Resource metamodel = pg.readMetaModel(metamodellocation);
-		
-		
+		*/
+	}
 	
 	private static String indent(int level) {
 		if(level > 0) {
