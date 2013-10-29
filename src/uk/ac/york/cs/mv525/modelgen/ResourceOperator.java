@@ -43,4 +43,11 @@ public class ResourceOperator {
 
 		return resourceSet;
 	}
+	
+	protected static void print(String s) {
+		System.out.println(s);
+	}
+	protected static void print(Object o) {
+		System.out.println(o);
+	}
 }
