@@ -6,6 +6,12 @@ import java.util.HashSet;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
+
+/**
+ * @author magnus
+ *
+ * Class that contains EObjects and retrieves them by EClass.
+ */
 public class Collection {
 
 	private HashMap<EClass, Container> collection;
@@ -30,7 +36,13 @@ public class Collection {
 	}
 	
 	public EObject get(EObject iObject) {
-		return collection.get(iObject.eClass()).get();
+		return get(iObject.eClass());
 	}
 	
+	public boolean contains(EClass mClass) {
+		return collection.containsKey(mClass);
+	}
+	public boolean contains(EObject iObject) {
+		return contains(iObject.eClass());
+	}
 }

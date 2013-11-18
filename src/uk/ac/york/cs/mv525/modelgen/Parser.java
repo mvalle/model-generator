@@ -3,29 +3,24 @@ package uk.ac.york.cs.mv525.modelgen;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
+import uk.ac.york.cs.mv525.modelgen.index.Collection;
 
 public class Parser extends ResourceOperator {
 
 	private EPackage ePackage;
 	public ArrayList<EClass> eClasses;
 	public ArrayList<EReference> eReferences;
+	
+	private Collection mCollection;
+	
 	private Resource metaModel;
 
 	public Parser(String metamodelLocation) throws IOException {
@@ -33,9 +28,12 @@ public class Parser extends ResourceOperator {
 
 		eClasses = new ArrayList<EClass>();
 		eReferences = new ArrayList<EReference>();
+		
+		mCollection = new Collection();
+		
 	}
 
-	public void parse() throws Exception {
+	public Collection parse() throws Exception {
 		
 
 		// Read metamodel
@@ -50,6 +48,8 @@ public class Parser extends ResourceOperator {
 
 		printEClasses();
 		printEReferences();
+		
+		return mCollection;
 	}
 	
 	public EPackage getEPackage() {
@@ -59,15 +59,21 @@ public class Parser extends ResourceOperator {
 
 	private void findEPackage() {
 		ePackage = (EPackage) metaModel.getContents().get(0);
+		mCollection.add(ePackage);
 	}
 	private void walkETree(EObject eobjs) {
 
+		mCollection.add(eobjs);
+		
 		try {
 			ENamedElement enes = (ENamedElement) eobjs;
 
 			if (enes.eClass().getName() == "EClass") {
+				
+				
 				eClasses.add((EClass) enes);
 			} else if (enes.eClass().getName() == "EReference") {
+				
 				eReferences.add((EReference) enes);
 			}
 
