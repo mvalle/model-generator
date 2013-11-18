@@ -13,8 +13,8 @@ import uk.ac.york.cs.mv525.modelgen.index.Collection;
 
 public class ModelInstance extends ResourceOperator {
 
-	private Collection iIndex;
-	private Collection mIndex;
+	private Collection iIndex; // Index of the model elements
+	private Collection mIndex; // Index of the meta-model elements
 	
 	private EPackage metamodel;
 
@@ -44,5 +44,16 @@ public class ModelInstance extends ResourceOperator {
 		}
 	}
 	
+	public EObject get(EClass mClass) {
+		if(mIndex.contains(mClass)) {
+			return iIndex.get(mClass);
+		}
+		// throw not in excepion
+		return null;
+	}
+	
+	public EObject get(EObject iObject) {
+		return get(iObject.eClass());
+	}
 	
 }
