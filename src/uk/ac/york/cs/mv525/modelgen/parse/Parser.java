@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen;
+package uk.ac.york.cs.mv525.modelgen.parse;
 
 
 import java.io.IOException;
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import uk.ac.york.cs.mv525.modelgen.ResourceOperator;
 import uk.ac.york.cs.mv525.modelgen.index.Collection;
 
 public class Parser extends ResourceOperator {

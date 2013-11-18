@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen;
+package uk.ac.york.cs.mv525.modelgen.create;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +25,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
+import uk.ac.york.cs.mv525.modelgen.ResourceOperator;
+import uk.ac.york.cs.mv525.modelgen.parse.Parser;
 
 public class Generator extends ResourceOperator {
 

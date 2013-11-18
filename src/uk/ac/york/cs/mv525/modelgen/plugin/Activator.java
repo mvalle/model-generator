@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen;
+package uk.ac.york.cs.mv525.modelgen.plugin;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
