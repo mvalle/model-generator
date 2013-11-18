@@ -1,32 +1,20 @@
 package uk.ac.york.cs.mv525.modelgen.create;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Random;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
-import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import uk.ac.york.cs.mv525.modelgen.ResourceOperator;
+import uk.ac.york.cs.mv525.modelgen.index.Collection;
 import uk.ac.york.cs.mv525.modelgen.parse.Parser;
 
 public class Generator extends ResourceOperator {
@@ -36,6 +24,8 @@ public class Generator extends ResourceOperator {
 	private Resource modelResource;
 	private EPackage ePackage;
 
+	private ModelInstance instance;
+	
 	public Generator(String metamodelLocation) throws Exception {
 
 		parser = new Parser(metamodelLocation);
@@ -44,22 +34,24 @@ public class Generator extends ResourceOperator {
 		// Create 100 Classes
 		// // Add attributes
 		// Create 100 References
-
 	}
 
 	public void generate() throws Exception {
-		parser.parse();
+		Collection mCollection = parser.parse();
+		
+		instance = new ModelInstance(mCollection);
+		
 		ePackage = parser.getEPackage();
 		
-		createModel(parser.getEPackage(), getModelDir("testmodel.model"));
+		createModel(getModelDir("testmodel.model"));
 
 	}
 
-	public void createModel(EPackage ePackage, String model) throws Exception {
+	public void createModel(String model) throws Exception {
 		modelResource = getResourceSet("model").createResource(
 				URI.createFileURI(model));
 
-		addClasses(ePackage);
+		addClasses();
 		addReferences();
 
 		modelResource.save(null);
@@ -69,14 +61,13 @@ public class Generator extends ResourceOperator {
 		EList<EObject> modelResourceContents = modelResource.getContents();
 		System.out.println("References: "+parser.eReferences.size());
 		
+		
 		for (EReference eReference : parser.eReferences) {
 
 			if(eReference.isContainment()) {
 				// We don't want to add containment references, only regular references.
 				continue;
 			}
-				
-			
 			
 			// Get the name of the referenced type
 			EClassifier type = eReference.getEType();
@@ -85,44 +76,33 @@ public class Generator extends ResourceOperator {
 			// Get the name of the class the reference belongs to
 			EClass containingEClass = eReference.getEContainingClass();
 			String containingClassName = containingEClass.getName();
+			
+			EObject iReferencedObject = instance.get(containingEClass);
+			
+			EList<EObject> eObjectsReferenced = (EList<EObject>) iReferencedObject.eGet(eReference);
 
-			// Find a class like that
-			for (EObject eClassInstance : modelResourceContents) {
-
-				if (eClassInstance.eClass().getName() == containingClassName) {
-					EList<EObject> eObjectsReferenced = (EList<EObject>) eClassInstance.eGet(eReference);
-
-					for (EObject innerEClassInstance : modelResourceContents) {
-						if (innerEClassInstance.eClass().getName() == referencedTypeName) {
-							eObjectsReferenced.add(innerEClassInstance);
-						}
-					}
-				}
+			Iterable<EObject> iInnerObjects = instance.iterable((EClass)type);
+			
+			for (EObject innerEClassInstance : iInnerObjects) {
+				eObjectsReferenced.add(innerEClassInstance);
 			}
-
 		}
 	}
 
-	private EList<EObject> addClasses(EPackage ePackage) {
-		EList<EObject> modelResourceContents = modelResource.getContents();
-
-		for (EClass eClass : parser.eClasses) {
-			EFactory eClassGenerator = ePackage.getEFactoryInstance();
+	private void addClasses() {
+		for (EClass mClass : parser.eClasses) {
 			for (int i = 0; i < scale; i++) {
 				
-				//EObject eClassInstance = eClassGenerator.create(eClass);
-
-				EObject eClassInstance = createInstance(eClass);
+				EObject iObject = createInstance(mClass);
 				
-				modelResourceContents.add(eClassInstance);
-				
-				addAttributes(eClassInstance, eClass);
+				instance.add(iObject);
 				
 				
+				System.out.println(iObject.eClass().getName() + " = " + iObject.eClass().getClassifierID());
 				
+				addAttributes(iObject, mClass);				
 			}
 		}
-		return modelResourceContents;
 	}
 	
 	private void addAttributes(EObject eInstance, EClass eClass) {

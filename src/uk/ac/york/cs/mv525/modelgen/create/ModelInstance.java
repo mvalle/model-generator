@@ -3,9 +3,8 @@ package uk.ac.york.cs.mv525.modelgen.create;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import uk.ac.york.cs.mv525.modelgen.ResourceOperator;
@@ -16,8 +15,6 @@ public class ModelInstance extends ResourceOperator {
 	private Collection iIndex; // Index of the model elements
 	private Collection mIndex; // Index of the meta-model elements
 	
-	private EPackage metamodel;
-
 	private Resource resource;
 	private EList<EObject> instance;
 
@@ -26,8 +23,6 @@ public class ModelInstance extends ResourceOperator {
 		mIndex = mCollection;
 		iIndex = new Collection();
 		
-		metamodel = (EPackage) mIndex.get(metamodel.eClass());
-		
 		resource = getResourceSet("model").createResource(
 				URI.createFileURI(getModelDir("testmodel.model")));
 		
@@ -35,17 +30,12 @@ public class ModelInstance extends ResourceOperator {
 	}
 	
 	public void add(EObject iObject) {
-
-		if (mIndex.contains(iObject.eClass())) {
-		
-			iIndex.add(iObject);
-			instance.add(iObject);
-
-		}
+		iIndex.add(iObject);
+		instance.add(iObject);
 	}
 	
 	public EObject get(EClass mClass) {
-		if(mIndex.contains(mClass)) {
+		if(mIndex.contains(mClass.eClass())) {
 			return iIndex.get(mClass);
 		}
 		// throw not in excepion
@@ -56,4 +46,15 @@ public class ModelInstance extends ResourceOperator {
 		return get(iObject.eClass());
 	}
 	
+	public Iterable<EObject> iterable(EClass mClass) {
+		return iIndex.iterable(mClass);
+	}
+	
+	public Iterable<EObject> iterable(EObject iObject) {
+		return iterable(iObject.eClass());
+	}
+
+	public Iterable<EObject> mAll() {
+		return mIndex.all();
+	}
 }

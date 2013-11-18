@@ -39,7 +39,6 @@ public class Container {
 		// throw invalid input exception
 	}
 	
-	
 	/**
 	 * Gets an object from the container. Cycles through
 	 * the objects, so it can always get one.
@@ -48,8 +47,6 @@ public class Container {
 	public EObject get() {
 		return get(getCounter);
 	}
-	
-	
 	/**
 	 * Get's the i-th item in the container.
 	 * If i is greater than the size of the container, then 
@@ -68,14 +65,16 @@ public class Container {
 	}
 	
 	
+	public Iterable<EObject> iterable() {
+		return iObjects;
+	}
+	
 	@Override
 	public int hashCode() {
 		return mClass.getClassifierID();
 	}
-
 	@Override
 	public String toString() {
 		return "<%s: %d>".format(mClass.getName(), iObjects.size());
 	}
-
 }
