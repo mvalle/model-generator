@@ -1,5 +1,11 @@
 operation Person create() {
-
+	self.println();
+	self.name = "Test Person Create";
+	//var person = new Person;
+	
+	//person.name = "Person Name created by EOL code";
+	
+	return self;
 }
 
 @disabled true
@@ -9,4 +15,5 @@ operation Company create() {
 	nick.name = "Nick";
 	self.employees.add(nick);
 	nick.println();
+	return self;
 }

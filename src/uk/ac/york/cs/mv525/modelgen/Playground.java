@@ -26,12 +26,14 @@ public class Playground {
 		String workingdir = System.getProperty("user.dir");
 		String modeldir = "models";
 		String metamodelname = "orgchart.ecore";
-
+		String programname = "test.eol";
+		
 		String metamodellocation = workingdir+"/"+modeldir+"/"+metamodelname;
+		String programlocation = workingdir + "/" + modeldir+"/"+programname;
 		
 		Generator g = new Generator(metamodellocation);
 		
-		g.generate();
+		g.generate(programlocation);
 		
 		/*
 		Playground pg = new Playground();

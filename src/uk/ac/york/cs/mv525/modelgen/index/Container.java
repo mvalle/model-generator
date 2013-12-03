@@ -1,9 +1,12 @@
 package uk.ac.york.cs.mv525.modelgen.index;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.epsilon.eol.EolOperation;
 
 /**
  * @author magnus
@@ -19,11 +22,14 @@ public class Container {
 
 	private EClass mClass;
 	private ArrayList<EObject> iObjects;
+	private HashMap<String, EolOperation> mOperations;
 	private int getCounter = 0;
+	private int targetCount = -1;
 	
 	public Container(EClass mClass) {
 		this.mClass = mClass;
 		iObjects = new ArrayList<EObject>();
+		mOperations = new HashMap<String, EolOperation>();
 	}
 	
 	public Container(EObject iObject) {
@@ -64,9 +70,33 @@ public class Container {
 	
 	}
 	
+	public boolean satisfied() {
+		return iObjects.size() >= targetCount;
+	}
+	
+	public void setTarget(int i) {
+		targetCount = i;
+	}
+	
+	public int getTarget() {
+		return targetCount;
+	}
 	
 	public Iterable<EObject> iterable() {
 		return iObjects;
+	}
+	
+	public String getName() {
+		
+		int i = mClass.getClassifierID();
+		
+		EStructuralFeature s = mClass.getEStructuralFeature("name");
+		
+		return mClass.getName();
+	}
+	
+	public EClass getEClass() {
+		return mClass;
 	}
 	
 	@Override
@@ -75,6 +105,28 @@ public class Container {
 	}
 	@Override
 	public String toString() {
-		return "<%s: %d>".format(mClass.getName(), iObjects.size());
+		return String.format(mClass.getName(), iObjects.size());
+	}
+
+	public void addOperation(String mOpName, EolOperation op) {
+		mOperations.put(mOpName, op);		
+	}
+	
+	
+	/**
+	 * Gets the Create operation for the EClass.
+	 * @return Create operation or null
+	 */
+	public EolOperation getCreate() {
+		return mOperations.get("create"); // TODO externalis string
+	}
+	
+	/**
+	 * Gets the Create operation for the EClass's EAttribute, attributeName.
+	 * @param attributeName
+	 * @return Create operation for attribute or null.
+	 */
+	public EolOperation getCreate(String attributeName) {
+		return mOperations.get("create"+attributeName);
 	}
 }
