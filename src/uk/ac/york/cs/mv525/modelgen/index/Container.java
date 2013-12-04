@@ -87,11 +87,6 @@ public class Container {
 	}
 	
 	public String getName() {
-		
-		int i = mClass.getClassifierID();
-		
-		EStructuralFeature s = mClass.getEStructuralFeature("name");
-		
 		return mClass.getName();
 	}
 	
@@ -126,7 +121,7 @@ public class Container {
 	 * @param attributeName
 	 * @return Create operation for attribute or null.
 	 */
-	public EolOperation getCreate(String attributeName) {
-		return mOperations.get("create"+attributeName);
+	public EolOperation getCreate(EStructuralFeature mAttribute) {
+		return mOperations.get("create"+mAttribute.getName());
 	}
 }

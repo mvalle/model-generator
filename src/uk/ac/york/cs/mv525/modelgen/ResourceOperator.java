@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 public class ResourceOperator {
 		
-	protected static String getModelDir() {
+	private static String getModelDir() {
 		String workingdir = System.getProperty("user.dir");
 		String modeldir = "models";
 		
@@ -32,7 +32,7 @@ public class ResourceOperator {
 
 	}
 	
-	protected static ResourceSet getResourceSet() {
+	private static ResourceSet getResourceSet() {
 		return getResourceSet("*");
 	}
 	
@@ -43,11 +43,12 @@ public class ResourceOperator {
 
 		return resourceSet;
 	}
-	
+	/*
 	protected static void print(String s) {
 		System.out.println(s);
 	}
 	protected static void print(Object o) {
 		System.out.println(o);
 	}
+	*/
 }

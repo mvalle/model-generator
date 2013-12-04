@@ -1,11 +1,16 @@
 operation Person create() {
 	self.println();
-	self.name = "Test Person Create";
+	//self.name = "Test Person Create";
 	//var person = new Person;
 	
 	//person.name = "Person Name created by EOL code";
 	
 	return self;
+}
+
+operation Person createname() {
+	self.name = "Create Name name";
+	
 }
 
 @disabled true

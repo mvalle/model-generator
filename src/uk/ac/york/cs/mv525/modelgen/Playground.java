@@ -49,7 +49,7 @@ public class Playground {
 		Resource metamodel = pg.readMetaModel(metamodellocation);
 		*/
 	}
-	
+	/*
 	private static String indent(int level) {
 		if(level > 0) {
 			String indention = "";
@@ -64,7 +64,7 @@ public class Playground {
 			return "";
 		}		
 	}
-	
+	*/
 	Resource readMetaModel(String location) throws IOException {
 		Resource resource = resourceSet.createResource(URI.createFileURI(location));
 		resource.load(null);

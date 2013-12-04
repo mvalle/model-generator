@@ -43,7 +43,7 @@ public class ProgramParser extends ResourceOperator{
 		return processModules();
 	}
 	
-	public EolContext processModules() throws EolRuntimeException {	
+	private EolContext processModules() throws EolRuntimeException {	
 
 		EolContext context = (EolContext) mModule.createContext();
 		context.getModelRepository().addModel(new InMemoryEmfModel("X", resource, ePackage));

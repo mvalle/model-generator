@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.epsilon.eol.EolOperation;
 
 /**
@@ -76,7 +77,18 @@ public class Collection {
 		}
 		return null;
 	}
-	
+
+	public EolOperation getOperation(EClass mClass,
+			EStructuralFeature mAttribute) {
+		
+		if(collection.containsKey(mClass.getName()))
+		{		
+			return collection.get(mClass.getName()).getCreate(mAttribute);
+		}
+		
+		return null;
+	}
+	/*
 	public Iterable<EObject> all() {
 		// cat all container arrays into one.
 		// TODO: make a smooth, python-style iterator
@@ -86,7 +98,7 @@ public class Collection {
 		}
 		return all;
 	}
-
+*/
 	public void addOperation(String mTypeName, String mOpName, EolOperation op) {
 		
 		Container container = getByName(mTypeName);
@@ -122,6 +134,7 @@ public class Collection {
 		
 		return l;
 	}
+
 }
 
 

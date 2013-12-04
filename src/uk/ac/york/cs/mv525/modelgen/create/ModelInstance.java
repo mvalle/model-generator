@@ -7,9 +7,11 @@ import java.util.HashMap;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
@@ -72,20 +74,24 @@ public class ModelInstance extends ResourceOperator {
 		add(iObject);
 		
 		if (createOp != null) {
-
-			Object o = createOp.execute(iObject, Collections.emptyList(), eolContext);
-			
-			System.out.println(mClass.getName() + " " + o);
-			
+			createOp.execute(iObject, Collections.emptyList(), eolContext);
 		}
-		
-		
-		
 		
 		return iObject;
 	}
 	
-	
+
+	public Object createAttribute(EObject iObject, EStructuralFeature mAttribute) throws EolRuntimeException {
+		
+		EolOperation attributeOp = iIndex.getOperation(iObject.eClass(), mAttribute);
+		
+		if (attributeOp != null) {
+			attributeOp.execute(iObject, Collections.emptyList(), eolContext);
+			
+		}
+		
+		return iObject.eGet(mAttribute);
+	}
 	
 	
 	
@@ -132,6 +138,13 @@ public class ModelInstance extends ResourceOperator {
 	public Iterable<EObject> getEClasses() {
 		return iIndex.getAll("EClass");
 	}
+
+	// TODO : Lies. Adds object.
+	public EObject createWithoutAdding(EClass mAttributeType) throws EolRuntimeException {
+
+		return create(mAttributeType);
+	}
+
 	
 	
 	
