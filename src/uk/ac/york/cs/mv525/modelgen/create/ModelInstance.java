@@ -30,7 +30,7 @@ public class ModelInstance extends ResourceOperator {
 	private Resource resource;
 	private EList<EObject> instance;
 	
-	private EolContext eolContext;
+	private EolContext eolContext;// TODO Remove
 	
 	public ModelInstance(HashMap<String, EClass> mClasses) throws Exception{
 		mIndex = mClasses;
@@ -143,6 +143,17 @@ public class ModelInstance extends ResourceOperator {
 	public EObject createWithoutAdding(EClass mAttributeType) throws EolRuntimeException {
 
 		return create(mAttributeType);
+	}
+
+	
+	public Collection getIIndex() {
+		// TODO Auto-generated method stub
+		return iIndex;
+	}
+
+	public EPackage getEPackage() {
+		// TODO Auto-generated method stub
+		return ePackage;
 	}
 
 	

@@ -28,10 +28,14 @@ public class Generator extends ResourceOperator {
 
 	private ModelInstance instance;
 
+	private EolGenerator eolGen;
+	private RandomGenerator randomGen;
+	
+	
 	public Generator(String metamodelLocation) throws Exception {
 
 		parser = new MetamodelParser(metamodelLocation);
-
+		
 	}
 
 	public void generate(String programLocation) throws Exception {
@@ -41,6 +45,7 @@ public class Generator extends ResourceOperator {
 
 		ePackage = parser.getEPackage();
 
+		
 		createModel(programLocation);
 	}
 
@@ -50,6 +55,11 @@ public class Generator extends ResourceOperator {
 		instance.initiliseInstance("modelx", "testmodel.modelx",
 				programLocation, ePackage);
 
+		eolGen = new EolGenerator(instance);
+		randomGen = new RandomGenerator(instance);
+		
+		eolGen.parseProgram(programLocation);
+		
 		addClasses();
 
 		instance.save();
@@ -75,39 +85,45 @@ public class Generator extends ResourceOperator {
 		for (EStructuralFeature mAttribute : iObject.eClass()
 				.getEStructuralFeatures()) {
 
-			// System.out.println(mAttribute.getName());
 
 			EClassifier mAttributeType = mAttribute.getEType();
 
 			if (mAttributeType instanceof EClass) {
-				// System.out.println("EClass instanceof found");
 
 				EReference mReference = (EReference) mAttribute;
 
 				if (mReference.isContainment()) {
-					// System.out.println("Containtment found.");
 
 					EList<EObject> iAttributeContainer = (EList<EObject>) iObject
 							.eGet(mReference);
-					EObject iAttributeContainedObject = instance
-							.createWithoutAdding((EClass) mAttributeType);
-
+					
+					// NOTE: Create contained object
+					EObject iAttributeContainedObject = eolGen.create((EClass) mAttributeType);
+					
+					if (iAttributeContainedObject == null) {
+						iAttributeContainedObject = randomGen.create((EClass) mAttributeType);
+					}
+					
 					iAttributeContainer.add(iAttributeContainedObject);
 
 				} else if (!iObject.eIsSet(mAttribute)) {
 					// If a reference is not a containment....
 					// TODO if a reference is not a list, then skipp.
 
-					// System.out.println("Regular reference found.");
-
 					// Get an object the reference belongs to
 					EClass mOwnerClass = mReference.getEContainingClass();
+					
 					EObject iOwningObject = instance.get(mOwnerClass);
 
 					if (iOwningObject == null) {
-						iOwningObject = instance.create(mOwnerClass);
+						iOwningObject = eolGen.create(mOwnerClass);
+						
+						if (iOwningObject == null) {
+							iOwningObject = randomGen.create(mOwnerClass);
+						}
 					}
 
+					// TODO : Don't just create all of them
 					// Get *all* the objects that can be referenced (are of the
 					// correct type)
 					EClass mReferencedClass = (EClass) mReference.getEType();
@@ -123,27 +139,13 @@ public class Generator extends ResourceOperator {
 				}
 
 			} else {
-				System.out.println("EDataType instanceof found");
-
-				if (iObject.eIsSet(mAttribute)) {
-					return;
-				}
-
-				// Non Random generator
-				Object iAttribute = instance.createAttribute(iObject,
+				Object iAttribute = eolGen.createAttribute(iObject,
 						mAttribute);
 
-				if (iAttribute != null) {
-					return;
-				}
+				if (iAttribute == null) {
+					randomGen.createAttribute(iObject, mAttribute);
+				} 
 
-				// Random Generator
-				if (mAttribute.getEType().getName() == "EString") {
-					iObject.eSet(mAttribute, randomString());
-
-				} else {
-					// print("Unknown EDataType");
-				}
 			}
 
 		}

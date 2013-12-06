@@ -62,7 +62,7 @@ public class Container {
 	 */
 	public EObject get(int i) {
 		if (iObjects.isEmpty()) {
-			// throw list is empty exception
+			return null;
 		}
 		int len = iObjects.size();
 		
