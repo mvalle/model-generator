@@ -1,16 +1,14 @@
 package uk.ac.york.cs.mv525.modelgen.create;
 
-import java.io.IOException;
 import java.util.Collections;
-import java.util.HashMap;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.execute.context.EolContext;
@@ -21,32 +19,21 @@ import uk.ac.york.cs.mv525.modelgen.parse.ProgramParser;
 public class EolGenerator {
 
 	private Collection iIndex;
-	private Resource resource;
 	private EPackage ePackage;
 
 	private EolContext eolContext;
-	private EList<EObject> instance;
-
-	public EolGenerator(Collection iIndex, Resource resource, EPackage ePackage)
-			throws Exception {
-		this.iIndex = iIndex;
-		this.resource = resource;
-		this.ePackage = ePackage;
-
-		instance = resource.getContents();
-	}
+	private ModelInstance iInstance;
 
 	public EolGenerator(ModelInstance iInstance) {
 		iIndex = iInstance.getIIndex();
-		resource = iInstance.getResource();
 		ePackage = iInstance.getEPackage();
 		
-		instance = resource.getContents();
+		this.iInstance = iInstance;
 	}
 	
 	public void parseProgram(String programLocation) throws Exception {
 
-		ProgramParser pp = new ProgramParser(iIndex, resource, ePackage);
+		ProgramParser pp = new ProgramParser(iIndex, iInstance);
 
 		eolContext = pp.parse(programLocation);
 	}
@@ -68,27 +55,44 @@ public class EolGenerator {
 
 		return iObject.eGet(mAttribute);
 	}
+	
+	public Object createReference(EObject iObjectContainer, EReference mReference)
+			throws EolRuntimeException {
 
+		//if(iObjectContainer.eIsSet(mReference)) {
+
+			EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
+					.eGet(mReference);
+			
+			EFactory iClassGenerator = ePackage.getEFactoryInstance();
+			EObject iObject = iClassGenerator.create((EClass)mReference.getEType());
+			
+			iReferenceContainer.add(iObject);
+			
+			executeCreate(iObject.eClass(), iObject);
+		//}		
+
+		return iObjectContainer.eGet(mReference);
+	}
+	
 	public EObject create(EClass mClass) throws EolRuntimeException {
 
 		EFactory iClassGenerator = ePackage.getEFactoryInstance();
 
-		EolOperation createOp = iIndex.getCreateOperation(mClass);
 		EObject iObject = iClassGenerator.create(mClass);
 
-		add(iObject);
+		iInstance.add(iObject);
 
-		if (createOp != null) {
-			createOp.execute(iObject, Collections.emptyList(), eolContext);
-		}
+		executeCreate(mClass, iObject);
 
 		return iObject;
 	}
 
-	private void add(EObject iObject) {
-
-		iIndex.add(iObject);
-		instance.add(iObject);
-
+	private void executeCreate(EClass mClass, EObject iObject)
+			throws EolRuntimeException {
+		EolOperation createOp = iIndex.getCreateOperation(mClass);
+		if (createOp != null) {
+			createOp.execute(iObject, Collections.emptyList(), eolContext);
+		}
 	}
 }

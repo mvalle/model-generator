@@ -90,53 +90,7 @@ public class Generator extends ResourceOperator {
 
 			if (mAttributeType instanceof EClass) {
 
-				EReference mReference = (EReference) mAttribute;
-
-				if (mReference.isContainment()) {
-
-					EList<EObject> iAttributeContainer = (EList<EObject>) iObject
-							.eGet(mReference);
-					
-					// NOTE: Create contained object
-					EObject iAttributeContainedObject = eolGen.create((EClass) mAttributeType);
-					
-					if (iAttributeContainedObject == null) {
-						iAttributeContainedObject = randomGen.create((EClass) mAttributeType);
-					}
-					
-					iAttributeContainer.add(iAttributeContainedObject);
-
-				} else if (!iObject.eIsSet(mAttribute)) {
-					// If a reference is not a containment....
-					// TODO if a reference is not a list, then skipp.
-
-					// Get an object the reference belongs to
-					EClass mOwnerClass = mReference.getEContainingClass();
-					
-					EObject iOwningObject = instance.get(mOwnerClass);
-
-					if (iOwningObject == null) {
-						iOwningObject = eolGen.create(mOwnerClass);
-						
-						if (iOwningObject == null) {
-							iOwningObject = randomGen.create(mOwnerClass);
-						}
-					}
-
-					// TODO : Don't just create all of them
-					// Get *all* the objects that can be referenced (are of the
-					// correct type)
-					EClass mReferencedClass = (EClass) mReference.getEType();
-					Iterable<EObject> iReferencedObjects = instance
-							.iterable(mReferencedClass);
-
-					EList<EObject> iContainingObjects = (EList<EObject>) iOwningObject
-							.eGet(mReference);
-
-					for (EObject iReferencedObject : iReferencedObjects) {
-						iContainingObjects.add(iReferencedObject);
-					}
-				}
+				addReference(iObject, mAttribute, mAttributeType);
 
 			} else {
 				Object iAttribute = eolGen.createAttribute(iObject,
@@ -148,6 +102,56 @@ public class Generator extends ResourceOperator {
 
 			}
 
+		}
+	}
+
+	private void addReference(EObject iObject, EStructuralFeature mAttribute,
+			EClassifier mAttributeType) throws EolRuntimeException {
+		EReference mReference = (EReference) mAttribute;
+
+		if (mReference.isContainment()) {
+
+			EList<EObject> iAttributeContainer = (EList<EObject>) iObject
+					.eGet(mReference);
+			
+			// NOTE: Create contained object
+			Object iAttributeContainedObject = eolGen.createReference(iObject, mReference);
+			
+			if (iAttributeContainedObject == null) {
+				iAttributeContainedObject = randomGen.createReference(iObject, mReference);
+			}
+			
+
+		} else if (!iObject.eIsSet(mAttribute)) {
+			// If a reference is not a containment....
+			// TODO if a reference is not a list, then skipp.
+
+			// Get an object the reference belongs to
+			EClass mOwnerClass = mReference.getEContainingClass();
+			
+			EObject iOwningObject = instance.get(mOwnerClass);
+
+			if (iOwningObject == null) {
+				iOwningObject = eolGen.create(mOwnerClass);
+				
+				if (iOwningObject == null) {
+					iOwningObject = randomGen.create(mOwnerClass);
+				}
+			}
+
+			// TODO : Don't just create all of them
+			// Get *all* the objects that can be referenced (are of the
+			// correct type)
+			EClass mReferencedClass = (EClass) mReference.getEType();
+			Iterable<EObject> iReferencedObjects = instance
+					.iterable(mReferencedClass);
+
+			EList<EObject> iContainingObjects = (EList<EObject>) iOwningObject
+					.eGet(mReference);
+
+			for (EObject iReferencedObject : iReferencedObjects) {
+				iContainingObjects.add(iReferencedObject);
+			}
 		}
 	}
 

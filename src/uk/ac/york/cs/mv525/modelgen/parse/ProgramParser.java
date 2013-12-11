@@ -15,6 +15,7 @@ import org.eclipse.epsilon.eol.execute.context.EolContext;
 import org.eclipse.epsilon.eol.types.EolModelElementType;
 
 import uk.ac.york.cs.mv525.modelgen.ResourceOperator;
+import uk.ac.york.cs.mv525.modelgen.create.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.index.Collection;
 
 public class ProgramParser extends ResourceOperator{
@@ -29,6 +30,12 @@ public class ProgramParser extends ResourceOperator{
 		this.resource = resource;
 		this.ePackage = ePackage;
 		
+	}
+	
+	public ProgramParser(Collection mCollection, ModelInstance iInstance) {
+		this.mCollection = mCollection;
+		resource = iInstance.getResource();
+		ePackage = iInstance.getEPackage();
 	}
 	
 	public EolContext parse(String location) throws Exception {
