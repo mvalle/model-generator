@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qx4-sJwREeO9NIbfBysmJQ" name="model">
+  <packagedElement xmi:type="uml:Class" xmi:id="_sD9DgJwREeO9NIbfBysmJQ" name="Generator"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_tk_YcJwREeO9NIbfBysmJQ" name="Strategy"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ueGKsJwREeO9NIbfBysmJQ" name="Index"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wCxpgJwREeO9NIbfBysmJQ" name="Parser"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_xy2qkJwSEeO9NIbfBysmJQ" name="Generator">
+    <ownedOperation xmi:id="_8LYkoJwSEeO9NIbfBysmJQ" name="generate"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_zhO38JwSEeO9NIbfBysmJQ" name="Strateg">
+    <ownedOperation xmi:id="_ADT4cJwTEeO9NIbfBysmJQ" name="create"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_1HlKsJwSEeO9NIbfBysmJQ" name="Index">
+    <ownedOperation xmi:id="_DLJzIJwTEeO9NIbfBysmJQ" name="add"/>
+    <ownedOperation xmi:id="_EQDlsJwTEeO9NIbfBysmJQ" name="get"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_2NKSsJwSEeO9NIbfBysmJQ" name="Parser">
+    <ownedOperation xmi:id="_FPXGkJwTEeO9NIbfBysmJQ" name="parse"/>
+  </packagedElement>
+</uml:Model>
