@@ -145,23 +145,6 @@ public class ModelInstance extends ResourceOperator {
 		return create(mAttributeType);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
 
 
