@@ -113,8 +113,11 @@ public class ModelInstance extends ResourceOperator {
 	
 	public void add(EObject iObject) {
 		iIndex.add(iObject.eClass().getName(), iObject);
+		resource.getContents().add(iObject);
 	}
-	
+	public EObject get(String name, EObject mObject) {
+		return iIndex.get(name);
+	}
 	//?
 	//public EObject get(EClass mClass) {
 	//	if(mIndex.containsKey(mClass.eClass().getName())) {
@@ -123,6 +126,17 @@ public class ModelInstance extends ResourceOperator {
 		// throw not in excepion
 	//	return null;
 	//}
+
+	public Resource getResource() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public EPackage getEPackage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	//public EObject get(EObject iObject) {
 	//	return get(iObject.eClass());
