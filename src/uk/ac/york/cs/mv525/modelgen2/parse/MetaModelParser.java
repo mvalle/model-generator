@@ -19,22 +19,16 @@ public class MetaModelParser implements Parser {
 	@Override
 	public MetaModelIndex parse(String location) throws IOException {
 		Resource resource;
-		
-		try {
-			ResourceSet resourceSet = new ResourceSetImpl();
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("config", new XMIResourceFactoryImpl());
-		
-			resourceSet.createResource(URI.createFileURI(location));
+				
+		ResourceSet resourceSet = new ResourceSetImpl();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+			.put("*", new XMIResourceFactoryImpl());
 			
-			resource = resourceSet.createResource(
-				URI.createFileURI(location));
+		resource = resourceSet.createResource(
+			URI.createFileURI(location));
 		
-			resource.load(null);
-			
-		} catch (IOException e) {
-			throw new IOException("Unable to find MetaModel file. MetaModel file is required.");
-		}
+		resource.load(null);
+		
 	
 		MetaModelIndex mmIndex = new MetaModelIndex();
 		
@@ -45,7 +39,7 @@ public class MetaModelParser implements Parser {
 	}
 	
 	private void populateIndex(MetaModelIndex mmIndex, EList<EObject> mObjs) {
-		// TODO : Investigate wether .equals("EClass") is nessecary or usefull;
+		// TODO : Investigate whether .equals("EClass") is necessary or useful;
 		for(EObject mObj : mObjs) {
 			if(mObj.eClass().getName().equals("EClass")) {
 
@@ -61,3 +55,6 @@ public class MetaModelParser implements Parser {
 	
 
 }
+
+
+

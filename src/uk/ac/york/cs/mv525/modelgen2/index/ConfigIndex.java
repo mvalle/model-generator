@@ -1,54 +1,78 @@
 package uk.ac.york.cs.mv525.modelgen2.index;
 
-import java.util.Hashtable;
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.javatuples.Pair;
 
-public class ConfigIndex implements Index {
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
 
-	private Hashtable<String, Pair<EObject, Integer>> index;
-	private int totalCount = 0;
-	private int targetCount = 0;
+public class ConfigIndex {
+
+	private HashMap<String, BigInteger> index = new HashMap<String, BigInteger>();
+	private HashSet<String> excludes = new HashSet<String>();
 	
-	@Override
-	public void add(String name, EObject mObject) {
-		add(name, mObject, 1);
+	private int totalCount = 0;
+	private BigInteger targetCount;
+	//private BigInteger averageNonOverriddenCount;
+	
+	public ConfigIndex(ModelConfiguration config) {
+				
+		targetCount = config.getCount();
+
+		//for(Object _excl : config.getModelElemetExclusions())
+		//    ModelElementExclusion excl = (ModelElementExclusion) _excl;
+		//    exclude(excl.getName());
+		//}	
+		
+		BigInteger num = BigInteger.ZERO;
+
+		for(Object _over : config.getModelElementOverrides()) {
+			ModelElementOverride over = (ModelElementOverride) _over;
+			add(over.getName(), over.getCount());
+			
+			num = num.and(over.getCount());
+		}
+		
+	}
+
+	public void exclude(String name) {
+		excludes.add(name);
+	}
+	private boolean isExcluded(String name) {
+		return excludes.contains(name);
+	}
+	
+	public void add(String name, int count) {
+		add(name, BigInteger.valueOf(count));
 	}
 
 	/*
 	 * Adds @count number of mObject to the index.
 	 */
-	public void add(String name, EObject mObject, int count) {
-		if (count <= 0) return;
+	public void add(String name, BigInteger count) {
+		if (isExcluded(name)) return;
 		
 		if (index.containsKey(name)) {
-			Pair<EObject, Integer> value = index.get(name);
-			index.put(name, new Pair<EObject, Integer>(mObject, count+value.getValue1()));
+			BigInteger old = index.get(name);
+			index.put(name, count.add(old));
 		} else {
-			index.put(name, new Pair<EObject, Integer>(mObject, count));
+			index.put(name, count);
 		}
-		totalCount += count;
-	}
-	
-	@Override
-	public EObject get(String name) {
-		if (index.containsKey(name)) {
-			return index.get(name).getValue0();
-		}
-		return null;
 	}
 
+
 	public void setMetaModel(MetaModelIndex mmIndex) {
-		// TODO Take into account total number of elements.
-		int count = 1;
-		for(EObject mObject : mmIndex.dump()) {
-			if (get( ((EClass)mObject).getName() ) == null) {
-				add( ((EClass)mObject).getName() , mObject, count);
-			}
-		}
 		
+		int count = 1; // calc from averageNonOverriddenCount and total MM elements
+		
+		for(EObject mObject : mmIndex.dump()) {
+			add( ((EClass)mObject).getName(), count);
+		}
+
 	}
 
 }

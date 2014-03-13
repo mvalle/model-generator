@@ -10,7 +10,7 @@ import org.eclipse.epsilon.eol.EolModule;
 
 import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen2.index.ProgramIndex;
-import uk.ac.york.cs.mv525.modelgen2.parse.ProgramParser;
+import uk.ac.york.cs.mv525.modelgen2.parse.EolParser;
 
 public class EolGenerator implements Generator {
 	
@@ -18,7 +18,7 @@ public class EolGenerator implements Generator {
 	
 	public EolGenerator(String location, ModelInstance model) throws Exception {
 		
-		ProgramParser pParser = new ProgramParser();
+		EolParser pParser = new EolParser();
 		pIndex = pParser.parse(location, model);
 		
 		
