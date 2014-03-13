@@ -1,9 +1,11 @@
 package uk.ac.york.cs.mv525.modelgen2.strategy;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.javatuples.Pair;
 
 
 import uk.ac.york.cs.mv525.modelgen2.generate.Generator;
@@ -21,7 +23,7 @@ public class DefaultStrategy extends Strategy {
 	
 	protected ModelInstance modelInstance;
 	
-	public DefaultStrategy(String metamodel) {
+	public DefaultStrategy(String metamodel) throws IOException {
 		
 		MetaModelParser mmParser = new MetaModelParser();
 		mmIndex = mmParser.parse(metamodel);
@@ -30,7 +32,7 @@ public class DefaultStrategy extends Strategy {
 	
 	
 	//TODO: Maybe this should be refactored into a separate class 
-	public void addConfiguration(String configuration) {
+	public void addConfiguration(String configuration) throws IOException {
 		ConfigParser cParser = new ConfigParser();
 		cIndex = cParser.parse(configuration);
 		cIndex.setMetaModel(mmIndex);
@@ -61,9 +63,9 @@ public class DefaultStrategy extends Strategy {
 	
 	@Override
 	public void create(String output) {
-		// TODO Auto-generated method stub
 		modelInstance = new ModelInstance(output);
-		// init generator
+		
+		// TODO  g = new FindWhatsNext(cIndex.dump());
 		
 		EObject mObject = nextElement();
 		while(mObject != null) {
@@ -82,22 +84,31 @@ public class DefaultStrategy extends Strategy {
 	// placeholder generator
 	class FindWhatsNext {
 		private int state;
-		List<EObject> list;
-		FindWhatsNext(List<EObject> list) {
+		private int substate;
+		List<Pair<EObject, Integer>> list;
+		FindWhatsNext(List<Pair<EObject, Integer>> list) {
 			this.list = list;
 			state = 0;
+			substate = 0;
 		}
 		EObject yield() {
 			if (state < list.size())
 			{
-			EObject o = list.get(state);
-			state++;
-			return o;
+				Pair<EObject, Integer> o = list.get(state);
+				if(substate < o.getValue1()) {
+					substate++;
+				} else {
+					substate = 0;
+					state++;
+				}
+
+				return o.getValue0();
+				
 			}
 			return null;
 		}
 	}
 	
-	private FindWhatsNext g = new FindWhatsNext(null);
+	private FindWhatsNext g;
 	
 }

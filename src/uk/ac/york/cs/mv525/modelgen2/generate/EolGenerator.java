@@ -1,11 +1,29 @@
 package uk.ac.york.cs.mv525.modelgen2.generate;
 
+import java.io.File;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.epsilon.common.parse.problem.ParseProblem;
+import org.eclipse.epsilon.eol.EolModule;
+
+import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
+import uk.ac.york.cs.mv525.modelgen2.index.ProgramIndex;
+import uk.ac.york.cs.mv525.modelgen2.parse.ProgramParser;
 
 public class EolGenerator implements Generator {
-
+	
+	private ProgramIndex pIndex;
+	
+	public EolGenerator(String location, ModelInstance model) throws Exception {
+		
+		ProgramParser pParser = new ProgramParser();
+		pIndex = pParser.parse(location, model);
+		
+		
+	}
+	
 	@Override
 	public void setResourceSet(Resource resourceSet) {
 		// TODO Auto-generated method stub
