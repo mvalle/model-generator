@@ -5,13 +5,13 @@ import org.eclipse.epsilon.eol.EolOperation;
 
 public class ProgramIndex implements Index {
 
-	@Override
+	
 	public void add(String name, EObject object) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
+	
 	public EObject get(String name) {
 		// TODO Auto-generated method stub
 		return null;

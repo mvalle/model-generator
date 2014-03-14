@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EObject;
 
 public interface Index {
 
-	public void add(String name, EObject object);
-	public EObject get(String name);
+	//public void add(String name, EObject object);
+	//public EObject get(String name);
 	
 }

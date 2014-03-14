@@ -9,12 +9,12 @@ public class ModelIndex implements Index {
 
 	HashMap<String, EObject> index;
 	
-	@Override
+	
 	public void add(String name, EObject object) {
 		index.put(name, object);
 	}
 
-	@Override
+	
 	public EObject get(String name) {
 		return index.get(name);
 	}

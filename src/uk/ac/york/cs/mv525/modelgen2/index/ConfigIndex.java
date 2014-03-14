@@ -3,14 +3,18 @@ package uk.ac.york.cs.mv525.modelgen2.index;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.javatuples.Pair;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 
-public class ConfigIndex {
+public class ConfigIndex implements Index  {
 
 	private HashMap<String, BigInteger> index = new HashMap<String, BigInteger>();
 	private HashSet<String> excludes = new HashSet<String>();
@@ -23,10 +27,10 @@ public class ConfigIndex {
 				
 		targetCount = config.getCount();
 
-		//for(Object _excl : config.getModelElemetExclusions())
-		//    ModelElementExclusion excl = (ModelElementExclusion) _excl;
-		//    exclude(excl.getName());
-		//}	
+		for(Object _excl : config.getModelElemetExclusions()) {
+			ModelElementExclusion excl = (ModelElementExclusion) _excl;
+		    exclude(excl.getName());
+		}	
 		
 		BigInteger num = BigInteger.ZERO;
 
@@ -73,6 +77,33 @@ public class ConfigIndex {
 			add( ((EClass)mObject).getName(), count);
 		}
 
+	}
+
+	/* TODO : Recator interfaces. */
+	public void add(String name, EObject object) {
+		// TODO Auto-generated method stub
+		throw new NotImplementedException();
+		
+	}
+	
+	public BigInteger get(String name) {
+		// TODO Auto-generated method stub
+		if (index.containsKey(name)) {
+			return index.get(name);
+		} else if (excludes.contains(name)) {
+			return null;
+		} else {
+			throw new IllegalStateException("Model Element "+name+"not found in configuration. Configuration is in an invalid state"); 
+		}		
+	}
+	
+	public LinkedList<Pair<String, BigInteger>> dump() {
+		LinkedList<Pair<String, BigInteger>> list = new LinkedList<>();
+		for(String key : index.keySet()) {
+			list.add(new Pair<String, BigInteger>(key, index.get(key)));
+		}
+		
+		return list;
 	}
 
 }

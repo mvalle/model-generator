@@ -14,12 +14,12 @@ public class MetaModelIndex implements Index {
 		index = new HashMap<>();
 	}
 	
-	@Override
+	
 	public void add(String name, EObject object) {
 		index.put(name, object);
 	}
 
-	@Override
+		
 	public EObject get(String name) {
 		return index.get(name);
 	}
