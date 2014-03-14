@@ -12,11 +12,12 @@ public class FileTester {
 	protected String dataDir = System.getProperty("user.dir") +
 			"/src/uk/ac/york/cs/mv525/modelgen2/test/data/";
 	
+	protected boolean createsFile = false;
 	@Test
 	public void test_location_exists() {
 		
 		// Only run tests for subclasses
-		if(this.getClass().equals(FileTester.class)) return;
+		if(this.getClass().equals(FileTester.class) || createsFile) return;
 		
 		File file = new File(location);
 		
