@@ -39,8 +39,8 @@ public class EolParser  implements Parser {
 		ProgramIndex pIndex = new ProgramIndex();
 		
 		EolContext context = (EolContext) mModule.createContext();
-		context.getModelRepository().addModel(
-				new InMemoryEmfModel("X", model.getResource(), model.getEPackage()));
+//		context.getModelRepository().addModel(
+//				new InMemoryEmfModel("X", model.getResource(), model.getEPackage()));
 		
 		for (EolOperation op : mModule.getOperations()) {
 			EolModelElementType type = (EolModelElementType) op.getContextType(context);

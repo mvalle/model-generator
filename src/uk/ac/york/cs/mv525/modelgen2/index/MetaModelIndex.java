@@ -5,28 +5,34 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 
 public class MetaModelIndex implements Index {
 
 	HashMap<String, EObject> index;
+	EPackage ePackage;
 	
 	public MetaModelIndex() {
 		index = new HashMap<>();
-	}
-	
+	}	
 	
 	public void add(String name, EObject object) {
 		index.put(name, object);
 	}
-
 		
 	public EObject get(String name) {
 		return index.get(name);
 	}
 	
 	public Collection<EObject> dump() {
-		return index.values();
-		
+		return index.values();		
 	}
 
+	public void setEPackage(EPackage pack) {
+		ePackage = pack;
+	}
+
+	public EPackage getEPackage() {
+		return ePackage;
+	}
 }

@@ -20,15 +20,13 @@ import org.eclipse.epsilon.eol.execute.context.EolContext;
 import uk.ac.york.cs.mv525.modelgen.ResourceOperator;
 import uk.ac.york.cs.mv525.modelgen.index.Collection;
 import uk.ac.york.cs.mv525.modelgen.parse.ProgramParser;
-import uk.ac.york.cs.mv525.modelgen2.index.ModelIndex;
 
 // TODO : Should this class be the ModelIndex class?
 public class ModelInstance extends ResourceOperator {
 
-	private ModelIndex iIndex; // Index of the model elements
+	HashMap<String, EObject> iIndex; // Index of the model elements
 	//private HashMap<String, EClass> mIndex; // Index of the meta-model elements
 	
-	//private EPackage ePackage;
 	private Resource resource;
 	//private EList<EObject> instance;
 	
@@ -44,6 +42,11 @@ public class ModelInstance extends ResourceOperator {
 		
 		resource = getResourceSet(suffix).createResource(
 					URI.createFileURI(getModelDir(location)));
+		
+		iIndex = new HashMap<>();
+		
+
+		
 	}
 	
 	//public ModelInstance(HashMap<String, EClass> mClasses) throws Exception{
@@ -54,7 +57,7 @@ public class ModelInstance extends ResourceOperator {
 		
 	//}
 
-	//initilise iindex with all empty arrays fom mindex
+	//initilise iindex with all empty arrays fom mindexassertNotEquals
 	//that way the programparser can find a place to ime
 	//add programparser into this class.
 	//private void initialisIIndex() {
@@ -112,12 +115,21 @@ public class ModelInstance extends ResourceOperator {
 	
 	
 	public void add(EObject iObject) {
-		iIndex.add(iObject.eClass().getName(), iObject);
+		iIndex.put(iObject.eClass().getName(), iObject);
 		resource.getContents().add(iObject);
 	}
-	public EObject get(String name, EObject mObject) {
+		
+	public EObject get(String name) {
 		return iIndex.get(name);
 	}
+	
+
+	public Resource getResource() {
+		// TODO Auto-generated method stub
+		return resource;
+	}
+
+
 	//?
 	//public EObject get(EClass mClass) {
 	//	if(mIndex.containsKey(mClass.eClass().getName())) {
@@ -126,18 +138,6 @@ public class ModelInstance extends ResourceOperator {
 		// throw not in excepion
 	//	return null;
 	//}
-
-	public Resource getResource() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public EPackage getEPackage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 	//public EObject get(EObject iObject) {
 	//	return get(iObject.eClass());
 	//}

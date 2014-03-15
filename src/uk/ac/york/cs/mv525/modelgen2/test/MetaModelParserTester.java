@@ -3,7 +3,11 @@ package uk.ac.york.cs.mv525.modelgen2.test;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,6 +29,41 @@ public class MetaModelParserTester extends FileTester {
 		MetaModelIndex index = parser.parse(location);
 		
 		assertNotNull(index);
+	}
+	
+	@Test
+	public void test_getEPackage() throws IOException {		
+		
+		MetaModelParser parser = new MetaModelParser();
+		
+		MetaModelIndex index = parser.parse(location);
+		
+		assertNotNull(index);
+		
+		EPackage pack = index.getEPackage();
+		
+		assertNotNull(pack);
+	}
+	
+	@Test
+	public void test_dump() throws IOException {		
+		
+		MetaModelParser parser = new MetaModelParser();
+		
+		MetaModelIndex index = parser.parse(location);
+		
+		assertNotNull(index);
+		
+		Collection<EObject> dump = index.dump();
+		
+		assertNotNull(dump);
+		assertTrue(dump.size() > 0);
+		
+		for(EObject obj : dump) {
+			assertNotNull(obj);
+		}
+				
+				
 	}
 
 } 

@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.javatuples.Pair;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
@@ -82,8 +81,7 @@ public class ConfigIndex implements Index  {
 	/* TODO : Recator interfaces. */
 	public void add(String name, EObject object) {
 		// TODO Auto-generated method stub
-		throw new NotImplementedException();
-		
+		//throw new NotImplementedException();		
 	}
 	
 	public BigInteger get(String name) {
@@ -93,7 +91,7 @@ public class ConfigIndex implements Index  {
 		} else if (excludes.contains(name)) {
 			return null;
 		} else {
-			throw new IllegalStateException("Model Element "+name+"not found in configuration. Configuration is in an invalid state"); 
+			throw new IllegalStateException("Model Element '"+name+"' not found in configuration. Configuration is in an invalid state"); 
 		}		
 	}
 	

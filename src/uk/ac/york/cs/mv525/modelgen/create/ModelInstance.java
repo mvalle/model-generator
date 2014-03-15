@@ -37,7 +37,7 @@ public class ModelInstance extends ResourceOperator {
 		iIndex = new Collection();
 		
 		initialisIIndex();
-		
+				
 	}
 
 	//initilise iindex with all empty arrays fom mindex
