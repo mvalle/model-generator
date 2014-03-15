@@ -20,12 +20,12 @@ public class Main {
 		String outputLocation = modelDir +"/testmodels.modelx";
 		String configLocation = "/home/mv/git/model-generator/models/test.config";
 		
-		RandomGenerator rand = new RandomGenerator();
+		//RandomGenerator rand = new RandomGenerator();
 		//EolGenerator eol = new EolGenerator(programLocation, model);
 		
 		DefaultStrategy defaultStrategy = new DefaultStrategy(metaModelLocation);
 		//defaultStrategy.addGenerator(eol);
-		defaultStrategy.overrideDefaultGenerator(rand);
+		//defaultStrategy.overrideDefaultGenerator(rand);
 		
 		
 	}
