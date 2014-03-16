@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.junit.Before;
 import org.junit.Test;
@@ -67,11 +68,12 @@ public class EolParserTester extends FileTester {
 
 		EolIndex index = parser.parse(location);
 		
-		EObject o = index.get("createName");
+		EolOperation o = index.get("Person", "createname");
 		
 		assertNotNull(o);
 		
 		
 	}
+	
 
 }

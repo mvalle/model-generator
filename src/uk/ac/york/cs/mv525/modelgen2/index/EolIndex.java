@@ -18,23 +18,31 @@ public class EolIndex implements Index {
 	 *                  | Boss |---> <Company createBoss()>
 	 *                  +------+
 	 */
-	HashMap<String, HashMap<String, EolOperation>> index
+	HashMap<String, HashMap<String, EolOperation>> index;
 	
-	public void add(String name, EObject object) {
-		// TODO Auto-generated method stub
-
+	public EolIndex() {
+		index = new HashMap<String, HashMap<String, EolOperation>>();
 	}
-
 	
-	public EObject get(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	// TODO : Change argumen types and order. mTypeName -> EClass
 	public void add(String mTypeName, String mOpName, EolOperation op) {
 		
+		if(!index.containsKey(mTypeName)) {
+			index.put(mTypeName, new HashMap<String, EolOperation>());
+		}
 		
+		HashMap<String, EolOperation> opTable = index.get(mTypeName);
+		// Overwrite operation, if exists
+		opTable.put(mOpName, op);
 	}
 
+	public EolOperation get(String mTypeName, String mOpName) {
+		if(!index.containsKey(mTypeName)) return null;
+
+		HashMap<String, EolOperation> opTable = index.get(mTypeName);
+		
+		return opTable.get(mOpName);
+	}
+	
 }
