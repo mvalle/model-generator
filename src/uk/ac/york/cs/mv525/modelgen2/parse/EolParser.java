@@ -32,9 +32,9 @@ public class EolParser implements Parser {
 	}
 
 	public EolIndex parse(String location) throws IOException {
-		EolModule mModule;
-
-		mModule = new EolModule();
+		
+		EolModule mModule = new EolModule();
+		
 		try {
 			mModule.parse(new File(location));
 		} catch (Exception e) {
@@ -45,16 +45,18 @@ public class EolParser implements Parser {
 			System.err.println(problem.getReason());
 		}
 
-		EolIndex pIndex = new EolIndex();
-
+		
+		
 		EolContext context = (EolContext) mModule.createContext();
+
+		EolIndex pIndex = new EolIndex(context);
 
 		context.getModelRepository().addModel(
 				new InMemoryEmfModel("X", resource, ePackage));
 
-		for (EolOperation op : mModule.getOperations()) {
-			
+		for (EolOperation op : mModule.getOperations()) {			
 			try {
+				
 				EolModelElementType type;
 				type = (EolModelElementType) op.getContextType(context);
 
@@ -63,12 +65,10 @@ public class EolParser implements Parser {
 
 				if (!EolAnnotationsUtil.getBooleanAnnotationValue(op.getAst(),
 						"disabled", context, false, true)) {
-
 					pIndex.add(mTypeName, mOpName, op);
 				}
 				
 			} catch (EolRuntimeException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}

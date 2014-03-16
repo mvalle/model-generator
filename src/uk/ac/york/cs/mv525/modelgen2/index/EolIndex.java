@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.eol.EolOperation;
+import org.eclipse.epsilon.eol.execute.context.EolContext;
 
 public class EolIndex implements Index {
 
@@ -19,9 +20,11 @@ public class EolIndex implements Index {
 	 *                  +------+
 	 */
 	HashMap<String, HashMap<String, EolOperation>> index;
+	EolContext eolContext;
 	
-	public EolIndex() {
+	public EolIndex(EolContext context) {
 		index = new HashMap<String, HashMap<String, EolOperation>>();
+		eolContext = context;
 	}
 	
 
@@ -43,6 +46,10 @@ public class EolIndex implements Index {
 		HashMap<String, EolOperation> opTable = index.get(mTypeName);
 		
 		return opTable.get(mOpName);
+	}
+
+	public EolContext getEolContext() {
+		return eolContext;
 	}
 	
 }
