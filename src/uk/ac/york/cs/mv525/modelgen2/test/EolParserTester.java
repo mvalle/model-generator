@@ -68,7 +68,7 @@ public class EolParserTester extends FileTester {
 
 		EolIndex index = parser.parse(location);
 		
-		EolOperation o = index.get("Person", "createname");
+		EolOperation o = index.get("Person", "name");
 		
 		assertNotNull(o);
 		

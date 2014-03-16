@@ -42,7 +42,7 @@ public class EolIndexTester extends FileTester {
 
 		EolIndex index = parser.parse(location);
 		
-		EolOperation o = index.get("Person", "createname");
+		EolOperation o = index.get("Person", "name");
 		
 		assertNotNull(o);
 	}
@@ -93,12 +93,12 @@ public class EolIndexTester extends FileTester {
 	}
 
 	@Test
-	public void test_null_lookup() throws IOException {
+	public void test_empty_lookup() throws IOException {
 		EolParser parser = new EolParser(iModel.getResource(), mIndex.getEPackage());
 
 		EolIndex index = parser.parse(location);
 		
-		EolOperation o = index.get(null, null);
+		EolOperation o = index.get("", "");
 		
 		assertNull(o);
 	}

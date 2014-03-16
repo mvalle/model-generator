@@ -2,12 +2,15 @@ package uk.ac.york.cs.mv525.modelgen2.index;
 
 import java.util.HashMap;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.execute.context.EolContext;
 
 public class EolIndex implements Index {
-
+	public static final String OP_PREFIX = "create";
+	
 	//  First string is type. Second string is operation name.
 	
 	/* +---------+      +------+
@@ -40,16 +43,27 @@ public class EolIndex implements Index {
 		opTable.put(mOpName, op);
 	}
 
-	public EolOperation get(String mTypeName, String mOpName) {
+	public EolOperation get(String mTypeName, String mOpName) {		
 		if(!index.containsKey(mTypeName)) return null;
 
 		HashMap<String, EolOperation> opTable = index.get(mTypeName);
 		
-		return opTable.get(mOpName);
+		return opTable.get(OP_PREFIX+mOpName);
 	}
 
+	public EolOperation get(EClass mClass, EStructuralFeature mAttribute) {
+		return get(mClass.getName(), mAttribute.getName());
+	}
+		
 	public EolContext getEolContext() {
 		return eolContext;
 	}
+
+
+	public EolOperation get(String name) {
+		return get(name, OP_PREFIX);
+	}
+
+
 	
 }

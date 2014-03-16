@@ -71,6 +71,7 @@ public class RandomGenerator implements Generator {
 		return iObjectContainer.eGet(mReference);
 	}
 
+	/* TODO : Consider moving into superclass */
 	private EObject retrieveObject(EClass mType) {
 		// TODO Based on strategy, either create or retrieve object
 		return  iClassGenerator.create(mType);

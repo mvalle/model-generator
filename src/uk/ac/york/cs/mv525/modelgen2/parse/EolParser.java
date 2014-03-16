@@ -3,6 +3,7 @@ package uk.ac.york.cs.mv525.modelgen2.parse;
 import java.io.File;
 import java.io.IOException;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
@@ -57,12 +58,11 @@ public class EolParser implements Parser {
 		for (EolOperation op : mModule.getOperations()) {			
 			try {
 				
-				EolModelElementType type;
-				type = (EolModelElementType) op.getContextType(context);
+				EolModelElementType type = (EolModelElementType) op.getContextType(context);
 
 				String mTypeName = type.getName();
 				String mOpName = op.getName();
-
+				
 				if (!EolAnnotationsUtil.getBooleanAnnotationValue(op.getAst(),
 						"disabled", context, false, true)) {
 					pIndex.add(mTypeName, mOpName, op);
