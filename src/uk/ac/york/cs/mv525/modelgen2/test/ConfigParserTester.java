@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import uk.ac.york.cs.mv525.modelgen2.index.ConfigIndex;
+import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen2.parse.ConfigParser;
 
 public class ConfigParserTester extends FileTester {
@@ -23,7 +23,7 @@ public class ConfigParserTester extends FileTester {
 		
 		ConfigParser parser = new ConfigParser();
 		
-		ConfigIndex index = parser.parse(location);
+		Configuration index = parser.parse(location);
 		
 		assertNotNull(index);
 	}

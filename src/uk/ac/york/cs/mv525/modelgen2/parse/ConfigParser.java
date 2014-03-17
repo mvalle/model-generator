@@ -16,13 +16,13 @@ import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.impl.*;
 
-import uk.ac.york.cs.mv525.modelgen2.index.ConfigIndex;
+import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
 
 public class ConfigParser implements Parser {
 
 	@Override
-	public ConfigIndex parse(String location) throws IOException {
+	public Configuration parse(String location) throws IOException {
 		
 		// Initialise the ConfigPackage
 		ConfigPackage.eINSTANCE.eClass();
@@ -42,7 +42,7 @@ public class ConfigParser implements Parser {
 		
 		ModelConfiguration config = (ModelConfiguration) resource.getContents().get(0);
 		
-		ConfigIndex cIndex = new ConfigIndex(config);
+		Configuration cIndex = new Configuration(config);
 		
 		return cIndex;
 

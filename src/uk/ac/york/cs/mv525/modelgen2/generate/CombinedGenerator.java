@@ -1,5 +1,6 @@
 package uk.ac.york.cs.mv525.modelgen2.generate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -13,11 +14,12 @@ public class CombinedGenerator implements Generator {
 	protected List<Generator> generators;
 	
 	public CombinedGenerator() {
-		
+		generators = new ArrayList<Generator>();
 	}
 	
 	public CombinedGenerator(Generator generator) {
 		overrideDefaultGenerator(generator);
+		generators = new ArrayList<Generator>();
 	}
 
 	/*

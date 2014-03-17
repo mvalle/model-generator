@@ -35,4 +35,12 @@ public class MetaModelIndex implements Index {
 	public EPackage getEPackage() {
 		return ePackage;
 	}
+
+	public boolean exists(String name) {
+		return index.containsKey(name);
+	}
+
+	public long getCount() {
+		return index.size();
+	}
 }

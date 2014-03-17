@@ -8,12 +8,17 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
+import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
+
 public class RandomGenerator implements Generator {
 
 	EFactory iClassGenerator;
+	ModelInstance model;
 	
-	public RandomGenerator(EFactory factory) {
-		iClassGenerator = factory;
+	public RandomGenerator(ModelInstance modelInstance, MetaModelIndex metaModel) {
+		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
+		model = modelInstance;
 	}
 	
 	@Override
@@ -25,7 +30,7 @@ public class RandomGenerator implements Generator {
 	public EObject create(EClass mClass) {
 
 		EObject iObject = iClassGenerator.create(mClass);
-		
+		model.add(iObject);
 		return iObject;
 	}
 	
@@ -68,6 +73,6 @@ public class RandomGenerator implements Generator {
 	/* TODO : Consider moving into superclass */
 	private EObject retrieveObject(EClass mType) {
 		// TODO Based on strategy, either create or retrieve object
-		return  iClassGenerator.create(mType);
+		return  create(mType);
 	}
 }

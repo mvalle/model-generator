@@ -1,6 +1,7 @@
 package uk.ac.york.cs.mv525.modelgen2.data;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -16,21 +17,17 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.execute.context.EolContext;
+import org.javatuples.Pair;
 
 import uk.ac.york.cs.mv525.modelgen.ResourceOperator;
 import uk.ac.york.cs.mv525.modelgen.index.Collection;
 import uk.ac.york.cs.mv525.modelgen.parse.ProgramParser;
 
-// TODO : Should this class be the ModelIndex class?
 public class ModelInstance extends ResourceOperator {
 
-	HashMap<String, EObject> iIndex; // Index of the model elements
-	//private HashMap<String, EClass> mIndex; // Index of the meta-model elements
+	HashMap<String, ArrayList<EObject>> iIndex; // Index of the model elements
 	
 	private Resource resource;
-	//private EList<EObject> instance;
-	
-	//private EolContext eolContext;
 	
 	public ModelInstance(String location) {
 		String suffix;
@@ -41,136 +38,52 @@ public class ModelInstance extends ResourceOperator {
 		}
 		
 		resource = getResourceSet(suffix).createResource(
-					URI.createFileURI(getModelDir(location)));
+					URI.createFileURI(location));
 		
-		iIndex = new HashMap<>();
-		
-
-		
+		iIndex = new HashMap<>();	
 	}
 	
-	//public ModelInstance(HashMap<String, EClass> mClasses) throws Exception{
-		//mIndex = mClasses;
-		//iIndex = new Collection();
-		
-		//initialisIIndex();
-		
-	//}
-
-	//initilise iindex with all empty arrays fom mindexassertNotEquals
-	//that way the programparser can find a place to ime
-	//add programparser into this class.
-	//private void initialisIIndex() {
-	//	for(EClass mClass : mIndex.values()) {
-	//		iIndex.createIndex(mClass);
-	//	}
-	//}
-	
-	//public void initiliseInstance(String suffix, String modelLocation, String programLocation, EPackage ePackage) throws Exception {
-
-	//	resource = getResourceSet(suffix).createResource(
-	//			URI.createFileURI(getModelDir(modelLocation)));
-		
-	//	instance = resource.getContents();
-		
-	//	this.ePackage = ePackage;
-		
-	//	ProgramParser pp = new ProgramParser(iIndex, resource, ePackage);
-		
-	//	eolContext = pp.parse(programLocation);
-		
-	//}
-	
-	//public EObject create(EClass mClass) throws EolRuntimeException {
-
-	//	EFactory iClassGenerator = ePackage.getEFactoryInstance();
-		
-	//	EolOperation createOp = iIndex.getCreateOperation(mClass);
-	//	EObject iObject = iClassGenerator.create(mClass);
-
-	//	add(iObject);
-		
-	//	if (createOp != null) {
-	//		createOp.execute(iObject, Collections.emptyList(), eolContext);
-	//	}
-		
-	//	return iObject;
-	//}
-	
-
-	//public Object createAttribute(EObject iObject, EStructuralFeature mAttribute) throws EolRuntimeException {
-		
-	//	EolOperation attributeOp = iIndex.getOperation(iObject.eClass(), mAttribute);
-		
-	//	if (attributeOp != null) {
-	//		attributeOp.execute(iObject, Collections.emptyList(), eolContext);
-			
-	//	}
-		
-	//	return iObject.eGet(mAttribute);
-	//}
-	
-	
-	
-	
-	
 	public void add(EObject iObject) {
-		iIndex.put(iObject.eClass().getName(), iObject);
+		if(iIndex.containsKey(iObject.eClass().getName())) {
+			ArrayList<EObject> o = iIndex.get(iObject.eClass().getName());
+			o.add(iObject);
+			
+		} else {
+			ArrayList<EObject> o = new ArrayList<EObject>();
+			o.add(iObject);
+			iIndex.put(iObject.eClass().getName(), o);
+		}
+		
 		resource.getContents().add(iObject);
 	}
 		
 	public EObject get(String name) {
-		return iIndex.get(name);
+		ArrayList<EObject> o = iIndex.get(name);
+		if (o != null) {
+			return o.get(0);
+		}
+		
+		return null;
 	}
 	
 
 	public Resource getResource() {
-		// TODO Auto-generated method stub
 		return resource;
 	}
 
+	public long getCount() {
+		long count = 0;
+		for(ArrayList<EObject> l : iIndex.values()) {
+			count += l.size();
+		}
+		
+		long size = resource.getContents().size();
+		assert(size == count);
+		
+		return count;
+	}
 
-	//?
-	//public EObject get(EClass mClass) {
-	//	if(mIndex.containsKey(mClass.eClass().getName())) {
-	//		return iIndex.get(mClass);
-	//	}
-		// throw not in excepion
-	//	return null;
-	//}
-	//public EObject get(EObject iObject) {
-	//	return get(iObject.eClass());
-	//}
-	
-	//public Iterable<EObject> iterable(EClass mClass) {
-	//	return iIndex.iterable(mClass);
-	//}
-	
-	//public Iterable<EObject> iterable(EObject iObject) {
-	//	return iterable(iObject.eClass());
-	//}
-
-	//public Iterable<EObject> mAll() {
-	//	return null;//mIndex.all();
-	//}
-	
-	//public void save() throws IOException {
-	//	resource.save(null);
-	//}
-
-	//public Resource getResource() {
-	//	return resource;
-	//}
-	
-	//public Iterable<EObject> getEClasses() {
-	//	return iIndex.getAll("EClass");
-	//}
-
-	// TODO : Lies. Adds object.
-	//public EObject createWithoutAdding(EClass mAttributeType) throws EolRuntimeException {
-
-	//	return create(mAttributeType);
-	//}
-
+	public void save() throws IOException {
+		resource.save(null);
+	}
 }
-

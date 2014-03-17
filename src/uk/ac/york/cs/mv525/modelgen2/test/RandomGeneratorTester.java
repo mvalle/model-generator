@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.junit.Before;
 import org.junit.Test;
 
+import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen2.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
@@ -16,6 +17,7 @@ import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
 public class RandomGeneratorTester extends FileTester {
 
 	MetaModelIndex index;
+	ModelInstance model;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -25,13 +27,14 @@ public class RandomGeneratorTester extends FileTester {
 		MetaModelParser parser = new MetaModelParser();
 		index = parser.parse(location);
 		
+		model = new ModelInstance(dataDir + "output.model");
 		
 	}
 	
 	@Test
 	public void test_create_class() {
 		
-		RandomGenerator rg  = new RandomGenerator(index.getEPackage().getEFactoryInstance());
+		RandomGenerator rg  = new RandomGenerator(model, index);
 		EObject randObj = rg.create((EClass) index.get("Person"));
 		
 		assertNotNull(randObj);
@@ -40,7 +43,7 @@ public class RandomGeneratorTester extends FileTester {
 	@Test
 	public void test_create_attribute() {
 		
-		RandomGenerator rg  = new RandomGenerator(index.getEPackage().getEFactoryInstance());
+		RandomGenerator rg  = new RandomGenerator(model, index);
 		EClass mClass = (EClass) index.get("Person");
 		EStructuralFeature mName = mClass.getEStructuralFeature("name");
 		
@@ -54,7 +57,7 @@ public class RandomGeneratorTester extends FileTester {
 	
 	@Test
 	public void test_link() {
-		RandomGenerator rg  = new RandomGenerator(index.getEPackage().getEFactoryInstance());
+		RandomGenerator rg  = new RandomGenerator(model, index);
 		EClass mClass = (EClass) index.get("Person");
 		EStructuralFeature mManages = mClass.getEStructuralFeature("manages");
 		

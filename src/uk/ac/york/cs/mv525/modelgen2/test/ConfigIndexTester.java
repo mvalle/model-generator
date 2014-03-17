@@ -10,29 +10,37 @@ import org.javatuples.Pair;
 import org.junit.Before;
 import org.junit.Test;
 
-import uk.ac.york.cs.mv525.modelgen2.index.ConfigIndex;
+import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
+import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen2.parse.ConfigParser;
+import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
 
 public class ConfigIndexTester extends FileTester {
 	
+	MetaModelIndex mmIndex;
 	@Before
-	public void classSetUp() {	
-		location = dataDir + "test.config";	
+	public void classSetUp() throws IOException {	
+		location = dataDir + "test.config";
+		
+		MetaModelParser parser = new MetaModelParser();
+		mmIndex = parser.parse(dataDir + "orgchart.ecore");
 	}
-	private ConfigIndex newIndex() throws IOException {
-		return (new ConfigParser()).parse(location);
+	private Configuration newIndex() throws IOException {
+		Configuration c =  (new ConfigParser()).parse(location);
+		c.setMetaModel(mmIndex);
+		return c;
 	}
 	
 	@Test
 	public void test_constructor() throws IOException {
-		ConfigIndex index = (new ConfigParser()).parse(location);
+		Configuration index = (new ConfigParser()).parse(location);
 		
 		assertNotNull(index);
 	}
 
 	@Test
 	public void test_null_getters() throws IOException {
-		ConfigIndex index = newIndex();
+		Configuration index = newIndex();
 		
 		try {
 			index.get("");
@@ -44,7 +52,7 @@ public class ConfigIndexTester extends FileTester {
 
 	@Test
 	public void test_getters() throws IOException {
-		ConfigIndex index = newIndex();
+		Configuration index = newIndex();
 		
 		BigInteger actual = index.get("Employee");
 		assertNotNull(actual);		
@@ -53,7 +61,7 @@ public class ConfigIndexTester extends FileTester {
 
 	@Test
 	public void test_dump() throws IOException {
-		ConfigIndex index = newIndex();
+		Configuration index = newIndex();
 		
 		LinkedList<Pair<String, BigInteger>> actual = index.dump();
 		assertNotNull(actual);

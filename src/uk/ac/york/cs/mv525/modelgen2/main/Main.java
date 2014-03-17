@@ -6,7 +6,7 @@ import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen2.generate.CombinedGenerator;
 import uk.ac.york.cs.mv525.modelgen2.generate.EolGenerator;
 import uk.ac.york.cs.mv525.modelgen2.generate.RandomGenerator;
-import uk.ac.york.cs.mv525.modelgen2.index.ConfigIndex;
+import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen2.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
@@ -30,11 +30,11 @@ public class Main {
 		MetaModelIndex mmIndex = mmParser.parse(metaModelLocation);
 		
 		ConfigParser cParser = new ConfigParser();
-		ConfigIndex cIndex = cParser.parse(configLocation);
+		Configuration cIndex = cParser.parse(configLocation);
 		
 		ModelInstance model = new ModelInstance(outputLocation);
 				
-		RandomGenerator rand = new RandomGenerator(mmIndex.getEPackage().getEFactoryInstance());
+		RandomGenerator rand = new RandomGenerator(model, mmIndex);
 		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);
 		
 		CombinedGenerator generator = new CombinedGenerator(rand);

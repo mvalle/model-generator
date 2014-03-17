@@ -16,7 +16,7 @@ import org.javatuples.Pair;
 import uk.ac.york.cs.mv525.modelgen2.generate.CombinedGenerator;
 import uk.ac.york.cs.mv525.modelgen2.generate.Generator;
 import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen2.index.ConfigIndex;
+import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
 import uk.ac.york.cs.mv525.modelgen2.parse.ConfigParser;
@@ -25,7 +25,7 @@ import uk.ac.york.cs.mv525.modelgen2.parse.ConfigParser;
 public class DefaultOrchastration extends Strategy {
 
 	//protected MetaModelIndex mmIndex;
-	protected ConfigIndex cIndex;
+	protected Configuration cIndex;
 	
 	protected ModelInstance modelInstance;
 	
@@ -39,7 +39,7 @@ public class DefaultOrchastration extends Strategy {
 	
 	
 	//TODO: Maybe this should be refactored into a separate class 
-	public void addConfiguration(ConfigIndex index) throws IOException {
+	public void addConfiguration(Configuration index) throws IOException {
 		cIndex = index;
 		//ConfigParser cParser = new ConfigParser();
 		//cIndex = cParser.parse(configuration);
@@ -53,35 +53,23 @@ public class DefaultOrchastration extends Strategy {
 	public void addModel(ModelInstance model) {
 		modelInstance = model;
 	}
-	
-	private EObject nextElement() {
 		
-		return null;//g.yield();
+	public void create() {
+		EClass mClass = (EClass) cIndex.getNext();
 		
-	}
-	
-	
-	public void create() {		
-		//g = new FindWhatsNext(cIndex.dump());
-		
-		EClass mClass = (EClass) nextElement();
 		while(mClass != null) {
-			
 			EObject iObject = generator.create(mClass);
 			
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
 				if (feature.getEType() instanceof EClass ) {
 					generator.link(iObject, (EReference) feature);
 				} else {				
-					generator.add(iObject, (EReference) feature);				
+					generator.add(iObject, feature);				
 				}
 			}
 			
-		}
-		
-	}
 
-
-
-	
+			mClass = (EClass) cIndex.getNext();
+		} 
+	}	
 }
