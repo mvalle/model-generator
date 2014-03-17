@@ -3,7 +3,6 @@ package uk.ac.york.cs.mv525.modelgen2.parse;
 import java.io.File;
 import java.io.IOException;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
@@ -15,8 +14,6 @@ import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.execute.context.EolContext;
 import org.eclipse.epsilon.eol.types.EolModelElementType;
 
-import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen2.index.Index;
 import uk.ac.york.cs.mv525.modelgen2.index.EolIndex;
 
 /*

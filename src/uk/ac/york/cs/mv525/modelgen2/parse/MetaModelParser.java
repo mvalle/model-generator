@@ -14,11 +14,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
 
-public class MetaModelParser implements Parser {
+public class MetaModelParser{
 
+	@Deprecated
+	public MetaModelParser() {
+		
+	}
 	
-	@Override
-	public MetaModelIndex parse(String location) throws IOException {
+	public static MetaModelIndex parse(String location) throws IOException {
 		Resource resource;
 				
 		ResourceSet resourceSet = new ResourceSetImpl();
@@ -42,7 +45,7 @@ public class MetaModelParser implements Parser {
 
 	}
 	
-	private void populateIndex(MetaModelIndex mmIndex, EList<EObject> mObjs) {
+	private static void populateIndex(MetaModelIndex mmIndex, EList<EObject> mObjs) {
 		// TODO : Investigate whether .equals("EClass") is necessary or useful;
 		for(EObject mObj : mObjs) {
 			if(mObj.eClass().getName().equals("EClass")) {
