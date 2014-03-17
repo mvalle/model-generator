@@ -103,5 +103,34 @@ public class ConfigIndex implements Index  {
 		
 		return list;
 	}
+	
+	// placeholder generator
+	class FindWhatsNext {
+		private int state;
+		private int substate;
+		LinkedList<Pair<String, BigInteger>> list;
+		FindWhatsNext(LinkedList<Pair<String, BigInteger>> linkedList) {
+			this.list = linkedList;
+			state = 0;
+			substate = 0;
+		}
+		EObject yield() {
+			if (state < list.size())
+			{
+				Pair<EObject, Integer> o = null; //= list.get(state);
+				if(substate < o.getValue1()) {
+					substate++;
+				} else {
+					substate = 0;
+					state++;
+				}
 
+				return o.getValue0();
+				
+			}
+			return null;
+		}
+	}
+	
+	private FindWhatsNext g;
 }

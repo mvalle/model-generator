@@ -22,12 +22,6 @@ public class RandomGenerator implements Generator {
 
 	}
 
-	@Override
-	public EObject generate(EObject mObject) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public EObject create(EClass mClass) {
 
 		EObject iObject = iClassGenerator.create(mClass);

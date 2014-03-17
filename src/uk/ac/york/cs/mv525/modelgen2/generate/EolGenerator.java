@@ -23,80 +23,100 @@ import uk.ac.york.cs.mv525.modelgen2.parse.EolParser;
 import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
 
 public class EolGenerator implements Generator {
-	
+
 	EFactory iClassGenerator;
-	EolIndex opIndex;	
+	EolIndex opIndex;
 	MetaModelIndex mIndex;
 	ModelInstance iModel;
-	
-	public EolGenerator(String programLocation, ModelInstance modelInstance, MetaModelIndex metaModel) throws IOException {
+
+	public EolGenerator(String programLocation, ModelInstance modelInstance,
+			MetaModelIndex metaModel) throws IOException {
 		mIndex = metaModel;
 		iModel = modelInstance;
 		iClassGenerator = mIndex.getEPackage().getEFactoryInstance();
-		
-		EolParser parser = new EolParser(iModel.getResource(), mIndex.getEPackage());		
+
+		EolParser parser = new EolParser(iModel.getResource(),
+				mIndex.getEPackage());
 		opIndex = parser.parse(programLocation);
 	}
-	
-	
+
 	@Override
 	public void setResourceSet(Resource resourceSet) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	public EObject generate(EObject mObject) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	/*
-	 * Creates a class using the normal method. Then calls
-	 * and EOL operation on that class. Then adds in to resource.
+	 * Creates a class using the normal method. Then calls and EOL operation on
+	 * that class. Then adds in to resource.
 	 */
-	public EObject create(EClass mClass) throws EolRuntimeException {
-		EObject iObject = iClassGenerator.create(mClass);
+	public EObject create(EClass mClass) {
+		try {
+			
+			EObject iObject = iClassGenerator.create(mClass);
 
-		EolOperation createOp = opIndex.get(mClass.getName());
-		if (createOp != null) {
-			createOp.execute(iObject, Collections.emptyList(), opIndex.getEolContext());
-		}
-		
-		iModel.add(iObject); /* Controversial */
-		
-		return iObject;
-	}
-
-	public Object add(EObject iObject, EStructuralFeature mAttribute) throws EolRuntimeException {
-		if (!iObject.eIsSet(mAttribute)) {
-			EolOperation attributeOp = opIndex.get(iObject.eClass(), mAttribute);
-
-			if (attributeOp != null) {
-				attributeOp.execute(iObject, Collections.emptyList(), opIndex.getEolContext());
+			EolOperation createOp = opIndex.get(mClass.getName());
+			if (createOp != null) {
+				createOp.execute(iObject, Collections.emptyList(),
+						opIndex.getEolContext());
 			}
-		}		
-		
-		return iObject.eGet(mAttribute);
+
+			iModel.add(iObject); /* Controversial */
+
+			return iObject;
+			
+		} catch (EolRuntimeException e) {
+			return null;
+		}
 	}
 
-	public Object link(EObject iObjectContainer, EReference mReference) throws Exception {
-		/* +------------------+     +---------------------+---------+
-		 * | iObjectContainer |---->| iReferenceContainer | iObject |
-		 * +------------------+     +---------------------+---------+
-		 */
-		@SuppressWarnings("unchecked")
-		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
-				.eGet(mReference);
+	public Object add(EObject iObject, EStructuralFeature mAttribute) {
+		try {
 			
-		EObject iObject = retrieveObject((EClass)mReference.getEType());
-		
-		iReferenceContainer.add(iObject);
+			if (!iObject.eIsSet(mAttribute)) {
+				EolOperation attributeOp = opIndex.get(iObject.eClass(),
+						mAttribute);
+
+				if (attributeOp != null) {
+					attributeOp.execute(iObject, Collections.emptyList(),
+							opIndex.getEolContext());
+
+				}
+			}
+
+			return iObject.eGet(mAttribute);
 			
-		return null; // NOTE: Not implemented while not executing any EOL. For now just a copy of the RandomGenerator's link.
-		//return iObjectContainer.eGet(mReference);
+		} catch (EolRuntimeException e) {
+			return null;
+		}
 	}
-	
+
+	public Object link(EObject iObjectContainer, EReference mReference) {		
+		try {
+			
+			/*
+			 * +------------------+ +---------------------+---------+ |
+			 * iObjectContainer |---->| iReferenceContainer | iObject |
+			 * +------------------+ +---------------------+---------+
+			 */
+			@SuppressWarnings("unchecked")
+			EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
+					.eGet(mReference);
+
+			EObject iObject = retrieveObject((EClass) mReference.getEType());
+
+			iReferenceContainer.add(iObject);
+
+			return null; // NOTE: Not implemented while not executing any EOL.
+							// For now just a copy of the RandomGenerator's
+							// link.
+			// return iObjectContainer.eGet(mReference);
+			
+		} catch (EolRuntimeException e) {
+			return null;
+		}
+	}
+
 	private EObject retrieveObject(EClass mType) throws EolRuntimeException {
 		// TODO Based on strategy, either create or retrieve object
 		return create(mType);

@@ -1,6 +1,11 @@
-package uk.ac.york.cs.mv525.modelgen2.main;
+package uk.ac.york.cs.mv525.modelgen2.test;
+
+import static org.junit.Assert.*;
 
 import java.io.IOException;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen2.generate.CombinedGenerator;
@@ -12,14 +17,14 @@ import uk.ac.york.cs.mv525.modelgen2.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
 import uk.ac.york.cs.mv525.modelgen2.strategy.DefaultOrchastration;
 
-public class Main {
+public class DefaultOrchestrationTester {
 
-	/**
-	 * @param args
-	 * @throws IOException 
-	 */
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void test() throws IOException {
 		String modelDir = "/home/mv/git/model-generator/models";
 		String programLocation = modelDir +"/test.eol";
 		String metaModelLocation = modelDir + "/orgchart.ecore";
@@ -44,13 +49,6 @@ public class Main {
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addGenerator(generator);
 		defaultOrchastration.addModel(model);
-		
-		defaultOrchastration.create();
-		
-		
-		//defaultStrategy.addGenerator(eol);
-		//defaultStrategy.overrideDefaultGenerator(rand);
-		
 		
 	}
 

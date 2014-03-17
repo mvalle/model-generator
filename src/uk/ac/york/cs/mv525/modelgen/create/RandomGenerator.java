@@ -22,7 +22,7 @@ public class RandomGenerator {
 	private Resource resource;
 
 	public RandomGenerator(Collection iIndex, Resource resource, EPackage ePackage) throws Exception{
-		this.iIndex = iIndex;
+		this.iIndex = null;
 		this.resource = resource;
 		this.ePackage = ePackage;
 		
