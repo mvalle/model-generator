@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.generate;
+package uk.ac.york.cs.mv525.modelgen.generate;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -8,8 +8,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
-import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
+import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 
 public class RandomGenerator implements Generator {
 

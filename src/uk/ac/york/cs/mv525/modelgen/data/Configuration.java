@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.data;
+package uk.ac.york.cs.mv525.modelgen.data;
 
 import java.math.BigInteger;
 import java.util.HashMap;
@@ -12,8 +12,8 @@ import org.javatuples.Pair;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
-import uk.ac.york.cs.mv525.modelgen2.index.Index;
-import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.index.Index;
+import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 
 public class Configuration implements Index  {
 

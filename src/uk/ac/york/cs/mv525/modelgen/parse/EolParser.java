@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.parse;
+package uk.ac.york.cs.mv525.modelgen.parse;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.execute.context.EolContext;
 import org.eclipse.epsilon.eol.types.EolModelElementType;
 
-import uk.ac.york.cs.mv525.modelgen2.index.EolIndex;
+import uk.ac.york.cs.mv525.modelgen.index.EolIndex;
 
 /*
  * TODO : Create ModelContextParser interface.

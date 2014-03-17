@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.test;
+package uk.ac.york.cs.mv525.modelgen.test;
 
 import static org.junit.Assert.*;
 
@@ -9,15 +9,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
-import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen2.generate.CombinedGenerator;
-import uk.ac.york.cs.mv525.modelgen2.generate.EolGenerator;
-import uk.ac.york.cs.mv525.modelgen2.generate.RandomGenerator;
-import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
-import uk.ac.york.cs.mv525.modelgen2.parse.ConfigParser;
-import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
-import uk.ac.york.cs.mv525.modelgen2.strategy.DefaultOrchastration;
+import uk.ac.york.cs.mv525.modelgen.data.Configuration;
+import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
+import uk.ac.york.cs.mv525.modelgen.generate.CombinedGenerator;
+import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
+import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
+import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
+import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.strategy.DefaultOrchastration;
 
 public class DefaultOrchestrationTester extends FileTester {
 

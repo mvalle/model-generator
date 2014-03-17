@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.generate;
+package uk.ac.york.cs.mv525.modelgen.generate;
 
 import java.util.ArrayList;
 import java.util.List;

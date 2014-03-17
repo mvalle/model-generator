@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.test;
+package uk.ac.york.cs.mv525.modelgen.test;
 
 import static org.junit.Assert.*;
 
@@ -10,10 +10,10 @@ import org.javatuples.Pair;
 import org.junit.Before;
 import org.junit.Test;
 
-import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
-import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
-import uk.ac.york.cs.mv525.modelgen2.parse.ConfigParser;
-import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.data.Configuration;
+import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
+import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 
 public class ConfigIndexTester extends FileTester {
 	

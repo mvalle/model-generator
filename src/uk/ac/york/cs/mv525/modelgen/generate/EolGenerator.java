@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.generate;
+package uk.ac.york.cs.mv525.modelgen.generate;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 
-import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen2.index.EolIndex;
-import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
-import uk.ac.york.cs.mv525.modelgen2.parse.EolParser;
+import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
+import uk.ac.york.cs.mv525.modelgen.index.EolIndex;
+import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.parse.EolParser;
 
 public class EolGenerator implements Generator {
 

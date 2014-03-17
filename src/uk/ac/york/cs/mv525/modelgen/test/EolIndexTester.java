@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.test;
+package uk.ac.york.cs.mv525.modelgen.test;
 
 import static org.junit.Assert.*;
 
@@ -9,11 +9,11 @@ import org.eclipse.epsilon.eol.execute.context.EolContext;
 import org.junit.Before;
 import org.junit.Test;
 
-import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen2.index.EolIndex;
-import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
-import uk.ac.york.cs.mv525.modelgen2.parse.EolParser;
-import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
+import uk.ac.york.cs.mv525.modelgen.index.EolIndex;
+import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.parse.EolParser;
+import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 
 public class EolIndexTester extends FileTester {
 

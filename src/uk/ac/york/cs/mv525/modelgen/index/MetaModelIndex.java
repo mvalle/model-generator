@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.index;
+package uk.ac.york.cs.mv525.modelgen.index;
 
 import java.util.Collection;
 import java.util.HashMap;

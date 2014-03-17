@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.test;
+package uk.ac.york.cs.mv525.modelgen.test;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +10,7 @@ public class FileTester {
 	protected String location;
 	
 	protected String dataDir = System.getProperty("user.dir") +
-			"/src/uk/ac/york/cs/mv525/modelgen2/test/data/";
+			"/src/uk/ac/york/cs/mv525/modelgen/test/data/";
 	
 	protected boolean createsFile = false;
 	@Test

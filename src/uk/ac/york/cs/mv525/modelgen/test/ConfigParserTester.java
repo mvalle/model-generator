@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.test;
+package uk.ac.york.cs.mv525.modelgen.test;
 
 import static org.junit.Assert.*;
 
@@ -7,8 +7,8 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
-import uk.ac.york.cs.mv525.modelgen2.parse.ConfigParser;
+import uk.ac.york.cs.mv525.modelgen.data.Configuration;
+import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 
 public class ConfigParserTester extends FileTester {
 	

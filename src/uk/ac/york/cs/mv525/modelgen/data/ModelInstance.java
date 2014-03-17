@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.data;
+package uk.ac.york.cs.mv525.modelgen.data;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,9 +7,11 @@ import java.util.HashMap;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import uk.ac.york.cs.mv525.modelgen.ResourceOperator;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-public class ModelInstance extends ResourceOperator {
+public class ModelInstance {
 
 	HashMap<String, ArrayList<EObject>> iIndex; // Index of the model elements
 	
@@ -22,8 +24,12 @@ public class ModelInstance extends ResourceOperator {
 			assert(s.length >=2);
 			suffix = s[s.length-1];
 		}
-		
-		resource = getResourceSet(suffix).createResource(
+
+		ResourceSet resourceSet = new ResourceSetImpl();
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+                        .put(suffix, new XMIResourceFactoryImpl());
+        
+		resource = resourceSet.createResource(
 					URI.createFileURI(location));
 		
 		iIndex = new HashMap<>();	

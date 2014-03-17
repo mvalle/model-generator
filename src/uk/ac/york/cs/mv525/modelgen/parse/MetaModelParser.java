@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.parse;
+package uk.ac.york.cs.mv525.modelgen.parse;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 
 public class MetaModelParser{
 

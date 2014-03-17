@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen2.parse;
+package uk.ac.york.cs.mv525.modelgen.parse;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 
-import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
+import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 
 public class ConfigParser {
 	

@@ -1,13 +1,13 @@
-package uk.ac.york.cs.mv525.modelgen2.strategy;
+package uk.ac.york.cs.mv525.modelgen.strategy;
 
 import java.io.IOException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import uk.ac.york.cs.mv525.modelgen2.generate.Generator;
-import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
+import uk.ac.york.cs.mv525.modelgen.generate.Generator;
+import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
+import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 
 // TODO : This class feels like it's two classes in one
 public class DefaultOrchastration {
