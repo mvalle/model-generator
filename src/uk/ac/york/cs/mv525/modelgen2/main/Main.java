@@ -26,32 +26,42 @@ public class Main {
 		String outputLocation = modelDir +"/testmodels.modelx";
 		String configLocation = "/home/mv/git/model-generator/models/test.config";
 		
+		generateModel(programLocation, metaModelLocation, outputLocation,
+				configLocation);
+		
+		
+	}
+
+	private static void generateModel(String programLocation,
+			String metaModelLocation, String outputLocation,
+			String configLocation) throws IOException {
+		
+		/* The object that contains the instance of the model being generated */
+		ModelInstance model = new ModelInstance(outputLocation);
+		
+		/* The object that contains the representation of the meta-model*/
 		MetaModelParser mmParser = new MetaModelParser();
 		MetaModelIndex mmIndex = mmParser.parse(metaModelLocation);
 		
+		/* The object that contains the representation of the configuration file */
 		ConfigParser cParser = new ConfigParser();
 		Configuration cIndex = cParser.parse(configLocation);
 		
-		ModelInstance model = new ModelInstance(outputLocation);
-				
+		/* The object responsible for generating model elements. Consisting of two other sub-generators */
 		RandomGenerator rand = new RandomGenerator(model, mmIndex);
-		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);
-		
+		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);		
 		CombinedGenerator generator = new CombinedGenerator(rand);
 		generator.addGenerator(eol);
 		
+		/* The object responsible for overseeing the model generation process */
 		DefaultOrchastration defaultOrchastration = new DefaultOrchastration();
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addGenerator(generator);
 		defaultOrchastration.addModel(model);
 		
-		defaultOrchastration.create();
-		
-		
-		//defaultStrategy.addGenerator(eol);
-		//defaultStrategy.overrideDefaultGenerator(rand);
-		
-		
+		/* Where the magic happens */		
+		defaultOrchastration.create();		
+		model.save();
 	}
 
 }

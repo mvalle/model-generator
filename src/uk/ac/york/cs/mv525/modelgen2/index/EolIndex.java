@@ -3,7 +3,6 @@ package uk.ac.york.cs.mv525.modelgen2.index;
 import java.util.HashMap;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.execute.context.EolContext;

@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -24,9 +23,7 @@ public class MetaModelParserTester extends FileTester {
 	@Test
 	public void testSimple() throws IOException {		
 		
-		MetaModelParser parser = new MetaModelParser();
-		
-		MetaModelIndex index = parser.parse(location);
+		MetaModelIndex index = MetaModelParser.parse(location);
 		
 		assertNotNull(index);
 	}
@@ -34,9 +31,7 @@ public class MetaModelParserTester extends FileTester {
 	@Test
 	public void test_getEPackage() throws IOException {		
 		
-		MetaModelParser parser = new MetaModelParser();
-		
-		MetaModelIndex index = parser.parse(location);
+		MetaModelIndex index = MetaModelParser.parse(location);
 		
 		assertNotNull(index);
 		
@@ -48,9 +43,7 @@ public class MetaModelParserTester extends FileTester {
 	@Test
 	public void test_dump() throws IOException {		
 		
-		MetaModelParser parser = new MetaModelParser();
-		
-		MetaModelIndex index = parser.parse(location);
+		MetaModelIndex index = MetaModelParser.parse(location);
 		
 		assertNotNull(index);
 		

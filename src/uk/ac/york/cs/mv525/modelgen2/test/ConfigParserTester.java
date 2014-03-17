@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import uk.ac.york.cs.mv525.modelgen2.data.Configuration;
@@ -21,9 +20,7 @@ public class ConfigParserTester extends FileTester {
 	@Test
 	public void testSimple() throws IOException {
 		
-		ConfigParser parser = new ConfigParser();
-		
-		Configuration index = parser.parse(location);
+		Configuration index = ConfigParser.parse(location);
 		
 		assertNotNull(index);
 	}

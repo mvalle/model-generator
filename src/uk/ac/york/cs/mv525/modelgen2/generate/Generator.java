@@ -1,12 +1,10 @@
 package uk.ac.york.cs.mv525.modelgen2.generate;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 
 public interface Generator {
 

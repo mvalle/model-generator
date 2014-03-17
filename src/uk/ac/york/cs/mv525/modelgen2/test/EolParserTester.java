@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.junit.Before;
@@ -26,10 +25,8 @@ public class EolParserTester extends FileTester {
 	public void setUp() throws IOException {
 
 		location = dataDir + "test.eol";
-
-		MetaModelParser parser = new MetaModelParser();
 		
-		index = parser.parse(metaModelLocation);
+		index = MetaModelParser.parse(metaModelLocation);
 		
 	}
 	

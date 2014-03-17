@@ -2,7 +2,6 @@ package uk.ac.york.cs.mv525.modelgen2.index;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;

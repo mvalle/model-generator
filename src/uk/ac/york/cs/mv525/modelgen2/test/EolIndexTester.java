@@ -27,9 +27,7 @@ public class EolIndexTester extends FileTester {
 
 		location = dataDir + "test.eol";
 
-		MetaModelParser parser = new MetaModelParser();
-		
-		mIndex = parser.parse(metaModelLocation);
+		mIndex = MetaModelParser.parse(metaModelLocation);
 
 		iModel = new ModelInstance(location);
 		

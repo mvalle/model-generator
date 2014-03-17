@@ -24,8 +24,7 @@ public class RandomGeneratorTester extends FileTester {
 		
 		location = dataDir + "orgchart.ecore";
 
-		MetaModelParser parser = new MetaModelParser();
-		index = parser.parse(location);
+		index = MetaModelParser.parse(location);
 		
 		model = new ModelInstance(dataDir + "output.model");
 		

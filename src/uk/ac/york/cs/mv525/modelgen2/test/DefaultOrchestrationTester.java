@@ -42,12 +42,9 @@ public class DefaultOrchestrationTester extends FileTester {
 	@Test
 	public void test_generation() throws IOException {
 		
+		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
 		
-		MetaModelParser mmParser = new MetaModelParser();
-		MetaModelIndex mmIndex = mmParser.parse(metaModelLocation);
-		
-		ConfigParser cParser = new ConfigParser();
-		Configuration cIndex = cParser.parse(configLocation);
+		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mmIndex);
 		
 		ModelInstance model = new ModelInstance(location);
@@ -74,19 +71,12 @@ public class DefaultOrchestrationTester extends FileTester {
 	@Test
 	public void test_saving_to_file() throws IOException {
 		
-		String programLocation = dataDir +"test.eol";
-		String metaModelLocation = dataDir + "orgchart.ecore";
-		String outputLocation = dataDir +"testmodels.modelx";
-		String configLocation = dataDir + "test.config";
+		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
 		
-		MetaModelParser mmParser = new MetaModelParser();
-		MetaModelIndex mmIndex = mmParser.parse(metaModelLocation);
-		
-		ConfigParser cParser = new ConfigParser();
-		Configuration cIndex = cParser.parse(configLocation);
+		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mmIndex);
 		
-		ModelInstance model = new ModelInstance(outputLocation);
+		ModelInstance model = new ModelInstance(location);
 				
 		RandomGenerator rand = new RandomGenerator(model, mmIndex);
 		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);

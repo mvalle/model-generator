@@ -20,7 +20,7 @@ public class Configuration implements Index  {
 	private HashMap<String, BigInteger> index = new HashMap<String, BigInteger>();
 	private HashSet<String> excludes = new HashSet<String>();
 	
-	private int totalCount = 0;
+	//private int totalCount = 0;
 	private BigInteger targetElementsCount;
 	//private BigInteger averageNonOverriddenCount;
 	private MetaModelIndex metaModel;

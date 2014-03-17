@@ -2,26 +2,12 @@ package uk.ac.york.cs.mv525.modelgen2.data;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.epsilon.eol.EolOperation;
-import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
-import org.eclipse.epsilon.eol.execute.context.EolContext;
-import org.javatuples.Pair;
-
 import uk.ac.york.cs.mv525.modelgen.ResourceOperator;
-import uk.ac.york.cs.mv525.modelgen.index.Collection;
-import uk.ac.york.cs.mv525.modelgen.parse.ProgramParser;
 
 public class ModelInstance extends ResourceOperator {
 

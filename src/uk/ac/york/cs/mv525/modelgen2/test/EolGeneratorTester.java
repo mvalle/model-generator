@@ -14,7 +14,6 @@ import org.junit.Test;
 
 import uk.ac.york.cs.mv525.modelgen2.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen2.generate.EolGenerator;
-import uk.ac.york.cs.mv525.modelgen2.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen2.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen2.parse.MetaModelParser;
 
@@ -27,8 +26,7 @@ public class EolGeneratorTester extends FileTester {
 	public void setUp() throws Exception {
 		location = dataDir + "test.eol";
 
-		MetaModelParser parser = new MetaModelParser();
-		mIndex = parser.parse(dataDir+"orgchart.ecore");
+		mIndex = MetaModelParser.parse(dataDir+"orgchart.ecore");
 		
 		model = new ModelInstance(dataDir+"test.model");
 	}
@@ -77,5 +75,5 @@ public class EolGeneratorTester extends FileTester {
 		
 		Object actual = person.eGet(mManages);		
 		assertSame(manager, actual);
-	}/**/
+	}
 }
