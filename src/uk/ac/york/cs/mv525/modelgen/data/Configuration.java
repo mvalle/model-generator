@@ -14,6 +14,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.index.Index;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.parse.InvalidConfigurationException;
 
 public class Configuration implements Index  {
 
@@ -52,7 +53,7 @@ public class Configuration implements Index  {
 			
 				exclude(excl.getName());
 			} else {
-				// TODO THROW RUNTIME EXCEPTION;
+				throw new InvalidConfigurationException();
 			}
 		}	
 		
@@ -66,7 +67,7 @@ public class Configuration implements Index  {
 			
 				num = num.and(over.getCount());
 			} else {
-				// TODO THROW RUNTIME EXCEPTION
+				throw new InvalidConfigurationException();
 			}
 		}
 		long overrideClassCount = index.size();
