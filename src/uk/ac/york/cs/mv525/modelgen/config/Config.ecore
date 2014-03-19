@@ -18,4 +18,18 @@
   <eClassifiers xsi:type="ecore:EClass" name="ModelElementExclusion">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringPool" abstract="true">
+    <eOperations name="get" eType="#//StringPoolEntry"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EReference0" eType="#//ModelElementOverride"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileStringPool" eSuperTypes="#//StringPool">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EmbeddedStringPool" eSuperTypes="#//StringPool">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Strings" eType="#//EmbeddedStringPool"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringPoolEntry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Strings" lowerBound="1"
+        upperBound="-1" eType="#//EmbeddedStringPool"/>
+  </eClassifiers>
 </ecore:EPackage>
