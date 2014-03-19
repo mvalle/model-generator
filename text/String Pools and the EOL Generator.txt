@@ -1,0 +1,5 @@
+EOL Generator and the String Resources.
+The problem with using EOL to provide a string pool is that it conflicts with the other established EOL coding conventions, namely the create*. Basically, a string pool is a way of setting the value of a string attribute. This is also what the create* operations are doing. Therefore I have decided that the string resources should not be used with EOL Generator, but instead be completely delegated to EOL code. If the create* operations decide to use a string resource it is entirely up to the EOL programmer and will be implemented entirely in the EOL code. (It is possible to provide some facility to ease the development of this pattern in EOL, ie. a EOL class.)
+
+Using EOL to represent sequences.
+The other Generator, such as the RandomGenerator, will be using string pools. How these are to be represented are still an open question. There are a three possibilities. Delegate to EOL code that can generate a sequence of strings. Delegate to the Configuration file. Either by referring to an external file of strings, or by directly embedding directly into the configuration file.
