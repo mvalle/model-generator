@@ -13,6 +13,7 @@ import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 
 public class RandomGeneratorTester extends FileTester {
 
@@ -57,6 +58,7 @@ public class RandomGeneratorTester extends FileTester {
 	@Test
 	public void test_link() {
 		RandomGenerator rg  = new RandomGenerator(model, index);
+		rg.setStrategy(new AlwaysCreate(rg));
 		EClass mClass = (EClass) index.get("Person");
 		EStructuralFeature mManages = mClass.getEStructuralFeature("manages");
 		

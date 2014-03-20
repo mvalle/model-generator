@@ -9,9 +9,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import uk.ac.york.cs.mv525.modelgen.strategy.Strategy;
+
 public class CombinedGenerator implements Generator {
 	protected Generator fallback;
 	protected List<Generator> generators;
+	private Strategy strategy;
 	
 	public CombinedGenerator() {
 		generators = new ArrayList<Generator>();
@@ -80,10 +83,10 @@ public class CombinedGenerator implements Generator {
 		
 		return fallback.add(iObject,  feature);		
 	}
-
+	
 	@Override
-	public void setResourceSet(Resource resourceSet) {
-		// TODO Auto-generated method stub
+	public void setStrategy(Strategy s) {
+		strategy = s;
 		
 	}
 	

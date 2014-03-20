@@ -3,6 +3,7 @@ package uk.ac.york.cs.mv525.modelgen.data;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -56,6 +57,11 @@ public class ModelInstance {
 		}
 		
 		return null;
+	}
+	
+	public List<EObject> getObjects(String name) {
+		ArrayList<EObject> o = iIndex.get(name);
+		return o;
 	}
 	
 

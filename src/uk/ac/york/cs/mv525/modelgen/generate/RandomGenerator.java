@@ -10,11 +10,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.strategy.Strategy;
 
 public class RandomGenerator implements Generator {
 
 	EFactory iClassGenerator;
 	ModelInstance model;
+	Strategy strategy;
 	
 	public RandomGenerator(ModelInstance modelInstance, MetaModelIndex metaModel) {
 		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
@@ -22,9 +24,8 @@ public class RandomGenerator implements Generator {
 	}
 	
 	@Override
-	public void setResourceSet(Resource resourceSet) {
-		// TODO Auto-generated method stub
-
+	public void setStrategy(Strategy s) {
+		strategy = s;
 	}
 
 	public EObject create(EClass mClass) {
@@ -63,16 +64,10 @@ public class RandomGenerator implements Generator {
 		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 				.eGet(mReference);
 			
-		EObject iObject = retrieveObject((EClass)mReference.getEType());
+		EObject iObject = strategy.retrieaveObject((EClass)mReference.getEType());
 		
 		iReferenceContainer.add(iObject);
 			
 		return iObjectContainer.eGet(mReference);
-	}
-
-	/* TODO : Consider moving into superclass */
-	private EObject retrieveObject(EClass mType) {
-		// TODO Based on strategy, either create or retrieve object
-		return  create(mType);
 	}
 }

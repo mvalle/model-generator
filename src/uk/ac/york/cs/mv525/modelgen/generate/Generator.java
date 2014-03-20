@@ -6,9 +6,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
-public interface Generator {
+import uk.ac.york.cs.mv525.modelgen.strategy.Strategy;
 
-	public void setResourceSet(Resource resourceSet);
+public interface Generator {
 
 	public EObject create(EClass mClass);	
 
@@ -16,4 +16,5 @@ public interface Generator {
 	
 	public Object link(EObject iObjectContainer, EReference mReference);
 
+	public void setStrategy(Strategy s);
 }

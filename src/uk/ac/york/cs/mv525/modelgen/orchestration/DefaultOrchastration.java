@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen.strategy;
+package uk.ac.york.cs.mv525.modelgen.orchestration;
 
 import java.io.IOException;
 import org.eclipse.emf.ecore.EClass;
