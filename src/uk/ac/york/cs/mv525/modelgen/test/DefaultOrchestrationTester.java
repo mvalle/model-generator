@@ -18,6 +18,7 @@ import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 
 public class DefaultOrchestrationTester extends FileTester {
 
@@ -50,7 +51,9 @@ public class DefaultOrchestrationTester extends FileTester {
 		ModelInstance model = new ModelInstance(location);
 				
 		RandomGenerator rand = new RandomGenerator(model, mmIndex);
+		rand.setStrategy(new AlwaysCreate(rand));
 		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);
+		eol.setStrategy(new AlwaysCreate(eol));
 		
 		CombinedGenerator generator = new CombinedGenerator(rand);
 		generator.addGenerator(eol);
@@ -79,7 +82,9 @@ public class DefaultOrchestrationTester extends FileTester {
 		ModelInstance model = new ModelInstance(location);
 				
 		RandomGenerator rand = new RandomGenerator(model, mmIndex);
+		rand.setStrategy(new AlwaysCreate(rand));
 		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);
+		eol.setStrategy(new AlwaysCreate(eol));
 		
 		CombinedGenerator generator = new CombinedGenerator(rand);
 		generator.addGenerator(eol);
