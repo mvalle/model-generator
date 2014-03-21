@@ -49,7 +49,7 @@ public class DefaultOrchestrationTester extends FileTester {
 		
 		ModelInstance model = new ModelInstance(location);
 				
-		RandomGenerator rand = new RandomGenerator(model, mmIndex);
+		RandomGenerator rand = new RandomGenerator(model, mmIndex, cIndex);
 		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);
 		
 		CombinedGenerator generator = new CombinedGenerator(rand);
@@ -78,7 +78,7 @@ public class DefaultOrchestrationTester extends FileTester {
 		
 		ModelInstance model = new ModelInstance(location);
 				
-		RandomGenerator rand = new RandomGenerator(model, mmIndex);
+		RandomGenerator rand = new RandomGenerator(model, mmIndex, cIndex);
 		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);
 		
 		CombinedGenerator generator = new CombinedGenerator(rand);

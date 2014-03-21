@@ -10,8 +10,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.javatuples.Pair;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
+import uk.ac.york.cs.mv525.modelgen.config.ModelElementExclusion;
+import uk.ac.york.cs.mv525.modelgen.config.ModelElementOverride;
+import uk.ac.york.cs.mv525.modelgen.config.StringPool;
+import uk.ac.york.cs.mv525.modelgen.config.StringPoolEntry;
 import uk.ac.york.cs.mv525.modelgen.index.Index;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.InvalidConfigurationException;
@@ -20,6 +22,7 @@ public class Configuration implements Index  {
 
 	private HashMap<String, BigInteger> index = new HashMap<String, BigInteger>();
 	private HashSet<String> excludes = new HashSet<String>();
+	private HashMap<String, StringPool> pools = new HashMap<>();
 	
 	//private int totalCount = 0;
 	private BigInteger targetElementsCount;
@@ -46,6 +49,7 @@ public class Configuration implements Index  {
 	private void init() {
 		targetElementsCount = config.getCount();
 
+		//
 		for(Object _excl : config.getModelElemetExclusions()) {			
 			ModelElementExclusion excl = (ModelElementExclusion) _excl;
 			
@@ -57,6 +61,7 @@ public class Configuration implements Index  {
 			}
 		}	
 		
+		//		
 		BigInteger num = BigInteger.ZERO;
 		for(Object _over : config.getModelElementOverrides()) {			
 			ModelElementOverride over = (ModelElementOverride) _over;
@@ -66,6 +71,12 @@ public class Configuration implements Index  {
 				add(over.getName(), over.getCount());
 			
 				num = num.and(over.getCount());
+				
+				StringPool sp = over.getStringPool();
+				if (sp != null) {
+					pools.put(over.getName(), sp);
+				}
+				
 			} else {
 				throw new InvalidConfigurationException();
 			}
@@ -85,7 +96,8 @@ public class Configuration implements Index  {
 		for(EObject mObject : metaModel.dump()) {
 			add( ((EClass)mObject).getName(), countForEachNewElement);
 		}
-
+		
+		
 		if(getNextState == null) {
 			initialiseGetNextState();
 		}
@@ -175,4 +187,17 @@ public class Configuration implements Index  {
 	}
 	
 	private GetNextState getNextState = null;
+
+	public String getString(String name) {
+		StringPool pool = pools.get(name);
+		
+		if(pool != null) {
+			StringPoolEntry entry = pool.get();
+			return entry.getString();
+		} else {
+			return config.getDefaultStringPool().get().getString();
+		}
+		
+		
+	}
 }

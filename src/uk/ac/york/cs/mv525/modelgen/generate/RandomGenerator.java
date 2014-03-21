@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 
@@ -15,10 +16,17 @@ public class RandomGenerator implements Generator {
 
 	EFactory iClassGenerator;
 	ModelInstance model;
+	Configuration config;
 	
 	public RandomGenerator(ModelInstance modelInstance, MetaModelIndex metaModel) {
-		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
+		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();		
 		model = modelInstance;
+	}
+	
+	public RandomGenerator(ModelInstance modelInstance, MetaModelIndex metaModel, Configuration config) {
+		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();		
+		model = modelInstance;
+		this.config = config;
 	}
 	
 	@Override
@@ -41,7 +49,7 @@ public class RandomGenerator implements Generator {
 			
 			if (mAttribute.getEType().getName() == "EString") {
 				//iObject.eSet(mAttribute, createEString());
-				iObject.eSet(mAttribute, "abc");
+				iObject.eSet(mAttribute, getString(mAttribute));
 				
 				// TODO : Generate more EDataTypes
 				
@@ -54,6 +62,16 @@ public class RandomGenerator implements Generator {
 		return iObject.eGet(mAttribute);
 	}
 	
+	private String getString(EStructuralFeature mAttribute) {
+		if (config != null) {
+			String c = config.getString(mAttribute.getName());
+			if (c != null) {
+				return c;
+			}
+		}
+		return "";
+	}
+
 	public Object link(EObject iObjectContainer, EReference mReference) {
 		/* +------------------+     +---------------------+---------+
 		 * | iObjectContainer |---->| iReferenceContainer | iObject |

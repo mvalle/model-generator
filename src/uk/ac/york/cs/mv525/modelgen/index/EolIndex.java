@@ -53,7 +53,7 @@ public class EolIndex implements Index {
 	public EolOperation get(EClass mClass, EStructuralFeature mAttribute) {
 		return get(mClass.getName(), mAttribute.getName());
 	}
-		
+	
 	public EolContext getEolContext() {
 		return eolContext;
 	}
@@ -62,6 +62,7 @@ public class EolIndex implements Index {
 	public EolOperation get(String name) {
 		return get(name, OP_PREFIX);
 	}
+
 
 
 	
