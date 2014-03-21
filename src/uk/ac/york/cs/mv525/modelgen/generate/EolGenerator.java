@@ -19,6 +19,7 @@ import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.index.EolIndex;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.EolParser;
+import uk.ac.york.cs.mv525.modelgen.strategy.Strategy;
 
 public class EolGenerator implements Generator {
 
@@ -26,6 +27,7 @@ public class EolGenerator implements Generator {
 	EolIndex opIndex;
 	MetaModelIndex mIndex;
 	ModelInstance iModel;
+	Strategy strategy;
 
 	public EolGenerator(String programLocation, ModelInstance modelInstance,
 			MetaModelIndex metaModel) throws IOException {
@@ -38,10 +40,9 @@ public class EolGenerator implements Generator {
 		opIndex = parser.parse(programLocation);
 	}
 
-	@Override
-	public void setResourceSet(Resource resourceSet) {
-		// TODO Auto-generated method stub
-
+	@Override	
+	public void setStrategy(Strategy s) {
+		strategy = s;
 	}
 
 	/*
@@ -80,40 +81,34 @@ public class EolGenerator implements Generator {
 					attributeOp.execute(iObject, Collections.emptyList(),
 							opIndex.getEolContext());
 
-				} 
+				}
 			}
 
 			return iObject.eGet(mAttribute);
-
+			
 		} catch (EolRuntimeException e) {
 			return null;
 		}
 	}
 
-	public Object link(EObject iObjectContainer, EReference mReference) {
-		try {
+	public Object link(EObject iObjectContainer, EReference mReference) {		
+		/*
+		 * +------------------+ +---------------------+---------+ |
+		 * iObjectContainer |---->| iReferenceContainer | iObject |
+		 * +------------------+ +---------------------+---------+
+		 */
+		@SuppressWarnings("unchecked")
+		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
+				.eGet(mReference);
 
-			/*
-			 * +------------------+ +---------------------+---------+ |
-			 * iObjectContainer |---->| iReferenceContainer | iObject |
-			 * +------------------+ +---------------------+---------+
-			 */
-			@SuppressWarnings("unchecked")
-			EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
-					.eGet(mReference);
-
-			EObject iObject = retrieveObject((EClass) mReference.getEType());
+		EObject iObject = strategy.retrieaveObject((EClass) mReference.getEType());
 
 			iReferenceContainer.add(iObject);
 
-			return null; // NOTE: Not implemented while not executing any EOL.
-							// For now just a copy of the RandomGenerator's
-							// link.
-			// return iObjectContainer.eGet(mReference);
-
-		} catch (EolRuntimeException e) {
-			return null;
-		}
+		return null; // NOTE: Not implemented while not executing any EOL.
+						// For now just a copy of the RandomGenerator's
+						// link.
+		// return iObjectContainer.eGet(mReference);
 	}
 
 	private EObject retrieveObject(EClass mType) throws EolRuntimeException {

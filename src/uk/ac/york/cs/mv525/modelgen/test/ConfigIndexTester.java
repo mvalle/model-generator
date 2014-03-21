@@ -53,7 +53,7 @@ public class ConfigIndexTester extends FileTester {
 	public void test_getters() throws IOException {
 		Configuration index = newIndex();
 		
-		BigInteger actual = index.get("Employee");
+		BigInteger actual = index.get("Person");
 		assertNotNull(actual);		
 	}
 

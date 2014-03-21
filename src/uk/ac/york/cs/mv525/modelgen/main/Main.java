@@ -8,9 +8,9 @@ import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
 import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
-import uk.ac.york.cs.mv525.modelgen.strategy.DefaultOrchastration;
 
 public class Main {
 

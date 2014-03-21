@@ -16,6 +16,7 @@ import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 
 public class EolGeneratorTester extends FileTester {
 
@@ -43,6 +44,7 @@ public class EolGeneratorTester extends FileTester {
 	public void test_create_class() throws Exception {
 		
 		EolGenerator eg  = new EolGenerator(location, model, mIndex);
+		eg.setStrategy(new AlwaysCreate(eg));
 		EObject randObj = eg.create((EClass) mIndex.get("Person"));
 		
 		assertNotNull(randObj);
@@ -52,6 +54,7 @@ public class EolGeneratorTester extends FileTester {
 	public void test_create_attribute() throws Exception {
 		
 		EolGenerator eg  = new EolGenerator(location, model, mIndex);
+		eg.setStrategy(new AlwaysCreate(eg));
 		EClass mClass = (EClass) mIndex.get("Person");
 		EStructuralFeature mName = mClass.getEStructuralFeature("name");
 		
@@ -66,6 +69,8 @@ public class EolGeneratorTester extends FileTester {
 	@Test
 	public void test_link() throws Exception {
 		EolGenerator eg  = new EolGenerator(location, model, mIndex);
+		eg.setStrategy(new AlwaysCreate(eg));
+		
 		EClass mClass = (EClass) mIndex.get("Person");
 		EStructuralFeature mManages = mClass.getEStructuralFeature("manages");
 		
