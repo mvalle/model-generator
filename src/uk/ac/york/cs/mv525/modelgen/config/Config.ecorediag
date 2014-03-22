@@ -28,7 +28,7 @@
     <children xmi:type="notation:Node" xmi:id="_0CW3wIYIEeOGWv5CuAb9Ow" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_0CXe0IYIEeOGWv5CuAb9Ow" type="5001">
       <children xmi:type="notation:Node" xmi:id="_F_lyYZAaEeOMA4x_xtODZw" type="2001">
-        <element xmi:type="ecore:EAttribute" href="Config.ecore#//ModelConfiguration/TotalMinimunCount"/>
+        <element xmi:type="ecore:EAttribute" href="Config.ecore#//ModelConfiguration/TotalMinimumCount"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_F_mZcJAaEeOMA4x_xtODZw"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_STqqMZl9EeOtJ6rYJ4Br1w" type="2001">

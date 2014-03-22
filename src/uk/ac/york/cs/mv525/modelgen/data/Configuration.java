@@ -46,7 +46,7 @@ public class Configuration implements Index  {
 	}
 	
 	private void init() {
-		targetElementsCount = config.getTotalMinimunCount();
+		targetElementsCount = config.getTotalMinimumCount();
 
 		//
 		for(Object _excl : config.getModelElemetExclusions()) {			
