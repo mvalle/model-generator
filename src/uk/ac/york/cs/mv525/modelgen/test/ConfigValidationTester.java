@@ -17,6 +17,7 @@ public class ConfigValidationTester extends FileTester {
 
 	String invalid_excludes;
 	String invalid_override;
+	String invalid_stringpool;
 	
 	MetaModelIndex mmIndex;
 	
@@ -26,7 +27,8 @@ public class ConfigValidationTester extends FileTester {
 		mmIndex =  MetaModelParser.parse(location);
 		
 		invalid_override = dataDir + "invalid_override.config";
-		invalid_excludes = dataDir + "invalid_exclude.config";	
+		invalid_excludes = dataDir + "invalid_exclude.config";
+		invalid_stringpool = dataDir + "invalid_embeded_string_pool.config";	
 	}
 
 	@Test
@@ -43,6 +45,18 @@ public class ConfigValidationTester extends FileTester {
 	@Test
 	public void test_invalidExcludes() throws IOException {
 		Configuration index = ConfigParser.parse(invalid_excludes);
+
+		try {
+			index.setMetaModel(mmIndex);
+			assertTrue(false);
+		} catch (Exception e) {
+			assertSame(e.getClass(), InvalidConfigurationException.class);
+			
+		}
+	}
+	@Test
+	public void test_invalidStringPool() throws IOException {
+		Configuration index = ConfigParser.parse(invalid_stringpool);
 
 		try {
 			index.setMetaModel(mmIndex);

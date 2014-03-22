@@ -84,11 +84,9 @@ public class EmbeddedStringPoolTester extends FileTester {
 		boolean jerry = false;
 		boolean terry = false;
 
-		System.out.println("s");
 		for(EObject person : persons) {
 			String s = (String)person.eGet(Name);
-			System.out.println(s);
-			
+
 			if(s.equals("Jim")) {
 				jim = true;
 			} else if (s.equals("Tom")) {
