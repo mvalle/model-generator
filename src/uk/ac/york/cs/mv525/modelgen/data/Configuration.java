@@ -1,6 +1,5 @@
 package uk.ac.york.cs.mv525.modelgen.data;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -10,22 +9,22 @@ import org.eclipse.emf.ecore.EObject;
 import org.javatuples.Pair;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
-import uk.ac.york.cs.mv525.modelgen.config.ModelElementExclusion;
-import uk.ac.york.cs.mv525.modelgen.config.ModelElementOverride;
-import uk.ac.york.cs.mv525.modelgen.config.StringPool;
-import uk.ac.york.cs.mv525.modelgen.config.StringPoolEntry;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
+import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
+import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
 import uk.ac.york.cs.mv525.modelgen.index.Index;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.InvalidConfigurationException;
 
 public class Configuration implements Index  {
 
-	private HashMap<String, BigInteger> index = new HashMap<String, BigInteger>();
+	private HashMap<String, Long> index = new HashMap<String, Long>();
 	private HashSet<String> excludes = new HashSet<String>();
 	private HashMap<String, StringPool> pools = new HashMap<>();
 	
 	//private int totalCount = 0;
-	private BigInteger targetElementsCount;
+	private long targetElementsCount;
 	//private BigInteger averageNonOverriddenCount;
 	private MetaModelIndex metaModel;
 	private ModelConfiguration config;
@@ -47,7 +46,7 @@ public class Configuration implements Index  {
 	}
 	
 	private void init() {
-		targetElementsCount = config.getCount();
+		targetElementsCount = config.getTotalMinimunCount();
 
 		//
 		for(Object _excl : config.getModelElemetExclusions()) {			
@@ -62,17 +61,17 @@ public class Configuration implements Index  {
 		}	
 		
 		//		
-		BigInteger num = BigInteger.ZERO;
+		long num = 0;
 		for(Object _over : config.getModelElementOverrides()) {			
 			ModelElementOverride over = (ModelElementOverride) _over;
 			
 			if (metaModel.exists(over.getName())) {
 			
-				add(over.getName(), over.getCount());
+				add(over.getName(), over.getMinimumCount());
 			
-				num = num.and(over.getCount());
+				num += over.getMinimumCount();
 				
-				StringPool sp = over.getStringPool();
+				StringPool sp = over.getStringPools();
 				if (sp != null) {
 					pools.put(over.getName(), sp);
 				}
@@ -86,10 +85,10 @@ public class Configuration implements Index  {
 		
 		long remainingClassCount = totalClassCount - overrideClassCount;
 		
-		BigInteger countForEachNewElement = BigInteger.ZERO;
+		long countForEachNewElement = 0;
 		
-		if(remainingClassCount > 0 && num.compareTo(targetElementsCount) > 0 ) {
-			countForEachNewElement = BigInteger.valueOf(remainingClassCount).divide(targetElementsCount.subtract(num));
+		if(remainingClassCount > 0 && num > targetElementsCount ) {
+			countForEachNewElement = remainingClassCount / (targetElementsCount - num);
 		}
 	
 		
@@ -113,31 +112,31 @@ public class Configuration implements Index  {
 	/*
 	 * Adds @count number of mObject to the index.
 	 */
-	public void add(String name, BigInteger count) {
+	public void add(String name, long count) {
 		if (isExcluded(name)) return;
 		
 		if (index.containsKey(name)) {
-			BigInteger old = index.get(name);
-			index.put(name, count.add(old));
+			long old = index.get(name);
+			index.put(name, count + old);
 		} else {
 			index.put(name, count);
 		}
 	}
 	
-	public BigInteger get(String name) {
+	public long get(String name) {
 		if (index.containsKey(name)) {
 			return index.get(name);
 		} else if (excludes.contains(name)) {
-			return null;
+			return 0;// note
 		} else {
 			throw new IllegalStateException("Model Element '"+name+"' not found in configuration. Configuration is in an invalid state"); 
 		}		
 	}
 	
-	public LinkedList<Pair<String, BigInteger>> dump() {
-		LinkedList<Pair<String, BigInteger>> list = new LinkedList<>();
+	public LinkedList<Pair<String, Long>> dump() {
+		LinkedList<Pair<String, Long>> list = new LinkedList<>();
 		for(String key : index.keySet()) {
-			list.add(new Pair<String, BigInteger>(key, index.get(key)));
+			list.add(new Pair<String, Long>(key, index.get(key)));
 		}
 		
 		return list;
@@ -158,9 +157,9 @@ public class Configuration implements Index  {
 	protected class GetNextState {
 		private int state;
 		private long substate;
-		LinkedList<Pair<String, BigInteger>> list;
+		LinkedList<Pair<String, Long>> list;
 		
-		GetNextState(LinkedList<Pair<String, BigInteger>> linkedList) {
+		GetNextState(LinkedList<Pair<String, Long>> linkedList) {
 			this.list = linkedList;
 			state = 0;
 			substate = 0;
@@ -171,9 +170,9 @@ public class Configuration implements Index  {
 			if (state < list.size())
 			{
 				
-				Pair<String, BigInteger> o = list.get(state);
+				Pair<String, Long> o = list.get(state);
 				
-				if(o.getValue1().compareTo(BigInteger.valueOf(substate)) < 0) {				
+				if(o.getValue1() > substate) {				
 					substate++;
 				} else {
 					substate = 0;

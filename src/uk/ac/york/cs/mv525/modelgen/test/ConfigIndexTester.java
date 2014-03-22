@@ -53,7 +53,7 @@ public class ConfigIndexTester extends FileTester {
 	public void test_getters() throws IOException {
 		Configuration index = newIndex();
 		
-		BigInteger actual = index.get("Person");
+		long actual = index.get("Person");
 		assertNotNull(actual);		
 	}
 
@@ -62,7 +62,7 @@ public class ConfigIndexTester extends FileTester {
 	public void test_dump() throws IOException {
 		Configuration index = newIndex();
 		
-		LinkedList<Pair<String, BigInteger>> actual = index.dump();
+		LinkedList<Pair<String, Long>> actual = index.dump();
 		assertNotNull(actual);
 		assertTrue(actual.size() > 0);
 	}

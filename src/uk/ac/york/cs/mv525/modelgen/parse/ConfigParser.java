@@ -8,8 +8,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import uk.ac.york.cs.mv525.modelgen.config.ConfigPackage;
-import uk.ac.york.cs.mv525.modelgen.config.ModelConfiguration;
+import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 

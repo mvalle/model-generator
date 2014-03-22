@@ -46,7 +46,7 @@ public class Main {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		
 		/* The object responsible for generating model elements. Consisting of two other sub-generators */
-		RandomGenerator rand = new RandomGenerator(model, mmIndex, cIndex);
+		RandomGenerator rand = new RandomGenerator(model, mmIndex);
 		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);		
 		CombinedGenerator generator = new CombinedGenerator(rand);
 		generator.addGenerator(eol);
