@@ -1,0 +1,4 @@
+Index classes.
+The model elements are indexed in a HashMap.
+This is because some operations, in pparticularly link operations with a retrieve always strategy, need to get an object of a particular class that is already created.
+Because of this, the element is put into an index after it is created.

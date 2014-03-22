@@ -71,6 +71,10 @@
   <children xmi:type="notation:Node" xmi:id="_RfJ8ga9UEeOyw45oXMaJSw" type="1001">
     <children xmi:type="notation:Node" xmi:id="_RfMYwK9UEeOyw45oXMaJSw" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_RfM_0K9UEeOyw45oXMaJSw" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_J8UeYLHfEeOcDKGS3WI6sg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Config.ecore#//StringPool/Name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_J8UeYbHfEeOcDKGS3WI6sg"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_RfM_0a9UEeOyw45oXMaJSw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_RfM_0q9UEeOyw45oXMaJSw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_RfNm4K9UEeOyw45oXMaJSw"/>
@@ -142,7 +146,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_n0ltca9UEeOyw45oXMaJSw" fontColor="4210752" fontName="Ubuntu" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="Config.ecore#//StringPoolEntry"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n0ltcq9UEeOyw45oXMaJSw" x="645" y="470"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n0ltcq9UEeOyw45oXMaJSw" x="684" y="484"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_SwqgULHIEeOIGZBec5OvsA" type="1001">
     <children xmi:type="notation:Node" xmi:id="_Sws8kLHIEeOIGZBec5OvsA" type="4001"/>

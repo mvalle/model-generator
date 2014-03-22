@@ -6,9 +6,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="ModelElementOverride">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MinimumCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="StringPools" eType="#//StringPool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="StringPools" eType="#//StringPool"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="References" upperBound="-1"
-        eType="#//ReferenceOverride"/>
+        eType="#//ReferenceOverride" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelConfiguration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ModelElementOverrides"
@@ -17,13 +18,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ModelElemetExclusions"
         upperBound="-1" eType="#//ModelElementExclusion" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Deterministic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="DefaultStringPool" eType="#//StringPool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DefaultStringPool" eType="#//StringPool"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelElementExclusion">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringPool" abstract="true">
     <eOperations name="get" eType="#//StringPoolEntry"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileStringPool" eSuperTypes="#//StringPool">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

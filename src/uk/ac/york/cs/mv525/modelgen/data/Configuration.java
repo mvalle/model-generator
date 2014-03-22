@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.javatuples.Pair;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
@@ -21,7 +22,7 @@ public class Configuration implements Index  {
 
 	private HashMap<String, Long> index = new HashMap<String, Long>();
 	private HashSet<String> excludes = new HashSet<String>();
-	private HashMap<String, StringPool> pools = new HashMap<>();
+	private HashMap<String, HashMap<String, StringPool>> pools = new HashMap<>();
 	
 	//private int totalCount = 0;
 	private long targetElementsCount;
@@ -73,13 +74,19 @@ public class Configuration implements Index  {
 				
 				StringPool sp = over.getStringPools();
 				if (sp != null) {
-					pools.put(over.getName(), sp);
+					if (!pools.containsKey(over.getName())) {
+						pools.put(over.getName(), new HashMap<String, StringPool>());
+					}
+					HashMap<String, StringPool> pool = pools.get(over.getName());
+					pool.put(sp.getName(), sp);
 				}
 				
 			} else {
 				throw new InvalidConfigurationException();
 			}
 		}
+		
+		//
 		long overrideClassCount = index.size();
 		long totalClassCount = metaModel.getCount();
 		
@@ -187,16 +194,31 @@ public class Configuration implements Index  {
 	
 	private GetNextState getNextState = null;
 
-	public String getString(String name) {
-		StringPool pool = pools.get(name);
+	public String getString(EStructuralFeature mAttr) {
+		String attrName = mAttr.getName();
+		String className = mAttr.getEContainingClass().getName();
+				
+		HashMap<String, StringPool> classPools = pools.get(className);
 		
-		if(pool != null) {
-			StringPoolEntry entry = pool.get();
-			return entry.getString();
+		if(classPools != null) {
+			
+			StringPool pool = classPools.get(attrName);
+			
+			if (pool != null) {
+			
+				StringPoolEntry entry = pool.get();
+				if (entry != null) {
+					return entry.getString();
+				}
+			}
+			
 		} else {
-			return config.getDefaultStringPool().get().getString();
+			StringPool pool = config.getDefaultStringPool();
+			if (pool != null) {
+				return pool.get().getString();
+			}
 		}
 		
-		
+		return "";
 	}
 }

@@ -24,6 +24,12 @@ Strategy strategy;
 		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
 		model = modelInstance;
 	}
+
+	public RandomGenerator(ModelInstance modelInstance, MetaModelIndex metaModel, Configuration config) {
+		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
+		model = modelInstance;
+		this.config = config;
+	}
 	
 	@Override
 	public void setStrategy(Strategy s) {
@@ -44,7 +50,7 @@ Strategy strategy;
 			
 			if (mAttribute.getEType().getName() == "EString") {
 				//iObject.eSet(mAttribute, createEString());
-				iObject.eSet(mAttribute, "abc");
+				iObject.eSet(mAttribute, getString(mAttribute));
 				
 				// TODO : Generate more EDataTypes
 				
@@ -59,7 +65,7 @@ Strategy strategy;
 	
 	private String getString(EStructuralFeature mAttribute) {
 		if (config != null) {
-			String c = config.getString(mAttribute.getName());
+			String c = config.getString(mAttribute);
 			if (c != null) {
 				return c;
 			}
@@ -81,11 +87,5 @@ Strategy strategy;
 		iReferenceContainer.add(iObject);
 			
 		return iObjectContainer.eGet(mReference);
-	}
-
-	/* TODO : Consider moving into superclass */
-	private EObject retrieveObject(EClass mType) {
-		// TODO Based on strategy, either create or retrieve object
-		return  create(mType);
 	}
 }
