@@ -4,32 +4,35 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="config"
     nsURI="http://config/1.0" nsPrefix="config">
   <eClassifiers xsi:type="ecore:EClass" name="ModelElementOverride">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="MinimumCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="StringPools" eType="#//StringPool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="References" upperBound="-1"
+        eType="#//ReferenceOverride"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelConfiguration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ModelElementOverrides"
         upperBound="-1" eType="#//ModelElementOverride" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TotalMinimunCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ModelElemetExclusions"
         upperBound="-1" eType="#//ModelElementExclusion" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Deterministic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DefaultStringPool" eType="#//StringPool"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelElementExclusion">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringPool" abstract="true">
     <eOperations name="get" eType="#//StringPoolEntry"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="EReference0" eType="#//ModelElementOverride"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileStringPool" eSuperTypes="#//StringPool">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EmbeddedStringPool" eSuperTypes="#//StringPool">
     <eStructuralFeatures xsi:type="ecore:EReference" name="Strings" eType="#//EmbeddedStringPool"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringPoolEntry">
     <eStructuralFeatures xsi:type="ecore:EReference" name="Strings" lowerBound="1"
-        upperBound="-1" eType="#//EmbeddedStringPool"/>
+        upperBound="-1" eType="#//StringPoolEntry"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringPoolEntry"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceOverride"/>
 </ecore:EPackage>
