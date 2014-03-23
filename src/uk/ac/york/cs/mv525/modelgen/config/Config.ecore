@@ -4,8 +4,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ModelElementOverride">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MinimumCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="StringPools" eType="#//StringPool"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="StringPools" upperBound="-1"
+        eType="#//StringPool" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="References" upperBound="-1"
         eType="#//ReferenceOverride" containment="true"/>
   </eClassifiers>

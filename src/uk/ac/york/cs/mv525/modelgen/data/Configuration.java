@@ -77,38 +77,39 @@ public class Configuration implements Index {
 
 			num += over.getMinimumCount();
 
-			// TODO : It's supposed to multiple string pools!
 			// Deal with StringPool
-			StringPool sp = over.getStringPools();
-			if (sp != null) {
-			
+			EList spools = over.getStringPools();
+			for (Object _sp : spools) {
+				StringPool sp = (StringPool) _sp;
 
-			if (!metaModel.exists(over.getName(), sp.getName())) {
-				throw new InvalidConfigurationException();
+				if (!metaModel.exists(over.getName(), sp.getName())) {
+					throw new InvalidConfigurationException();
+				}
+
+				if (!pools.containsKey(over.getName())) {
+					pools.put(over.getName(), new HashMap<String, StringPool>());
+				}
+				HashMap<String, StringPool> pool = pools.get(over.getName());
+				pool.put(sp.getName(), sp);
 			}
 
-			if (!pools.containsKey(over.getName())) {
-				pools.put(over.getName(), new HashMap<String, StringPool>());
-			}
-			HashMap<String, StringPool> pool = pools.get(over.getName());
-			pool.put(sp.getName(), sp);
-			}
-			
 			EList references = over.getReferences();
-			for(Object _refOver : references) {
+			for (Object _refOver : references) {
 				ReferenceOverride refOver = (ReferenceOverride) _refOver;
 				String name = refOver.getName();
 				long min = refOver.getMinimumCount();
 				long max = refOver.getMaximumCount();
 				Pair<Long, Long> range = new Pair<Long, Long>(min, max);
-				
+
 				if (!refs.containsKey(over.getName())) {
-					refs.put(over.getName(), new HashMap<String, Pair<Long, Long>>());
+					refs.put(over.getName(),
+							new HashMap<String, Pair<Long, Long>>());
 				}
-				HashMap<String, Pair<Long, Long>> ref = refs.get(over.getName());
+				HashMap<String, Pair<Long, Long>> ref = refs
+						.get(over.getName());
 				ref.put(name, range);
 			}
-			
+
 		}
 
 		//
