@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -12,6 +13,7 @@ import org.javatuples.Pair;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
+import uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
 import uk.ac.york.cs.mv525.modelgen.index.Index;
@@ -74,11 +76,11 @@ public class Configuration implements Index {
 
 			num += over.getMinimumCount();
 
+			// TODO : It's supposed to multiple string pools!
 			// Deal with StringPool
 			StringPool sp = over.getStringPools();
-			if (sp == null) {
-				continue;
-			}
+			if (sp != null) {
+			
 
 			if (!metaModel.exists(over.getName(), sp.getName())) {
 				throw new InvalidConfigurationException();
@@ -89,7 +91,14 @@ public class Configuration implements Index {
 			}
 			HashMap<String, StringPool> pool = pools.get(over.getName());
 			pool.put(sp.getName(), sp);
-
+			}
+			
+			EList references = over.getReferences();
+			for(Object _ref : references) {
+				ReferenceOverride ref = (ReferenceOverride) _ref;
+				ref.
+			}
+			
 		}
 
 		//

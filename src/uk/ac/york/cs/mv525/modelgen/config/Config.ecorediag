@@ -151,6 +151,10 @@
   <children xmi:type="notation:Node" xmi:id="_SwqgULHIEeOIGZBec5OvsA" type="1001">
     <children xmi:type="notation:Node" xmi:id="_Sws8kLHIEeOIGZBec5OvsA" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_SwtjoLHIEeOIGZBec5OvsA" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_rZ8PYLLJEeOCmpqT2f05iQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Config.ecore#//ReferenceOverride/Name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_rZ8PYbLJEeOCmpqT2f05iQ"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_SwtjobHIEeOIGZBec5OvsA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_SwtjorHIEeOIGZBec5OvsA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_Swtjo7HIEeOIGZBec5OvsA"/>
@@ -248,5 +252,19 @@
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_gL-187HIEeOIGZBec5OvsA" points="[1, 19, 1, 19]$[1, 19, 1, 19]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_gMDucLHIEeOIGZBec5OvsA" id="(0.4752475247524752,0.81)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_gMDucbHIEeOIGZBec5OvsA" id="(0.49624060150375937,0.09523809523809523)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_vaJVcLLJEeOCmpqT2f05iQ" type="3002" source="_hRzV4K9UEeOyw45oXMaJSw" target="_n0ltcK9UEeOyw45oXMaJSw">
+    <children xmi:type="notation:Node" xmi:id="_vaLKoLLJEeOCmpqT2f05iQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_vaLKobLJEeOCmpqT2f05iQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_vaLxsLLJEeOCmpqT2f05iQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_vaLxsbLJEeOCmpqT2f05iQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_vaJVcbLJEeOCmpqT2f05iQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_vaJVcrLJEeOCmpqT2f05iQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="Config.ecore#//EmbeddedStringPool/Entries"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vaJVc7LJEeOCmpqT2f05iQ" points="[1, -11, 1, -11]$[1, -11, 1, -11]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vaQDILLJEeOCmpqT2f05iQ" id="(0.5569620253164557,0.7758620689655172)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vaQDIbLJEeOCmpqT2f05iQ" id="(0.47058823529411764,0.24489795918367346)"/>
   </edges>
 </notation:Diagram>
