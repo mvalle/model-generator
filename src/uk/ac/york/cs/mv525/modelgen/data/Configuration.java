@@ -25,6 +25,7 @@ public class Configuration implements Index {
 	private HashMap<String, Long> index = new HashMap<String, Long>();
 	private HashSet<String> excludes = new HashSet<String>();
 	private HashMap<String, HashMap<String, StringPool>> pools = new HashMap<>();
+	private HashMap<String, HashMap<String, Pair<Long, Long>>> refs = new HashMap<>();
 
 	// private int totalCount = 0;
 	private long targetElementsCount;
@@ -94,9 +95,18 @@ public class Configuration implements Index {
 			}
 			
 			EList references = over.getReferences();
-			for(Object _ref : references) {
-				ReferenceOverride ref = (ReferenceOverride) _ref;
-				ref.
+			for(Object _refOver : references) {
+				ReferenceOverride refOver = (ReferenceOverride) _refOver;
+				String name = refOver.getName();
+				long min = refOver.getMinimumCount();
+				long max = refOver.getMaximumCount();
+				Pair<Long, Long> range = new Pair<Long, Long>(min, max);
+				
+				if (!refs.containsKey(over.getName())) {
+					refs.put(over.getName(), new HashMap<String, Pair<Long, Long>>());
+				}
+				HashMap<String, Pair<Long, Long>> ref = refs.get(over.getName());
+				ref.put(name, range);
 			}
 			
 		}
