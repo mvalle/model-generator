@@ -88,7 +88,7 @@ public interface ConfigPackage extends EPackage {
 	int MODEL_ELEMENT_OVERRIDE__NAME = 1;
 
 	/**
-	 * The feature id for the '<em><b>String Pools</b></em>' containment reference.
+	 * The feature id for the '<em><b>String Pools</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -301,13 +301,22 @@ public interface ConfigPackage extends EPackage {
 	int EMBEDDED_STRING_POOL__STRINGS = STRING_POOL_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMBEDDED_STRING_POOL__ENTRIES = STRING_POOL_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Embedded String Pool</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMBEDDED_STRING_POOL_FEATURE_COUNT = STRING_POOL_FEATURE_COUNT + 1;
+	int EMBEDDED_STRING_POOL_FEATURE_COUNT = STRING_POOL_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.StringPoolEntryImpl <em>String Pool Entry</em>}' class.
@@ -349,13 +358,40 @@ public interface ConfigPackage extends EPackage {
 	int REFERENCE_OVERRIDE = 7;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_OVERRIDE__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Minimum Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_OVERRIDE__MINIMUM_COUNT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Maximum Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_OVERRIDE__MAXIMUM_COUNT = 2;
+
+	/**
 	 * The number of structural features of the '<em>Reference Override</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE_OVERRIDE_FEATURE_COUNT = 0;
+	int REFERENCE_OVERRIDE_FEATURE_COUNT = 3;
 
 
 	/**
@@ -391,10 +427,10 @@ public interface ConfigPackage extends EPackage {
 	EAttribute getModelElementOverride_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride#getStringPools <em>String Pools</em>}'.
+	 * Returns the meta object for the containment reference list '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride#getStringPools <em>String Pools</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>String Pools</em>'.
+	 * @return the meta object for the containment reference list '<em>String Pools</em>'.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride#getStringPools()
 	 * @see #getModelElementOverride()
 	 * @generated
@@ -562,6 +598,17 @@ public interface ConfigPackage extends EPackage {
 	EReference getEmbeddedStringPool_Strings();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool#getEntries <em>Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Entries</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool#getEntries()
+	 * @see #getEmbeddedStringPool()
+	 * @generated
+	 */
+	EReference getEmbeddedStringPool_Entries();
+
+	/**
 	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry <em>String Pool Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -591,6 +638,39 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getReferenceOverride();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getName()
+	 * @see #getReferenceOverride()
+	 * @generated
+	 */
+	EAttribute getReferenceOverride_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMinimumCount <em>Minimum Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Minimum Count</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMinimumCount()
+	 * @see #getReferenceOverride()
+	 * @generated
+	 */
+	EAttribute getReferenceOverride_MinimumCount();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMaximumCount <em>Maximum Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Maximum Count</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMaximumCount()
+	 * @see #getReferenceOverride()
+	 * @generated
+	 */
+	EAttribute getReferenceOverride_MaximumCount();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -641,7 +721,7 @@ public interface ConfigPackage extends EPackage {
 		EAttribute MODEL_ELEMENT_OVERRIDE__NAME = eINSTANCE.getModelElementOverride_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>String Pools</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>String Pools</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -779,6 +859,14 @@ public interface ConfigPackage extends EPackage {
 		EReference EMBEDDED_STRING_POOL__STRINGS = eINSTANCE.getEmbeddedStringPool_Strings();
 
 		/**
+		 * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EMBEDDED_STRING_POOL__ENTRIES = eINSTANCE.getEmbeddedStringPool_Entries();
+
+		/**
 		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.StringPoolEntryImpl <em>String Pool Entry</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -805,6 +893,30 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EClass REFERENCE_OVERRIDE = eINSTANCE.getReferenceOverride();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE_OVERRIDE__NAME = eINSTANCE.getReferenceOverride_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Minimum Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE_OVERRIDE__MINIMUM_COUNT = eINSTANCE.getReferenceOverride_MinimumCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Maximum Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE_OVERRIDE__MAXIMUM_COUNT = eINSTANCE.getReferenceOverride_MaximumCount();
 
 	}
 

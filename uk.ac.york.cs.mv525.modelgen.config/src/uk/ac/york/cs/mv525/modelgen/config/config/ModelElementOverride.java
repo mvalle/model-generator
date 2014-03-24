@@ -84,30 +84,20 @@ public interface ModelElementOverride extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>String Pools</b></em>' containment reference.
+	 * Returns the value of the '<em><b>String Pools</b></em>' containment reference list.
+	 * The list contents are of type {@link uk.ac.york.cs.mv525.modelgen.config.config.StringPool}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>String Pools</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>String Pools</em>' containment reference.
-	 * @see #setStringPools(StringPool)
+	 * @return the value of the '<em>String Pools</em>' containment reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelElementOverride_StringPools()
-	 * @model containment="true"
+	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.StringPool" containment="true"
 	 * @generated
 	 */
-	StringPool getStringPools();
-
-	/**
-	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride#getStringPools <em>String Pools</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>String Pools</em>' containment reference.
-	 * @see #getStringPools()
-	 * @generated
-	 */
-	void setStringPools(StringPool value);
+	EList getStringPools();
 
 	/**
 	 * Returns the value of the '<em><b>References</b></em>' containment reference list.

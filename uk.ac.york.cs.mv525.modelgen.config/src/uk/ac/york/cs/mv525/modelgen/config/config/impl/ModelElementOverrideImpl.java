@@ -85,14 +85,14 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getStringPools() <em>String Pools</em>}' containment reference.
+	 * The cached value of the '{@link #getStringPools() <em>String Pools</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getStringPools()
 	 * @generated
 	 * @ordered
 	 */
-	protected StringPool stringPools;
+	protected EList stringPools;
 
 	/**
 	 * The cached value of the '{@link #getReferences() <em>References</em>}' containment reference list.
@@ -169,42 +169,11 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringPool getStringPools() {
+	public EList getStringPools() {
+		if (stringPools == null) {
+			stringPools = new EObjectContainmentEList(StringPool.class, this, ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS);
+		}
 		return stringPools;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetStringPools(StringPool newStringPools, NotificationChain msgs) {
-		StringPool oldStringPools = stringPools;
-		stringPools = newStringPools;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS, oldStringPools, newStringPools);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStringPools(StringPool newStringPools) {
-		if (newStringPools != stringPools) {
-			NotificationChain msgs = null;
-			if (stringPools != null)
-				msgs = ((InternalEObject)stringPools).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS, null, msgs);
-			if (newStringPools != null)
-				msgs = ((InternalEObject)newStringPools).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS, null, msgs);
-			msgs = basicSetStringPools(newStringPools, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS, newStringPools, newStringPools));
 	}
 
 	/**
@@ -227,7 +196,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS:
-				return basicSetStringPools(null, msgs);
+				return ((InternalEList)getStringPools()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__REFERENCES:
 				return ((InternalEList)getReferences()).basicRemove(otherEnd, msgs);
 		}
@@ -267,7 +236,8 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 				setName((String)newValue);
 				return;
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS:
-				setStringPools((StringPool)newValue);
+				getStringPools().clear();
+				getStringPools().addAll((Collection)newValue);
 				return;
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__REFERENCES:
 				getReferences().clear();
@@ -291,7 +261,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 				setName(NAME_EDEFAULT);
 				return;
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS:
-				setStringPools((StringPool)null);
+				getStringPools().clear();
 				return;
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__REFERENCES:
 				getReferences().clear();
@@ -312,7 +282,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS:
-				return stringPools != null;
+				return stringPools != null && !stringPools.isEmpty();
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__REFERENCES:
 				return references != null && !references.isEmpty();
 		}

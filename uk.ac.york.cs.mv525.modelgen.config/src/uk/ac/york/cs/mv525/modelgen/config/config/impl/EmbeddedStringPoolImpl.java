@@ -31,6 +31,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
  * The following features are implemented:
  * <ul>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EmbeddedStringPoolImpl#getStrings <em>Strings</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EmbeddedStringPoolImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +49,16 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 	 * @ordered
 	 */
 	protected EList strings;
+
+	/**
+	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntries()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList entries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,6 +93,31 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getEntries() {
+		if (entries == null) {
+			entries = new EObjectContainmentEList(StringPoolEntry.class, this, ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES);
+		}
+		return entries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
+				return ((InternalEList)getEntries()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public StringPoolEntry get() {
@@ -100,6 +136,8 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
 				return getStrings();
+			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
+				return getEntries();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -115,6 +153,10 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 				getStrings().clear();
 				getStrings().addAll((Collection)newValue);
 				return;
+			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
+				getEntries().clear();
+				getEntries().addAll((Collection)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -129,6 +171,9 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
 				getStrings().clear();
 				return;
+			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
+				getEntries().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -142,6 +187,8 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
 				return strings != null && !strings.isEmpty();
+			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
+				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
