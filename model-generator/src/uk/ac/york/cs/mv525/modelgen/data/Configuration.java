@@ -139,7 +139,19 @@ public class Configuration implements Index {
 	}
 
 	private boolean isExcluded(String name) {
-		return excludes.contains(name);
+		
+		boolean excluded = false;
+		for(Object o : config.getModelElemetExclusions()) {
+			ModelElementExclusion e = (ModelElementExclusion)o;
+			if(e.getName().equals(name) ) {
+				excluded = true;
+				break;
+			}
+		}
+		
+		assert(excludes.contains(name) == excluded);
+		
+		return excluded;
 	}
 
 	/*
@@ -158,8 +170,22 @@ public class Configuration implements Index {
 	}
 
 	public long get(String name) {
+		
+		long c = 0;
+		for(Object o: config.getModelElementOverrides()) {
+			ModelElementOverride m = (ModelElementOverride) o;
+			if (m.getName().equals(name)) {
+				c = m.getMinimumCount();
+				break;
+			}
+		}
+		
 		if (index.containsKey(name)) {
-			return index.get(name);
+			
+			assert(index.get(name) == c);
+			return c;
+			//return index.get(name);
+			
 		} else if (excludes.contains(name)) {
 			return 0;// note
 		} else {
@@ -171,12 +197,25 @@ public class Configuration implements Index {
 	}
 
 	public LinkedList<Pair<String, Long>> dump() {
+		LinkedList<Pair<String, Long>> list2 = new LinkedList<>();
+		for(Object o : config.getModelElementOverrides()) {
+			ModelElementOverride m = (ModelElementOverride) o;
+			list2.add(new Pair<String, Long>(m.getName(), m.getMinimumCount()));
+		}
+		
 		LinkedList<Pair<String, Long>> list = new LinkedList<>();
 		for (String key : index.keySet()) {
 			list.add(new Pair<String, Long>(key, index.get(key)));
 		}
 
-		return list;
+		assert(list.size() == list2.size());
+		assert(list2.contains(list.get(0)));
+		assert(list.contains(list2.get(0)));
+		assert(list.contains(list2.get(list2.size()-1)));
+		assert(list2.contains(list.get( list.size()-1)));
+		
+		
+		return list2;
 	}
 
 	private void initialiseGetNextState() {
