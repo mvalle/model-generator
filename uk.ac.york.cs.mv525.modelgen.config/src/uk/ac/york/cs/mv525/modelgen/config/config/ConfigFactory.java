@@ -91,6 +91,60 @@ public interface ConfigFactory extends EFactory {
 	ReferenceOverride createReferenceOverride();
 
 	/**
+	 * Returns a new object of class '<em>Model Generation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model Generation</em>'.
+	 * @generated
+	 */
+	ModelGeneration createModelGeneration();
+
+	/**
+	 * Returns a new object of class '<em>Eol Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Eol Generator</em>'.
+	 * @generated
+	 */
+	EolGenerator createEolGenerator();
+
+	/**
+	 * Returns a new object of class '<em>Random Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Random Generator</em>'.
+	 * @generated
+	 */
+	RandomGenerator createRandomGenerator();
+
+	/**
+	 * Returns a new object of class '<em>Always Create Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Always Create Strategy</em>'.
+	 * @generated
+	 */
+	AlwaysCreateStrategy createAlwaysCreateStrategy();
+
+	/**
+	 * Returns a new object of class '<em>Always Retrieve Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Always Retrieve Strategy</em>'.
+	 * @generated
+	 */
+	AlwaysRetrieveStrategy createAlwaysRetrieveStrategy();
+
+	/**
+	 * Returns a new object of class '<em>Always Retrieve Or Create Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Always Retrieve Or Create Strategy</em>'.
+	 * @generated
+	 */
+	AlwaysRetrieveOrCreateStrategy createAlwaysRetrieveOrCreateStrategy();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

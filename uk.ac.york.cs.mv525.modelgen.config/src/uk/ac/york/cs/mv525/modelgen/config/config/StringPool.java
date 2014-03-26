@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getStringPool()
- * @model abstract="true"
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface StringPool extends EObject {

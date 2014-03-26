@@ -68,6 +68,12 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 			case ConfigPackage.EMBEDDED_STRING_POOL: return createEmbeddedStringPool();
 			case ConfigPackage.STRING_POOL_ENTRY: return createStringPoolEntry();
 			case ConfigPackage.REFERENCE_OVERRIDE: return createReferenceOverride();
+			case ConfigPackage.MODEL_GENERATION: return createModelGeneration();
+			case ConfigPackage.EOL_GENERATOR: return createEolGenerator();
+			case ConfigPackage.RANDOM_GENERATOR: return createRandomGenerator();
+			case ConfigPackage.ALWAYS_CREATE_STRATEGY: return createAlwaysCreateStrategy();
+			case ConfigPackage.ALWAYS_RETRIEVE_STRATEGY: return createAlwaysRetrieveStrategy();
+			case ConfigPackage.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY: return createAlwaysRetrieveOrCreateStrategy();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -141,6 +147,66 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	public ReferenceOverride createReferenceOverride() {
 		ReferenceOverrideImpl referenceOverride = new ReferenceOverrideImpl();
 		return referenceOverride;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModelGeneration createModelGeneration() {
+		ModelGenerationImpl modelGeneration = new ModelGenerationImpl();
+		return modelGeneration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EolGenerator createEolGenerator() {
+		EolGeneratorImpl eolGenerator = new EolGeneratorImpl();
+		return eolGenerator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RandomGenerator createRandomGenerator() {
+		RandomGeneratorImpl randomGenerator = new RandomGeneratorImpl();
+		return randomGenerator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AlwaysCreateStrategy createAlwaysCreateStrategy() {
+		AlwaysCreateStrategyImpl alwaysCreateStrategy = new AlwaysCreateStrategyImpl();
+		return alwaysCreateStrategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AlwaysRetrieveStrategy createAlwaysRetrieveStrategy() {
+		AlwaysRetrieveStrategyImpl alwaysRetrieveStrategy = new AlwaysRetrieveStrategyImpl();
+		return alwaysRetrieveStrategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AlwaysRetrieveOrCreateStrategy createAlwaysRetrieveOrCreateStrategy() {
+		AlwaysRetrieveOrCreateStrategyImpl alwaysRetrieveOrCreateStrategy = new AlwaysRetrieveOrCreateStrategyImpl();
+		return alwaysRetrieveOrCreateStrategy;
 	}
 
 	/**

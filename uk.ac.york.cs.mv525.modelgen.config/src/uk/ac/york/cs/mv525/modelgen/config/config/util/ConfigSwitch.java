@@ -137,6 +137,59 @@ public class ConfigSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ConfigPackage.MODEL_GENERATION: {
+				ModelGeneration modelGeneration = (ModelGeneration)theEObject;
+				Object result = caseModelGeneration(modelGeneration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.GENERATOR: {
+				Generator generator = (Generator)theEObject;
+				Object result = caseGenerator(generator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.EOL_GENERATOR: {
+				EolGenerator eolGenerator = (EolGenerator)theEObject;
+				Object result = caseEolGenerator(eolGenerator);
+				if (result == null) result = caseGenerator(eolGenerator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.RANDOM_GENERATOR: {
+				RandomGenerator randomGenerator = (RandomGenerator)theEObject;
+				Object result = caseRandomGenerator(randomGenerator);
+				if (result == null) result = caseGenerator(randomGenerator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.STRATEGY: {
+				Strategy strategy = (Strategy)theEObject;
+				Object result = caseStrategy(strategy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.ALWAYS_CREATE_STRATEGY: {
+				AlwaysCreateStrategy alwaysCreateStrategy = (AlwaysCreateStrategy)theEObject;
+				Object result = caseAlwaysCreateStrategy(alwaysCreateStrategy);
+				if (result == null) result = caseStrategy(alwaysCreateStrategy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.ALWAYS_RETRIEVE_STRATEGY: {
+				AlwaysRetrieveStrategy alwaysRetrieveStrategy = (AlwaysRetrieveStrategy)theEObject;
+				Object result = caseAlwaysRetrieveStrategy(alwaysRetrieveStrategy);
+				if (result == null) result = caseStrategy(alwaysRetrieveStrategy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY: {
+				AlwaysRetrieveOrCreateStrategy alwaysRetrieveOrCreateStrategy = (AlwaysRetrieveOrCreateStrategy)theEObject;
+				Object result = caseAlwaysRetrieveOrCreateStrategy(alwaysRetrieveOrCreateStrategy);
+				if (result == null) result = caseStrategy(alwaysRetrieveOrCreateStrategy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -258,6 +311,126 @@ public class ConfigSwitch {
 	 * @generated
 	 */
 	public Object caseReferenceOverride(ReferenceOverride object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Generation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Generation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseModelGeneration(ModelGeneration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseGenerator(Generator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseEolGenerator(EolGenerator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Random Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Random Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseRandomGenerator(RandomGenerator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Strategy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseStrategy(Strategy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Always Create Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Always Create Strategy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseAlwaysCreateStrategy(AlwaysCreateStrategy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Always Retrieve Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Always Retrieve Strategy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseAlwaysRetrieveStrategy(AlwaysRetrieveStrategy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Always Retrieve Or Create Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Always Retrieve Or Create Strategy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseAlwaysRetrieveOrCreateStrategy(AlwaysRetrieveOrCreateStrategy object) {
 		return null;
 	}
 

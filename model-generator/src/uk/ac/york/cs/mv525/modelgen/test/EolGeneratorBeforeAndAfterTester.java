@@ -27,12 +27,13 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester  {
 
 	MetaModelIndex mIndex;
 	ModelInstance model;
+	
 
 	String configLocation = dataDir + "test.config";
 	
 	@Before
 	public void setUp() throws Exception {
-
+		location = dataDir + "test_before.eol";
 		mIndex = MetaModelParser.parse(dataDir+"orgchart.ecore");
 		
 		model = new ModelInstance(dataDir+"test.model");

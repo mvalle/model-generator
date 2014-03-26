@@ -1,18 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/uk.ac.york.cs.mv525.modelgen.config/src"
-    modelPluginID="uk.ac.york.cs.mv525.modelgen.config" modelName="Config" importerID="org.eclipse.emf.importer.ecore"
-    copyrightFields="false">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/uk.ac.york.cs.mv525.modelgen.config/src" modelPluginID="uk.ac.york.cs.mv525.modelgen.config"
+    modelName="Config" importerID="org.eclipse.emf.importer.ecore" copyrightFields="false">
   <foreignModel>Config.ecore</foreignModel>
   <genPackages prefix="Config" basePackage="uk.ac.york.cs.mv525.modelgen.config" disposableProviderFactory="true"
       ecorePackage="Config.ecore#/">
-    <genClasses ecoreClass="Config.ecore#//ModelElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ModelElement/Count"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ModelElement/Name"/>
+    <genClasses ecoreClass="Config.ecore#//ModelElementOverride">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ModelElementOverride/MinimumCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ModelElementOverride/Name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//ModelElementOverride/StringPools"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//ModelElementOverride/References"/>
     </genClasses>
     <genClasses ecoreClass="Config.ecore#//ModelConfiguration">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Config.ecore#//ModelConfiguration/ModelElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//ModelConfiguration/ModelElementOverrides"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ModelConfiguration/TotalMinimumCount"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//ModelConfiguration/ModelElemetExclusions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ModelConfiguration/Deterministic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//ModelConfiguration/DefaultStringPool"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//ModelConfiguration/ModelGeneration"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//ModelElementExclusion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ModelElementExclusion/Name"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//StringPool">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//StringPool/Name"/>
+      <genOperations ecoreOperation="Config.ecore#//StringPool/get"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//FileStringPool">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//FileStringPool/location"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//EmbeddedStringPool">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Config.ecore#//EmbeddedStringPool/Strings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//EmbeddedStringPool/Entries"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//StringPoolEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//StringPoolEntry/string"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//ReferenceOverride">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ReferenceOverride/Name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ReferenceOverride/MinimumCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//ReferenceOverride/MaximumCount"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//ModelGeneration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//ModelGeneration/fallback"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//ModelGeneration/generators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//ModelGeneration/Strategy"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//Generator">
+      <genOperations ecoreOperation="Config.ecore#//Generator/create">
+        <genParameters ecoreParameter="Config.ecore#//Generator/create/mClass"/>
+      </genOperations>
+      <genOperations ecoreOperation="Config.ecore#//Generator/add">
+        <genParameters ecoreParameter="Config.ecore#//Generator/add/iObject"/>
+        <genParameters ecoreParameter="Config.ecore#//Generator/add/mAttribute"/>
+      </genOperations>
+      <genOperations ecoreOperation="Config.ecore#//Generator/link">
+        <genParameters ecoreParameter="Config.ecore#//Generator/link/iObjectContainer"/>
+        <genParameters ecoreParameter="Config.ecore#//Generator/link/mReference"/>
+      </genOperations>
+      <genOperations ecoreOperation="Config.ecore#//Generator/before"/>
+      <genOperations ecoreOperation="Config.ecore#//Generator/after"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//EolGenerator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Config.ecore#//EolGenerator/location"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//RandomGenerator"/>
+    <genClasses image="false" ecoreClass="Config.ecore#//Strategy"/>
+    <genClasses ecoreClass="Config.ecore#//AlwaysCreateStrategy">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//AlwaysCreateStrategy/generator"/>
+    </genClasses>
+    <genClasses ecoreClass="Config.ecore#//AlwaysRetrieveStrategy"/>
+    <genClasses ecoreClass="Config.ecore#//AlwaysRetrieveOrCreateStrategy">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//AlwaysRetrieveOrCreateStrategy/retriver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Config.ecore#//AlwaysRetrieveOrCreateStrategy/creator"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

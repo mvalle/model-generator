@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
@@ -30,6 +31,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EmbeddedStringPoolImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EmbeddedStringPoolImpl#getStrings <em>Strings</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EmbeddedStringPoolImpl#getEntries <em>Entries</em>}</li>
  * </ul>
@@ -37,8 +39,26 @@ import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
  *
  * @generated
  */
-public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedStringPool {
+public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStringPool {
 	
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 	private int state = 0;
 	/**
 	 * The cached value of the '{@link #getStrings() <em>Strings</em>}' reference list.
@@ -76,6 +96,27 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 	 */
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.EMBEDDED_STRING_POOL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EMBEDDED_STRING_POOL__NAME, oldName, name));
 	}
 
 	/**
@@ -134,6 +175,8 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
+				return getName();
 			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
 				return getStrings();
 			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
@@ -149,6 +192,9 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
+				setName((String)newValue);
+				return;
 			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
 				getStrings().clear();
 				getStrings().addAll((Collection)newValue);
@@ -168,6 +214,9 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
 				getStrings().clear();
 				return;
@@ -185,12 +234,29 @@ public class EmbeddedStringPoolImpl extends StringPoolImpl implements EmbeddedSt
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
 				return strings != null && !strings.isEmpty();
 			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
 				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (Name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //EmbeddedStringPoolImpl
