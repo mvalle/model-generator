@@ -13,6 +13,7 @@ import org.eclipse.epsilon.eol.annotations.EolAnnotationsUtil;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.execute.context.EolContext;
 import org.eclipse.epsilon.eol.types.EolModelElementType;
+import org.eclipse.epsilon.eol.types.EolType;
 
 import uk.ac.york.cs.mv525.modelgen.index.EolIndex;
 
@@ -54,10 +55,14 @@ public class EolParser implements Parser {
 
 		for (EolOperation op : mModule.getOperations()) {			
 			try {
+				EolType _type = op.getContextType(context);
 				
-				EolModelElementType type = (EolModelElementType) op.getContextType(context);
-
-				String mTypeName = type.getName();
+				String mTypeName = "";				
+				if (_type instanceof EolModelElementType) {
+					EolModelElementType type = (EolModelElementType) op.getContextType(context);
+					mTypeName = type.getName();
+				}
+				
 				String mOpName = op.getName();
 				
 				if (!EolAnnotationsUtil.getBooleanAnnotationValue(op.getAst(),

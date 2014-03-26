@@ -43,6 +43,9 @@ public class DefaultOrchastration {
 	}
 		
 	public void create() {
+		
+		generator.before();
+		
 		EClass mClass = (EClass) cIndex.getNext();
 		
 		while(mClass != null) {
@@ -58,6 +61,8 @@ public class DefaultOrchastration {
 			
 
 			mClass = (EClass) cIndex.getNext();
-		} 
+		}
+		
+		generator.after();
 	}	
 }

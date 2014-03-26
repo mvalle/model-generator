@@ -88,4 +88,10 @@ Strategy strategy;
 			
 		return iObjectContainer.eGet(mReference);
 	}
+
+	@Override
+	public boolean before() { return false; }
+
+	@Override
+	public boolean after() { return false; }
 }

@@ -14,6 +14,7 @@ import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
+import uk.ac.york.cs.mv525.modelgen.test.FileTester;
 
 public class RandomGeneratorTester extends FileTester {
 

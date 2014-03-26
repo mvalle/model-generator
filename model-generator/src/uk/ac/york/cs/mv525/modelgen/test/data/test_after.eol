@@ -1,0 +1,11 @@
+operation after() {
+	//"test".println();
+	//Person.println();
+	//Person.allInstances.println();
+	for(p in Person.allInstances) {
+		p.name = "Called from After operation";
+		p.println();
+		
+		//"inside p".println();
+	}
+}

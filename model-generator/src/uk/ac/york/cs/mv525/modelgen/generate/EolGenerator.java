@@ -11,9 +11,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
-
 
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.index.EolIndex;
@@ -40,7 +40,7 @@ public class EolGenerator implements Generator {
 		opIndex = parser.parse(programLocation);
 	}
 
-	@Override	
+	@Override
 	public void setStrategy(Strategy s) {
 		strategy = s;
 	}
@@ -80,18 +80,23 @@ public class EolGenerator implements Generator {
 				if (attributeOp != null) {
 					attributeOp.execute(iObject, Collections.emptyList(),
 							opIndex.getEolContext());
-
+					//System.out. 
+					if(opIndex.getEolContext().getErrorStream().checkError()) {
+						System.out.println("ERROR");
+						
+					}
+					
 				}
 			}
 
 			return iObject.eGet(mAttribute);
-			
+
 		} catch (EolRuntimeException e) {
 			return null;
 		}
 	}
 
-	public Object link(EObject iObjectContainer, EReference mReference) {		
+	public Object link(EObject iObjectContainer, EReference mReference) {
 		/*
 		 * +------------------+ +---------------------+---------+ |
 		 * iObjectContainer |---->| iReferenceContainer | iObject |
@@ -101,9 +106,10 @@ public class EolGenerator implements Generator {
 		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 				.eGet(mReference);
 
-		EObject iObject = strategy.retrieaveObject((EClass) mReference.getEType());
+		EObject iObject = strategy.retrieaveObject((EClass) mReference
+				.getEType());
 
-			iReferenceContainer.add(iObject);
+		iReferenceContainer.add(iObject);
 
 		return null; // NOTE: Not implemented while not executing any EOL.
 						// For now just a copy of the RandomGenerator's
@@ -111,9 +117,40 @@ public class EolGenerator implements Generator {
 		// return iObjectContainer.eGet(mReference);
 	}
 
-	private EObject retrieveObject(EClass mType) throws EolRuntimeException {
-		// TODO Based on strategy, either create or retrieve object
-		return create(mType);
+	@Override
+	public boolean before() {
+		try {
+			EolOperation op = opIndex.getBefore();
+			if (op != null) {
+				op.execute(null, Collections.emptyList(),
+						opIndex.getEolContext());
+				return true;
+			}
+		} catch (EolRuntimeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+
+	}
+
+	@Override
+	public boolean after() {
+		try {
+			EolOperation op = opIndex.getAfter();
+			if (op != null) {
+				op.execute(null, Collections.emptyList(),
+						opIndex.getEolContext());
+				return true;
+			}
+		} catch (EolRuntimeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+
 	}
 
 }

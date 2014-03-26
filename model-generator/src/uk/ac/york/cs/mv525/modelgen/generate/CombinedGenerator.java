@@ -89,5 +89,26 @@ public class CombinedGenerator implements Generator {
 		strategy = s;
 		
 	}
+
+	@Override
+	public boolean before() {
+		for(Generator generator : generators) {						
+			if (generator.before()) {
+				return true;
+			}
+		}		
+		return fallback.before();		
+	}
+
+	@Override
+	public boolean after() {
+		for(Generator generator : generators) {
+			if (generator.after()) {
+				return true;
+			}
+		}		
+		return fallback.after();		
+		
+	}
 	
 }

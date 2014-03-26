@@ -1,0 +1,5 @@
+operation before() {
+	for(p in Person.allInstances) {
+		p.name = "Called from Before operation";
+	}
+}

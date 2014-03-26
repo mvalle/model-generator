@@ -16,5 +16,9 @@ public interface Generator {
 	
 	public Object link(EObject iObjectContainer, EReference mReference);
 
+	public boolean before();
+	
+	public boolean after();
+	
 	public void setStrategy(Strategy s);
 }
