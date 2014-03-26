@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import uk.ac.york.cs.mv525.modelgen.generate.Generator;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 
@@ -17,7 +17,7 @@ public class DefaultOrchastration {
 	
 	protected ModelInstance modelInstance;
 	
-	protected Generator generator;
+	protected ModelGeneration generator;
 	
 	public DefaultOrchastration() {
 		
@@ -34,7 +34,7 @@ public class DefaultOrchastration {
 		//cIndex.setMetaModel(mmIndex);
 	}
 
-	public void addGenerator(Generator generator) {
+	public void addGenerator(ModelGeneration generator) {
 		this.generator = generator;
 	}
 	

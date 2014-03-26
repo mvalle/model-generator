@@ -68,12 +68,18 @@
     </eOperations>
     <eOperations name="before" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="after" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="strategy" lowerBound="1"
+        eType="#//Strategy" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EolGenerator" eSuperTypes="#//Generator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RandomGenerator" eSuperTypes="#//Generator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Strategy" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Strategy" abstract="true" interface="true">
+    <eOperations name="retrieveObject" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+      <eParameters name="mType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlwaysCreateStrategy" eSuperTypes="#//Strategy">
     <eStructuralFeatures xsi:type="ecore:EReference" name="generator" lowerBound="1"
         eType="#//Generator" containment="true"/>

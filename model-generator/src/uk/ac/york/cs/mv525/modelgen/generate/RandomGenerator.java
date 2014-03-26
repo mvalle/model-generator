@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen.generate;
+/*package uk.ac.york.cs.mv525.modelgen.generate;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -18,7 +18,7 @@ public class RandomGenerator implements Generator {
 	EFactory iClassGenerator;
 	ModelInstance model;
 	Configuration config;
-Strategy strategy;
+	Strategy strategy;
 	
 	public RandomGenerator(ModelInstance modelInstance, MetaModelIndex metaModel) {
 		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
@@ -74,10 +74,10 @@ Strategy strategy;
 	}
 
 	public Object link(EObject iObjectContainer, EReference mReference) {
-		/* +------------------+     +---------------------+---------+
+		 +------------------+     +---------------------+---------+
 		 * | iObjectContainer |---->| iReferenceContainer | iObject |
 		 * +------------------+     +---------------------+---------+
-		 */
+		 
 		@SuppressWarnings("unchecked")
 		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 				.eGet(mReference);
@@ -95,3 +95,4 @@ Strategy strategy;
 	@Override
 	public boolean after() { return false; }
 }
+*/

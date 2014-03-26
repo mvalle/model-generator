@@ -1,6 +1,7 @@
 package uk.ac.york.cs.mv525.modelgen.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,18 +13,21 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
+import uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator;
+import uk.ac.york.cs.mv525.modelgen.config.config.impl.AlwaysCreateStrategyImpl;
+import uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl;
+import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl;
+import uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomGeneratorImpl;
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen.generate.CombinedGenerator;
-import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
-import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
-import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 
-public class EolGeneratorBeforeAndAfterTester extends FileTester  {
+public class EolGeneratorBeforeAndAfterTester extends FileTester {
 
 	MetaModelIndex mIndex;
 	ModelInstance model;
@@ -51,8 +55,8 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester  {
 	public void test_parse_Before() throws IOException {
 		location = dataDir + "test_before.eol";
 		
-		EolGenerator eg  = new EolGenerator(location, model, mIndex);
-		eg.setStrategy(new AlwaysCreate(eg));
+		EolGenerator eg  = new EolGeneratorImpl(location, model, mIndex);
+		eg.setStrategy(new AlwaysCreateStrategyImpl(eg));
 		assertTrue(eg.before());
 	}
 	
@@ -60,8 +64,8 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester  {
 	public void test_parse_After() throws IOException {
 		location = dataDir + "test_after.eol";
 		
-		EolGenerator eg  = new EolGenerator(location, model, mIndex);
-		eg.setStrategy(new AlwaysCreate(eg));
+		EolGenerator eg  = new EolGeneratorImpl(location, model, mIndex);
+		eg.setStrategy(new AlwaysCreateStrategyImpl(eg));
 		assertTrue(eg.after());
 	}
 
@@ -72,12 +76,12 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester  {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mIndex);
 
-		RandomGenerator rand = new RandomGenerator(model, mIndex);
-		rand.setStrategy(new AlwaysCreate(rand));
-		EolGenerator eg  = new EolGenerator(location, model, mIndex);
-		eg.setStrategy(new AlwaysCreate(eg));
+		RandomGenerator rand = new RandomGeneratorImpl(model, mIndex);
+		rand.setStrategy(new AlwaysCreateStrategyImpl(rand));
+		EolGenerator eg  = new EolGeneratorImpl(location, model, mIndex);
+		eg.setStrategy(new AlwaysCreateStrategyImpl(eg));
 
-		CombinedGenerator generator = new CombinedGenerator(rand);
+		ModelGeneration generator = new ModelGenerationImpl(rand);
 		generator.addGenerator(eg);
 		
 
@@ -104,12 +108,12 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester  {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mIndex);
 
-		RandomGenerator rand = new RandomGenerator(model, mIndex);
-		rand.setStrategy(new AlwaysCreate(rand));
-		EolGenerator eg  = new EolGenerator(location, model, mIndex);
-		eg.setStrategy(new AlwaysCreate(eg));
+		RandomGenerator rand = new RandomGeneratorImpl(model, mIndex);
+		rand.setStrategy(new AlwaysCreateStrategyImpl(rand));
+		EolGenerator eg  = new EolGeneratorImpl(location, model, mIndex);
+		eg.setStrategy(new AlwaysCreateStrategyImpl(eg));
 
-		CombinedGenerator generator = new CombinedGenerator(rand);
+		ModelGeneration generator = new ModelGenerationImpl(rand);
 		generator.addGenerator(eg);
 		
 

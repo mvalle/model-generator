@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen.generate;
+/*package uk.ac.york.cs.mv525.modelgen.generate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +25,17 @@ public class CombinedGenerator implements Generator {
 		generators = new ArrayList<Generator>();
 	}
 
-	/*
+	
 	 * Overrides the default generator.
-	 */
+	 
 	public void overrideDefaultGenerator(Generator generator) {
 		fallback = generator;
 	}
 	
-	/*
+	
 	 * Adds a generator. The generators will be called in
 	 * the order they were added. 
-	 */
+	 
 	public void addGenerator(Generator generator) {
 		generators.add(generator);
 	}
@@ -112,3 +112,4 @@ public class CombinedGenerator implements Generator {
 	}
 	
 }
+*/

@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen.generate;
+/*package uk.ac.york.cs.mv525.modelgen.generate;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -45,10 +45,10 @@ public class EolGenerator implements Generator {
 		strategy = s;
 	}
 
-	/*
+	
 	 * Creates a class using the normal method. Then calls and EOL operation on
 	 * that class. Then adds in to resource.
-	 */
+	 
 	public EObject create(EClass mClass) {
 		try {
 
@@ -60,7 +60,7 @@ public class EolGenerator implements Generator {
 						opIndex.getEolContext());
 			}
 
-			iModel.add(iObject); /* Controversial */
+			iModel.add(iObject);  Controversial 
 
 			return iObject;
 
@@ -97,11 +97,11 @@ public class EolGenerator implements Generator {
 	}
 
 	public Object link(EObject iObjectContainer, EReference mReference) {
-		/*
+		
 		 * +------------------+ +---------------------+---------+ |
 		 * iObjectContainer |---->| iReferenceContainer | iObject |
 		 * +------------------+ +---------------------+---------+
-		 */
+		 
 		@SuppressWarnings("unchecked")
 		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 				.eGet(mReference);
@@ -154,3 +154,4 @@ public class EolGenerator implements Generator {
 	}
 
 }
+*/

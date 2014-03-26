@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen.generate;
+/*package uk.ac.york.cs.mv525.modelgen.generate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -22,3 +22,4 @@ public interface Generator {
 	
 	public void setStrategy(Strategy s);
 }
+*/
