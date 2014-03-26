@@ -506,6 +506,15 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getGenerator_Strategy() {
+		return (EReference)generatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEolGenerator() {
 		return eolGeneratorEClass;
 	}
@@ -660,6 +669,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEReference(modelGenerationEClass, MODEL_GENERATION__STRATEGY);
 
 		generatorEClass = createEClass(GENERATOR);
+		createEReference(generatorEClass, GENERATOR__STRATEGY);
 
 		eolGeneratorEClass = createEClass(EOL_GENERATOR);
 		createEAttribute(eolGeneratorEClass, EOL_GENERATOR__LOCATION);
@@ -758,6 +768,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEReference(getModelGeneration_Strategy(), this.getStrategy(), null, "Strategy", null, 1, 1, ModelGeneration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(generatorEClass, Generator.class, "Generator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGenerator_Strategy(), this.getStrategy(), null, "strategy", null, 1, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(generatorEClass, ecorePackage.getEObject(), "create", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEClass(), "mClass", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -780,6 +791,9 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEClass(randomGeneratorEClass, RandomGenerator.class, "RandomGenerator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(strategyEClass, Strategy.class, "Strategy", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(strategyEClass, ecorePackage.getEObject(), "retrieveObject", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEClass(), "mType", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(alwaysCreateStrategyEClass, AlwaysCreateStrategy.class, "AlwaysCreateStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAlwaysCreateStrategy_Generator(), this.getGenerator(), null, "generator", null, 1, 1, AlwaysCreateStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

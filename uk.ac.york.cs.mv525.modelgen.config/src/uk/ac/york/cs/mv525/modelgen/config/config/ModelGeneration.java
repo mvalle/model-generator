@@ -4,7 +4,10 @@ package uk.ac.york.cs.mv525.modelgen.config.config;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,5 +95,17 @@ public interface ModelGeneration extends EObject {
 	 * @generated
 	 */
 	void setStrategy(Strategy value);
+
+	void addGenerator(Generator gen);
+
+	boolean before();
+
+	EObject create(EClass mClass);
+
+	Object add(EObject iObject, EStructuralFeature feature);
+
+	Object link(EObject iObject, EReference feature);
+
+	boolean after();
 
 } // ModelGeneration

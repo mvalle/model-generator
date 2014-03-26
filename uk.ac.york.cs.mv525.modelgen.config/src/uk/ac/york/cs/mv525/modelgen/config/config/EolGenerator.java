@@ -46,4 +46,7 @@ public interface EolGenerator extends Generator {
 	 */
 	void setLocation(String value);
 
+	
+	
+	
 } // EolGenerator

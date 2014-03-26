@@ -460,13 +460,22 @@ public interface ConfigPackage extends EPackage {
 	int GENERATOR = 9;
 
 	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATOR__STRATEGY = 0;
+
+	/**
 	 * The number of structural features of the '<em>Generator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GENERATOR_FEATURE_COUNT = 0;
+	int GENERATOR_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl <em>Eol Generator</em>}' class.
@@ -477,6 +486,15 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	int EOL_GENERATOR = 10;
+
+	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EOL_GENERATOR__STRATEGY = GENERATOR__STRATEGY;
 
 	/**
 	 * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -505,6 +523,15 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	int RANDOM_GENERATOR = 11;
+
+	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANDOM_GENERATOR__STRATEGY = GENERATOR__STRATEGY;
 
 	/**
 	 * The number of structural features of the '<em>Random Generator</em>' class.
@@ -962,6 +989,17 @@ public interface ConfigPackage extends EPackage {
 	EClass getGenerator();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator#getStrategy <em>Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Strategy</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Generator#getStrategy()
+	 * @see #getGenerator()
+	 * @generated
+	 */
+	EReference getGenerator_Strategy();
+
+	/**
 	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator <em>Eol Generator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1362,6 +1400,14 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EClass GENERATOR = eINSTANCE.getGenerator();
+
+		/**
+		 * The meta object literal for the '<em><b>Strategy</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GENERATOR__STRATEGY = eINSTANCE.getGenerator_Strategy();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl <em>Eol Generator</em>}' class.

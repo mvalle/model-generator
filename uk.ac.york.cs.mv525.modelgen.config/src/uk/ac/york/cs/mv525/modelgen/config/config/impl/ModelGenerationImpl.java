@@ -10,6 +10,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -21,6 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.Generator;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
+import uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
 
 /**
@@ -74,8 +78,13 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModelGenerationImpl() {
+	public ModelGenerationImpl() {
 		super();
+	}
+
+	public ModelGenerationImpl(Generator gen) {
+		super();
+		setFallback(gen);
 	}
 
 	/**
@@ -96,7 +105,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 		return fallback;
 	}
 
-	/**
+	/**Generator
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -142,6 +151,9 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 		return generators;
 	}
 
+	public void addGenerator(Generator gen) {		
+		getGenerators().add(gen);
+	}
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -275,6 +287,75 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 				return strategy != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	@Override
+	public boolean before() {
+		for(Object _generator : getGenerators()) {
+			Generator generator = (Generator)_generator;					
+			if (generator.before()) {
+				return true;
+			}
+		}	
+		return fallback.before();		
+		
+	}
+
+	@Override
+	public EObject create(EClass mClass) {
+		EObject iObject = null;
+		for(Object _generator : getGenerators()) {
+			Generator generator = (Generator)_generator;
+			iObject = generator.create(mClass);
+			if (iObject != null)
+			{
+				return iObject;
+			}
+		}
+	
+	
+		return fallback.create(mClass);
+	}
+
+	@Override
+	public Object add(EObject iObject, EStructuralFeature feature) {
+		for(Object _generator : getGenerators()) {
+			Generator generator = (Generator)_generator;
+			Object o = generator.add(iObject, feature);
+			
+			if (o != null) {
+				return o;
+			}
+		}
+		
+		return fallback.add(iObject,  feature);		
+	}
+
+	@Override
+	public Object link(EObject iObject, EReference feature) {
+		for(Object _generator : getGenerators()) {
+			Generator generator = (Generator)_generator;
+			Object o = generator.link(iObject, feature);
+			
+			if (o != null) {
+				return o;
+			}
+		}
+		
+		return fallback.link(iObject,  feature);
+		
+	}
+
+	@Override
+	public boolean after() {
+		for(Object _generator : getGenerators()) {
+			Generator generator = (Generator)_generator;
+			if (generator.after()) {
+				return true;
+			}
+		}		
+		return fallback.after();	
+		
 	}
 
 } //ModelGenerationImpl

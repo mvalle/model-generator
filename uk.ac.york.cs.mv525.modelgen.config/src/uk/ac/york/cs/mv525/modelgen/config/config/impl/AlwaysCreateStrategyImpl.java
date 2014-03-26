@@ -6,6 +6,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -47,6 +49,12 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	protected AlwaysCreateStrategyImpl() {
 		super();
 	}
+	
+	public AlwaysCreateStrategyImpl(Generator gen) {
+		super();
+		assert(gen != null);
+		setGenerator(gen);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,7 +92,7 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated 
 	 */
 	public void setGenerator(Generator newGenerator) {
 		if (newGenerator != generator) {
@@ -98,6 +106,21 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR, newGenerator, newGenerator));
+	
+		assert(generator != null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EObject retrieveObject(EClass mType) {
+		EObject o = getGenerator().create(mType);
+		for(EStructuralFeature f : mType.getEStructuralFeatures()) {
+			getGenerator().add(o, f);
+		}
+		return o;
 	}
 
 	/**
