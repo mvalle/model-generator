@@ -135,20 +135,28 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 */
 	public EObject create(EClass mClass) {
 		try {
-
-			EObject iObject = iClassGenerator.create(mClass);
+			EObject iObject;
+			if (opIndex.hasConstructor(mClass)) {
+				EolOperation constructOp = opIndex.getConstructor(mClass);
+				iObject = (EObject) constructOp.execute(null, Collections.emptyList(),
+						opIndex.getEolContext());
+				
+			}
+			else {
+				iObject = iClassGenerator.create(mClass);
 
 			EolOperation createOp = opIndex.get(mClass.getName());
 			if (createOp != null) {
 				createOp.execute(iObject, Collections.emptyList(),
 						opIndex.getEolContext());
 			}
-
+			}
 			iModel.add(iObject); /* Controversial */
 
 			return iObject;
 
-		} catch (EolRuntimeException e) {
+		} catch (EolRuntimeException e) {			
+			System.err.println(e.getMessage());
 			return null;
 		}
 	}
@@ -169,6 +177,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 				if (attributeOp != null) {
 					attributeOp.execute(iObject, Collections.emptyList(),
 							opIndex.getEolContext());
+					
 					//System.out. 
 					if(opIndex.getEolContext().getErrorStream().checkError()) {
 						System.out.println("ERROR");
