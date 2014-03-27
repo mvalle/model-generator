@@ -86,6 +86,19 @@ public class EolIndex implements Index {
 	}
 
 
+	public boolean hasConstructor(EClass mClass) {
+		if(!index.containsKey(OP_NOCONTEXT)) return false;
+
+		HashMap<String, EolOperation> opTable = index.get(OP_NOCONTEXT);
+		
+		return opTable.containsKey(OP_PREFIX+mClass.getName());
+	}
+
+
+	public EolOperation getConstructor(EClass mClass) {
+		return get(OP_NOCONTEXT, mClass.getName());	}
+
+
 
 	
 }
