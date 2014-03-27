@@ -25,26 +25,26 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public interface Generator extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Strategy</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Strategy</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Strategy</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Strategy</em>' containment reference.
+	 * @return the value of the '<em>Strategy</em>' reference.
 	 * @see #setStrategy(Strategy)
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getGenerator_Strategy()
-	 * @model containment="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	Strategy getStrategy();
 
 	/**
-	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator#getStrategy <em>Strategy</em>}' containment reference.
+	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator#getStrategy <em>Strategy</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Strategy</em>' containment reference.
+	 * @param value the new value of the '<em>Strategy</em>' reference.
 	 * @see #getStrategy()
 	 * @generated
 	 */

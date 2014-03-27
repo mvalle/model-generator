@@ -92,7 +92,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList stringPools;
+	protected EList<StringPool> stringPools;
 
 	/**
 	 * The cached value of the '{@link #getReferences() <em>References</em>}' containment reference list.
@@ -102,7 +102,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList references;
+	protected EList<ReferenceOverride> references;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,6 +118,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.MODEL_ELEMENT_OVERRIDE;
 	}
@@ -169,9 +170,9 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getStringPools() {
+	public EList<StringPool> getStringPools() {
 		if (stringPools == null) {
-			stringPools = new EObjectContainmentEList(StringPool.class, this, ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS);
+			stringPools = new EObjectContainmentEList<StringPool>(StringPool.class, this, ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS);
 		}
 		return stringPools;
 	}
@@ -181,9 +182,9 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getReferences() {
+	public EList<ReferenceOverride> getReferences() {
 		if (references == null) {
-			references = new EObjectContainmentEList(ReferenceOverride.class, this, ConfigPackage.MODEL_ELEMENT_OVERRIDE__REFERENCES);
+			references = new EObjectContainmentEList<ReferenceOverride>(ReferenceOverride.class, this, ConfigPackage.MODEL_ELEMENT_OVERRIDE__REFERENCES);
 		}
 		return references;
 	}
@@ -193,12 +194,13 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS:
-				return ((InternalEList)getStringPools()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getStringPools()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__REFERENCES:
-				return ((InternalEList)getReferences()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getReferences()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -208,10 +210,11 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__MINIMUM_COUNT:
-				return new Long(getMinimumCount());
+				return getMinimumCount();
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__NAME:
 				return getName();
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS:
@@ -227,21 +230,23 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__MINIMUM_COUNT:
-				setMinimumCount(((Long)newValue).longValue());
+				setMinimumCount((Long)newValue);
 				return;
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__NAME:
 				setName((String)newValue);
 				return;
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__STRING_POOLS:
 				getStringPools().clear();
-				getStringPools().addAll((Collection)newValue);
+				getStringPools().addAll((Collection<? extends StringPool>)newValue);
 				return;
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__REFERENCES:
 				getReferences().clear();
-				getReferences().addAll((Collection)newValue);
+				getReferences().addAll((Collection<? extends ReferenceOverride>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,6 +257,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__MINIMUM_COUNT:
@@ -275,6 +281,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__MINIMUM_COUNT:
@@ -294,6 +301,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

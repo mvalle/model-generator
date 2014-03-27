@@ -38,10 +38,10 @@ public interface EmbeddedStringPool extends StringPool {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Strings</em>' reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getEmbeddedStringPool_Strings()
-	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
-	EList getStrings();
+	EList<StringPoolEntry> getStrings();
 
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
@@ -54,9 +54,9 @@ public interface EmbeddedStringPool extends StringPool {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getEmbeddedStringPool_Entries()
-	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList getEntries();
+	EList<StringPoolEntry> getEntries();
 
 } // EmbeddedStringPool

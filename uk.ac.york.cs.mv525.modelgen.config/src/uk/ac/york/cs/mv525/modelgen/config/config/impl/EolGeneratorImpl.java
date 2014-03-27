@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.epsilon.eol.EolOperation;
@@ -34,6 +35,7 @@ import uk.ac.york.cs.mv525.modelgen.parse.EolParser;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl#getStrategy <em>Strategy</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
@@ -41,6 +43,21 @@ import uk.ac.york.cs.mv525.modelgen.parse.EolParser;
  * @generated
  */
 public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EolGeneratorImpl() {
+		super();
+	}
+	
+	EFactory iClassGenerator;
+	EolIndex opIndex;
+	MetaModelIndex mIndex;
+	ModelInstance iModel;
+	Strategy strategy;
+
 	/**
 	 * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -61,21 +78,6 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 */
 	protected String location = LOCATION_EDEFAULT;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EolGeneratorImpl() {
-		super();
-	}
-	
-	EFactory iClassGenerator;
-	EolIndex opIndex;
-	MetaModelIndex mIndex;
-	ModelInstance iModel;
-	Strategy strategy;
-
 	public EolGeneratorImpl(String programLocation, ModelInstance modelInstance,
 			MetaModelIndex metaModel) throws IOException {
 		super();
@@ -87,6 +89,8 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 		EolParser parser = new EolParser(iModel.getResource(),
 				mIndex.getEPackage());
 		opIndex = parser.parse(programLocation);
+		
+		setLocation(programLocation);
 	}
 	
 	public void setStrategy(Strategy s) {
@@ -98,6 +102,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.EOL_GENERATOR;
 	}
@@ -255,8 +260,12 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ConfigPackage.EOL_GENERATOR__STRATEGY:
+				if (resolve) return getStrategy();
+				return basicGetStrategy();
 			case ConfigPackage.EOL_GENERATOR__LOCATION:
 				return getLocation();
 		}
@@ -268,8 +277,12 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ConfigPackage.EOL_GENERATOR__STRATEGY:
+				setStrategy((Strategy)newValue);
+				return;
 			case ConfigPackage.EOL_GENERATOR__LOCATION:
 				setLocation((String)newValue);
 				return;
@@ -282,8 +295,12 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ConfigPackage.EOL_GENERATOR__STRATEGY:
+				setStrategy((Strategy)null);
+				return;
 			case ConfigPackage.EOL_GENERATOR__LOCATION:
 				setLocation(LOCATION_EDEFAULT);
 				return;
@@ -296,8 +313,11 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ConfigPackage.EOL_GENERATOR__STRATEGY:
+				return strategy != null;
 			case ConfigPackage.EOL_GENERATOR__LOCATION:
 				return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
 		}
@@ -309,6 +329,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
@@ -321,6 +342,15 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 
 	@Override
 	public Strategy getStrategy() {
+		return strategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Strategy basicGetStrategy() {
 		return strategy;
 	}
 

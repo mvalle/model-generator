@@ -68,7 +68,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * @generated
 	 * @ordered
 	 */
-	protected EList strings;
+	protected EList<StringPoolEntry> strings;
 
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
@@ -78,7 +78,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * @generated
 	 * @ordered
 	 */
-	protected EList entries;
+	protected EList<StringPoolEntry> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,6 +94,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.EMBEDDED_STRING_POOL;
 	}
@@ -124,9 +125,9 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getStrings() {
+	public EList<StringPoolEntry> getStrings() {
 		if (strings == null) {
-			strings = new EObjectResolvingEList(StringPoolEntry.class, this, ConfigPackage.EMBEDDED_STRING_POOL__STRINGS);
+			strings = new EObjectResolvingEList<StringPoolEntry>(StringPoolEntry.class, this, ConfigPackage.EMBEDDED_STRING_POOL__STRINGS);
 		}
 		return strings;
 	}
@@ -136,9 +137,9 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEntries() {
+	public EList<StringPoolEntry> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList(StringPoolEntry.class, this, ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES);
+			entries = new EObjectContainmentEList<StringPoolEntry>(StringPoolEntry.class, this, ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES);
 		}
 		return entries;
 	}
@@ -148,10 +149,11 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
-				return ((InternalEList)getEntries()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -173,6 +175,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
@@ -190,6 +193,8 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
@@ -197,11 +202,11 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 				return;
 			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
 				getStrings().clear();
-				getStrings().addAll((Collection)newValue);
+				getStrings().addAll((Collection<? extends StringPoolEntry>)newValue);
 				return;
 			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
 				getEntries().clear();
-				getEntries().addAll((Collection)newValue);
+				getEntries().addAll((Collection<? extends StringPoolEntry>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -212,6 +217,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
@@ -232,6 +238,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
@@ -249,6 +256,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

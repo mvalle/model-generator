@@ -89,8 +89,8 @@ public class DefaultOrchestrationTester extends FileTester {
 		EolGenerator eol = new EolGeneratorImpl(programLocation, model, mmIndex);
 		eol.setStrategy(new AlwaysCreateStrategyImpl(eol));
 		
-		ModelGeneration generator = new ModelGenerationImpl();
-		generator.setFallback(rand);
+		ModelGeneration generator = new ModelGenerationImpl(rand);
+		//generator.setFallback();
 		generator.addGenerator(eol);
 		
 		DefaultOrchastration defaultOrchastration = new DefaultOrchastration();

@@ -61,7 +61,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList generators;
+	protected EList<Generator> generators;
 
 	/**
 	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' containment reference.
@@ -78,7 +78,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModelGenerationImpl() {
+	protected ModelGenerationImpl() {
 		super();
 	}
 
@@ -92,6 +92,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.MODEL_GENERATION;
 	}
@@ -105,7 +106,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 		return fallback;
 	}
 
-	/**Generator
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -144,9 +145,9 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getGenerators() {
+	public EList<Generator> getGenerators() {
 		if (generators == null) {
-			generators = new EObjectContainmentEList(Generator.class, this, ConfigPackage.MODEL_GENERATION__GENERATORS);
+			generators = new EObjectContainmentEList<Generator>(Generator.class, this, ConfigPackage.MODEL_GENERATION__GENERATORS);
 		}
 		return generators;
 	}
@@ -202,12 +203,13 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_GENERATION__FALLBACK:
 				return basicSetFallback(null, msgs);
 			case ConfigPackage.MODEL_GENERATION__GENERATORS:
-				return ((InternalEList)getGenerators()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getGenerators()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.MODEL_GENERATION__STRATEGY:
 				return basicSetStrategy(null, msgs);
 		}
@@ -219,6 +221,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_GENERATION__FALLBACK:
@@ -236,6 +239,8 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_GENERATION__FALLBACK:
@@ -243,7 +248,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 				return;
 			case ConfigPackage.MODEL_GENERATION__GENERATORS:
 				getGenerators().clear();
-				getGenerators().addAll((Collection)newValue);
+				getGenerators().addAll((Collection<? extends Generator>)newValue);
 				return;
 			case ConfigPackage.MODEL_GENERATION__STRATEGY:
 				setStrategy((Strategy)newValue);
@@ -257,6 +262,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_GENERATION__FALLBACK:
@@ -277,6 +283,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_GENERATION__FALLBACK:
@@ -297,6 +304,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 				return true;
 			}
 		}	
+		System.out.println(fallback);
 		return fallback.before();		
 		
 	}
@@ -341,7 +349,6 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 				return o;
 			}
 		}
-		
 		return fallback.link(iObject,  feature);
 		
 	}

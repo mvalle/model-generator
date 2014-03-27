@@ -13,9 +13,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy;
 import uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator;
+import uk.ac.york.cs.mv525.modelgen.config.config.Generator;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator;
+import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
 import uk.ac.york.cs.mv525.modelgen.config.config.impl.AlwaysCreateStrategyImpl;
 import uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl;
 import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl;
@@ -77,10 +80,13 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		cIndex.setMetaModel(mIndex);
 
 		RandomGenerator rand = new RandomGeneratorImpl(model, mIndex);
-		rand.setStrategy(new AlwaysCreateStrategyImpl(rand));
+		AlwaysCreateStrategyImpl a = new AlwaysCreateStrategyImpl(rand);
+		rand.setStrategy(a);
+		
 		EolGenerator eg  = new EolGeneratorImpl(location, model, mIndex);
-		eg.setStrategy(new AlwaysCreateStrategyImpl(eg));
-
+		AlwaysCreateStrategyImpl b =new AlwaysCreateStrategyImpl(eg);		
+		eg.setStrategy(b);
+		
 		ModelGeneration generator = new ModelGenerationImpl(rand);
 		generator.addGenerator(eg);
 		
@@ -89,6 +95,7 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addGenerator(generator);
 		defaultOrchastration.addModel(model);		
+		
 
 		defaultOrchastration.create();
 

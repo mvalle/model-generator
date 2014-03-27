@@ -52,6 +52,7 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,57 +69,74 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConfigSwitch modelSwitch =
-		new ConfigSwitch() {
-			public Object caseModelElementOverride(ModelElementOverride object) {
+	protected ConfigSwitch<Adapter> modelSwitch =
+		new ConfigSwitch<Adapter>() {
+			@Override
+			public Adapter caseModelElementOverride(ModelElementOverride object) {
 				return createModelElementOverrideAdapter();
 			}
-			public Object caseModelConfiguration(ModelConfiguration object) {
+			@Override
+			public Adapter caseModelConfiguration(ModelConfiguration object) {
 				return createModelConfigurationAdapter();
 			}
-			public Object caseModelElementExclusion(ModelElementExclusion object) {
+			@Override
+			public Adapter caseModelElementExclusion(ModelElementExclusion object) {
 				return createModelElementExclusionAdapter();
 			}
-			public Object caseStringPool(StringPool object) {
+			@Override
+			public Adapter caseStringPool(StringPool object) {
 				return createStringPoolAdapter();
 			}
-			public Object caseFileStringPool(FileStringPool object) {
+			@Override
+			public Adapter caseFileStringPool(FileStringPool object) {
 				return createFileStringPoolAdapter();
 			}
-			public Object caseEmbeddedStringPool(EmbeddedStringPool object) {
+			@Override
+			public Adapter caseEmbeddedStringPool(EmbeddedStringPool object) {
 				return createEmbeddedStringPoolAdapter();
 			}
-			public Object caseStringPoolEntry(StringPoolEntry object) {
+			@Override
+			public Adapter caseStringPoolEntry(StringPoolEntry object) {
 				return createStringPoolEntryAdapter();
 			}
-			public Object caseReferenceOverride(ReferenceOverride object) {
+			@Override
+			public Adapter caseReferenceOverride(ReferenceOverride object) {
 				return createReferenceOverrideAdapter();
 			}
-			public Object caseModelGeneration(ModelGeneration object) {
+			@Override
+			public Adapter caseModelGeneration(ModelGeneration object) {
 				return createModelGenerationAdapter();
 			}
-			public Object caseGenerator(Generator object) {
+			@Override
+			public Adapter caseGenerator(Generator object) {
 				return createGeneratorAdapter();
 			}
-			public Object caseEolGenerator(EolGenerator object) {
+			@Override
+			public Adapter caseEolGenerator(EolGenerator object) {
 				return createEolGeneratorAdapter();
 			}
-			public Object caseRandomGenerator(RandomGenerator object) {
+			@Override
+			public Adapter caseRandomGenerator(RandomGenerator object) {
 				return createRandomGeneratorAdapter();
 			}
-			public Object caseStrategy(Strategy object) {
+			@Override
+			public Adapter caseStrategy(Strategy object) {
 				return createStrategyAdapter();
 			}
-			public Object caseAlwaysCreateStrategy(AlwaysCreateStrategy object) {
+			@Override
+			public Adapter caseAlwaysCreateStrategy(AlwaysCreateStrategy object) {
 				return createAlwaysCreateStrategyAdapter();
 			}
-			public Object caseAlwaysRetrieveStrategy(AlwaysRetrieveStrategy object) {
+			@Override
+			public Adapter caseAlwaysRetrieveStrategy(AlwaysRetrieveStrategy object) {
 				return createAlwaysRetrieveStrategyAdapter();
 			}
-			public Object caseAlwaysRetrieveOrCreateStrategy(AlwaysRetrieveOrCreateStrategy object) {
+			@Override
+			public Adapter caseAlwaysRetrieveOrCreateStrategy(AlwaysRetrieveOrCreateStrategy object) {
 				return createAlwaysRetrieveOrCreateStrategyAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -131,8 +149,9 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

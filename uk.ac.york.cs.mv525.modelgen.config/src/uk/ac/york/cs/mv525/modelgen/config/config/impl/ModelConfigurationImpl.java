@@ -58,7 +58,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * @generated
 	 * @ordered
 	 */
-	protected EList modelElementOverrides;
+	protected EList<ModelElementOverride> modelElementOverrides;
 
 	/**
 	 * The default value of the '{@link #getTotalMinimumCount() <em>Total Minimum Count</em>}' attribute.
@@ -88,7 +88,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * @generated
 	 * @ordered
 	 */
-	protected EList modelElemetExclusions;
+	protected EList<ModelElementExclusion> modelElemetExclusions;
 
 	/**
 	 * The default value of the '{@link #isDeterministic() <em>Deterministic</em>}' attribute.
@@ -144,6 +144,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.MODEL_CONFIGURATION;
 	}
@@ -153,9 +154,9 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getModelElementOverrides() {
+	public EList<ModelElementOverride> getModelElementOverrides() {
 		if (modelElementOverrides == null) {
-			modelElementOverrides = new EObjectContainmentEList(ModelElementOverride.class, this, ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES);
+			modelElementOverrides = new EObjectContainmentEList<ModelElementOverride>(ModelElementOverride.class, this, ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES);
 		}
 		return modelElementOverrides;
 	}
@@ -186,9 +187,9 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getModelElemetExclusions() {
+	public EList<ModelElementExclusion> getModelElemetExclusions() {
 		if (modelElemetExclusions == null) {
-			modelElemetExclusions = new EObjectContainmentEList(ModelElementExclusion.class, this, ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS);
+			modelElemetExclusions = new EObjectContainmentEList<ModelElementExclusion>(ModelElementExclusion.class, this, ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS);
 		}
 		return modelElemetExclusions;
 	}
@@ -305,12 +306,13 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
-				return ((InternalEList)getModelElementOverrides()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getModelElementOverrides()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS:
-				return ((InternalEList)getModelElemetExclusions()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getModelElemetExclusions()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return basicSetDefaultStringPool(null, msgs);
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
@@ -324,16 +326,17 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
 				return getModelElementOverrides();
 			case ConfigPackage.MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT:
-				return new Long(getTotalMinimumCount());
+				return getTotalMinimumCount();
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS:
 				return getModelElemetExclusions();
 			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
-				return isDeterministic() ? Boolean.TRUE : Boolean.FALSE;
+				return isDeterministic();
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return getDefaultStringPool();
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
@@ -347,21 +350,23 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
 				getModelElementOverrides().clear();
-				getModelElementOverrides().addAll((Collection)newValue);
+				getModelElementOverrides().addAll((Collection<? extends ModelElementOverride>)newValue);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT:
-				setTotalMinimumCount(((Long)newValue).longValue());
+				setTotalMinimumCount((Long)newValue);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS:
 				getModelElemetExclusions().clear();
-				getModelElemetExclusions().addAll((Collection)newValue);
+				getModelElemetExclusions().addAll((Collection<? extends ModelElementExclusion>)newValue);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
-				setDeterministic(((Boolean)newValue).booleanValue());
+				setDeterministic((Boolean)newValue);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				setDefaultStringPool((StringPool)newValue);
@@ -378,6 +383,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
@@ -407,6 +413,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
@@ -430,6 +437,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

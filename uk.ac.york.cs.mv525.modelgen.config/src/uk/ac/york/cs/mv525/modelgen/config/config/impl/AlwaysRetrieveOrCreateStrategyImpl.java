@@ -75,6 +75,7 @@ public class AlwaysRetrieveOrCreateStrategyImpl extends EObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY;
 	}
@@ -183,6 +184,7 @@ public class AlwaysRetrieveOrCreateStrategyImpl extends EObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY__RETRIVER:
@@ -198,6 +200,7 @@ public class AlwaysRetrieveOrCreateStrategyImpl extends EObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY__RETRIVER:
@@ -213,6 +216,7 @@ public class AlwaysRetrieveOrCreateStrategyImpl extends EObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY__RETRIVER:
@@ -230,6 +234,7 @@ public class AlwaysRetrieveOrCreateStrategyImpl extends EObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY__RETRIVER:
@@ -247,6 +252,7 @@ public class AlwaysRetrieveOrCreateStrategyImpl extends EObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY__RETRIVER:

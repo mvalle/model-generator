@@ -69,7 +69,7 @@
     <eOperations name="before" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="after" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="strategy" lowerBound="1"
-        eType="#//Strategy" containment="true"/>
+        eType="#//Strategy"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EolGenerator" eSuperTypes="#//Generator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -82,7 +82,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlwaysCreateStrategy" eSuperTypes="#//Strategy">
     <eStructuralFeatures xsi:type="ecore:EReference" name="generator" lowerBound="1"
-        eType="#//Generator" containment="true"/>
+        eType="#//Generator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlwaysRetrieveStrategy" eSuperTypes="#//Strategy"/>
   <eClassifiers xsi:type="ecore:EClass" name="AlwaysRetrieveOrCreateStrategy" eSuperTypes="#//Strategy">

@@ -59,6 +59,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE: return createModelElementOverride();
@@ -224,6 +225,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static ConfigPackage getPackage() {
 		return ConfigPackage.eINSTANCE;
 	}

@@ -32,7 +32,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.Generator;
  */
 public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreateStrategy {
 	/**
-	 * The cached value of the '{@link #getGenerator() <em>Generator</em>}' containment reference.
+	 * The cached value of the '{@link #getGenerator() <em>Generator</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGenerator()
@@ -52,7 +52,6 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	
 	public AlwaysCreateStrategyImpl(Generator gen) {
 		super();
-		assert(gen != null);
 		setGenerator(gen);
 	}
 
@@ -61,6 +60,7 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.ALWAYS_CREATE_STRATEGY;
 	}
@@ -71,6 +71,14 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * @generated
 	 */
 	public Generator getGenerator() {
+		if (generator != null && generator.eIsProxy()) {
+			InternalEObject oldGenerator = (InternalEObject)generator;
+			generator = (Generator)eResolveProxy(oldGenerator);
+			if (generator != oldGenerator) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR, oldGenerator, generator));
+			}
+		}
 		return generator;
 	}
 
@@ -79,35 +87,20 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGenerator(Generator newGenerator, NotificationChain msgs) {
-		Generator oldGenerator = generator;
-		generator = newGenerator;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR, oldGenerator, newGenerator);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public Generator basicGetGenerator() {
+		return generator;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated 
+	 * @generated
 	 */
 	public void setGenerator(Generator newGenerator) {
-		if (newGenerator != generator) {
-			NotificationChain msgs = null;
-			if (generator != null)
-				msgs = ((InternalEObject)generator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR, null, msgs);
-			if (newGenerator != null)
-				msgs = ((InternalEObject)newGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR, null, msgs);
-			msgs = basicSetGenerator(newGenerator, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR, newGenerator, newGenerator));
-	
-		assert(generator != null);
+		Generator oldGenerator = generator;
+		generator = newGenerator;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR, oldGenerator, generator));
 	}
 
 	/**
@@ -128,23 +121,12 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR:
-				return basicSetGenerator(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR:
-				return getGenerator();
+				if (resolve) return getGenerator();
+				return basicGetGenerator();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -154,6 +136,7 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR:
@@ -168,6 +151,7 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR:
@@ -182,6 +166,7 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR:

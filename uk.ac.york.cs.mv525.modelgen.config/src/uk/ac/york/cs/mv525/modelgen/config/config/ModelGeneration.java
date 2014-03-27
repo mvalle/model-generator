@@ -65,10 +65,10 @@ public interface ModelGeneration extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Generators</em>' containment reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelGeneration_Generators()
-	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.Generator" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getGenerators();
+	EList<Generator> getGenerators();
 
 	/**
 	 * Returns the value of the '<em><b>Strategy</b></em>' containment reference.

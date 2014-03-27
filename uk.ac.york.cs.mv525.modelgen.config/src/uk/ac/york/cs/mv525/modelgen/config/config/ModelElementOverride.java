@@ -94,10 +94,10 @@ public interface ModelElementOverride extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>String Pools</em>' containment reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelElementOverride_StringPools()
-	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.StringPool" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getStringPools();
+	EList<StringPool> getStringPools();
 
 	/**
 	 * Returns the value of the '<em><b>References</b></em>' containment reference list.
@@ -110,9 +110,9 @@ public interface ModelElementOverride extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>References</em>' containment reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelElementOverride_References()
-	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getReferences();
+	EList<ReferenceOverride> getReferences();
 
 } // ModelElementOverride

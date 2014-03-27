@@ -45,10 +45,10 @@ public interface ModelConfiguration extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Model Element Overrides</em>' containment reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_ModelElementOverrides()
-	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getModelElementOverrides();
+	EList<ModelElementOverride> getModelElementOverrides();
 
 	/**
 	 * Returns the value of the '<em><b>Total Minimum Count</b></em>' attribute.
@@ -87,10 +87,10 @@ public interface ModelConfiguration extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Model Elemet Exclusions</em>' containment reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_ModelElemetExclusions()
-	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getModelElemetExclusions();
+	EList<ModelElementExclusion> getModelElemetExclusions();
 
 	/**
 	 * Returns the value of the '<em><b>Deterministic</b></em>' attribute.

@@ -460,7 +460,7 @@ public interface ConfigPackage extends EPackage {
 	int GENERATOR = 9;
 
 	/**
-	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
+	 * The feature id for the '<em><b>Strategy</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -488,7 +488,7 @@ public interface ConfigPackage extends EPackage {
 	int EOL_GENERATOR = 10;
 
 	/**
-	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
+	 * The feature id for the '<em><b>Strategy</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -525,7 +525,7 @@ public interface ConfigPackage extends EPackage {
 	int RANDOM_GENERATOR = 11;
 
 	/**
-	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
+	 * The feature id for the '<em><b>Strategy</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -572,7 +572,7 @@ public interface ConfigPackage extends EPackage {
 	int ALWAYS_CREATE_STRATEGY = 13;
 
 	/**
-	 * The feature id for the '<em><b>Generator</b></em>' containment reference.
+	 * The feature id for the '<em><b>Generator</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -989,10 +989,10 @@ public interface ConfigPackage extends EPackage {
 	EClass getGenerator();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator#getStrategy <em>Strategy</em>}'.
+	 * Returns the meta object for the reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator#getStrategy <em>Strategy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Strategy</em>'.
+	 * @return the meta object for the reference '<em>Strategy</em>'.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Generator#getStrategy()
 	 * @see #getGenerator()
 	 * @generated
@@ -1051,10 +1051,10 @@ public interface ConfigPackage extends EPackage {
 	EClass getAlwaysCreateStrategy();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy#getGenerator <em>Generator</em>}'.
+	 * Returns the meta object for the reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy#getGenerator <em>Generator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Generator</em>'.
+	 * @return the meta object for the reference '<em>Generator</em>'.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy#getGenerator()
 	 * @see #getAlwaysCreateStrategy()
 	 * @generated
@@ -1402,7 +1402,7 @@ public interface ConfigPackage extends EPackage {
 		EClass GENERATOR = eINSTANCE.getGenerator();
 
 		/**
-		 * The meta object literal for the '<em><b>Strategy</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Strategy</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1458,7 +1458,7 @@ public interface ConfigPackage extends EPackage {
 		EClass ALWAYS_CREATE_STRATEGY = eINSTANCE.getAlwaysCreateStrategy();
 
 		/**
-		 * The meta object literal for the '<em><b>Generator</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Generator</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
