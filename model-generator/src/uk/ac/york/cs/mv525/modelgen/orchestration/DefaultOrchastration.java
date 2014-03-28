@@ -46,6 +46,8 @@ public class DefaultOrchastration {
 		
 		generator.before();
 		
+		/* Start by creating the minimum amount of classes. */
+		
 		EClass mClass = (EClass) cIndex.getNext();
 		
 		while(mClass != null) {
@@ -53,15 +55,38 @@ public class DefaultOrchastration {
 			
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
 				if (feature.getEType() instanceof EClass ) {
-					generator.link(iObject, (EReference) feature);
+					//generator.link(iObject, (EReference) feature);
 				} else {				
 					generator.add(iObject, feature);				
 				}
-			}
-			
+			}			
 
 			mClass = (EClass) cIndex.getNext();
 		}
+		
+		/* Finish by linking the objects together. 
+		 * This section may create more objects, 
+		 * depending on the strategy used. */
+		
+		cIndex.resetState();
+		mClass = (EClass) cIndex.getNext();
+		
+		while(mClass != null) {
+			EObject iObject = modelInstance.get(mClass.getName());
+			
+			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
+				if (feature.getEType() instanceof EClass ) {
+					generator.link(iObject, (EReference) feature);
+				}
+			}
+			
+			mClass = (EClass) cIndex.getNext();
+		}
+		
+		
+		
+		
+		
 		
 		generator.after();
 	}	

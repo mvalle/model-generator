@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.javatuples.Pair;
 
@@ -218,6 +219,10 @@ public class Configuration implements Index {
 		return list2;
 	}
 
+	public void resetState() {
+		initialiseGetNextState();
+	}
+	
 	private void initialiseGetNextState() {
 		getNextState = new GetNextState(dump());
 	}
@@ -289,4 +294,5 @@ public class Configuration implements Index {
 
 		return "";
 	}
+
 }
