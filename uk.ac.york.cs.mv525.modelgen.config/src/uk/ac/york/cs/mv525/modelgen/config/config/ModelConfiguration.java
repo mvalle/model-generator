@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getModelElemetExclusions <em>Model Elemet Exclusions</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#isDeterministic <em>Deterministic</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getDefaultStringPool <em>Default String Pool</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getModelGeneration <em>Model Generation</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,10 +45,10 @@ public interface ModelConfiguration extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Model Element Overrides</em>' containment reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_ModelElementOverrides()
-	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getModelElementOverrides();
+	EList<ModelElementOverride> getModelElementOverrides();
 
 	/**
 	 * Returns the value of the '<em><b>Total Minimum Count</b></em>' attribute.
@@ -86,10 +87,10 @@ public interface ModelConfiguration extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Model Elemet Exclusions</em>' containment reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_ModelElemetExclusions()
-	 * @model type="uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getModelElemetExclusions();
+	EList<ModelElementExclusion> getModelElemetExclusions();
 
 	/**
 	 * Returns the value of the '<em><b>Deterministic</b></em>' attribute.
@@ -142,5 +143,31 @@ public interface ModelConfiguration extends EObject {
 	 * @generated
 	 */
 	void setDefaultStringPool(StringPool value);
+
+	/**
+	 * Returns the value of the '<em><b>Model Generation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Model Generation</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Model Generation</em>' containment reference.
+	 * @see #setModelGeneration(ModelGeneration)
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_ModelGeneration()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	ModelGeneration getModelGeneration();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getModelGeneration <em>Model Generation</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Model Generation</em>' containment reference.
+	 * @see #getModelGeneration()
+	 * @generated
+	 */
+	void setModelGeneration(ModelGeneration value);
 
 } // ModelConfiguration

@@ -1,0 +1,3 @@
+It is possible to include multiple EOL programs in the generator.
+This can be achived by including multiple EOL Generator objects into one instance. Each one with a different EOL Program.
+The order in which the generators are added, will dictate the priority of the operations. This means that if multiple programs implement the same operation on the same type/context, then the operation that was added first will be execited.

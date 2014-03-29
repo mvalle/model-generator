@@ -28,6 +28,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
 
 /**
@@ -42,6 +43,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getModelElemetExclusions <em>Model Elemet Exclusions</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#isDeterministic <em>Deterministic</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getDefaultStringPool <em>Default String Pool</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getModelGeneration <em>Model Generation</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,7 +58,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * @generated
 	 * @ordered
 	 */
-	protected EList modelElementOverrides;
+	protected EList<ModelElementOverride> modelElementOverrides;
 
 	/**
 	 * The default value of the '{@link #getTotalMinimumCount() <em>Total Minimum Count</em>}' attribute.
@@ -86,7 +88,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * @generated
 	 * @ordered
 	 */
-	protected EList modelElemetExclusions;
+	protected EList<ModelElementExclusion> modelElemetExclusions;
 
 	/**
 	 * The default value of the '{@link #isDeterministic() <em>Deterministic</em>}' attribute.
@@ -119,6 +121,16 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	protected StringPool defaultStringPool;
 
 	/**
+	 * The cached value of the '{@link #getModelGeneration() <em>Model Generation</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModelGeneration()
+	 * @generated
+	 * @ordered
+	 */
+	protected ModelGeneration modelGeneration;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -132,6 +144,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.MODEL_CONFIGURATION;
 	}
@@ -141,9 +154,9 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getModelElementOverrides() {
+	public EList<ModelElementOverride> getModelElementOverrides() {
 		if (modelElementOverrides == null) {
-			modelElementOverrides = new EObjectContainmentEList(ModelElementOverride.class, this, ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES);
+			modelElementOverrides = new EObjectContainmentEList<ModelElementOverride>(ModelElementOverride.class, this, ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES);
 		}
 		return modelElementOverrides;
 	}
@@ -174,9 +187,9 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getModelElemetExclusions() {
+	public EList<ModelElementExclusion> getModelElemetExclusions() {
 		if (modelElemetExclusions == null) {
-			modelElemetExclusions = new EObjectContainmentEList(ModelElementExclusion.class, this, ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS);
+			modelElemetExclusions = new EObjectContainmentEList<ModelElementExclusion>(ModelElementExclusion.class, this, ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS);
 		}
 		return modelElemetExclusions;
 	}
@@ -250,14 +263,60 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ModelGeneration getModelGeneration() {
+		return modelGeneration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetModelGeneration(ModelGeneration newModelGeneration, NotificationChain msgs) {
+		ModelGeneration oldModelGeneration = modelGeneration;
+		modelGeneration = newModelGeneration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION, oldModelGeneration, newModelGeneration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setModelGeneration(ModelGeneration newModelGeneration) {
+		if (newModelGeneration != modelGeneration) {
+			NotificationChain msgs = null;
+			if (modelGeneration != null)
+				msgs = ((InternalEObject)modelGeneration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION, null, msgs);
+			if (newModelGeneration != null)
+				msgs = ((InternalEObject)newModelGeneration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION, null, msgs);
+			msgs = basicSetModelGeneration(newModelGeneration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION, newModelGeneration, newModelGeneration));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
-				return ((InternalEList)getModelElementOverrides()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getModelElementOverrides()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS:
-				return ((InternalEList)getModelElemetExclusions()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getModelElemetExclusions()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return basicSetDefaultStringPool(null, msgs);
+			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
+				return basicSetModelGeneration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -267,18 +326,21 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
 				return getModelElementOverrides();
 			case ConfigPackage.MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT:
-				return new Long(getTotalMinimumCount());
+				return getTotalMinimumCount();
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS:
 				return getModelElemetExclusions();
 			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
-				return isDeterministic() ? Boolean.TRUE : Boolean.FALSE;
+				return isDeterministic();
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return getDefaultStringPool();
+			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
+				return getModelGeneration();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -288,24 +350,29 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
 				getModelElementOverrides().clear();
-				getModelElementOverrides().addAll((Collection)newValue);
+				getModelElementOverrides().addAll((Collection<? extends ModelElementOverride>)newValue);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT:
-				setTotalMinimumCount(((Long)newValue).longValue());
+				setTotalMinimumCount((Long)newValue);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS:
 				getModelElemetExclusions().clear();
-				getModelElemetExclusions().addAll((Collection)newValue);
+				getModelElemetExclusions().addAll((Collection<? extends ModelElementExclusion>)newValue);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
-				setDeterministic(((Boolean)newValue).booleanValue());
+				setDeterministic((Boolean)newValue);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				setDefaultStringPool((StringPool)newValue);
+				return;
+			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
+				setModelGeneration((ModelGeneration)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -316,6 +383,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
@@ -333,6 +401,9 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				setDefaultStringPool((StringPool)null);
 				return;
+			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
+				setModelGeneration((ModelGeneration)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -342,6 +413,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
@@ -354,6 +426,8 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 				return deterministic != DETERMINISTIC_EDEFAULT;
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return defaultStringPool != null;
+			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
+				return modelGeneration != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -363,6 +437,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

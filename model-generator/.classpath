@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/mv/project/external/javatuples-1.2/lib/javatuples-1.2.jar"/>
@@ -10,5 +12,6 @@
 	<classpathentry kind="lib" path="/home/magnus/project/external/eclipse/plugins/org.eclipse.emf.ecore.xmi_2.9.1.v20131212-0545.jar"/>
 	<classpathentry kind="lib" path="/home/magnus/project/external/epsilon-1.1_SR1-emf.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="output" path="bin"/>
+<classpathentry combineaccessrules="false" kind="src" path="/uk.ac.york.cs.mv525.modelgen.config.edit/>	
+<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -11,6 +11,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 import uk.ac.york.cs.mv525.modelgen.config.config.*;
 
 /**
@@ -26,7 +28,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.*;
  * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage
  * @generated
  */
-public class ConfigSwitch {
+public class ConfigSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -48,14 +50,16 @@ public class ConfigSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -65,75 +69,109 @@ public class ConfigSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE: {
 				ModelElementOverride modelElementOverride = (ModelElementOverride)theEObject;
-				Object result = caseModelElementOverride(modelElementOverride);
+				T result = caseModelElementOverride(modelElementOverride);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfigPackage.MODEL_CONFIGURATION: {
 				ModelConfiguration modelConfiguration = (ModelConfiguration)theEObject;
-				Object result = caseModelConfiguration(modelConfiguration);
+				T result = caseModelConfiguration(modelConfiguration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfigPackage.MODEL_ELEMENT_EXCLUSION: {
 				ModelElementExclusion modelElementExclusion = (ModelElementExclusion)theEObject;
-				Object result = caseModelElementExclusion(modelElementExclusion);
+				T result = caseModelElementExclusion(modelElementExclusion);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfigPackage.STRING_POOL: {
 				StringPool stringPool = (StringPool)theEObject;
-				Object result = caseStringPool(stringPool);
+				T result = caseStringPool(stringPool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfigPackage.FILE_STRING_POOL: {
 				FileStringPool fileStringPool = (FileStringPool)theEObject;
-				Object result = caseFileStringPool(fileStringPool);
+				T result = caseFileStringPool(fileStringPool);
 				if (result == null) result = caseStringPool(fileStringPool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfigPackage.EMBEDDED_STRING_POOL: {
 				EmbeddedStringPool embeddedStringPool = (EmbeddedStringPool)theEObject;
-				Object result = caseEmbeddedStringPool(embeddedStringPool);
+				T result = caseEmbeddedStringPool(embeddedStringPool);
 				if (result == null) result = caseStringPool(embeddedStringPool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfigPackage.STRING_POOL_ENTRY: {
 				StringPoolEntry stringPoolEntry = (StringPoolEntry)theEObject;
-				Object result = caseStringPoolEntry(stringPoolEntry);
+				T result = caseStringPoolEntry(stringPoolEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfigPackage.REFERENCE_OVERRIDE: {
 				ReferenceOverride referenceOverride = (ReferenceOverride)theEObject;
-				Object result = caseReferenceOverride(referenceOverride);
+				T result = caseReferenceOverride(referenceOverride);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.MODEL_GENERATION: {
+				ModelGeneration modelGeneration = (ModelGeneration)theEObject;
+				T result = caseModelGeneration(modelGeneration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.GENERATOR: {
+				Generator generator = (Generator)theEObject;
+				T result = caseGenerator(generator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.EOL_GENERATOR: {
+				EolGenerator eolGenerator = (EolGenerator)theEObject;
+				T result = caseEolGenerator(eolGenerator);
+				if (result == null) result = caseGenerator(eolGenerator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.RANDOM_GENERATOR: {
+				RandomGenerator randomGenerator = (RandomGenerator)theEObject;
+				T result = caseRandomGenerator(randomGenerator);
+				if (result == null) result = caseGenerator(randomGenerator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.STRATEGY: {
+				Strategy strategy = (Strategy)theEObject;
+				T result = caseStrategy(strategy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.ALWAYS_CREATE_STRATEGY: {
+				AlwaysCreateStrategy alwaysCreateStrategy = (AlwaysCreateStrategy)theEObject;
+				T result = caseAlwaysCreateStrategy(alwaysCreateStrategy);
+				if (result == null) result = caseStrategy(alwaysCreateStrategy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.ALWAYS_RETRIEVE_STRATEGY: {
+				AlwaysRetrieveStrategy alwaysRetrieveStrategy = (AlwaysRetrieveStrategy)theEObject;
+				T result = caseAlwaysRetrieveStrategy(alwaysRetrieveStrategy);
+				if (result == null) result = caseStrategy(alwaysRetrieveStrategy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY: {
+				AlwaysRetrieveOrCreateStrategy alwaysRetrieveOrCreateStrategy = (AlwaysRetrieveOrCreateStrategy)theEObject;
+				T result = caseAlwaysRetrieveOrCreateStrategy(alwaysRetrieveOrCreateStrategy);
+				if (result == null) result = caseStrategy(alwaysRetrieveOrCreateStrategy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -152,7 +190,7 @@ public class ConfigSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseModelElementOverride(ModelElementOverride object) {
+	public T caseModelElementOverride(ModelElementOverride object) {
 		return null;
 	}
 
@@ -167,7 +205,7 @@ public class ConfigSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseModelConfiguration(ModelConfiguration object) {
+	public T caseModelConfiguration(ModelConfiguration object) {
 		return null;
 	}
 
@@ -182,7 +220,7 @@ public class ConfigSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseModelElementExclusion(ModelElementExclusion object) {
+	public T caseModelElementExclusion(ModelElementExclusion object) {
 		return null;
 	}
 
@@ -197,7 +235,7 @@ public class ConfigSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStringPool(StringPool object) {
+	public T caseStringPool(StringPool object) {
 		return null;
 	}
 
@@ -212,7 +250,7 @@ public class ConfigSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFileStringPool(FileStringPool object) {
+	public T caseFileStringPool(FileStringPool object) {
 		return null;
 	}
 
@@ -227,7 +265,7 @@ public class ConfigSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEmbeddedStringPool(EmbeddedStringPool object) {
+	public T caseEmbeddedStringPool(EmbeddedStringPool object) {
 		return null;
 	}
 
@@ -242,7 +280,7 @@ public class ConfigSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStringPoolEntry(StringPoolEntry object) {
+	public T caseStringPoolEntry(StringPoolEntry object) {
 		return null;
 	}
 
@@ -257,7 +295,127 @@ public class ConfigSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReferenceOverride(ReferenceOverride object) {
+	public T caseReferenceOverride(ReferenceOverride object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Generation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Generation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelGeneration(ModelGeneration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGenerator(Generator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEolGenerator(EolGenerator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Random Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Random Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRandomGenerator(RandomGenerator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Strategy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStrategy(Strategy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Always Create Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Always Create Strategy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAlwaysCreateStrategy(AlwaysCreateStrategy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Always Retrieve Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Always Retrieve Strategy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAlwaysRetrieveStrategy(AlwaysRetrieveStrategy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Always Retrieve Or Create Strategy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Always Retrieve Or Create Strategy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAlwaysRetrieveOrCreateStrategy(AlwaysRetrieveOrCreateStrategy object) {
 		return null;
 	}
 
@@ -272,7 +430,8 @@ public class ConfigSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

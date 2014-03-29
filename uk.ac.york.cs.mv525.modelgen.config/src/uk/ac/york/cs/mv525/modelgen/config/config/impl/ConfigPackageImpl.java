@@ -8,19 +8,28 @@ package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy;
+import uk.ac.york.cs.mv525.modelgen.config.config.AlwaysRetrieveOrCreateStrategy;
+import uk.ac.york.cs.mv525.modelgen.config.config.AlwaysRetrieveStrategy;
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigFactory;
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool;
+import uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator;
 import uk.ac.york.cs.mv525.modelgen.config.config.FileStringPool;
+import uk.ac.york.cs.mv525.modelgen.config.config.Generator;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
+import uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride;
+import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
 
@@ -86,6 +95,62 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * @generated
 	 */
 	private EClass referenceOverrideEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modelGenerationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass generatorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eolGeneratorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass randomGeneratorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass strategyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass alwaysCreateStrategyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass alwaysRetrieveStrategyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass alwaysRetrieveOrCreateStrategyEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -252,6 +317,15 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getModelConfiguration_ModelGeneration() {
+		return (EReference)modelConfigurationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModelElementExclusion() {
 		return modelElementExclusionEClass;
 	}
@@ -387,6 +461,150 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getModelGeneration() {
+		return modelGenerationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelGeneration_Fallback() {
+		return (EReference)modelGenerationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelGeneration_Generators() {
+		return (EReference)modelGenerationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelGeneration_Strategy() {
+		return (EReference)modelGenerationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGenerator() {
+		return generatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGenerator_Strategy() {
+		return (EReference)generatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEolGenerator() {
+		return eolGeneratorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEolGenerator_Location() {
+		return (EAttribute)eolGeneratorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRandomGenerator() {
+		return randomGeneratorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStrategy() {
+		return strategyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAlwaysCreateStrategy() {
+		return alwaysCreateStrategyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAlwaysCreateStrategy_Generator() {
+		return (EReference)alwaysCreateStrategyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAlwaysRetrieveStrategy() {
+		return alwaysRetrieveStrategyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAlwaysRetrieveOrCreateStrategy() {
+		return alwaysRetrieveOrCreateStrategyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAlwaysRetrieveOrCreateStrategy_Retriver() {
+		return (EReference)alwaysRetrieveOrCreateStrategyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAlwaysRetrieveOrCreateStrategy_Creator() {
+		return (EReference)alwaysRetrieveOrCreateStrategyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ConfigFactory getConfigFactory() {
 		return (ConfigFactory)getEFactoryInstance();
 	}
@@ -422,6 +640,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEReference(modelConfigurationEClass, MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS);
 		createEAttribute(modelConfigurationEClass, MODEL_CONFIGURATION__DETERMINISTIC);
 		createEReference(modelConfigurationEClass, MODEL_CONFIGURATION__DEFAULT_STRING_POOL);
+		createEReference(modelConfigurationEClass, MODEL_CONFIGURATION__MODEL_GENERATION);
 
 		modelElementExclusionEClass = createEClass(MODEL_ELEMENT_EXCLUSION);
 		createEAttribute(modelElementExclusionEClass, MODEL_ELEMENT_EXCLUSION__NAME);
@@ -443,6 +662,30 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEAttribute(referenceOverrideEClass, REFERENCE_OVERRIDE__NAME);
 		createEAttribute(referenceOverrideEClass, REFERENCE_OVERRIDE__MINIMUM_COUNT);
 		createEAttribute(referenceOverrideEClass, REFERENCE_OVERRIDE__MAXIMUM_COUNT);
+
+		modelGenerationEClass = createEClass(MODEL_GENERATION);
+		createEReference(modelGenerationEClass, MODEL_GENERATION__FALLBACK);
+		createEReference(modelGenerationEClass, MODEL_GENERATION__GENERATORS);
+		createEReference(modelGenerationEClass, MODEL_GENERATION__STRATEGY);
+
+		generatorEClass = createEClass(GENERATOR);
+		createEReference(generatorEClass, GENERATOR__STRATEGY);
+
+		eolGeneratorEClass = createEClass(EOL_GENERATOR);
+		createEAttribute(eolGeneratorEClass, EOL_GENERATOR__LOCATION);
+
+		randomGeneratorEClass = createEClass(RANDOM_GENERATOR);
+
+		strategyEClass = createEClass(STRATEGY);
+
+		alwaysCreateStrategyEClass = createEClass(ALWAYS_CREATE_STRATEGY);
+		createEReference(alwaysCreateStrategyEClass, ALWAYS_CREATE_STRATEGY__GENERATOR);
+
+		alwaysRetrieveStrategyEClass = createEClass(ALWAYS_RETRIEVE_STRATEGY);
+
+		alwaysRetrieveOrCreateStrategyEClass = createEClass(ALWAYS_RETRIEVE_OR_CREATE_STRATEGY);
+		createEReference(alwaysRetrieveOrCreateStrategyEClass, ALWAYS_RETRIEVE_OR_CREATE_STRATEGY__RETRIVER);
+		createEReference(alwaysRetrieveOrCreateStrategyEClass, ALWAYS_RETRIEVE_OR_CREATE_STRATEGY__CREATOR);
 	}
 
 	/**
@@ -468,9 +711,18 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Create type parameters
+
+		// Set bounds for type parameters
+
 		// Add supertypes to classes
 		fileStringPoolEClass.getESuperTypes().add(this.getStringPool());
 		embeddedStringPoolEClass.getESuperTypes().add(this.getStringPool());
+		eolGeneratorEClass.getESuperTypes().add(this.getGenerator());
+		randomGeneratorEClass.getESuperTypes().add(this.getGenerator());
+		alwaysCreateStrategyEClass.getESuperTypes().add(this.getStrategy());
+		alwaysRetrieveStrategyEClass.getESuperTypes().add(this.getStrategy());
+		alwaysRetrieveOrCreateStrategyEClass.getESuperTypes().add(this.getStrategy());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(modelElementOverrideEClass, ModelElementOverride.class, "ModelElementOverride", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -485,14 +737,15 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEReference(getModelConfiguration_ModelElemetExclusions(), this.getModelElementExclusion(), null, "ModelElemetExclusions", null, 0, -1, ModelConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelConfiguration_Deterministic(), ecorePackage.getEBoolean(), "Deterministic", null, 0, 1, ModelConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelConfiguration_DefaultStringPool(), this.getStringPool(), null, "DefaultStringPool", null, 0, 1, ModelConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelConfiguration_ModelGeneration(), this.getModelGeneration(), null, "ModelGeneration", null, 1, 1, ModelConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelElementExclusionEClass, ModelElementExclusion.class, "ModelElementExclusion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getModelElementExclusion_Name(), ecorePackage.getEString(), "Name", null, 0, 1, ModelElementExclusion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(stringPoolEClass, StringPool.class, "StringPool", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(stringPoolEClass, StringPool.class, "StringPool", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStringPool_Name(), ecorePackage.getEString(), "Name", null, 1, 1, StringPool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(stringPoolEClass, this.getStringPoolEntry(), "get", 0, 1);
+		addEOperation(stringPoolEClass, this.getStringPoolEntry(), "get", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fileStringPoolEClass, FileStringPool.class, "FileStringPool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFileStringPool_Location(), ecorePackage.getEString(), "location", null, 0, 1, FileStringPool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -508,6 +761,48 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEAttribute(getReferenceOverride_Name(), ecorePackage.getEString(), "Name", null, 0, 1, ReferenceOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReferenceOverride_MinimumCount(), ecorePackage.getELong(), "MinimumCount", null, 0, 1, ReferenceOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReferenceOverride_MaximumCount(), ecorePackage.getELong(), "MaximumCount", null, 0, 1, ReferenceOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(modelGenerationEClass, ModelGeneration.class, "ModelGeneration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModelGeneration_Fallback(), this.getGenerator(), null, "fallback", null, 1, 1, ModelGeneration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelGeneration_Generators(), this.getGenerator(), null, "generators", null, 0, -1, ModelGeneration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelGeneration_Strategy(), this.getStrategy(), null, "Strategy", null, 1, 1, ModelGeneration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(generatorEClass, Generator.class, "Generator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGenerator_Strategy(), this.getStrategy(), null, "strategy", null, 1, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		EOperation op = addEOperation(generatorEClass, ecorePackage.getEObject(), "create", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEClass(), "mClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(generatorEClass, ecorePackage.getEJavaObject(), "add", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEObject(), "iObject", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEStructuralFeature(), "mAttribute", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(generatorEClass, ecorePackage.getEJavaObject(), "link", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEObject(), "iObjectContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEReference(), "mReference", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(generatorEClass, ecorePackage.getEBoolean(), "before", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(generatorEClass, ecorePackage.getEBoolean(), "after", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(eolGeneratorEClass, EolGenerator.class, "EolGenerator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEolGenerator_Location(), ecorePackage.getEString(), "location", null, 0, 1, EolGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(randomGeneratorEClass, RandomGenerator.class, "RandomGenerator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(strategyEClass, Strategy.class, "Strategy", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(strategyEClass, ecorePackage.getEObject(), "retrieveObject", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEClass(), "mType", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(alwaysCreateStrategyEClass, AlwaysCreateStrategy.class, "AlwaysCreateStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAlwaysCreateStrategy_Generator(), this.getGenerator(), null, "generator", null, 1, 1, AlwaysCreateStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(alwaysRetrieveStrategyEClass, AlwaysRetrieveStrategy.class, "AlwaysRetrieveStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(alwaysRetrieveOrCreateStrategyEClass, AlwaysRetrieveOrCreateStrategy.class, "AlwaysRetrieveOrCreateStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAlwaysRetrieveOrCreateStrategy_Retriver(), this.getAlwaysRetrieveStrategy(), null, "retriver", null, 1, 1, AlwaysRetrieveOrCreateStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAlwaysRetrieveOrCreateStrategy_Creator(), this.getAlwaysCreateStrategy(), null, "creator", null, 1, 1, AlwaysRetrieveOrCreateStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

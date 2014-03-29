@@ -19,16 +19,16 @@ import uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomGeneratorImpl;
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
-import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
 
-public class DefaultOrchestrationTester extends FileTester {
-
+public class GenerationFromConfigOnlyTester extends FileTester {
+	
 	String programLocation = dataDir +"test.eol";
 	String metaModelLocation = dataDir + "orgchart.ecore";
 	String location = dataDir +"testmodels.modelx";
-	String configLocation = dataDir + "test.config";
+	String configLocation = dataDir + "default_generator.config";
 	
 	@Before
 	public void setUp() throws Exception {
@@ -42,39 +42,25 @@ public class DefaultOrchestrationTester extends FileTester {
 			f.delete();
 		}
 	}	
-	
+
 	@Test
 	public void test_generation() throws IOException {
-		
 		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
 		
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mmIndex);
 		
 		ModelInstance model = new ModelInstance(location);
-				
-		RandomGenerator rand = new RandomGeneratorImpl(model, mmIndex);
-		rand.setStrategy(new AlwaysCreateStrategyImpl(rand));
-		EolGenerator eol = new EolGeneratorImpl(programLocation, model, mmIndex);
-		eol.setStrategy(new AlwaysCreateStrategyImpl(eol));
-		
-		ModelGeneration generator = new ModelGenerationImpl(rand);
-		generator.addGenerator(eol);
-		
-		DefaultOrchastration defaultOrchastration = new DefaultOrchastration();
-		defaultOrchastration.addConfiguration(cIndex);
-		defaultOrchastration.addGenerator(generator);
-		defaultOrchastration.addModel(model);
-		
 		long precount = model.getCount();
-		defaultOrchastration.create();
+
+		cIndex.create(model);
 		
 		long postcount = model.getCount();
 		
 		assertNotSame(precount, postcount);		
+		
 	}
 	
-	@Test
 	public void test_saving_to_file() throws IOException {
 		
 		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
@@ -84,23 +70,10 @@ public class DefaultOrchestrationTester extends FileTester {
 		
 		ModelInstance model = new ModelInstance(location);
 				
-		RandomGenerator rand = new RandomGeneratorImpl(model, mmIndex);
-        rand.setStrategy(new AlwaysCreateStrategyImpl(rand));
-		EolGenerator eol = new EolGeneratorImpl(programLocation, model, mmIndex);
-		eol.setStrategy(new AlwaysCreateStrategyImpl(eol));
-		
-		ModelGeneration generator = new ModelGenerationImpl(rand);
-		//generator.setFallback();
-		generator.addGenerator(eol);
-		
-		DefaultOrchastration defaultOrchastration = new DefaultOrchastration();
-		defaultOrchastration.addConfiguration(cIndex);
-		defaultOrchastration.addGenerator(generator);
-		defaultOrchastration.addModel(model);
-				
-		defaultOrchastration.create();
+		cIndex.create(model);
 		
 		model.save();
 		
 	}
+
 }

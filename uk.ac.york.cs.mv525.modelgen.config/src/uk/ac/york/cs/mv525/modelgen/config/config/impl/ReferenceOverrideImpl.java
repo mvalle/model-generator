@@ -100,6 +100,7 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.REFERENCE_OVERRIDE;
 	}
@@ -172,14 +173,15 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.REFERENCE_OVERRIDE__NAME:
 				return getName();
 			case ConfigPackage.REFERENCE_OVERRIDE__MINIMUM_COUNT:
-				return new Long(getMinimumCount());
+				return getMinimumCount();
 			case ConfigPackage.REFERENCE_OVERRIDE__MAXIMUM_COUNT:
-				return new Long(getMaximumCount());
+				return getMaximumCount();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -189,16 +191,17 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.REFERENCE_OVERRIDE__NAME:
 				setName((String)newValue);
 				return;
 			case ConfigPackage.REFERENCE_OVERRIDE__MINIMUM_COUNT:
-				setMinimumCount(((Long)newValue).longValue());
+				setMinimumCount((Long)newValue);
 				return;
 			case ConfigPackage.REFERENCE_OVERRIDE__MAXIMUM_COUNT:
-				setMaximumCount(((Long)newValue).longValue());
+				setMaximumCount((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -209,6 +212,7 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.REFERENCE_OVERRIDE__NAME:
@@ -229,6 +233,7 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.REFERENCE_OVERRIDE__NAME:
@@ -246,6 +251,7 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

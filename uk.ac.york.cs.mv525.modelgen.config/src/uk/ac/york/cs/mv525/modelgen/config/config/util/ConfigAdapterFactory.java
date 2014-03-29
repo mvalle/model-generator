@@ -52,6 +52,7 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,33 +69,74 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConfigSwitch modelSwitch =
-		new ConfigSwitch() {
-			public Object caseModelElementOverride(ModelElementOverride object) {
+	protected ConfigSwitch<Adapter> modelSwitch =
+		new ConfigSwitch<Adapter>() {
+			@Override
+			public Adapter caseModelElementOverride(ModelElementOverride object) {
 				return createModelElementOverrideAdapter();
 			}
-			public Object caseModelConfiguration(ModelConfiguration object) {
+			@Override
+			public Adapter caseModelConfiguration(ModelConfiguration object) {
 				return createModelConfigurationAdapter();
 			}
-			public Object caseModelElementExclusion(ModelElementExclusion object) {
+			@Override
+			public Adapter caseModelElementExclusion(ModelElementExclusion object) {
 				return createModelElementExclusionAdapter();
 			}
-			public Object caseStringPool(StringPool object) {
+			@Override
+			public Adapter caseStringPool(StringPool object) {
 				return createStringPoolAdapter();
 			}
-			public Object caseFileStringPool(FileStringPool object) {
+			@Override
+			public Adapter caseFileStringPool(FileStringPool object) {
 				return createFileStringPoolAdapter();
 			}
-			public Object caseEmbeddedStringPool(EmbeddedStringPool object) {
+			@Override
+			public Adapter caseEmbeddedStringPool(EmbeddedStringPool object) {
 				return createEmbeddedStringPoolAdapter();
 			}
-			public Object caseStringPoolEntry(StringPoolEntry object) {
+			@Override
+			public Adapter caseStringPoolEntry(StringPoolEntry object) {
 				return createStringPoolEntryAdapter();
 			}
-			public Object caseReferenceOverride(ReferenceOverride object) {
+			@Override
+			public Adapter caseReferenceOverride(ReferenceOverride object) {
 				return createReferenceOverrideAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter caseModelGeneration(ModelGeneration object) {
+				return createModelGenerationAdapter();
+			}
+			@Override
+			public Adapter caseGenerator(Generator object) {
+				return createGeneratorAdapter();
+			}
+			@Override
+			public Adapter caseEolGenerator(EolGenerator object) {
+				return createEolGeneratorAdapter();
+			}
+			@Override
+			public Adapter caseRandomGenerator(RandomGenerator object) {
+				return createRandomGeneratorAdapter();
+			}
+			@Override
+			public Adapter caseStrategy(Strategy object) {
+				return createStrategyAdapter();
+			}
+			@Override
+			public Adapter caseAlwaysCreateStrategy(AlwaysCreateStrategy object) {
+				return createAlwaysCreateStrategyAdapter();
+			}
+			@Override
+			public Adapter caseAlwaysRetrieveStrategy(AlwaysRetrieveStrategy object) {
+				return createAlwaysRetrieveStrategyAdapter();
+			}
+			@Override
+			public Adapter caseAlwaysRetrieveOrCreateStrategy(AlwaysRetrieveOrCreateStrategy object) {
+				return createAlwaysRetrieveOrCreateStrategyAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -107,8 +149,9 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 
@@ -221,6 +264,118 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createReferenceOverrideAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration <em>Model Generation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration
+	 * @generated
+	 */
+	public Adapter createModelGenerationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator <em>Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Generator
+	 * @generated
+	 */
+	public Adapter createGeneratorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator <em>Eol Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator
+	 * @generated
+	 */
+	public Adapter createEolGeneratorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator <em>Random Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator
+	 * @generated
+	 */
+	public Adapter createRandomGeneratorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.Strategy <em>Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Strategy
+	 * @generated
+	 */
+	public Adapter createStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy <em>Always Create Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy
+	 * @generated
+	 */
+	public Adapter createAlwaysCreateStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.AlwaysRetrieveStrategy <em>Always Retrieve Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.AlwaysRetrieveStrategy
+	 * @generated
+	 */
+	public Adapter createAlwaysRetrieveStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.AlwaysRetrieveOrCreateStrategy <em>Always Retrieve Or Create Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.AlwaysRetrieveOrCreateStrategy
+	 * @generated
+	 */
+	public Adapter createAlwaysRetrieveOrCreateStrategyAdapter() {
 		return null;
 	}
 
