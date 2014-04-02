@@ -18,6 +18,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
+import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl;
 import uk.ac.york.cs.mv525.modelgen.index.Index;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.InvalidConfigurationException;
@@ -38,10 +39,14 @@ public class Configuration implements Index {
 	public Configuration(ModelConfiguration config, MetaModelIndex mmIndex) {
 		metaModel = mmIndex;
 		this.config = config;
-
+		
 		init();
 	}
 
+	public void setMetaModel(String metaModelLocation) {
+		config.setMetaModelLocation(metaModelLocation);
+		metaModel = ((ModelConfigurationImpl)config).getMM();
+	}
 	public void setMetaModel(MetaModelIndex mmIndex) {
 		metaModel = mmIndex;
 		init();
@@ -62,6 +67,7 @@ public class Configuration implements Index {
 
 				exclude(excl.getName());
 			} else {
+				System.err.println(excl.getName());
 				throw new InvalidConfigurationException();
 			}
 		}
@@ -229,6 +235,10 @@ public class Configuration implements Index {
 	}
 
 	public EObject getNext() {
+		if (getNextState == null) {
+			initialiseGetNextState();
+		}
+		
 		String modelName = getNextState.next();
 		if (modelName != null) {
 			return metaModel.get(modelName);
@@ -298,8 +308,57 @@ public class Configuration implements Index {
 	
 	
 
+	public void create(String outputLocation) {
+		ModelGeneration generator = config.getModelGeneration();
+		config.setOutputModelLocation(outputLocation);
+		
+		generator.before();
+		
+		/* Start by creating the minimum amount of classes. */
+		
+		EClass mClass = (EClass) getNext();
+		
+		while(mClass != null) {
+			EObject iObject = generator.create(mClass);
+			
+			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
+				if (feature.getEType() instanceof EClass ) {
+					//generator.link(iObject, (EReference) feature);
+				} else {				
+					generator.add(iObject, feature);				
+				}
+			}			
+
+			mClass = (EClass) getNext();
+		}
+		
+		/* Finish by linking the objects together. 
+		 * This section may create more objects, 
+		 * depending on the strategy used. */
+		
+		resetState();
+		mClass = (EClass) getNext();
+		
+		while(mClass != null) {
+			EObject iObject = ((ModelConfigurationImpl)config).getModel().get(mClass.getName());
+			
+			if (iObject != null) {
+				for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
+					if (feature.getEType() instanceof EClass ) {
+						generator.link(iObject, (EReference) feature);
+					}
+				}
+			}
+			mClass = (EClass) getNext();
+		}
+		
+		
+	}
+	
+	@Deprecated
 	public void create(ModelInstance model) {
 		ModelGeneration generator = config.getModelGeneration();
+		((ModelConfigurationImpl)config).iModel = model;
 		
 		generator.before();
 		
@@ -331,12 +390,13 @@ public class Configuration implements Index {
 		while(mClass != null) {
 			EObject iObject = model.get(mClass.getName());
 			
-			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
-				if (feature.getEType() instanceof EClass ) {
-					generator.link(iObject, (EReference) feature);
+			if (iObject != null) {
+				for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
+					if (feature.getEType() instanceof EClass ) {
+						generator.link(iObject, (EReference) feature);
+					}
 				}
 			}
-			
 			mClass = (EClass) getNext();
 		}
 		

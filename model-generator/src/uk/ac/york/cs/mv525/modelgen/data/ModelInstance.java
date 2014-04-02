@@ -14,6 +14,9 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 public class ModelInstance {
 
+	public ModelInstance() {
+		super();
+	}
 	HashMap<String, ArrayList<EObject>> iIndex; // Index of the model elements
 	
 	private Resource resource;

@@ -100,15 +100,6 @@ public interface ConfigFactory extends EFactory {
 	ModelGeneration createModelGeneration();
 
 	/**
-	 * Returns a new object of class '<em>Eol Generator</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Eol Generator</em>'.
-	 * @generated
-	 */
-	EolGenerator createEolGenerator();
-
-	/**
 	 * Returns a new object of class '<em>Random Generator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -143,6 +134,15 @@ public interface ConfigFactory extends EFactory {
 	 * @generated
 	 */
 	AlwaysRetrieveOrCreateStrategy createAlwaysRetrieveOrCreateStrategy();
+
+	/**
+	 * Returns a new object of class '<em>Eol Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Eol Generator</em>'.
+	 * @generated
+	 */
+	EolGenerator createEolGenerator();
 
 	/**
 	 * Returns the package supported by this factory.

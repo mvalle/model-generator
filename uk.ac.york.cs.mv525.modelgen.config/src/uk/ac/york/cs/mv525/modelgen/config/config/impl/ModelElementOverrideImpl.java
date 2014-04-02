@@ -192,6 +192,15 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOY
+	 */
+	public void addStringPool(StringPool stringPool) {
+		getStringPools().add(stringPool);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

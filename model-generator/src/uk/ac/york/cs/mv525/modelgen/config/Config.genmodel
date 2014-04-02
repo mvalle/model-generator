@@ -2,7 +2,7 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/uk.ac.york.cs.mv525.modelgen.config/src" modelPluginID="uk.ac.york.cs.mv525.modelgen.config"
     templateDirectory="" modelName="Config" updateClasspath="false" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false">
+    complianceLevel="7.0" copyrightFields="false">
   <foreignModel>Config.ecore</foreignModel>
   <genPackages prefix="Config" basePackage="uk.ac.york.cs.mv525.modelgen.config" disposableProviderFactory="true"
       ecorePackage="Config.ecore#/">

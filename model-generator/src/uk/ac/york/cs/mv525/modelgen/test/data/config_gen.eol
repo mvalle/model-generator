@@ -1,0 +1,8 @@
+operation createStringPool() : StringPool {
+	var pool : StringPool = new EmbeddedStringPool;
+	var entry : StringPoolEntry = new StringPoolEntry;
+	entry.string = "Test String";
+	pool.Entries.add(entry);
+	
+	return pool;	
+}

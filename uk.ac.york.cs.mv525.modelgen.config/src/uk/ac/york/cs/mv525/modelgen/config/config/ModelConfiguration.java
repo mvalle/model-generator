@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#isDeterministic <em>Deterministic</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getDefaultStringPool <em>Default String Pool</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getModelGeneration <em>Model Generation</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getMetaModelLocation <em>Meta Model Location</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getOutputModelLocation <em>Output Model Location</em>}</li>
  * </ul>
  * </p>
  *
@@ -155,7 +157,7 @@ public interface ModelConfiguration extends EObject {
 	 * @return the value of the '<em>Model Generation</em>' containment reference.
 	 * @see #setModelGeneration(ModelGeneration)
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_ModelGeneration()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ModelGeneration getModelGeneration();
@@ -169,5 +171,73 @@ public interface ModelConfiguration extends EObject {
 	 * @generated
 	 */
 	void setModelGeneration(ModelGeneration value);
+
+	/**
+	 * Returns the value of the '<em><b>Meta Model Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Meta Model Location</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Meta Model Location</em>' attribute.
+	 * @see #setMetaModelLocation(String)
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_MetaModelLocation()
+	 * @model
+	 * @generated
+	 */
+	String getMetaModelLocation();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getMetaModelLocation <em>Meta Model Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Meta Model Location</em>' attribute.
+	 * @see #getMetaModelLocation()
+	 * @generated
+	 */
+	void setMetaModelLocation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Output Model Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Output Model Location</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Output Model Location</em>' attribute.
+	 * @see #setOutputModelLocation(String)
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_OutputModelLocation()
+	 * @model
+	 * @generated
+	 */
+	String getOutputModelLocation();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getOutputModelLocation <em>Output Model Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Output Model Location</em>' attribute.
+	 * @see #getOutputModelLocation()
+	 * @generated
+	 */
+	void setOutputModelLocation(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addModelElementOverride(ModelElementOverride modelElementOverride);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addModelElementExclusion(ModelElementExclusion modelElementExclusion);
 
 } // ModelConfiguration

@@ -6,6 +6,7 @@
  */
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 
+import java.io.IOException;
 import java.math.BigInteger;
 
 import java.util.Collection;
@@ -30,6 +31,9 @@ import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
+import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
+import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,6 +48,8 @@ import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#isDeterministic <em>Deterministic</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getDefaultStringPool <em>Default String Pool</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getModelGeneration <em>Model Generation</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getMetaModelLocation <em>Meta Model Location</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getOutputModelLocation <em>Output Model Location</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,6 +136,50 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 */
 	protected ModelGeneration modelGeneration;
 
+	/**
+	 * The default value of the '{@link #getMetaModelLocation() <em>Meta Model Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetaModelLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String META_MODEL_LOCATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMetaModelLocation() <em>Meta Model Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetaModelLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String metaModelLocation = META_MODEL_LOCATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOutputModelLocation() <em>Output Model Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputModelLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OUTPUT_MODEL_LOCATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOutputModelLocation() <em>Output Model Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputModelLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String outputModelLocation = OUTPUT_MODEL_LOCATION_EDEFAULT;
+
+	/* Forgive me Code God, for I have sinned. */
+	static MetaModelIndex mIndex;
+	public static ModelInstance iModel;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -306,6 +356,91 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getMetaModelLocation() {
+		return metaModelLocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setMetaModelLocation(String newMetaModelLocation) {
+		String oldMetaModelLocation = metaModelLocation;
+		metaModelLocation = newMetaModelLocation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION, oldMetaModelLocation, metaModelLocation));
+	
+		parseMM();
+	}
+	// TODO: remove temproary fix
+	public MetaModelIndex getMM() {
+		return mIndex;
+	}
+	private void parseMM() {
+		if (mIndex != null) {
+			return;
+		}
+		try {
+			 mIndex = MetaModelParser.parse(getMetaModelLocation());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOutputModelLocation() {
+		return outputModelLocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setOutputModelLocation(String newOutputModelLocation) {
+		String oldOutputModelLocation = outputModelLocation;
+		outputModelLocation = newOutputModelLocation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION, oldOutputModelLocation, outputModelLocation));
+		
+		initModelInstance();	
+	}
+
+	private void initModelInstance() {
+		if(iModel == null) {
+			iModel = new ModelInstance(getOutputModelLocation());
+		}
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void addModelElementOverride(ModelElementOverride modelElementOverride) {
+		getModelElementOverrides().add(modelElementOverride);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void addModelElementExclusion(ModelElementExclusion modelElementExclusion) {
+		getModelElemetExclusions().add(modelElementExclusion);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -341,6 +476,10 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 				return getDefaultStringPool();
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
 				return getModelGeneration();
+			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
+				return getMetaModelLocation();
+			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
+				return getOutputModelLocation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -374,6 +513,12 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
 				setModelGeneration((ModelGeneration)newValue);
 				return;
+			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
+				setMetaModelLocation((String)newValue);
+				return;
+			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
+				setOutputModelLocation((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -404,6 +549,12 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
 				setModelGeneration((ModelGeneration)null);
 				return;
+			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
+				setMetaModelLocation(META_MODEL_LOCATION_EDEFAULT);
+				return;
+			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
+				setOutputModelLocation(OUTPUT_MODEL_LOCATION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -428,6 +579,10 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 				return defaultStringPool != null;
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
 				return modelGeneration != null;
+			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
+				return META_MODEL_LOCATION_EDEFAULT == null ? metaModelLocation != null : !META_MODEL_LOCATION_EDEFAULT.equals(metaModelLocation);
+			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
+				return OUTPUT_MODEL_LOCATION_EDEFAULT == null ? outputModelLocation != null : !OUTPUT_MODEL_LOCATION_EDEFAULT.equals(outputModelLocation);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -446,8 +601,16 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 		result.append(totalMinimumCount);
 		result.append(", Deterministic: ");
 		result.append(deterministic);
+		result.append(", MetaModelLocation: ");
+		result.append(metaModelLocation);
+		result.append(", OutputModelLocation: ");
+		result.append(outputModelLocation);
 		result.append(')');
 		return result.toString();
+	}
+
+	public ModelInstance getModel() {
+		return iModel;
 	}
 
 } //ModelConfigurationImpl

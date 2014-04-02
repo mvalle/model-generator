@@ -26,9 +26,12 @@ import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 public class GenerationFromConfigOnlyTester extends FileTester {
 	
 	String programLocation = dataDir +"test.eol";
-	String metaModelLocation = dataDir + "orgchart.ecore";
-	String location = dataDir +"testmodels.modelx";
-	String configLocation = dataDir + "default_generator.config";
+	//String metaModelLocation = dataDir + "orgchart.ecore";
+	String metaModelLocation = dataDir + "Config.ecore";
+	//String location = dataDir +"testmodels.modelx";
+	String location = dataDir +"testmodels.config";
+	//String configLocation = dataDir + "default_generator.config";
+	String configLocation = dataDir + "model.config";
 	
 	@Before
 	public void setUp() throws Exception {
@@ -45,19 +48,19 @@ public class GenerationFromConfigOnlyTester extends FileTester {
 
 	@Test
 	public void test_generation() throws IOException {
-		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
+		//MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
 		
 		Configuration cIndex = ConfigParser.parse(configLocation);
-		cIndex.setMetaModel(mmIndex);
+		cIndex.setMetaModel(metaModelLocation);
 		
-		ModelInstance model = new ModelInstance(location);
-		long precount = model.getCount();
+		//ModelInstance model = new ModelInstance(location);
+		//long precount = model.getCount();
 
-		cIndex.create(model);
+		cIndex.create(location);
 		
-		long postcount = model.getCount();
+		//long postcount = model.getCount();
 		
-		assertNotSame(precount, postcount);		
+		//assertNotSame(precount, postcount);		
 		
 	}
 	

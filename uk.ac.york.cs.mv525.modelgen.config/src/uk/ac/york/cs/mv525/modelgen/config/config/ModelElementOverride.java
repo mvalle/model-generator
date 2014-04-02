@@ -115,4 +115,12 @@ public interface ModelElementOverride extends EObject {
 	 */
 	EList<ReferenceOverride> getReferences();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addStringPool(StringPool stringPool);
+
 } // ModelElementOverride

@@ -18,11 +18,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.Generator;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
@@ -36,7 +38,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
  * <ul>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl#getFallback <em>Fallback</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl#getGenerators <em>Generators</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl#getStrategy <em>Strategy</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl#getDefaultStrategy <em>Default Strategy</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,7 +46,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
  */
 public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration {
 	/**
-	 * The cached value of the '{@link #getFallback() <em>Fallback</em>}' containment reference.
+	 * The cached value of the '{@link #getFallback() <em>Fallback</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFallback()
@@ -54,7 +56,7 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	protected Generator fallback;
 
 	/**
-	 * The cached value of the '{@link #getGenerators() <em>Generators</em>}' containment reference list.
+	 * The cached value of the '{@link #getGenerators() <em>Generators</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGenerators()
@@ -64,14 +66,14 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	protected EList<Generator> generators;
 
 	/**
-	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' containment reference.
+	 * The cached value of the '{@link #getDefaultStrategy() <em>Default Strategy</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStrategy()
+	 * @see #getDefaultStrategy()
 	 * @generated
 	 * @ordered
 	 */
-	protected Strategy strategy;
+	protected Strategy defaultStrategy;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,6 +105,14 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * @generated
 	 */
 	public Generator getFallback() {
+		if (fallback != null && fallback.eIsProxy()) {
+			InternalEObject oldFallback = (InternalEObject)fallback;
+			fallback = (Generator)eResolveProxy(oldFallback);
+			if (fallback != oldFallback) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.MODEL_GENERATION__FALLBACK, oldFallback, fallback));
+			}
+		}
 		return fallback;
 	}
 
@@ -111,14 +121,8 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFallback(Generator newFallback, NotificationChain msgs) {
-		Generator oldFallback = fallback;
-		fallback = newFallback;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_GENERATION__FALLBACK, oldFallback, newFallback);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public Generator basicGetFallback() {
+		return fallback;
 	}
 
 	/**
@@ -127,19 +131,16 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 * @generated
 	 */
 	public void setFallback(Generator newFallback) {
-		if (newFallback != fallback) {
-			NotificationChain msgs = null;
-			if (fallback != null)
-				msgs = ((InternalEObject)fallback).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_GENERATION__FALLBACK, null, msgs);
-			if (newFallback != null)
-				msgs = ((InternalEObject)newFallback).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_GENERATION__FALLBACK, null, msgs);
-			msgs = basicSetFallback(newFallback, msgs);
-			if (msgs != null) msgs.dispatch();
+		Generator oldFallback = fallback;
+		fallback = newFallback;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_GENERATION__FALLBACK, oldFallback, fallback));
+	
+		// TODO : Check overrides
+		if (fallback.getStrategy() == null) {
+			fallback.setStrategy(getDefaultStrategy());
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_GENERATION__FALLBACK, newFallback, newFallback));
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -147,75 +148,56 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	 */
 	public EList<Generator> getGenerators() {
 		if (generators == null) {
-			generators = new EObjectContainmentEList<Generator>(Generator.class, this, ConfigPackage.MODEL_GENERATION__GENERATORS);
+			generators = new EObjectResolvingEList<Generator>(Generator.class, this, ConfigPackage.MODEL_GENERATION__GENERATORS);
 		}
 		return generators;
 	}
 
-	public void addGenerator(Generator gen) {		
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Strategy getDefaultStrategy() {
+		if (defaultStrategy != null && defaultStrategy.eIsProxy()) {
+			InternalEObject oldDefaultStrategy = (InternalEObject)defaultStrategy;
+			defaultStrategy = (Strategy)eResolveProxy(oldDefaultStrategy);
+			if (defaultStrategy != oldDefaultStrategy) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.MODEL_GENERATION__DEFAULT_STRATEGY, oldDefaultStrategy, defaultStrategy));
+			}
+		}
+		return defaultStrategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Strategy basicGetDefaultStrategy() {
+		return defaultStrategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultStrategy(Strategy newDefaultStrategy) {
+		Strategy oldDefaultStrategy = defaultStrategy;
+		defaultStrategy = newDefaultStrategy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_GENERATION__DEFAULT_STRATEGY, oldDefaultStrategy, defaultStrategy));
+	}
+
+	public void addGenerator(Generator gen) {
+		if(gen.getStrategy() == null) {
+			gen.setStrategy(defaultStrategy);
+		}
+		
 		getGenerators().add(gen);
 	}
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Strategy getStrategy() {
-		return strategy;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetStrategy(Strategy newStrategy, NotificationChain msgs) {
-		Strategy oldStrategy = strategy;
-		strategy = newStrategy;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_GENERATION__STRATEGY, oldStrategy, newStrategy);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStrategy(Strategy newStrategy) {
-		if (newStrategy != strategy) {
-			NotificationChain msgs = null;
-			if (strategy != null)
-				msgs = ((InternalEObject)strategy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_GENERATION__STRATEGY, null, msgs);
-			if (newStrategy != null)
-				msgs = ((InternalEObject)newStrategy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_GENERATION__STRATEGY, null, msgs);
-			msgs = basicSetStrategy(newStrategy, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_GENERATION__STRATEGY, newStrategy, newStrategy));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ConfigPackage.MODEL_GENERATION__FALLBACK:
-				return basicSetFallback(null, msgs);
-			case ConfigPackage.MODEL_GENERATION__GENERATORS:
-				return ((InternalEList<?>)getGenerators()).basicRemove(otherEnd, msgs);
-			case ConfigPackage.MODEL_GENERATION__STRATEGY:
-				return basicSetStrategy(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -225,11 +207,13 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_GENERATION__FALLBACK:
-				return getFallback();
+				if (resolve) return getFallback();
+				return basicGetFallback();
 			case ConfigPackage.MODEL_GENERATION__GENERATORS:
 				return getGenerators();
-			case ConfigPackage.MODEL_GENERATION__STRATEGY:
-				return getStrategy();
+			case ConfigPackage.MODEL_GENERATION__DEFAULT_STRATEGY:
+				if (resolve) return getDefaultStrategy();
+				return basicGetDefaultStrategy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -250,8 +234,8 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 				getGenerators().clear();
 				getGenerators().addAll((Collection<? extends Generator>)newValue);
 				return;
-			case ConfigPackage.MODEL_GENERATION__STRATEGY:
-				setStrategy((Strategy)newValue);
+			case ConfigPackage.MODEL_GENERATION__DEFAULT_STRATEGY:
+				setDefaultStrategy((Strategy)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -271,8 +255,8 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 			case ConfigPackage.MODEL_GENERATION__GENERATORS:
 				getGenerators().clear();
 				return;
-			case ConfigPackage.MODEL_GENERATION__STRATEGY:
-				setStrategy((Strategy)null);
+			case ConfigPackage.MODEL_GENERATION__DEFAULT_STRATEGY:
+				setDefaultStrategy((Strategy)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -290,8 +274,8 @@ public class ModelGenerationImpl extends EObjectImpl implements ModelGeneration 
 				return fallback != null;
 			case ConfigPackage.MODEL_GENERATION__GENERATORS:
 				return generators != null && !generators.isEmpty();
-			case ConfigPackage.MODEL_GENERATION__STRATEGY:
-				return strategy != null;
+			case ConfigPackage.MODEL_GENERATION__DEFAULT_STRATEGY:
+				return defaultStrategy != null;
 		}
 		return super.eIsSet(featureID);
 	}

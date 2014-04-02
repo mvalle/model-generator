@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * <ul>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration#getFallback <em>Fallback</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration#getGenerators <em>Generators</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration#getStrategy <em>Strategy</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration#getDefaultStrategy <em>Default Strategy</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,33 +29,33 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public interface ModelGeneration extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Fallback</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Fallback</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Fallback</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Fallback</em>' containment reference.
+	 * @return the value of the '<em>Fallback</em>' reference.
 	 * @see #setFallback(Generator)
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelGeneration_Fallback()
-	 * @model containment="true" required="true"
+	 * @model
 	 * @generated
 	 */
 	Generator getFallback();
 
 	/**
-	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration#getFallback <em>Fallback</em>}' containment reference.
+	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration#getFallback <em>Fallback</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fallback</em>' containment reference.
+	 * @param value the new value of the '<em>Fallback</em>' reference.
 	 * @see #getFallback()
 	 * @generated
 	 */
 	void setFallback(Generator value);
 
 	/**
-	 * Returns the value of the '<em><b>Generators</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Generators</b></em>' reference list.
 	 * The list contents are of type {@link uk.ac.york.cs.mv525.modelgen.config.config.Generator}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -63,38 +63,38 @@ public interface ModelGeneration extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Generators</em>' containment reference list.
+	 * @return the value of the '<em>Generators</em>' reference list.
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelGeneration_Generators()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	EList<Generator> getGenerators();
 
 	/**
-	 * Returns the value of the '<em><b>Strategy</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Default Strategy</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Strategy</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Default Strategy</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Strategy</em>' containment reference.
-	 * @see #setStrategy(Strategy)
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelGeneration_Strategy()
-	 * @model containment="true" required="true"
+	 * @return the value of the '<em>Default Strategy</em>' reference.
+	 * @see #setDefaultStrategy(Strategy)
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelGeneration_DefaultStrategy()
+	 * @model
 	 * @generated
 	 */
-	Strategy getStrategy();
+	Strategy getDefaultStrategy();
 
 	/**
-	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration#getStrategy <em>Strategy</em>}' containment reference.
+	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration#getDefaultStrategy <em>Default Strategy</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Strategy</em>' containment reference.
-	 * @see #getStrategy()
+	 * @param value the new value of the '<em>Default Strategy</em>' reference.
+	 * @see #getDefaultStrategy()
 	 * @generated
 	 */
-	void setStrategy(Strategy value);
+	void setDefaultStrategy(Strategy value);
 
 	void addGenerator(Generator gen);
 

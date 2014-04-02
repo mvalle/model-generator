@@ -6,11 +6,13 @@ import java.io.IOException;
 import java.util.Collections;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -22,6 +24,7 @@ import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator;
+import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.index.EolIndex;
@@ -29,9 +32,8 @@ import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.EolParser;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Eol Generator</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Eol Generator</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -44,14 +46,16 @@ import uk.ac.york.cs.mv525.modelgen.parse.EolParser;
  */
 public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
 	protected EolGeneratorImpl() {
 		super();
+		iModel = ModelConfigurationImpl.iModel;
+		mIndex = ModelConfigurationImpl.mIndex;
 	}
-	
+
 	EFactory iClassGenerator;
 	EolIndex opIndex;
 	MetaModelIndex mIndex;
@@ -60,8 +64,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 
 	/**
 	 * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLocation()
 	 * @generated
 	 * @ordered
@@ -70,36 +73,62 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 
 	/**
 	 * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLocation()
 	 * @generated
 	 * @ordered
 	 */
 	protected String location = LOCATION_EDEFAULT;
 
-	public EolGeneratorImpl(String programLocation, ModelInstance modelInstance,
-			MetaModelIndex metaModel) throws IOException {
+	public EolGeneratorImpl(String programLocation,
+			ModelInstance modelInstance, MetaModelIndex metaModel)
+			throws IOException {
 		super();
-		
+
 		mIndex = metaModel;
 		iModel = modelInstance;
 		iClassGenerator = mIndex.getEPackage().getEFactoryInstance();
-
-		EolParser parser = new EolParser(iModel.getResource(),
-				mIndex.getEPackage());
-		opIndex = parser.parse(programLocation);
-		
+		System.out.println("ASDFASDFASDf");
 		setLocation(programLocation);
+
 	}
 	
+	private EFactory getIClassGenerator() {
+		if (iClassGenerator == null) {
+			iClassGenerator = mIndex.getEPackage().getEFactoryInstance();
+		}
+		return iClassGenerator;
+	}
+
+	private void parse() {
+
+		if (iModel == null) {
+			System.err.println("EolGenerator::parse model instance is null");
+			return;
+		}
+
+		if (mIndex == null) {
+			System.err
+					.println("EolGenerator::parse metamodel instance is null");
+			return;
+		}
+
+		try {
+			EolParser parser = new EolParser(iModel.getResource(),
+					mIndex.getEPackage());
+			opIndex = parser.parse(getLocation());
+		} catch (IOException e) {
+			System.err.print(e.getMessage());
+		}
+
+	}
+
 	public void setStrategy(Strategy s) {
 		strategy = s;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -108,8 +137,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getLocation() {
@@ -117,20 +145,23 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
 	public void setLocation(String newLocation) {
 		String oldLocation = location;
 		location = newLocation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EOL_GENERATOR__LOCATION, oldLocation, location));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ConfigPackage.EOL_GENERATOR__LOCATION, oldLocation,
+					location));
+		parse();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public EObject create(EClass mClass) {
@@ -138,32 +169,32 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 			EObject iObject;
 			if (opIndex.hasConstructor(mClass)) {
 				EolOperation constructOp = opIndex.getConstructor(mClass);
-				iObject = (EObject) constructOp.execute(null, Collections.emptyList(),
-						opIndex.getEolContext());
-				
-			}
-			else {
-				iObject = iClassGenerator.create(mClass);
+				iObject = (EObject) constructOp.execute(null,
+						Collections.emptyList(), opIndex.getEolContext());
 
-			EolOperation createOp = opIndex.get(mClass.getName());
-			if (createOp != null) {
-				createOp.execute(iObject, Collections.emptyList(),
-						opIndex.getEolContext());
-			}
+			} else {
+								
+				iObject = getIClassGenerator().create(mClass);
+
+				EolOperation createOp = opIndex.get(mClass.getName());
+				if (createOp != null) {
+					createOp.execute(iObject, Collections.emptyList(),
+							opIndex.getEolContext());
+				}
 			}
 			iModel.add(iObject); /* Controversial */
 
 			return iObject;
 
-		} catch (EolRuntimeException e) {			
+		} catch (EolRuntimeException e) {
 			System.err.println(e.getMessage());
 			return null;
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public Object add(EObject iObject, EStructuralFeature mAttribute) {
@@ -177,13 +208,13 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 				if (attributeOp != null) {
 					attributeOp.execute(iObject, Collections.emptyList(),
 							opIndex.getEolContext());
-					
-					//System.out. 
-					if(opIndex.getEolContext().getErrorStream().checkError()) {
+
+					// System.out.
+					if (opIndex.getEolContext().getErrorStream().checkError()) {
 						System.out.println("ERROR");
-						
+
 					}
-					
+
 				}
 			}
 
@@ -195,8 +226,8 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public Object link(EObject iObjectContainer, EReference mReference) {
@@ -209,8 +240,8 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 				.eGet(mReference);
 
-		EObject iObject = getStrategy().retrieveObject((EClass) mReference
-				.getEType());
+		EObject iObject = getStrategy().retrieveObject(
+				(EClass) mReference.getEType());
 
 		iReferenceContainer.add(iObject);
 
@@ -221,8 +252,8 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean before() {
@@ -242,8 +273,8 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean after() {
@@ -262,11 +293,9 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 		return false;
 
 	}
-	
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -282,8 +311,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -300,8 +328,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -318,8 +345,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -334,8 +360,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -363,4 +388,4 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 		return strategy;
 	}
 
-} //EolGeneratorImpl
+} // EolGeneratorImpl

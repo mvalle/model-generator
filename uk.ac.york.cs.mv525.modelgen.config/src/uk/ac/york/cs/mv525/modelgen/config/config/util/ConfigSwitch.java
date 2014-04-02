@@ -134,13 +134,6 @@ public class ConfigSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.EOL_GENERATOR: {
-				EolGenerator eolGenerator = (EolGenerator)theEObject;
-				T result = caseEolGenerator(eolGenerator);
-				if (result == null) result = caseGenerator(eolGenerator);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ConfigPackage.RANDOM_GENERATOR: {
 				RandomGenerator randomGenerator = (RandomGenerator)theEObject;
 				T result = caseRandomGenerator(randomGenerator);
@@ -172,6 +165,13 @@ public class ConfigSwitch<T> extends Switch<T> {
 				AlwaysRetrieveOrCreateStrategy alwaysRetrieveOrCreateStrategy = (AlwaysRetrieveOrCreateStrategy)theEObject;
 				T result = caseAlwaysRetrieveOrCreateStrategy(alwaysRetrieveOrCreateStrategy);
 				if (result == null) result = caseStrategy(alwaysRetrieveOrCreateStrategy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.EOL_GENERATOR: {
+				EolGenerator eolGenerator = (EolGenerator)theEObject;
+				T result = caseEolGenerator(eolGenerator);
+				if (result == null) result = caseGenerator(eolGenerator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -330,21 +330,6 @@ public class ConfigSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEolGenerator(EolGenerator object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Random Generator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -416,6 +401,21 @@ public class ConfigSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAlwaysRetrieveOrCreateStrategy(AlwaysRetrieveOrCreateStrategy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEolGenerator(EolGenerator object) {
 		return null;
 	}
 

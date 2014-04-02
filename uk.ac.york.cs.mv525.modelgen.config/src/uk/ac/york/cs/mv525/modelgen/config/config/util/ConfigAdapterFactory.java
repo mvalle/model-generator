@@ -112,10 +112,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 				return createGeneratorAdapter();
 			}
 			@Override
-			public Adapter caseEolGenerator(EolGenerator object) {
-				return createEolGeneratorAdapter();
-			}
-			@Override
 			public Adapter caseRandomGenerator(RandomGenerator object) {
 				return createRandomGeneratorAdapter();
 			}
@@ -134,6 +130,10 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAlwaysRetrieveOrCreateStrategy(AlwaysRetrieveOrCreateStrategy object) {
 				return createAlwaysRetrieveOrCreateStrategyAdapter();
+			}
+			@Override
+			public Adapter caseEolGenerator(EolGenerator object) {
+				return createEolGeneratorAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -296,20 +296,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator <em>Eol Generator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator
-	 * @generated
-	 */
-	public Adapter createEolGeneratorAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator <em>Random Generator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -376,6 +362,20 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAlwaysRetrieveOrCreateStrategyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator <em>Eol Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator
+	 * @generated
+	 */
+	public Adapter createEolGeneratorAdapter() {
 		return null;
 	}
 

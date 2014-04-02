@@ -45,6 +45,7 @@ public class AlwaysRetrieveStrategyImpl extends EObjectImpl implements AlwaysRet
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.ALWAYS_RETRIEVE_STRATEGY;
 	}
