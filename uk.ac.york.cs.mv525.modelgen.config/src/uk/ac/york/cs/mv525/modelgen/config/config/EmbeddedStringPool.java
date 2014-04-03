@@ -1,13 +1,8 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config;
 
 import org.eclipse.emf.common.util.EList;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +27,7 @@ public interface EmbeddedStringPool extends StringPool {
 	 * The list contents are of type {@link uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Strings</em>' reference isn't clear,
+	 * If the meaning of the '<em>Strings</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

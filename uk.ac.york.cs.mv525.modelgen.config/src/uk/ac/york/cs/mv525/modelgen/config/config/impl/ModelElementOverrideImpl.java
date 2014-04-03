@@ -1,27 +1,23 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 
 import java.util.Collection;
-import java.math.BigInteger;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride;
@@ -192,10 +188,12 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOY
+	 * @generated
 	 */
 	public void addStringPool(StringPool stringPool) {
-		getStringPools().add(stringPool);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -240,7 +238,7 @@ public class ModelElementOverrideImpl extends EObjectImpl implements ModelElemen
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_ELEMENT_OVERRIDE__MINIMUM_COUNT:

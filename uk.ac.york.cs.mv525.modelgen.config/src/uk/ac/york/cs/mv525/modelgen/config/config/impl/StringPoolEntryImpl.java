@@ -1,25 +1,15 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
-import uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
 
 /**
@@ -45,6 +35,7 @@ public class StringPoolEntryImpl extends EObjectImpl implements StringPoolEntry 
 	 * @ordered
 	 */
 	protected static final String STRING_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getString() <em>String</em>}' attribute.
 	 * <!-- begin-user-doc -->

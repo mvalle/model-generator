@@ -1,13 +1,8 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config;
 
 import org.eclipse.emf.common.util.EList;
-import java.math.BigInteger;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -88,7 +83,7 @@ public interface ModelElementOverride extends EObject {
 	 * The list contents are of type {@link uk.ac.york.cs.mv525.modelgen.config.config.StringPool}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>String Pools</em>' reference isn't clear,
+	 * If the meaning of the '<em>String Pools</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -104,7 +99,7 @@ public interface ModelElementOverride extends EObject {
 	 * The list contents are of type {@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>References</em>' reference list isn't clear,
+	 * If the meaning of the '<em>References</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

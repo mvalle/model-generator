@@ -1,13 +1,6 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
-
-import java.io.IOException;
-import java.math.BigInteger;
 
 import java.util.Collection;
 
@@ -26,14 +19,11 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
+import uk.ac.york.cs.mv525.modelgen.config.config.Generator;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
-import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
-import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,9 +37,9 @@ import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getModelElemetExclusions <em>Model Elemet Exclusions</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#isDeterministic <em>Deterministic</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getDefaultStringPool <em>Default String Pool</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getModelGeneration <em>Model Generation</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getMetaModelLocation <em>Meta Model Location</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getOutputModelLocation <em>Output Model Location</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getGenerator <em>Generator</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,16 +117,6 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	protected StringPool defaultStringPool;
 
 	/**
-	 * The cached value of the '{@link #getModelGeneration() <em>Model Generation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getModelGeneration()
-	 * @generated
-	 * @ordered
-	 */
-	protected ModelGeneration modelGeneration;
-
-	/**
 	 * The default value of the '{@link #getMetaModelLocation() <em>Meta Model Location</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -176,10 +156,16 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 */
 	protected String outputModelLocation = OUTPUT_MODEL_LOCATION_EDEFAULT;
 
-	/* Forgive me Code God, for I have sinned. */
-	static MetaModelIndex mIndex;
-	public static ModelInstance iModel;
-	
+	/**
+	 * The cached value of the '{@link #getGenerator() <em>Generator</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGenerator()
+	 * @generated
+	 * @ordered
+	 */
+	protected Generator generator;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -313,49 +299,6 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModelGeneration getModelGeneration() {
-		return modelGeneration;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetModelGeneration(ModelGeneration newModelGeneration, NotificationChain msgs) {
-		ModelGeneration oldModelGeneration = modelGeneration;
-		modelGeneration = newModelGeneration;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION, oldModelGeneration, newModelGeneration);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setModelGeneration(ModelGeneration newModelGeneration) {
-		if (newModelGeneration != modelGeneration) {
-			NotificationChain msgs = null;
-			if (modelGeneration != null)
-				msgs = ((InternalEObject)modelGeneration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION, null, msgs);
-			if (newModelGeneration != null)
-				msgs = ((InternalEObject)newModelGeneration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION, null, msgs);
-			msgs = basicSetModelGeneration(newModelGeneration, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION, newModelGeneration, newModelGeneration));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getMetaModelLocation() {
 		return metaModelLocation;
 	}
@@ -363,32 +306,15 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public void setMetaModelLocation(String newMetaModelLocation) {
 		String oldMetaModelLocation = metaModelLocation;
 		metaModelLocation = newMetaModelLocation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION, oldMetaModelLocation, metaModelLocation));
-	
-		parseMM();
 	}
-	// TODO: remove temproary fix
-	public MetaModelIndex getMM() {
-		return mIndex;
-	}
-	private void parseMM() {
-		if (mIndex != null) {
-			return;
-		}
-		try {
-			 mIndex = MetaModelParser.parse(getMetaModelLocation());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -401,39 +327,78 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public void setOutputModelLocation(String newOutputModelLocation) {
 		String oldOutputModelLocation = outputModelLocation;
 		outputModelLocation = newOutputModelLocation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION, oldOutputModelLocation, outputModelLocation));
-		
-		initModelInstance();	
 	}
 
-	private void initModelInstance() {
-		if(iModel == null) {
-			iModel = new ModelInstance(getOutputModelLocation());
-		}
-	}
-	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
+	 */
+	public Generator getGenerator() {
+		return generator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetGenerator(Generator newGenerator, NotificationChain msgs) {
+		Generator oldGenerator = generator;
+		generator = newGenerator;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__GENERATOR, oldGenerator, newGenerator);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGenerator(Generator newGenerator) {
+		if (newGenerator != generator) {
+			NotificationChain msgs = null;
+			if (generator != null)
+				msgs = ((InternalEObject)generator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__GENERATOR, null, msgs);
+			if (newGenerator != null)
+				msgs = ((InternalEObject)newGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__GENERATOR, null, msgs);
+			msgs = basicSetGenerator(newGenerator, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__GENERATOR, newGenerator, newGenerator));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public void addModelElementOverride(ModelElementOverride modelElementOverride) {
-		getModelElementOverrides().add(modelElementOverride);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public void addModelElementExclusion(ModelElementExclusion modelElementExclusion) {
-		getModelElemetExclusions().add(modelElementExclusion);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -450,8 +415,8 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 				return ((InternalEList<?>)getModelElemetExclusions()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return basicSetDefaultStringPool(null, msgs);
-			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
-				return basicSetModelGeneration(null, msgs);
+			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
+				return basicSetGenerator(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -474,12 +439,12 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 				return isDeterministic();
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return getDefaultStringPool();
-			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
-				return getModelGeneration();
 			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
 				return getMetaModelLocation();
 			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
 				return getOutputModelLocation();
+			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
+				return getGenerator();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -490,7 +455,7 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
@@ -510,14 +475,14 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				setDefaultStringPool((StringPool)newValue);
 				return;
-			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
-				setModelGeneration((ModelGeneration)newValue);
-				return;
 			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
 				setMetaModelLocation((String)newValue);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
 				setOutputModelLocation((String)newValue);
+				return;
+			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
+				setGenerator((Generator)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -546,14 +511,14 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				setDefaultStringPool((StringPool)null);
 				return;
-			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
-				setModelGeneration((ModelGeneration)null);
-				return;
 			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
 				setMetaModelLocation(META_MODEL_LOCATION_EDEFAULT);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
 				setOutputModelLocation(OUTPUT_MODEL_LOCATION_EDEFAULT);
+				return;
+			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
+				setGenerator((Generator)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -577,12 +542,12 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 				return deterministic != DETERMINISTIC_EDEFAULT;
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return defaultStringPool != null;
-			case ConfigPackage.MODEL_CONFIGURATION__MODEL_GENERATION:
-				return modelGeneration != null;
 			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
 				return META_MODEL_LOCATION_EDEFAULT == null ? metaModelLocation != null : !META_MODEL_LOCATION_EDEFAULT.equals(metaModelLocation);
 			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
 				return OUTPUT_MODEL_LOCATION_EDEFAULT == null ? outputModelLocation != null : !OUTPUT_MODEL_LOCATION_EDEFAULT.equals(outputModelLocation);
+			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
+				return generator != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -607,10 +572,6 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 		result.append(outputModelLocation);
 		result.append(')');
 		return result.toString();
-	}
-
-	public ModelInstance getModel() {
-		return iModel;
 	}
 
 } //ModelConfigurationImpl

@@ -1,12 +1,6 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config;
-
-import java.io.IOException;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -91,15 +85,6 @@ public interface ConfigFactory extends EFactory {
 	ReferenceOverride createReferenceOverride();
 
 	/**
-	 * Returns a new object of class '<em>Model Generation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model Generation</em>'.
-	 * @generated
-	 */
-	ModelGeneration createModelGeneration();
-
-	/**
 	 * Returns a new object of class '<em>Random Generator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -143,6 +128,15 @@ public interface ConfigFactory extends EFactory {
 	 * @generated
 	 */
 	EolGenerator createEolGenerator();
+
+	/**
+	 * Returns a new object of class '<em>Combined Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Combined Generator</em>'.
+	 * @generated
+	 */
+	CombinedGenerator createCombinedGenerator();
 
 	/**
 	 * Returns the package supported by this factory.

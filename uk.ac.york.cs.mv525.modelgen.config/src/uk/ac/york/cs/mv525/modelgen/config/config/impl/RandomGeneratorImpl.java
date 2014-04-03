@@ -3,23 +3,18 @@
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator;
-import uk.ac.york.cs.mv525.modelgen.data.Configuration;
-import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
 
 /**
@@ -37,6 +32,16 @@ import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
  */
 public class RandomGeneratorImpl extends EObjectImpl implements RandomGenerator {
 	/**
+	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStrategy()
+	 * @generated
+	 * @ordered
+	 */
+	protected Strategy strategy;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -45,24 +50,6 @@ public class RandomGeneratorImpl extends EObjectImpl implements RandomGenerator 
 		super();
 	}
 
-	EFactory iClassGenerator;
-	ModelInstance model;
-	Configuration config;
-	Strategy strategy;
-	
-
-	public RandomGeneratorImpl(ModelInstance modelInstance, MetaModelIndex metaModel) {
-		super();
-		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
-		model = modelInstance;
-	}
-	
-	public RandomGeneratorImpl(ModelInstance modelInstance, MetaModelIndex metaModel, Configuration config) {
-		super();
-		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
-		model = modelInstance;
-		this.config = config;
-	}
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -76,87 +63,96 @@ public class RandomGeneratorImpl extends EObjectImpl implements RandomGenerator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
+	 */
+	public Strategy getStrategy() {
+		if (strategy != null && strategy.eIsProxy()) {
+			InternalEObject oldStrategy = (InternalEObject)strategy;
+			strategy = (Strategy)eResolveProxy(oldStrategy);
+			if (strategy != oldStrategy) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.RANDOM_GENERATOR__STRATEGY, oldStrategy, strategy));
+			}
+		}
+		return strategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Strategy basicGetStrategy() {
+		return strategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStrategy(Strategy newStrategy) {
+		Strategy oldStrategy = strategy;
+		strategy = newStrategy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.RANDOM_GENERATOR__STRATEGY, oldStrategy, strategy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public EObject create(EClass mClass) {
-
-		EObject iObject = iClassGenerator.create(mClass);
-		model.add(iObject);
-		return iObject;
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Object add(EObject iObject, EStructuralFeature mAttribute) {
-		
-		if (!iObject.eIsSet(mAttribute)) {
-			
-			if (mAttribute.getEType().getName() == "EString") {
-				//iObject.eSet(mAttribute, createEString());
-				iObject.eSet(mAttribute, getString(mAttribute));
-				
-				// TODO : Generate more EDataTypes
-				
-			} else {
-				// print("Unknown EDataType");
-			}
-		}
-				
-		return iObject.eGet(mAttribute);
-	}
-	
-	private String getString(EStructuralFeature mAttribute) {
-		if (config != null) {
-			String c = config.getString(mAttribute);
-			if (c != null) {
-				return c;
-			}
-		}
-		return "";
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Object link(EObject iObjectContainer, EReference mReference) {
-		/* +------------------+     +---------------------+---------+
-		 * | iObjectContainer |---->| iReferenceContainer | iObject |
-		 * +------------------+     +---------------------+---------+
-		 */
-		@SuppressWarnings("unchecked")
-		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
-				.eGet(mReference);
-			
-		EObject iObject = getStrategy().retrieveObject((EClass)mReference.getEType());
-		
-		iReferenceContainer.add(iObject);
-			
-		return iObjectContainer.eGet(mReference);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean before() {
-		return false;
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public boolean after() {
-		return false;
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -214,25 +210,6 @@ public class RandomGeneratorImpl extends EObjectImpl implements RandomGenerator 
 				return strategy != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	@Override
-	public Strategy getStrategy() {
-		return strategy;
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Strategy basicGetStrategy() {
-		return strategy;
-	}
-
-	@Override
-	public void setStrategy(Strategy value) {
-		this.strategy = value;		
 	}
 
 } //RandomGeneratorImpl

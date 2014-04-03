@@ -1,12 +1,6 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -27,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface StringPoolEntry extends EObject {
-
 	/**
 	 * Returns the value of the '<em><b>String</b></em>' attribute.
 	 * <!-- begin-user-doc -->

@@ -1,25 +1,24 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 
 import java.util.Collection;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
@@ -40,7 +39,6 @@ import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
  * @generated
  */
 public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStringPool {
-	
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,6 +48,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -59,7 +58,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-	private int state = 0;
+
 	/**
 	 * The cached value of the '{@link #getStrings() <em>Strings</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -131,7 +130,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 		}
 		return strings;
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,6 +148,17 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public StringPoolEntry get() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -158,18 +168,6 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public StringPoolEntry get() {
-		if (getStrings().size() > 0) {
-		return (StringPoolEntry) getStrings().get((state++)%getStrings().size());
-		} else {
-			return null;
-		}
-	}
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,7 +192,7 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:

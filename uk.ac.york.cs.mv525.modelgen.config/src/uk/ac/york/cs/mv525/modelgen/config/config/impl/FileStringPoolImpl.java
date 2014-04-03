@@ -1,29 +1,14 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberInputStream;
-import java.util.LinkedList;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.FileStringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
@@ -43,7 +28,6 @@ import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
  * @generated
  */
 public class FileStringPoolImpl extends EObjectImpl implements FileStringPool {
-	
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -53,6 +37,7 @@ public class FileStringPoolImpl extends EObjectImpl implements FileStringPool {
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -62,8 +47,7 @@ public class FileStringPoolImpl extends EObjectImpl implements FileStringPool {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-	List<String> strings;
-	int state = 0;
+
 	/**
 	 * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -87,27 +71,10 @@ public class FileStringPoolImpl extends EObjectImpl implements FileStringPool {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @throws IOException 
-	 * @generated NOT
+	 * @generated
 	 */
 	protected FileStringPoolImpl() {
 		super();
-		strings = new LinkedList<String>();
-		
-		try {
-		FileReader file = new FileReader(new File(location));
-		BufferedReader reader = new BufferedReader(file);
-		
-		while(reader.ready()) {
-			String string = reader.readLine();
-			strings.add(string);
-		}
-		
-		reader.close();
-		file.close();
-		} catch (Exception e) {
-			// Tough. Log error
-		}
 	}
 
 	/**
@@ -161,16 +128,18 @@ public class FileStringPoolImpl extends EObjectImpl implements FileStringPool {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.FILE_STRING_POOL__LOCATION, oldLocation, location));
 	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public StringPoolEntry get() {
-		StringPoolEntry o = new StringPoolEntryImpl();
-		o.setString(strings.get(state++));
-		return o;
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

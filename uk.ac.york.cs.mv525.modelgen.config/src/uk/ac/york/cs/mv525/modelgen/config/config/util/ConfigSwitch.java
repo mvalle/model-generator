@@ -1,18 +1,12 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config.util;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.Switch;
+
 import uk.ac.york.cs.mv525.modelgen.config.config.*;
 
 /**
@@ -122,12 +116,6 @@ public class ConfigSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.MODEL_GENERATION: {
-				ModelGeneration modelGeneration = (ModelGeneration)theEObject;
-				T result = caseModelGeneration(modelGeneration);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ConfigPackage.GENERATOR: {
 				Generator generator = (Generator)theEObject;
 				T result = caseGenerator(generator);
@@ -172,6 +160,13 @@ public class ConfigSwitch<T> extends Switch<T> {
 				EolGenerator eolGenerator = (EolGenerator)theEObject;
 				T result = caseEolGenerator(eolGenerator);
 				if (result == null) result = caseGenerator(eolGenerator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.COMBINED_GENERATOR: {
+				CombinedGenerator combinedGenerator = (CombinedGenerator)theEObject;
+				T result = caseCombinedGenerator(combinedGenerator);
+				if (result == null) result = caseGenerator(combinedGenerator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -300,21 +295,6 @@ public class ConfigSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model Generation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model Generation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseModelGeneration(ModelGeneration object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Generator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -416,6 +396,21 @@ public class ConfigSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEolGenerator(EolGenerator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Combined Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Combined Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCombinedGenerator(CombinedGenerator object) {
 		return null;
 	}
 

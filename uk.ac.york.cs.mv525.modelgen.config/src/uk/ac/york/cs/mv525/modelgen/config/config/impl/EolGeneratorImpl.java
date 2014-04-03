@@ -2,38 +2,25 @@
  */
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 
-import java.io.IOException;
-import java.util.Collections;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.epsilon.eol.EolOperation;
-import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
-import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen.index.EolIndex;
-import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
-import uk.ac.york.cs.mv525.modelgen.parse.EolParser;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Eol Generator</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Eol Generator</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -46,25 +33,19 @@ import uk.ac.york.cs.mv525.modelgen.parse.EolParser;
  */
 public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
+	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStrategy()
+	 * @generated
+	 * @ordered
 	 */
-	protected EolGeneratorImpl() {
-		super();
-		iModel = ModelConfigurationImpl.iModel;
-		mIndex = ModelConfigurationImpl.mIndex;
-	}
-
-	EFactory iClassGenerator;
-	EolIndex opIndex;
-	MetaModelIndex mIndex;
-	ModelInstance iModel;
-	Strategy strategy;
+	protected Strategy strategy;
 
 	/**
 	 * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getLocation()
 	 * @generated
 	 * @ordered
@@ -73,62 +54,26 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 
 	/**
 	 * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getLocation()
 	 * @generated
 	 * @ordered
 	 */
 	protected String location = LOCATION_EDEFAULT;
 
-	public EolGeneratorImpl(String programLocation,
-			ModelInstance modelInstance, MetaModelIndex metaModel)
-			throws IOException {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EolGeneratorImpl() {
 		super();
-
-		mIndex = metaModel;
-		iModel = modelInstance;
-		iClassGenerator = mIndex.getEPackage().getEFactoryInstance();
-		System.out.println("ASDFASDFASDf");
-		setLocation(programLocation);
-
-	}
-	
-	private EFactory getIClassGenerator() {
-		if (iClassGenerator == null) {
-			iClassGenerator = mIndex.getEPackage().getEFactoryInstance();
-		}
-		return iClassGenerator;
-	}
-
-	private void parse() {
-
-		if (iModel == null) {
-			System.err.println("EolGenerator::parse model instance is null");
-			return;
-		}
-
-		if (mIndex == null) {
-			System.err
-					.println("EolGenerator::parse metamodel instance is null");
-			return;
-		}
-
-		try {
-			EolParser parser = new EolParser(iModel.getResource(),
-					mIndex.getEPackage());
-			opIndex = parser.parse(getLocation());
-		} catch (IOException e) {
-			System.err.print(e.getMessage());
-		}
-
-	}
-
-	public void setStrategy(Strategy s) {
-		strategy = s;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -137,7 +82,46 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Strategy getStrategy() {
+		if (strategy != null && strategy.eIsProxy()) {
+			InternalEObject oldStrategy = (InternalEObject)strategy;
+			strategy = (Strategy)eResolveProxy(oldStrategy);
+			if (strategy != oldStrategy) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.EOL_GENERATOR__STRATEGY, oldStrategy, strategy));
+			}
+		}
+		return strategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Strategy basicGetStrategy() {
+		return strategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStrategy(Strategy newStrategy) {
+		Strategy oldStrategy = strategy;
+		strategy = newStrategy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EOL_GENERATOR__STRATEGY, oldStrategy, strategy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getLocation() {
@@ -145,157 +129,75 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public void setLocation(String newLocation) {
 		String oldLocation = location;
 		location = newLocation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ConfigPackage.EOL_GENERATOR__LOCATION, oldLocation,
-					location));
-		parse();
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EOL_GENERATOR__LOCATION, oldLocation, location));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public EObject create(EClass mClass) {
-		try {
-			EObject iObject;
-			if (opIndex.hasConstructor(mClass)) {
-				EolOperation constructOp = opIndex.getConstructor(mClass);
-				iObject = (EObject) constructOp.execute(null,
-						Collections.emptyList(), opIndex.getEolContext());
-
-			} else {
-								
-				iObject = getIClassGenerator().create(mClass);
-
-				EolOperation createOp = opIndex.get(mClass.getName());
-				if (createOp != null) {
-					createOp.execute(iObject, Collections.emptyList(),
-							opIndex.getEolContext());
-				}
-			}
-			iModel.add(iObject); /* Controversial */
-
-			return iObject;
-
-		} catch (EolRuntimeException e) {
-			System.err.println(e.getMessage());
-			return null;
-		}
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public Object add(EObject iObject, EStructuralFeature mAttribute) {
-		try {
-
-			if (!iObject.eIsSet(mAttribute)) {
-
-				EolOperation attributeOp = opIndex.get(iObject.eClass(),
-						mAttribute);
-
-				if (attributeOp != null) {
-					attributeOp.execute(iObject, Collections.emptyList(),
-							opIndex.getEolContext());
-
-					// System.out.
-					if (opIndex.getEolContext().getErrorStream().checkError()) {
-						System.out.println("ERROR");
-
-					}
-
-				}
-			}
-
-			return iObject.eGet(mAttribute);
-
-		} catch (EolRuntimeException e) {
-			return null;
-		}
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public Object link(EObject iObjectContainer, EReference mReference) {
-		/*
-		 * +------------------+ +---------------------+---------+ |
-		 * iObjectContainer |---->| iReferenceContainer | iObject |
-		 * +------------------+ +---------------------+---------+
-		 */
-		@SuppressWarnings("unchecked")
-		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
-				.eGet(mReference);
-
-		EObject iObject = getStrategy().retrieveObject(
-				(EClass) mReference.getEType());
-
-		iReferenceContainer.add(iObject);
-
-		return null; // NOTE: Not implemented while not executing any EOL.
-						// For now just a copy of the RandomGenerator's
-						// link.
-		// return iObjectContainer.eGet(mReference);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public boolean before() {
-		try {
-			EolOperation op = opIndex.getBefore();
-			if (op != null) {
-				op.execute(null, Collections.emptyList(),
-						opIndex.getEolContext());
-				return true;
-			}
-		} catch (EolRuntimeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return false;
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public boolean after() {
-		try {
-			EolOperation op = opIndex.getAfter();
-			if (op != null) {
-				op.execute(null, Collections.emptyList(),
-						opIndex.getEolContext());
-				return true;
-			}
-		} catch (EolRuntimeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return false;
-
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -311,7 +213,8 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -328,7 +231,8 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -345,7 +249,8 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -360,7 +265,8 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -374,18 +280,4 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 		return result.toString();
 	}
 
-	@Override
-	public Strategy getStrategy() {
-		return strategy;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Strategy basicGetStrategy() {
-		return strategy;
-	}
-
-} // EolGeneratorImpl
+} //EolGeneratorImpl

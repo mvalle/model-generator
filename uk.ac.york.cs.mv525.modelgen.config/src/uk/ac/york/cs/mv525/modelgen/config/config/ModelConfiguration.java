@@ -1,12 +1,6 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config;
-
-import java.math.BigInteger;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -25,9 +19,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getModelElemetExclusions <em>Model Elemet Exclusions</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#isDeterministic <em>Deterministic</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getDefaultStringPool <em>Default String Pool</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getModelGeneration <em>Model Generation</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getMetaModelLocation <em>Meta Model Location</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getOutputModelLocation <em>Output Model Location</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getGenerator <em>Generator</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,7 +77,7 @@ public interface ModelConfiguration extends EObject {
 	 * The list contents are of type {@link uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Model Elemet Exclusions</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Model Elemet Exclusions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -124,7 +118,7 @@ public interface ModelConfiguration extends EObject {
 	 * Returns the value of the '<em><b>Default String Pool</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Default String Pool</em>' reference isn't clear,
+	 * If the meaning of the '<em>Default String Pool</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -145,32 +139,6 @@ public interface ModelConfiguration extends EObject {
 	 * @generated
 	 */
 	void setDefaultStringPool(StringPool value);
-
-	/**
-	 * Returns the value of the '<em><b>Model Generation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Model Generation</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Model Generation</em>' containment reference.
-	 * @see #setModelGeneration(ModelGeneration)
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_ModelGeneration()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ModelGeneration getModelGeneration();
-
-	/**
-	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getModelGeneration <em>Model Generation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Model Generation</em>' containment reference.
-	 * @see #getModelGeneration()
-	 * @generated
-	 */
-	void setModelGeneration(ModelGeneration value);
 
 	/**
 	 * Returns the value of the '<em><b>Meta Model Location</b></em>' attribute.
@@ -223,6 +191,32 @@ public interface ModelConfiguration extends EObject {
 	 * @generated
 	 */
 	void setOutputModelLocation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Generator</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Generator</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Generator</em>' containment reference.
+	 * @see #setGenerator(Generator)
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getModelConfiguration_Generator()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Generator getGenerator();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getGenerator <em>Generator</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Generator</em>' containment reference.
+	 * @see #getGenerator()
+	 * @generated
+	 */
+	void setGenerator(Generator value);
 
 	/**
 	 * <!-- begin-user-doc -->

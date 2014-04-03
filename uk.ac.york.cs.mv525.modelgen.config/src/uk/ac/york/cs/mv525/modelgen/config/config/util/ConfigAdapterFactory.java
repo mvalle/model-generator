@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config.util;
 
@@ -104,10 +100,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 				return createReferenceOverrideAdapter();
 			}
 			@Override
-			public Adapter caseModelGeneration(ModelGeneration object) {
-				return createModelGenerationAdapter();
-			}
-			@Override
 			public Adapter caseGenerator(Generator object) {
 				return createGeneratorAdapter();
 			}
@@ -134,6 +126,10 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEolGenerator(EolGenerator object) {
 				return createEolGeneratorAdapter();
+			}
+			@Override
+			public Adapter caseCombinedGenerator(CombinedGenerator object) {
+				return createCombinedGeneratorAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -268,20 +264,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration <em>Model Generation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration
-	 * @generated
-	 */
-	public Adapter createModelGenerationAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator <em>Generator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -376,6 +358,20 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEolGeneratorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator <em>Combined Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator
+	 * @generated
+	 */
+	public Adapter createCombinedGeneratorAdapter() {
 		return null;
 	}
 

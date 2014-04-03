@@ -3,11 +3,9 @@
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -48,11 +46,6 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 */
 	protected AlwaysCreateStrategyImpl() {
 		super();
-	}
-	
-	public AlwaysCreateStrategyImpl(Generator gen) {
-		super();
-		setGenerator(gen);
 	}
 
 	/**
@@ -106,14 +99,12 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EObject retrieveObject(EClass mType) {
-		EObject o = getGenerator().create(mType);
-		for(EStructuralFeature f : mType.getEStructuralFeatures()) {
-			getGenerator().add(o, f);
-		}
-		return o;
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

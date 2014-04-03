@@ -24,7 +24,7 @@ public interface AlwaysCreateStrategy extends Strategy {
 	 * Returns the value of the '<em><b>Generator</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Generator</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Generator</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

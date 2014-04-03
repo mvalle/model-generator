@@ -10,14 +10,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
+//import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.config.config.impl.AlwaysCreateStrategyImpl;
 import uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl;
-import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl;
+//import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl;
 import uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomGeneratorImpl;
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
+import uk.ac.york.cs.mv525.modelgen.generate.Generator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
@@ -48,19 +49,25 @@ public class GenerationFromConfigOnlyTester extends FileTester {
 
 	@Test
 	public void test_generation() throws IOException {
-		//MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
+		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
 		
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(metaModelLocation);
-		
-		//ModelInstance model = new ModelInstance(location);
-		//long precount = model.getCount();
+				
+		ModelInstance model = new ModelInstance(location);
+		long precount = model.getCount();
 
-		cIndex.create(location);
+		DefaultOrchastration orch = new DefaultOrchastration();
+		orch.addMetaModel(mmIndex);
+		orch.addModel(model);
+		orch.addConfiguration(cIndex);
+		orch.addGenerator(cIndex.getGenerator());
 		
-		//long postcount = model.getCount();
+		orch.create();
 		
-		//assertNotSame(precount, postcount);		
+		long postcount = model.getCount();
+		
+		assertNotSame(precount, postcount);		
 		
 	}
 	

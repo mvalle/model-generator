@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package uk.ac.york.cs.mv525.modelgen.config.config;
 
@@ -27,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ReferenceOverride extends EObject {
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -105,4 +100,5 @@ public interface ReferenceOverride extends EObject {
 	 * @generated
 	 */
 	void setMaximumCount(long value);
+
 } // ReferenceOverride

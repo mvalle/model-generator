@@ -3,13 +3,10 @@ package uk.ac.york.cs.mv525.modelgen.main;
 import java.io.IOException;
 
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
-import uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator;
-import uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl;
-import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl;
-import uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomGeneratorImpl;
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
+import uk.ac.york.cs.mv525.modelgen.generate.CombinedGenerator;
+import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
+import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
@@ -49,9 +46,9 @@ public class Main {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		
 		/* The object responsible for generating model elements. Consisting of two other sub-generators */
-		RandomGenerator rand = new RandomGeneratorImpl(model, mmIndex);
-		EolGenerator eol = new EolGeneratorImpl(programLocation, model, mmIndex);		
-		ModelGeneration generator = new ModelGenerationImpl(rand);
+		RandomGenerator rand = new RandomGenerator(model, mmIndex);
+		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);		
+		CombinedGenerator generator = new CombinedGenerator(rand);
 		generator.addGenerator(eol);
 		
 		/* The object responsible for overseeing the model generation process */

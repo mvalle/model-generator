@@ -16,7 +16,6 @@ import uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy;
 import uk.ac.york.cs.mv525.modelgen.config.config.AlwaysRetrieveOrCreateStrategy;
 import uk.ac.york.cs.mv525.modelgen.config.config.AlwaysRetrieveStrategy;
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
-import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,15 +60,7 @@ public class AlwaysRetrieveOrCreateStrategyImpl extends EObjectImpl implements A
 	protected AlwaysRetrieveOrCreateStrategyImpl() {
 		super();
 	}
-	
-	public AlwaysRetrieveOrCreateStrategyImpl(Strategy creator, Strategy retriever) {
-		super();
-		//setCreator(creator);
-		//setRetriver(retriever);
-		this.creator = (AlwaysCreateStrategy) creator;
-		this.retriver = (AlwaysRetrieveStrategy) retriever;
-	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -169,14 +160,12 @@ public class AlwaysRetrieveOrCreateStrategyImpl extends EObjectImpl implements A
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EObject retrieveObject(EClass mType) {
-		EObject o = retriver.retrieveObject(mType);
-		if (o == null) {
-			o = creator.retrieveObject(mType);
-		}
-		return o;
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

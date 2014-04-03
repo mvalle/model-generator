@@ -11,14 +11,16 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.javatuples.Pair;
 
+import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
+//import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
 import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl;
+import uk.ac.york.cs.mv525.modelgen.generate.Generator;
 import uk.ac.york.cs.mv525.modelgen.index.Index;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.InvalidConfigurationException;
@@ -35,6 +37,7 @@ public class Configuration implements Index {
 	// private BigInteger averageNonOverriddenCount;
 	private MetaModelIndex metaModel;
 	private ModelConfiguration config;
+	private Generator generator;
 
 	public Configuration(ModelConfiguration config, MetaModelIndex mmIndex) {
 		metaModel = mmIndex;
@@ -45,7 +48,6 @@ public class Configuration implements Index {
 
 	public void setMetaModel(String metaModelLocation) {
 		config.setMetaModelLocation(metaModelLocation);
-		metaModel = ((ModelConfigurationImpl)config).getMM();
 	}
 	public void setMetaModel(MetaModelIndex mmIndex) {
 		metaModel = mmIndex;
@@ -136,11 +138,12 @@ public class Configuration implements Index {
 		for (EObject mObject : metaModel.dump()) {
 			add(((EClass) mObject).getName(), countForEachNewElement);
 		}
-
+		
 		if (getNextState == null) {
 			initialiseGetNextState();
 		}
 	}
+
 
 	public void exclude(String name) {
 		excludes.add(name);
@@ -306,15 +309,20 @@ public class Configuration implements Index {
 		return "";
 	}
 	
+	public uk.ac.york.cs.mv525.modelgen.config.config.Generator getGenerator() {
+		return config.getGenerator();
+	}
+	
+	
 	
 
 	public void create(String outputLocation) {
-		ModelGeneration generator = config.getModelGeneration();
-		config.setOutputModelLocation(outputLocation);
+
+/*		config.setOutputModelLocation(outputLocation);
 		
 		generator.before();
 		
-		/* Start by creating the minimum amount of classes. */
+		 Start by creating the minimum amount of classes. 
 		
 		EClass mClass = (EClass) getNext();
 		
@@ -332,9 +340,9 @@ public class Configuration implements Index {
 			mClass = (EClass) getNext();
 		}
 		
-		/* Finish by linking the objects together. 
+		 Finish by linking the objects together. 
 		 * This section may create more objects, 
-		 * depending on the strategy used. */
+		 * depending on the strategy used. 
 		
 		resetState();
 		mClass = (EClass) getNext();
@@ -351,18 +359,18 @@ public class Configuration implements Index {
 			}
 			mClass = (EClass) getNext();
 		}
-		
+		*/
 		
 	}
 	
 	@Deprecated
 	public void create(ModelInstance model) {
-		ModelGeneration generator = config.getModelGeneration();
-		((ModelConfigurationImpl)config).iModel = model;
+		
+/*		((ModelConfigurationImpl)config).iModel = model;
 		
 		generator.before();
 		
-		/* Start by creating the minimum amount of classes. */
+		 Start by creating the minimum amount of classes. 
 		
 		EClass mClass = (EClass) getNext();
 		
@@ -380,9 +388,9 @@ public class Configuration implements Index {
 			mClass = (EClass) getNext();
 		}
 		
-		/* Finish by linking the objects together. 
+		 Finish by linking the objects together. 
 		 * This section may create more objects, 
-		 * depending on the strategy used. */
+		 * depending on the strategy used. 
 		
 		resetState();
 		mClass = (EClass) getNext();
@@ -399,7 +407,7 @@ public class Configuration implements Index {
 			}
 			mClass = (EClass) getNext();
 		}
-		
+		*/
 		
 	}
 

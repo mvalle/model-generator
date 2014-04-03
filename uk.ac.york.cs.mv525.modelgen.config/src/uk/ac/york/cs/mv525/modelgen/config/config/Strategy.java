@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Strategy extends EObject {
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24,4 +23,5 @@ public interface Strategy extends EObject {
 	 * @generated
 	 */
 	EObject retrieveObject(EClass mType);
+
 } // Strategy

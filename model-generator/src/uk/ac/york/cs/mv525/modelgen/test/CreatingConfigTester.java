@@ -25,18 +25,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.Before;
 import org.junit.Test;
 
-import uk.ac.york.cs.mv525.modelgen.config.config.ConfigFactory;
-import uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator;
-import uk.ac.york.cs.mv525.modelgen.config.config.Generator;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
-import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
-import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
-import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
-import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl;
-import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelElementOverrideImpl;
-import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelGenerationImpl;
+
+import uk.ac.york.cs.mv525.modelgen.generate.CombinedGenerator;
 
 public class CreatingConfigTester extends FileTester {
 	
@@ -51,7 +41,7 @@ public class CreatingConfigTester extends FileTester {
 
 	@Test
 	public void test() throws IOException {
-		
+		/*
 		// Create Model
 		ModelConfiguration mc =	ConfigFactory.eINSTANCE.createModelConfiguration();
 		
@@ -64,20 +54,20 @@ public class CreatingConfigTester extends FileTester {
 		defaultStringPool.setName("default");
 		mc.setDefaultStringPool(defaultStringPool);
 		
-		ModelGeneration gen = ConfigFactory.eINSTANCE.createModelGeneration();
+		CombinedGenerator gen = (CombinedGenerator) ConfigFactory.eINSTANCE.createCombinedGenerator();
 		
 		Generator rand = ConfigFactory.eINSTANCE.createRandomGenerator();
-		gen.setFallback(rand);
+		//gen.setFallback(rand);
 		
 		EolGenerator eol = ConfigFactory.eINSTANCE.createEolGenerator();
 		eol.setLocation(genEol);
 		eol.setStrategy(ConfigFactory.eINSTANCE.createAlwaysRetrieveOrCreateStrategy());
-		gen.addGenerator(eol);
+		//gen.addGenerator(eol);
 		
-		mc.setModelGeneration(gen);
+		//mc.setModelGeneration(gen);
 		
 		Strategy defaultStrategy = ConfigFactory.eINSTANCE.createAlwaysRetrieveOrCreateStrategy();		
-		gen.setDefaultStrategy(defaultStrategy);		
+		//gen.setDefaultStrategy(defaultStrategy);		
 		
 		ModelElementOverride modelElementOverride = ConfigFactory.eINSTANCE.createModelElementOverride();
 		modelElementOverride.setMinimumCount(10);
@@ -107,7 +97,7 @@ public class CreatingConfigTester extends FileTester {
 		resource.getContents().add(mc);
 		
 		resource.save(Collections.EMPTY_MAP);
-		
+		*/
 	}
 
 }
