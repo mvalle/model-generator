@@ -52,6 +52,7 @@ public class DefaultOrchastration {
 	
 	public void addModel(ModelInstance model) {
 		modelInstance = model;
+		
 	}
 		
 	public void create() {
@@ -94,6 +95,8 @@ public class DefaultOrchastration {
 			
 			mClass = (EClass) cIndex.getNext();
 		}
+		
+		
 		
 		
 		

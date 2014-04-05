@@ -1,5 +1,7 @@
 package uk.ac.york.cs.mv525.modelgen.generate;
 
+import java.util.Random;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
@@ -19,6 +21,8 @@ public class RandomGenerator extends Generator {
 	ModelInstance model;
 	Configuration config;
 	Strategy strategy;
+	
+	Random rand = new Random(0);
 	
 	public RandomGenerator(ModelInstance modelInstance, MetaModelIndex metaModel) {
 		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
@@ -78,20 +82,73 @@ public class RandomGenerator extends Generator {
 		 * | iObjectContainer |---->| iReferenceContainer | iObject |
 		 * +------------------+     +---------------------+---------+
 		 */
+		
+		
+		long lower = mReference.getLowerBound();
+		long upper = mReference.getUpperBound();
+		// * == -1
+		if (upper == -1) {upper = config.getMinimumCount();}
+		
 		@SuppressWarnings("unchecked")
 		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
-				.eGet(mReference);
+				.eGet(mReference);	
+		
+		if (lower == upper && upper == 1) {
+			// if multiplicity of 1, do one
+			if(iReferenceContainer.size() < 1) {
+				link(iReferenceContainer, mReference);
+			}
+		} else if (upper < iReferenceContainer.size())	{
+			// Add minimum references
+			while(lower > iReferenceContainer.size() && upper < iReferenceContainer.size()) {
+				link(iReferenceContainer, mReference);
+			}
 			
+			long configMin = config.getMinimumReferences(mReference);
+			while(configMin > iReferenceContainer.size() && upper < iReferenceContainer.size()) {
+				link(iReferenceContainer, mReference);
+			}
+			
+					
+			int c = (int)(upper * rand.nextGaussian())					;
+			while(c-- > 0) {
+				link(iReferenceContainer, mReference);
+			}
+		}
+		
+		return iObjectContainer.eGet(mReference);	
+	}
+
+	private void link(EList<EObject> iReferenceContainer, EReference mReference) {		
+		
 		EObject iObject = strategy.retrieaveObject((EClass)mReference.getEType());
 		
 		iReferenceContainer.add(iObject);
-			
-		return iObjectContainer.eGet(mReference);
 	}
-
+	
 	@Override
 	public boolean before() { return false; }
 
 	@Override
 	public boolean after() { return false; }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

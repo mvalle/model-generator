@@ -11,7 +11,15 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.epsilon.eol.engine;bundle-version="1.1.0";resolution:=optional,
  org.eclipse.epsilon.emc.emf;bundle-version="1.1.0";resolution:=optional,
  org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.javatuples;bundle-version="1.0.0",
+ uk.ac.york.cs.mv525.modelgen.config;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.junit
+Export-Package: uk.ac.york.cs.mv525.modelgen.data,
+ uk.ac.york.cs.mv525.modelgen.index,
+ uk.ac.york.cs.mv525.modelgen.main,
+ uk.ac.york.cs.mv525.modelgen.orchestration,
+ uk.ac.york.cs.mv525.modelgen.parse,
+ uk.ac.york.cs.mv525.modelgen.test

@@ -56,7 +56,10 @@ public class GenerationFromConfigOnlyTester extends FileTester {
 				
 		ModelInstance model = new ModelInstance(location);
 		long precount = model.getCount();
-
+		
+		System.out.print(model);
+		System.out.println(" test_generation()");
+		
 		DefaultOrchastration orch = new DefaultOrchastration();
 		orch.addMetaModel(mmIndex);
 		orch.addModel(model);
@@ -80,7 +83,7 @@ public class GenerationFromConfigOnlyTester extends FileTester {
 		
 		ModelInstance model = new ModelInstance(location);
 				
-		cIndex.create(model);
+		//cIndex.create(model);
 		
 		model.save();
 		

@@ -15,7 +15,6 @@ import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
-//import uk.ac.york.cs.mv525.modelgen.config.config.ModelGeneration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
@@ -30,7 +29,7 @@ public class Configuration implements Index {
 	private HashMap<String, Long> index = new HashMap<String, Long>();
 	private HashSet<String> excludes = new HashSet<String>();
 	private HashMap<String, HashMap<String, StringPool>> pools = new HashMap<>();
-	private HashMap<String, HashMap<String, Pair<Long, Long>>> refs = new HashMap<>();
+	private HashMap<String, HashMap<String, Long>> refs = new HashMap<>();
 
 	// private int totalCount = 0;
 	private long targetElementsCount;
@@ -103,21 +102,20 @@ public class Configuration implements Index {
 				pool.put(sp.getName(), sp);
 			}
 
+			// Deal with References
 			EList references = over.getReferences();
 			for (Object _refOver : references) {
 				ReferenceOverride refOver = (ReferenceOverride) _refOver;
 				String name = refOver.getName();
-				long min = refOver.getMinimumCount();
-				long max = refOver.getMaximumCount();
-				Pair<Long, Long> range = new Pair<Long, Long>(min, max);
+				Long min = refOver.getMinimumCount();
 
 				if (!refs.containsKey(over.getName())) {
 					refs.put(over.getName(),
-							new HashMap<String, Pair<Long, Long>>());
+							new HashMap<String, Long>());
 				}
-				HashMap<String, Pair<Long, Long>> ref = refs
+				HashMap<String, Long> ref = refs
 						.get(over.getName());
-				ref.put(name, range);
+				ref.put(name, min);
 			}
 
 		}
@@ -208,6 +206,9 @@ public class Configuration implements Index {
 	}
 
 	public LinkedList<Pair<String, Long>> dump() {
+		
+		System.out.println("Configuration::dump()");
+		
 		LinkedList<Pair<String, Long>> list2 = new LinkedList<>();
 		for(Object o : config.getModelElementOverrides()) {
 			ModelElementOverride m = (ModelElementOverride) o;
@@ -312,12 +313,28 @@ public class Configuration implements Index {
 	public uk.ac.york.cs.mv525.modelgen.config.config.Generator getGenerator() {
 		return config.getGenerator();
 	}
-	
-	
-	
 
+	public long getMinimumReferences(EReference mReference) {
+		
+		EClass mClass = (EClass)mReference.eContainingFeature();
+		HashMap<String, Long> ref = refs.get(mClass.getName());
+		
+		if (ref != null && ref.containsKey(mReference.getName())) {			
+			return ref.get(mReference.getName());
+		}
+		
+		return -1;
+	}
+
+	public long getMinimumCount() {
+		return targetElementsCount;
+	}
+	
+	
+	
+/*
 	public void create(String outputLocation) {
-
+*/
 /*		config.setOutputModelLocation(outputLocation);
 		
 		generator.before();
@@ -360,12 +377,12 @@ public class Configuration implements Index {
 			mClass = (EClass) getNext();
 		}
 		*/
-		
+	/*	
 	}
 	
 	@Deprecated
 	public void create(ModelInstance model) {
-		
+	*/	
 /*		((ModelConfigurationImpl)config).iModel = model;
 		
 		generator.before();
@@ -388,7 +405,7 @@ public class Configuration implements Index {
 			mClass = (EClass) getNext();
 		}
 		
-		 Finish by linking the objects together. 
+		 Finish by linking the objects together. Pair<Long, Long>
 		 * This section may create more objects, 
 		 * depending on the strategy used. 
 		
@@ -408,7 +425,7 @@ public class Configuration implements Index {
 			mClass = (EClass) getNext();
 		}
 		*/
-		
+	/*	
 	}
-
+*/
 }
