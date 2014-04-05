@@ -12,9 +12,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
+import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 
@@ -23,6 +25,10 @@ public class EolGeneratorTester extends FileTester {
 	MetaModelIndex mIndex;
 	ModelInstance model;
 	
+	Configuration cIndex;
+	String configLocation = dataDir + "test.config";
+	String metaModelLocation = dataDir + "orgchart.ecore";
+	
 	@Before
 	public void setUp() throws Exception {
 		location = dataDir + "test.eol";
@@ -30,6 +36,12 @@ public class EolGeneratorTester extends FileTester {
 		mIndex = MetaModelParser.parse(dataDir+"orgchart.ecore");
 		
 		model = new ModelInstance(dataDir+"test.model");
+		
+
+		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
+		
+		cIndex = ConfigParser.parse(configLocation);
+		cIndex.setMetaModel(mmIndex);
 	}
 	
 	@After
@@ -43,7 +55,7 @@ public class EolGeneratorTester extends FileTester {
 	@Test
 	public void test_create_class() throws Exception {
 		
-		EolGenerator eg  = new EolGenerator(location, model, mIndex);
+		EolGenerator eg  = new EolGenerator(location, model, mIndex, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 		EObject randObj = eg.create((EClass) mIndex.get("Person"));
 		
@@ -53,7 +65,7 @@ public class EolGeneratorTester extends FileTester {
 	@Test
 	public void test_create_attribute() throws Exception {
 		
-		EolGenerator eg  = new EolGenerator(location, model, mIndex);
+		EolGenerator eg  = new EolGenerator(location, model, mIndex, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 		EClass mClass = (EClass) mIndex.get("Person");
 		EStructuralFeature mName = mClass.getEStructuralFeature("name");
@@ -68,7 +80,7 @@ public class EolGeneratorTester extends FileTester {
 	
 	@Test
 	public void test_link() throws Exception {
-		EolGenerator eg  = new EolGenerator(location, model, mIndex);
+		EolGenerator eg  = new EolGenerator(location, model, mIndex, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 		
 		EClass mClass = (EClass) mIndex.get("Person");

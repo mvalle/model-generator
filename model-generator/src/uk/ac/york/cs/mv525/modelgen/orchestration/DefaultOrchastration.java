@@ -112,7 +112,7 @@ public class DefaultOrchastration {
 
 		if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator) {
 			uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator gen = (uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator)root;			
-			output = new EolGenerator(gen.getLocation(), modelInstance, mIndex);
+			output = new EolGenerator(gen.getLocation(), modelInstance, mIndex, cIndex);
 			output.setStrategy(convert(gen.getStrategy(), output));
 			
 			

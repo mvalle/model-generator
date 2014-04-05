@@ -35,7 +35,7 @@ public class EolGenerator extends Generator {
 	Configuration config;
 
 	public EolGenerator(String programLocation, ModelInstance modelInstance,
-			MetaModelIndex metaModel) throws IOException {
+			MetaModelIndex metaModel, Configuration config) throws IOException {
 		
 		System.out.print(modelInstance);
 		System.out.println(" EolGenerator()");
@@ -47,6 +47,8 @@ public class EolGenerator extends Generator {
 		EolParser parser = new EolParser(iModel.getResource(),
 				mIndex.getEPackage());
 		opIndex = parser.parse(programLocation);
+		
+		this.config = config;
 	}
 
 	@Override

@@ -86,7 +86,7 @@ public class RandomGenerator extends Generator {
 		
 		long lower = mReference.getLowerBound();
 		long upper = mReference.getUpperBound();
-		// * == -1
+		// * == -1 // TODO
 		if (upper == -1) {upper = config.getMinimumCount();}
 		
 		@SuppressWarnings("unchecked")
