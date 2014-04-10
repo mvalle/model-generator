@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -40,17 +41,30 @@ public class ModelInstance {
 	}
 	
 	public void add(EObject iObject) {
-		if(iIndex.containsKey(iObject.eClass().getName())) {
-			ArrayList<EObject> o = iIndex.get(iObject.eClass().getName());
+		
+		// First add the object to the actual resource
+		resource.getContents().add(iObject);
+		
+		// Second, index the object with it's class
+		insert(iObject, iObject.eClass());
+		
+		// Finally, index the object with all it's parent classes
+		for(EClass mSuperClass:  iObject.eClass().getEAllSuperTypes()) {
+			System.out.println("Indexing "+iObject.eClass().getName()+"\t as "+mSuperClass.getName());
+			insert(iObject, mSuperClass);
+		}
+	}
+	
+	protected void insert(EObject iObject, EClass mClass) {
+		if(iIndex.containsKey(mClass.getName())) {
+			ArrayList<EObject> o = iIndex.get(mClass.getName());
 			o.add(iObject);
 			
 		} else {
 			ArrayList<EObject> o = new ArrayList<EObject>();
 			o.add(iObject);
-			iIndex.put(iObject.eClass().getName(), o);
+			iIndex.put(mClass.getName(), o);
 		}
-		
-		resource.getContents().add(iObject);
 	}
 		
 	public EObject get(String name) {

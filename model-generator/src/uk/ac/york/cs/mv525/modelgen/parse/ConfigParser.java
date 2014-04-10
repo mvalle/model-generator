@@ -40,6 +40,7 @@ public class ConfigParser {
 		ModelConfiguration config = (ModelConfiguration) resource.getContents().get(0);
 		
 		Configuration cIndex = new Configuration(config);
+		cIndex.setDirectory(location);
 		
 		return cIndex;
 

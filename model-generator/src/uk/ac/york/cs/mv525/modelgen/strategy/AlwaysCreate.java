@@ -8,17 +8,20 @@ import uk.ac.york.cs.mv525.modelgen.generate.Generator;
 
 public class AlwaysCreate implements Strategy {
 	private Generator generator;
-
+	
 	public AlwaysCreate(Generator gen) {
 		generator = gen;
 	}
 		
 	@Override
 	public EObject retrieaveObject(EClass mType) {
+		
 		EObject o = generator.create(mType);
+		
 		for(EStructuralFeature f : mType.getEStructuralFeatures()) {
-			generator.add(o, f);
+				generator.add(o, f);
 		}
 		return o;		
+		
 	}
 }

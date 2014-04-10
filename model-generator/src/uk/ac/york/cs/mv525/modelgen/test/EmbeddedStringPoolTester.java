@@ -18,7 +18,7 @@ import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.generate.CombinedGenerator;
 import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
-import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
+import uk.ac.york.cs.mv525.modelgen.orchestration.Orchastrator;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
@@ -60,7 +60,7 @@ public class EmbeddedStringPoolTester extends FileTester {
         CombinedGenerator generator = new CombinedGenerator(rand);
 		//generator.addGenerator(eol);
 		
-		DefaultOrchastration defaultOrchastration = new DefaultOrchastration();
+		Orchastrator defaultOrchastration = new Orchastrator();
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addGenerator(generator);
 		defaultOrchastration.addModel(model);

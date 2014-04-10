@@ -34,9 +34,11 @@ public class Configuration implements Index {
 	// private int totalCount = 0;
 	private long targetElementsCount;
 	// private BigInteger averageNonOverriddenCount;
-	private MetaModelIndex metaModel;
+	public MetaModelIndex metaModel;
 	private ModelConfiguration config;
 	private Generator generator;
+	
+	private String configFileLocation = "";
 
 	public Configuration(ModelConfiguration config, MetaModelIndex mmIndex) {
 		metaModel = mmIndex;
@@ -44,9 +46,10 @@ public class Configuration implements Index {
 		
 		init();
 	}
-
+	
+	@Deprecated
 	public void setMetaModel(String metaModelLocation) {
-		config.setMetaModelLocation(metaModelLocation);
+	//	config.setMetaModelLocation(metaModelLocation);
 	}
 	public void setMetaModel(MetaModelIndex mmIndex) {
 		metaModel = mmIndex;
@@ -60,7 +63,7 @@ public class Configuration implements Index {
 	private void init() {
 		targetElementsCount = config.getTotalMinimumCount();
 
-		//
+		// Deal with exclusions
 		for (Object _excl : config.getModelElemetExclusions()) {
 			ModelElementExclusion excl = (ModelElementExclusion) _excl;
 
@@ -73,7 +76,7 @@ public class Configuration implements Index {
 			}
 		}
 
-		//
+		// Deal with overrides
 		long num = 0;
 		for (Object _over : config.getModelElementOverrides()) {
 			ModelElementOverride over = (ModelElementOverride) _over;
@@ -238,16 +241,45 @@ public class Configuration implements Index {
 		getNextState = new GetNextState(dump());
 	}
 
-	public EObject getNext() {
+	public EClass getNext() {
 		if (getNextState == null) {
 			initialiseGetNextState();
 		}
 		
 		String modelName = getNextState.next();
 		if (modelName != null) {
-			return metaModel.get(modelName);
+			
+			return (EClass) metaModel.get(modelName);
 		}
 		return null;
+	}
+	
+	/**
+	 * Skips all abstract and interface classes.
+	 * */
+	public EClass getNextInstantiable() {		
+		
+		//System.out.println("---");
+		
+		EClass ec = null;
+		do {
+			ec = getNext();
+			/*
+			System.out.println(ec);
+			if (ec != null) {
+				System.out.println(ec.isAbstract());
+				System.out.println(ec.isInterface());
+				
+				System.out.println(ec != null && !ec.isAbstract() && !ec.isInterface());
+				System.out.println(ec != null && ec.isAbstract() && ec.isInterface());
+				System.out.println(ec != null && (ec.isAbstract() || ec.isInterface()));
+			}
+		
+			System.out.println("---");
+	*/
+		} while (ec != null && (ec.isAbstract() || ec.isInterface()));
+		
+		return ec;		
 	}
 
 	protected class GetNextState {
@@ -329,7 +361,14 @@ public class Configuration implements Index {
 	public long getMinimumCount() {
 		return targetElementsCount;
 	}
+
+	public String getDirectory() {
+		return configFileLocation;
+	}
 	
+	public void setDirectory(String dir) {
+		configFileLocation = dir;
+	}
 	
 	
 /*

@@ -37,7 +37,7 @@ public class EolParser implements Parser {
 		try {
 			mModule.parse(new File(location));
 		} catch (Exception e) {
-			throw new IOException("EOL program not found.");
+			throw new IOException("EOL program not found. Looking for "+location);
 		}
 
 		for (ParseProblem problem : mModule.getParseProblems()) {

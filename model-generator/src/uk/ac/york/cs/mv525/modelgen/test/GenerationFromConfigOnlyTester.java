@@ -20,7 +20,7 @@ import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.generate.Generator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
-import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
+import uk.ac.york.cs.mv525.modelgen.orchestration.Orchastrator;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 
@@ -60,7 +60,7 @@ public class GenerationFromConfigOnlyTester extends FileTester {
 		System.out.print(model);
 		System.out.println(" test_generation()");
 		
-		DefaultOrchastration orch = new DefaultOrchastration();
+		Orchastrator orch = new Orchastrator();
 		orch.addMetaModel(mmIndex);
 		orch.addModel(model);
 		orch.addConfiguration(cIndex);

@@ -26,6 +26,9 @@ public class AlwaysRetrieve implements Strategy {
 		}
 		List<EObject> os = model.getObjects(mType.getName());
 		
+		
+		if(os == null) return null;
+		
 		return os.get(i++%os.size());		
 	}
 

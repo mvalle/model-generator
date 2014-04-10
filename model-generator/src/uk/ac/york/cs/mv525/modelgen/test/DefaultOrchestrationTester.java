@@ -18,7 +18,7 @@ import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
-import uk.ac.york.cs.mv525.modelgen.orchestration.DefaultOrchastration;
+import uk.ac.york.cs.mv525.modelgen.orchestration.Orchastrator;
 
 public class DefaultOrchestrationTester extends FileTester {
 
@@ -58,7 +58,7 @@ public class DefaultOrchestrationTester extends FileTester {
 		CombinedGenerator generator = new CombinedGenerator(rand);
 		generator.addGenerator(eol);
 		
-		DefaultOrchastration defaultOrchastration = new DefaultOrchastration();
+		Orchastrator defaultOrchastration = new Orchastrator();
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addGenerator(generator);
 		defaultOrchastration.addModel(model);
@@ -90,7 +90,7 @@ public class DefaultOrchestrationTester extends FileTester {
 		//generator.setFallback();
 		generator.addGenerator(eol);
 		
-		DefaultOrchastration defaultOrchastration = new DefaultOrchastration();
+		Orchastrator defaultOrchastration = new Orchastrator();
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addGenerator(generator);
 		defaultOrchastration.addModel(model);

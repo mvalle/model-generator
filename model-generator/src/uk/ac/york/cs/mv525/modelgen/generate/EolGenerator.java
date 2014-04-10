@@ -1,5 +1,6 @@
 package uk.ac.york.cs.mv525.modelgen.generate;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
+
 
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
@@ -34,6 +36,7 @@ public class EolGenerator extends Generator {
 	Strategy strategy;
 	Configuration config;
 
+	@Deprecated // Get MetaModelIndex from Configuration obj
 	public EolGenerator(String programLocation, ModelInstance modelInstance,
 			MetaModelIndex metaModel, Configuration config) throws IOException {
 		
@@ -46,7 +49,18 @@ public class EolGenerator extends Generator {
 
 		EolParser parser = new EolParser(iModel.getResource(),
 				mIndex.getEPackage());
-		opIndex = parser.parse(programLocation);
+		try {
+			opIndex = parser.parse(programLocation);
+		} catch (IOException e) {
+			String configDir = config.getDirectory();
+			
+			File f = new File(configDir);
+			if(f.isFile()) {				
+				opIndex = parser.parse(f.getParent() + f.separator + programLocation);
+			} else {
+				opIndex = parser.parse(config.getDirectory() + programLocation);
+			}
+		}
 		
 		this.config = config;
 	}
@@ -62,16 +76,19 @@ public class EolGenerator extends Generator {
 	 */
 	public EObject create(EClass mClass) {
 		try {
-
-			EObject iObject = iClassGenerator.create(mClass);
+			EObject iObject = null;
 
 			EolOperation createOp = opIndex.get(mClass.getName());
 			if (createOp != null) {
+				
+				iObject = iClassGenerator.create(mClass);
 				createOp.execute(iObject, Collections.emptyList(),
 						opIndex.getEolContext());
+				
+				iModel.add(iObject);
 			}
 
-			iModel.add(iObject);  /* Controversial */ 
+			//System.out.println("Adding "+iObject+" to "+iModel);
 
 			return iObject;
 
@@ -107,21 +124,30 @@ public class EolGenerator extends Generator {
 		}
 	}
 
-	public Object link(EObject iObjectContainer, EReference mReference) {
+	public Object link(EObject iObjectContainer, EReference mReference) {		
+		if (null == opIndex.get(mReference.getEContainingClass(), mReference))
+		{
+			// If there's no EOL function for this reference,
+			// then there's nothing to do.
+			return null;
+		}
+		
 		/*
 		 * +------------------+ +---------------------+---------+ |
 		 * iObjectContainer |---->| iReferenceContainer | iObject |
 		 * +------------------+ +---------------------+---------+
 		 */
-		
 		long lower = mReference.getLowerBound();
 		long upper = mReference.getUpperBound();
 		// * == -1
 		if (upper == -1) {upper = config.getMinimumCount();}
 		
+		
+		
 		@SuppressWarnings("unchecked")
 		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 				.eGet(mReference);
+		
 		if (lower == upper && upper == 1) {
 			// if multiplicity of 1, do one
 			if(iReferenceContainer.size() < 1) {
