@@ -6,10 +6,10 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: uk.ac.york.cs.mv525.modelgen.config.config,
  uk.ac.york.cs.mv525.modelgen.config.config.impl,
  uk.ac.york.cs.mv525.modelgen.config.config.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
-Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy

@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMinimumCount <em>Minimum Count</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMaximumCount <em>Maximum Count</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,31 +73,5 @@ public interface ReferenceOverride extends EObject {
 	 * @generated
 	 */
 	void setMinimumCount(long value);
-
-	/**
-	 * Returns the value of the '<em><b>Maximum Count</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Maximum Count</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Maximum Count</em>' attribute.
-	 * @see #setMaximumCount(long)
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getReferenceOverride_MaximumCount()
-	 * @model
-	 * @generated
-	 */
-	long getMaximumCount();
-
-	/**
-	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMaximumCount <em>Maximum Count</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Maximum Count</em>' attribute.
-	 * @see #getMaximumCount()
-	 * @generated
-	 */
-	void setMaximumCount(long value);
 
 } // ReferenceOverride

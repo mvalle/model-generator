@@ -397,22 +397,13 @@ public interface ConfigPackage extends EPackage {
 	int REFERENCE_OVERRIDE__MINIMUM_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Maximum Count</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REFERENCE_OVERRIDE__MAXIMUM_COUNT = 2;
-
-	/**
 	 * The number of structural features of the '<em>Reference Override</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE_OVERRIDE_FEATURE_COUNT = 3;
+	int REFERENCE_OVERRIDE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator <em>Generator</em>}' class.
@@ -958,17 +949,6 @@ public interface ConfigPackage extends EPackage {
 	EAttribute getReferenceOverride_MinimumCount();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMaximumCount <em>Maximum Count</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Maximum Count</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMaximumCount()
-	 * @see #getReferenceOverride()
-	 * @generated
-	 */
-	EAttribute getReferenceOverride_MaximumCount();
-
-	/**
 	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator <em>Generator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1386,14 +1366,6 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute REFERENCE_OVERRIDE__MINIMUM_COUNT = eINSTANCE.getReferenceOverride_MinimumCount();
-
-		/**
-		 * The meta object literal for the '<em><b>Maximum Count</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REFERENCE_OVERRIDE__MAXIMUM_COUNT = eINSTANCE.getReferenceOverride_MaximumCount();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator <em>Generator</em>}' class.
