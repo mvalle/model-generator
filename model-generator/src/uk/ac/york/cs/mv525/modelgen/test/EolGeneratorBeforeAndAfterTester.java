@@ -85,7 +85,7 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mIndex);
 
-		RandomGenerator rand = new RandomGenerator(model, mIndex);
+		RandomGenerator rand = new RandomGenerator(model, mIndex, cIndex);
 		AlwaysCreate a = new AlwaysCreate(rand);
 		rand.setStrategy(a);
 		
@@ -121,7 +121,7 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mIndex);
 
-		RandomGenerator rand = new RandomGenerator(model, mIndex);
+		RandomGenerator rand = new RandomGenerator(model, mIndex, cIndex);
 		rand.setStrategy(new AlwaysCreate(rand));
 		EolGenerator eg  = new EolGenerator(location, model, mIndex, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));

@@ -25,18 +25,13 @@ public class RandomGenerator extends Generator {
 
 	Random rand = new Random(0);
 
-	public RandomGenerator(ModelInstance modelInstance, MetaModelIndex metaModel) {
-		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
-		model = modelInstance;
-		mIndex = metaModel;
-	}
-
 	public RandomGenerator(ModelInstance modelInstance,
 			MetaModelIndex metaModel, Configuration config) {
 		iClassGenerator = metaModel.getEPackage().getEFactoryInstance();
 		model = modelInstance;
 		this.config = config;
 		mIndex = metaModel;
+		
 	}
 
 	@Override

@@ -25,6 +25,7 @@ public class MetaModelIndex implements Index {
 			l = index.get(name);			
 		} else {
 			l = new ArrayList<>();
+			index.put(name, l);
 		}
 
 		if (mClass.getName().equals(name)) {
@@ -85,7 +86,7 @@ public class MetaModelIndex implements Index {
 	public boolean exists(String name) {
 		
 		if (index.containsKey(name)) {
-			return index.get(name).size() == 0;
+			return index.get(name).size() >= 0;
 		}
 		
 		return false;

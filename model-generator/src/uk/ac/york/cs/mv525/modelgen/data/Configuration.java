@@ -72,7 +72,7 @@ public class Configuration implements Index {
 				exclude(excl.getName());
 			} else {
 				System.err.println(excl.getName());
-				throw new InvalidConfigurationException();
+				throw new InvalidConfigurationException(excl.getName());
 			}
 		}
 
@@ -82,7 +82,7 @@ public class Configuration implements Index {
 			ModelElementOverride over = (ModelElementOverride) _over;
 
 			if (!metaModel.exists(over.getName())) {
-				throw new InvalidConfigurationException();
+				throw new InvalidConfigurationException(over.getName());
 			}
 
 			add(over.getName(), over.getMinimumCount());
@@ -95,7 +95,7 @@ public class Configuration implements Index {
 				StringPool sp = (StringPool) _sp;
 
 				if (!metaModel.exists(over.getName(), sp.getName())) {
-					throw new InvalidConfigurationException();
+					throw new InvalidConfigurationException(over.getName() + "::" + sp.getName());
 				}
 
 				if (!pools.containsKey(over.getName())) {

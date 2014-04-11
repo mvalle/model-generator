@@ -35,7 +35,7 @@ public class RandomGeneratorTester extends FileTester {
 	@Test
 	public void test_create_class() {
 		
-		RandomGenerator rg  = new RandomGenerator(model, index);
+		RandomGenerator rg  = new RandomGenerator(model, index, null);
 		EObject randObj = rg.create((EClass) index.get("Person"));
 		
 		assertNotNull(randObj);
@@ -44,7 +44,7 @@ public class RandomGeneratorTester extends FileTester {
 	@Test
 	public void test_create_attribute() {
 		
-		RandomGenerator rg  = new RandomGenerator(model, index);
+		RandomGenerator rg  = new RandomGenerator(model, index, null);
 		EClass mClass = (EClass) index.get("Person");
 		EStructuralFeature mName = mClass.getEStructuralFeature("name");
 		
@@ -58,7 +58,7 @@ public class RandomGeneratorTester extends FileTester {
 	
 	@Test
 	public void test_link() {
-		RandomGenerator rg  = new RandomGenerator(model, index);
+		RandomGenerator rg  = new RandomGenerator(model, index, null);
 		rg.setStrategy(new AlwaysCreate(rg));
 		EClass mClass = (EClass) index.get("Person");
 		EStructuralFeature mManages = mClass.getEStructuralFeature("manages");

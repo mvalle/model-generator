@@ -114,7 +114,7 @@ public class Orchastrator {
 			
 			
 		} else if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator) {
-			output = new RandomGenerator(modelInstance, mIndex);
+			output = new RandomGenerator(modelInstance, mIndex, cIndex);
 			output.setStrategy(convert(root.getStrategy(), output));
 		}
 		else if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator) {
