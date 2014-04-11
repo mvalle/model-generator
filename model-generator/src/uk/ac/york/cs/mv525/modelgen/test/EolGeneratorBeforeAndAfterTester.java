@@ -97,10 +97,8 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		generator.addGenerator(eg);
 		
 
-		Orchastrator defaultOrchastration = new Orchastrator();
+		Orchastrator defaultOrchastration = new Orchastrator(model);
 		defaultOrchastration.addConfiguration(cIndex);
-		defaultOrchastration.addGenerator(generator);
-		defaultOrchastration.addModel(model);		
 		
 
 		defaultOrchastration.create();
@@ -130,10 +128,8 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		generator.addGenerator(eg);
 		
 
-		Orchastrator defaultOrchastration = new Orchastrator();
+		Orchastrator defaultOrchastration = new Orchastrator(model);
 		defaultOrchastration.addConfiguration(cIndex);
-		defaultOrchastration.addGenerator(generator);
-		defaultOrchastration.addModel(model);		
 
 		defaultOrchastration.create();
 

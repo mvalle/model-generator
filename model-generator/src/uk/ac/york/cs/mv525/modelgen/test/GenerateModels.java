@@ -30,14 +30,14 @@ public class GenerateModels {
 		c.setMetaModel(mmi);
 		
 		ModelInstance model = new ModelInstance(outputLoc);
-		System.out.println(model);
+		//System.out.println(model);
 		
 		Orchastrator d = new Orchastrator(model);
 		d.addConfiguration(c);
 		
 		d.create();
 		
-		System.out.println(model);		
+		//System.out.println(model);		
 		model.save();
 		
 	}

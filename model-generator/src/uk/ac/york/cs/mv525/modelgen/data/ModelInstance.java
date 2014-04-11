@@ -77,7 +77,7 @@ public class ModelInstance {
 	}
 	
 	public List<EObject> getObjects(String name) {
-		ArrayList<EObject> o = iIndex.get(name);
+		ArrayList<EObject> o = iIndex.get(name);		
 		return o;
 	}
 	

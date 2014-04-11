@@ -151,9 +151,8 @@ public class Configuration implements Index {
 
 		long countForEachNewElement = 0;
 
-		if (remainingClassCount > 0 && num > targetElementsCount) {
-			countForEachNewElement = remainingClassCount
-					/ (targetElementsCount - num);
+		if (remainingClassCount > 0 && num < targetElementsCount) {
+			countForEachNewElement = (targetElementsCount - num) / remainingClassCount;
 		}
 
 		for (EObject mObject : metaModel.dump()) {
@@ -232,25 +231,13 @@ public class Configuration implements Index {
 		
 		System.out.println("Configuration::dump()");
 		
-		LinkedList<Pair<String, Long>> list2 = new LinkedList<>();
-		for(Object o : config.getModelElementOverrides()) {
-			ModelElementOverride m = (ModelElementOverride) o;
-			list2.add(new Pair<String, Long>(m.getName(), m.getMinimumCount()));
-		}
-		
 		LinkedList<Pair<String, Long>> list = new LinkedList<>();
 		for (String key : index.keySet()) {
 			list.add(new Pair<String, Long>(key, index.get(key)));
 		}
 
-		assert(list.size() == list2.size());
-		assert(list2.contains(list.get(0)));
-		assert(list.contains(list2.get(0)));
-		assert(list.contains(list2.get(list2.size()-1)));
-		assert(list2.contains(list.get( list.size()-1)));
 		
-		
-		return list2;
+		return list;
 	}
 
 	public void resetState() {

@@ -100,7 +100,7 @@ public class RandomGenerator extends Generator {
 			upper = config.getMinimumCount();
 		}
 
-		if (lower == upper && upper == 1) {
+		if (upper == 1) {
 			// if multiplicity of 1, do one
 			linkOne(iObjectContainer, mReference);
 
@@ -109,6 +109,8 @@ public class RandomGenerator extends Generator {
 			@SuppressWarnings("unchecked")
 			EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 					.eGet(mReference);
+			System.out.println(iObjectContainer.eClass().getName());
+			System.out.println(mReference.getName());
 			if (upper < iReferenceContainer.size()) {
 
 				// Add minimum references
