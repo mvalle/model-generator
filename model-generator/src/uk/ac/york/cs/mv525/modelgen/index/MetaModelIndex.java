@@ -1,5 +1,6 @@
 package uk.ac.york.cs.mv525.modelgen.index;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -9,23 +10,68 @@ import org.eclipse.emf.ecore.EPackage;
 
 public class MetaModelIndex implements Index {
 
-	HashMap<String, EObject> index;
+	HashMap<String, ArrayList<EClass>> index;	
 	EPackage ePackage;
 	
 	public MetaModelIndex() {
 		index = new HashMap<>();
 	}	
 	
-	public void add(String name, EObject object) {
-		index.put(name, object);
-	}
+	public void insert(String name,  EClass mClass) {
 		
-	public EObject get(String name) {
-		return index.get(name);
+		ArrayList<EClass> l;
+		
+		if ( index.containsKey(name) ) {			
+			l = index.get(name);			
+		} else {
+			l = new ArrayList<>();
+		}
+
+		if (mClass.getName().equals(name)) {
+			l.add(0, mClass); // ensure superclasses are ....
+		} else {
+			l.add(mClass);
+		}
+		
 	}
 	
-	public Collection<EObject> dump() {
-		return index.values();		
+	public void add(EClass mClass) {
+		insert(mClass.getName(), mClass);
+		
+		for(EClass mSuperClass : mClass.getESuperTypes()) {
+			insert(mSuperClass.getName(), mClass);
+		}
+	}
+	
+	/*
+	public void add(String name, EObject object) {
+		temp_index.put(name, object);		
+	}
+	*/
+	
+	public EObject get(String name) {
+		
+		if (index.containsKey(name)) {
+			ArrayList<EClass> l = index.get(name);
+			if (l.size() > 0) {
+				return l.get(0);
+			}
+		}
+		
+		return null;
+	}
+	
+	public Collection<EClass> dump() {		
+		// only top level elements
+		ArrayList<EClass> o = new ArrayList<>();
+		
+		for(ArrayList<EClass> c : index.values()) {
+			if (c.size() > 0) {
+				o.add(c.get(0));
+			}
+		}
+				
+		return o;
 	}
 
 	public void setEPackage(EPackage pack) {
@@ -37,7 +83,12 @@ public class MetaModelIndex implements Index {
 	}
 
 	public boolean exists(String name) {
-		return index.containsKey(name);
+		
+		if (index.containsKey(name)) {
+			return index.get(name).size() == 0;
+		}
+		
+		return false;
 	}
 
 	public long getCount() {
@@ -51,4 +102,49 @@ public class MetaModelIndex implements Index {
 		}
 		return false;
 	}
+
+	public EClass getConcreteClass(EClass mClass) {
+		
+		for(EClass e : index.get(mClass.getName())) {
+			
+			if ( !e.isAbstract() && !e.isInterface()) {
+				return e;
+			}
+			
+		}
+		
+		return null;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

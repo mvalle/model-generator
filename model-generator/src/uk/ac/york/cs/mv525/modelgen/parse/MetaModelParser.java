@@ -51,7 +51,8 @@ public class MetaModelParser{
 			if(mObj.eClass().getName().equals("EClass")) {
 
 				EClass mClass = (EClass)mObj;
-				mmIndex.add(mClass.getName(), mClass);
+				mmIndex.add(mClass);
+				//mmIndex.add(mClass.getName(), mClass);
 				
 			}
 			populateIndex(mmIndex, mObj.eContents());
