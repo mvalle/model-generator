@@ -2,9 +2,6 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="config" nsURI="http://config/1.0" nsPrefix="config">
   <eClassifiers xsi:type="ecore:EClass" name="ModelElementOverride">
-    <eOperations name="addStringPool">
-      <eParameters name="stringPool" eType="#//StringPool"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MinimumCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="StringPools" upperBound="-1"
@@ -13,12 +10,6 @@
         eType="#//ReferenceOverride" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelConfiguration">
-    <eOperations name="addModelElementOverride">
-      <eParameters name="modelElementOverride" eType="#//ModelElementOverride"/>
-    </eOperations>
-    <eOperations name="addModelElementExclusion">
-      <eParameters name="modelElementExclusion" eType="#//ModelElementExclusion"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ModelElementOverrides"
         upperBound="-1" eType="#//ModelElementOverride" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="TotalMinimumCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
@@ -27,8 +18,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Deterministic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="DefaultStringPool" eType="#//StringPool"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="MetaModelLocation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OutputModelLocation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Generator" eType="#//Generator"
         containment="true"/>
   </eClassifiers>
@@ -36,7 +25,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringPool" abstract="true" interface="true">
-    <eOperations name="get" eType="#//StringPoolEntry"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileStringPool" eSuperTypes="#//StringPool">
@@ -57,28 +45,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MinimumCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Generator" abstract="true" interface="true">
-    <eOperations name="create" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
-      <eParameters name="mClass" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-    </eOperations>
-    <eOperations name="add" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
-      <eParameters name="iObject" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-      <eParameters name="mAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
-    </eOperations>
-    <eOperations name="link" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
-      <eParameters name="iObjectContainer" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-      <eParameters name="mReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
-    </eOperations>
-    <eOperations name="before" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="after" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="strategy" lowerBound="1"
         eType="#//Strategy" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RandomGenerator" eSuperTypes="#//Generator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Strategy" abstract="true" interface="true">
-    <eOperations name="retrieveObject" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
-      <eParameters name="mType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-    </eOperations>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Strategy" abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AlwaysCreateStrategy" eSuperTypes="#//Strategy">
     <eStructuralFeatures xsi:type="ecore:EReference" name="generator" lowerBound="1"
         eType="#//Generator"/>
