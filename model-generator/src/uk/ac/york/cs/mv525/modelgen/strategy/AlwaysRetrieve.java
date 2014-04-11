@@ -29,7 +29,11 @@ public class AlwaysRetrieve implements Strategy {
 		
 		if(os == null) return null;
 		
-		return os.get(i++%os.size());		
+		EObject output = os.get(i%os.size());
+		
+		state.put(mType.getName(), i+1);
+		
+		return output;
 	}
 
 }

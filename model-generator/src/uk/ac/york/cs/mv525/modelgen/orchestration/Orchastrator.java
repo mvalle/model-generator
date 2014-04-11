@@ -1,7 +1,10 @@
 package uk.ac.york.cs.mv525.modelgen.orchestration;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -31,7 +34,6 @@ public class Orchastrator {
 		modelInstance = model;
 	}
 	
-	
 	public void addConfiguration(Configuration index) {
 		cIndex = index;
 		mIndex = index.metaModel;
@@ -40,7 +42,6 @@ public class Orchastrator {
 		}
 	}
 
-	
 	private void init() {
 		try {
 			addGenerator(cIndex.getGenerator());
@@ -50,7 +51,6 @@ public class Orchastrator {
 		}
 		
 	}
-
 
 	// TODO : Make private
 	public void addGenerator(uk.ac.york.cs.mv525.modelgen.config.config.Generator generator) throws IOException {
@@ -71,7 +71,8 @@ public class Orchastrator {
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
 				if (feature.getEType() instanceof EClass ) {
 					//generator.link(iObject, (EReference) feature);
-				} else {				
+				} else {
+					//System.out.println(feature.getEType() instanceof EDataType);
 					generator.add(iObject, feature);				
 				}
 			}			
@@ -85,11 +86,13 @@ public class Orchastrator {
 		
 		// TODO : getNext from modelInstance.
 		
-		cIndex.resetState();
-		mClass = cIndex.getNextInstantiable();
+		ArrayList<EObject> iObjects = modelInstance.dump();
 		
-		while(mClass != null) {
-			EObject iObject = modelInstance.get(mClass.getName());
+		for(EObject iObject : iObjects) {
+			
+			if (iObject.eClass().getName().equals("ModelConfiguration")) {
+				System.out.println("");
+			}
 			
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
 				if (feature.getEType() instanceof EClass ) {
@@ -97,7 +100,7 @@ public class Orchastrator {
 				}
 			}
 			
-			mClass = cIndex.getNextInstantiable();
+		
 		}
 			
 		generator.after();

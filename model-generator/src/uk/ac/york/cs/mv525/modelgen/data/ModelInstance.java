@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -100,5 +101,24 @@ public class ModelInstance {
 
 	public void save() throws IOException {
 		resource.save(null);
+	}
+
+	public ArrayList<EObject> dump() {
+		
+		ArrayList<EObject> output = new ArrayList<>();
+		
+		// Include objects once;
+		for(Entry<String, ArrayList<EObject>> entry : iIndex.entrySet()) {
+			for(EObject indexedObject : entry.getValue()) {
+				if (indexedObject.eClass().getName().equals(entry.getKey())) {
+					output.add(indexedObject);
+				} else {
+					//System.out.println( entry.getKey() + ": Not including " + indexedObject );
+				}
+				
+			}
+		}
+		
+		return output;		
 	}
 }

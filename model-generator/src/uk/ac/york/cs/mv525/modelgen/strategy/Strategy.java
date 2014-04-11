@@ -7,4 +7,6 @@ public interface Strategy {
 
 	public EObject retrieaveObject(EClass mType);
 
+	public EObject retrieaveUncontainedObject(EClass eType);
+
 }

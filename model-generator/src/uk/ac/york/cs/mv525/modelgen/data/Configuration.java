@@ -113,7 +113,7 @@ public class Configuration implements Index {
 					pool.put(sp.getName(), new StringPoolContainer(esp));
 				} else if (sp instanceof FileStringPool) {
 					FileStringPool fsp = (FileStringPool)sp; 
-					pool.put(sp.getName(), new StringPoolContainer(fsp.getLocation()));
+					pool.put(sp.getName(), new StringPoolContainer(fsp.getLocation(), configFileLocation));
 				}
 				
 			}
@@ -123,7 +123,7 @@ public class Configuration implements Index {
 				defaultStringPool = new StringPoolContainer(esp);
 			} else if (sp instanceof FileStringPool) {
 				FileStringPool fsp = (FileStringPool)sp; 
-				defaultStringPool = new StringPoolContainer(fsp.getLocation());
+				defaultStringPool = new StringPoolContainer(fsp.getLocation(), configFileLocation);
 			}
 			// Deal with References
 			EList references = over.getReferences();
@@ -348,8 +348,9 @@ public class Configuration implements Index {
 	}
 
 	public long getMinimumReferences(EReference mReference) {
-		
-		EClass mClass = (EClass)mReference.eContainingFeature();
+				
+		//EClass mClass = (EClass)mReference.eContainingFeature();
+		EClass mClass = mReference.eContainer().eClass();
 		HashMap<String, Long> ref = refs.get(mClass.getName());
 		
 		if (ref != null && ref.containsKey(mReference.getName())) {			

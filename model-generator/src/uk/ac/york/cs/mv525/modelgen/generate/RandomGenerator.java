@@ -66,13 +66,20 @@ public class RandomGenerator extends Generator {
 				iObject.eSet(mAttribute, getString(mAttribute));
 
 				// TODO : Generate more EDataTypes
-
+				
+			} else if (mAttribute.getEType().getName() == "Long") {
+				iObject.eSet(mAttribute, getLong());
 			} else {
-				// print("Unknown EDataType");
+				System.out.println("Unknown EDataType " + mAttribute.getEType().getName());
 			}
 		}
 
 		return iObject.eGet(mAttribute);
+	}
+
+	private Object getLong() {
+		// TODO Auto-generated method stub
+		return rand.nextLong();
 	}
 
 	private String getString(EStructuralFeature mAttribute) {
@@ -109,9 +116,10 @@ public class RandomGenerator extends Generator {
 			@SuppressWarnings("unchecked")
 			EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 					.eGet(mReference);
-			System.out.println(iObjectContainer.eClass().getName());
-			System.out.println(mReference.getName());
-			if (upper < iReferenceContainer.size()) {
+			//System.out.println(iObjectContainer.eClass().getName());
+			//System.out.println(mReference.getName());
+			System.out.println("upper["+upper+"] > size()["+iReferenceContainer.size()+"]");
+			if (upper > iReferenceContainer.size()) {
 
 				// Add minimum references
 				while (lower > iReferenceContainer.size()
@@ -130,6 +138,10 @@ public class RandomGenerator extends Generator {
 					link(iReferenceContainer, mReference);
 				}
 			}
+			
+			System.out.print(iReferenceContainer.size());System.out.print(" : ");
+			System.out.println(((EList<EObject>)iObjectContainer.eGet(mReference)).size());
+			iObjectContainer.eSet(mReference, iReferenceContainer);
 		}
 		
 		return iObjectContainer.eGet(mReference);
@@ -144,11 +156,22 @@ public class RandomGenerator extends Generator {
 	}
 
 	private void link(EList<EObject> iReferenceContainer, EReference mReference) {
-
-		EObject iObject = strategy.retrieaveObject((EClass) mReference
+		//System.out.println("Linking " + iObject.eClass().getName() + iObject.hashCode() + " " + iObject.eContainer());
+		
+		if (!mReference.isContainment()) {		
+			EObject iObject = strategy.retrieaveObject((EClass) mReference
+				.getEType());	
+			iReferenceContainer.add(iObject);	
+		
+		} else {
+			EObject iObject = strategy.retrieaveUncontainedObject((EClass) mReference
 				.getEType());
-
-		iReferenceContainer.add(iObject);
+			
+			iReferenceContainer.add(iObject);
+			
+		}
+		
+		//System.out.println("Linked  " + iObject.eClass().getName() + iObject.hashCode() + " " + iObject.eContainer());
 	}
 
 	@Override
