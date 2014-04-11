@@ -76,21 +76,29 @@ public class EolGenerator extends Generator {
 	public EObject create(EClass mClass) {
 		try {
 			EObject iObject = null;
+			
+			EolOperation constructOp = opIndex.getConstructor(mClass);
+			if (constructOp != null) {
+				iObject = (EObject) constructOp.execute(null, Arrays.asList(iObject), opIndex.getEolContext());
+			}
 
 			EolOperation createOp = opIndex.get(mClass.getName());
 			if (createOp != null) {
 				
 				//System.out.println(iClassGenerator.getEPackage());
 				//System.out.println(mClass.getEPackage());
+				if (iObject == null) {
+					iObject = iClassGenerator.create(mClass);
+				}
 				
-				iObject = iClassGenerator.create(mClass);
 				createOp.execute(iObject, Collections.emptyList(),
 						opIndex.getEolContext());
 				
+			}
+			
+			if (iObject != null) {
 				iModel.add(iObject);
 			}
-
-			//System.out.println("Adding "+iObject+" to "+iModel);
 
 			return iObject;
 

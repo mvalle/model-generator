@@ -27,21 +27,18 @@ public class EolGeneratorTester extends FileTester {
 	
 	Configuration cIndex;
 	String configLocation = dataDir + "test.config";
-	String metaModelLocation = dataDir + "orgchart.ecore";
 	
 	@Before
 	public void setUp() throws Exception {
-		location = dataDir + "test.eol";
+		location = dataDir + "test2.eol";
 
 		mIndex = MetaModelParser.parse(dataDir+"orgchart.ecore");
 		
 		model = new ModelInstance(dataDir+"test.model");
 		
-
-		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
 		
 		cIndex = ConfigParser.parse(configLocation);
-		cIndex.setMetaModel(mmIndex);
+		cIndex.setMetaModel(mIndex);
 	}
 	
 	@After
@@ -55,7 +52,7 @@ public class EolGeneratorTester extends FileTester {
 	@Test
 	public void test_create_class() throws Exception {
 		
-		EolGenerator eg  = new EolGenerator(location, model, mIndex, cIndex);
+		EolGenerator eg  = new EolGenerator(location, model, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 		EObject randObj = eg.create((EClass) mIndex.get("Person"));
 		
@@ -65,7 +62,7 @@ public class EolGeneratorTester extends FileTester {
 	@Test
 	public void test_create_attribute() throws Exception {
 		
-		EolGenerator eg  = new EolGenerator(location, model, mIndex, cIndex);
+		EolGenerator eg  = new EolGenerator(location, model, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 		EClass mClass = (EClass) mIndex.get("Person");
 		EStructuralFeature mName = mClass.getEStructuralFeature("name");
@@ -80,7 +77,7 @@ public class EolGeneratorTester extends FileTester {
 	
 	@Test
 	public void test_link() throws Exception {
-		EolGenerator eg  = new EolGenerator(location, model, mIndex, cIndex);
+		EolGenerator eg  = new EolGenerator(location, model, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 		
 		EClass mClass = (EClass) mIndex.get("Person");

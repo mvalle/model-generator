@@ -52,7 +52,7 @@ public class GenerationFromConfigOnlyTester extends FileTester {
 		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);
 		
 		Configuration cIndex = ConfigParser.parse(configLocation);
-		cIndex.setMetaModel(metaModelLocation);
+		cIndex.setMetaModel(mmIndex);
 				
 		ModelInstance model = new ModelInstance(location);
 		long precount = model.getCount();
@@ -60,11 +60,9 @@ public class GenerationFromConfigOnlyTester extends FileTester {
 		System.out.print(model);
 		System.out.println(" test_generation()");
 		
-		Orchastrator orch = new Orchastrator();
-		orch.addMetaModel(mmIndex);
-		orch.addModel(model);
+		Orchastrator orch = new Orchastrator(model);
 		orch.addConfiguration(cIndex);
-		orch.addGenerator(cIndex.getGenerator());
+		//orch.addGenerator(cIndex.getGenerator());
 		
 		orch.create();
 		
@@ -74,6 +72,7 @@ public class GenerationFromConfigOnlyTester extends FileTester {
 		
 	}
 	
+	@Test
 	public void test_saving_to_file() throws IOException {
 		
 		MetaModelIndex mmIndex = MetaModelParser.parse(metaModelLocation);

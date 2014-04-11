@@ -13,6 +13,11 @@ operation Person createname() {
 	
 }
 
+operation Person createmanages( emp : Person) {
+	self.manages.add(emp);	
+}
+
+
 @disabled true
 operation Company create() {
 	var nick = new Person;
