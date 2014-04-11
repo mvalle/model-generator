@@ -62,8 +62,12 @@ public class EolIndex implements Index {
 	}
 
 
-	public EolOperation get(String name) {
-		return get(name, OP_PREFIX);
+	public EolOperation get(String mTypeName) {
+		if(!index.containsKey(mTypeName)) return null;
+
+		HashMap<String, EolOperation> opTable = index.get(mTypeName);
+		
+		return opTable.get(OP_PREFIX);
 	}
 
 

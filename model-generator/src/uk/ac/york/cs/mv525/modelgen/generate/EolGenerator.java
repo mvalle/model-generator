@@ -36,14 +36,13 @@ public class EolGenerator extends Generator {
 	Strategy strategy;
 	Configuration config;
 
-	@Deprecated // Get MetaModelIndex from Configuration obj
 	public EolGenerator(String programLocation, ModelInstance modelInstance,
-			MetaModelIndex metaModel, Configuration config) throws IOException {
+			Configuration config) throws IOException {
 		
 		System.out.print(modelInstance);
 		System.out.println(" EolGenerator()");
 		
-		mIndex = metaModel;
+		mIndex = config.metaModel;
 		iModel = modelInstance;
 		iClassGenerator = mIndex.getEPackage().getEFactoryInstance();
 
@@ -80,6 +79,9 @@ public class EolGenerator extends Generator {
 
 			EolOperation createOp = opIndex.get(mClass.getName());
 			if (createOp != null) {
+				
+				//System.out.println(iClassGenerator.getEPackage());
+				//System.out.println(mClass.getEPackage());
 				
 				iObject = iClassGenerator.create(mClass);
 				createOp.execute(iObject, Collections.emptyList(),

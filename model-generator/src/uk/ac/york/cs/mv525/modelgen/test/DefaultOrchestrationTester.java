@@ -52,7 +52,7 @@ public class DefaultOrchestrationTester extends FileTester {
 				
 		RandomGenerator rand = new RandomGenerator(model, mmIndex, cIndex);
 		rand.setStrategy(new AlwaysCreate(rand));
-		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex, cIndex);
+		EolGenerator eol = new EolGenerator(programLocation, model, cIndex);
 		eol.setStrategy(new AlwaysCreate(eol));
 		
 		CombinedGenerator generator = new CombinedGenerator(rand);
@@ -83,7 +83,7 @@ public class DefaultOrchestrationTester extends FileTester {
 				
 		RandomGenerator rand = new RandomGenerator(model, mmIndex, cIndex);
         rand.setStrategy(new AlwaysCreate(rand));
-		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex, cIndex);
+		EolGenerator eol = new EolGenerator(programLocation, model, cIndex);
 		eol.setStrategy(new AlwaysCreate(eol));
 		
 		CombinedGenerator generator = new CombinedGenerator(rand);

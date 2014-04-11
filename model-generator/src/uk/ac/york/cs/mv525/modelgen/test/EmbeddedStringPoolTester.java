@@ -60,10 +60,9 @@ public class EmbeddedStringPoolTester extends FileTester {
         CombinedGenerator generator = new CombinedGenerator(rand);
 		//generator.addGenerator(eol);
 		
-		Orchastrator defaultOrchastration = new Orchastrator();
+		Orchastrator defaultOrchastration = new Orchastrator(model);
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addGenerator(generator);
-		defaultOrchastration.addModel(model);
 				
 		defaultOrchastration.create();
 		

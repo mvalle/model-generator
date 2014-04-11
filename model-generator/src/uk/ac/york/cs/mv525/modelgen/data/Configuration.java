@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.javatuples.Pair;
 
 import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
+import uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool;
+import uk.ac.york.cs.mv525.modelgen.config.config.FileStringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
@@ -28,7 +30,7 @@ public class Configuration implements Index {
 
 	private HashMap<String, Long> index = new HashMap<String, Long>();
 	private HashSet<String> excludes = new HashSet<String>();
-	private HashMap<String, HashMap<String, StringPool>> pools = new HashMap<>();
+	private HashMap<String, HashMap<String, StringPoolContainer>> pools = new HashMap<>();
 	private HashMap<String, HashMap<String, Long>> refs = new HashMap<>();
 
 	// private int totalCount = 0;
@@ -39,6 +41,7 @@ public class Configuration implements Index {
 	private Generator generator;
 	
 	private String configFileLocation = "";
+	private StringPoolContainer defaultStringPool;
 
 	public Configuration(ModelConfiguration config, MetaModelIndex mmIndex) {
 		metaModel = mmIndex;
@@ -99,12 +102,29 @@ public class Configuration implements Index {
 				}
 
 				if (!pools.containsKey(over.getName())) {
-					pools.put(over.getName(), new HashMap<String, StringPool>());
+					pools.put(over.getName(), new HashMap<String, StringPoolContainer>());
 				}
-				HashMap<String, StringPool> pool = pools.get(over.getName());
-				pool.put(sp.getName(), sp);
+				
+				HashMap<String, StringPoolContainer> pool = pools.get(over.getName());
+				
+				
+				if (sp instanceof EmbeddedStringPool) {
+					EmbeddedStringPool esp = (EmbeddedStringPool)sp; 
+					pool.put(sp.getName(), new StringPoolContainer(esp));
+				} else if (sp instanceof FileStringPool) {
+					FileStringPool fsp = (FileStringPool)sp; 
+					pool.put(sp.getName(), new StringPoolContainer(fsp.getLocation()));
+				}
+				
 			}
-
+			StringPool sp = config.getDefaultStringPool();
+			if (sp instanceof EmbeddedStringPool) {
+				EmbeddedStringPool esp = (EmbeddedStringPool)sp; 
+				defaultStringPool = new StringPoolContainer(esp);
+			} else if (sp instanceof FileStringPool) {
+				FileStringPool fsp = (FileStringPool)sp; 
+				defaultStringPool = new StringPoolContainer(fsp.getLocation());
+			}
 			// Deal with References
 			EList references = over.getReferences();
 			for (Object _refOver : references) {
@@ -318,25 +338,19 @@ public class Configuration implements Index {
 		String attrName = mAttr.getName();
 		String className = mAttr.getEContainingClass().getName();
 
-		HashMap<String, StringPool> classPools = pools.get(className);
+		HashMap<String, StringPoolContainer> classPools = pools.get(className);
 
 		if (classPools != null) {
 
-			StringPool pool = classPools.get(attrName);
+			StringPoolContainer pool = classPools.get(attrName);
 
 			if (pool != null) {
 
-				StringPoolEntry entry = pool.get();
-				if (entry != null) {
-					return entry.getString();
-				}
+				return pool.get();
 			}
 
-		} else {
-			StringPool pool = config.getDefaultStringPool();
-			if (pool != null) {
-				return pool.get().getString();
-			}
+		} else if (defaultStringPool != null) {
+			return defaultStringPool.get();
 		}
 
 		return "";
@@ -369,102 +383,4 @@ public class Configuration implements Index {
 	public void setDirectory(String dir) {
 		configFileLocation = dir;
 	}
-	
-	
-/*
-	public void create(String outputLocation) {
-*/
-/*		config.setOutputModelLocation(outputLocation);
-		
-		generator.before();
-		
-		 Start by creating the minimum amount of classes. 
-		
-		EClass mClass = (EClass) getNext();
-		
-		while(mClass != null) {
-			EObject iObject = generator.create(mClass);
-			
-			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
-				if (feature.getEType() instanceof EClass ) {
-					//generator.link(iObject, (EReference) feature);
-				} else {				
-					generator.add(iObject, feature);				
-				}
-			}			
-
-			mClass = (EClass) getNext();
-		}
-		
-		 Finish by linking the objects together. 
-		 * This section may create more objects, 
-		 * depending on the strategy used. 
-		
-		resetState();
-		mClass = (EClass) getNext();
-		
-		while(mClass != null) {
-			EObject iObject = ((ModelConfigurationImpl)config).getModel().get(mClass.getName());
-			
-			if (iObject != null) {
-				for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
-					if (feature.getEType() instanceof EClass ) {
-						generator.link(iObject, (EReference) feature);
-					}
-				}
-			}
-			mClass = (EClass) getNext();
-		}
-		*/
-	/*	
-	}
-	
-	@Deprecated
-	public void create(ModelInstance model) {
-	*/	
-/*		((ModelConfigurationImpl)config).iModel = model;
-		
-		generator.before();
-		
-		 Start by creating the minimum amount of classes. 
-		
-		EClass mClass = (EClass) getNext();
-		
-		while(mClass != null) {
-			EObject iObject = generator.create(mClass);
-			
-			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
-				if (feature.getEType() instanceof EClass ) {
-					//generator.link(iObject, (EReference) feature);
-				} else {				
-					generator.add(iObject, feature);				
-				}
-			}			
-
-			mClass = (EClass) getNext();
-		}
-		
-		 Finish by linking the objects together. Pair<Long, Long>
-		 * This section may create more objects, 
-		 * depending on the strategy used. 
-		
-		resetState();
-		mClass = (EClass) getNext();
-		
-		while(mClass != null) {
-			EObject iObject = model.get(mClass.getName());
-			
-			if (iObject != null) {
-				for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
-					if (feature.getEType() instanceof EClass ) {
-						generator.link(iObject, (EReference) feature);
-					}
-				}
-			}
-			mClass = (EClass) getNext();
-		}
-		*/
-	/*	
-	}
-*/
 }

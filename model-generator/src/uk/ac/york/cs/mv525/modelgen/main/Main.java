@@ -47,7 +47,7 @@ public class Main {
 		
 		/* The object responsible for generating model elements. Consisting of two other sub-generators */
 		RandomGenerator rand = new RandomGenerator(model, mmIndex, cIndex);
-		EolGenerator eol = new EolGenerator(programLocation, model, mmIndex, cIndex);		
+		EolGenerator eol = new EolGenerator(programLocation, model, cIndex);		
 		CombinedGenerator generator = new CombinedGenerator(rand);
 		generator.addGenerator(eol);
 		
