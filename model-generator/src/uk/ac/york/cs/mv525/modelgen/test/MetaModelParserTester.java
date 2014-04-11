@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.util.Collection;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,12 +47,12 @@ public class MetaModelParserTester extends FileTester {
 		
 		assertNotNull(index);
 		
-		Collection<EObject> dump = index.dump();
+		Collection<EClass> dump = index.dump();
 		
 		assertNotNull(dump);
 		assertTrue(dump.size() > 0);
 		
-		for(EObject obj : dump) {
+		for(EClass obj : dump) {
 			assertNotNull(obj);
 		}
 				
