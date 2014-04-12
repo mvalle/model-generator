@@ -3,6 +3,7 @@ package uk.ac.york.cs.mv525.modelgen.orchestration;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -44,11 +45,29 @@ public class Orchastrator {
 
 	private void init() {
 		try {
-			addGenerator(cIndex.getGenerator());
+			if (cIndex.getGenerator() == null) {
+				addDefaultGenerator();
+			} else {
+				addGenerator(cIndex.getGenerator());
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+
+	private void addDefaultGenerator() {
+		
+		Generator g = new RandomGenerator(modelInstance, mIndex, cIndex);
+
+		AlwaysCreate ac = new AlwaysCreate(g);
+		AlwaysRetrieve ar = new AlwaysRetrieve(modelInstance);
+		RetrieveOrCreate roc = new RetrieveOrCreate(ac, ar);
+		
+		g.setStrategy(roc);
+		
+		this.generator = g;
 		
 	}
 
@@ -69,11 +88,10 @@ public class Orchastrator {
 			EObject iObject = generator.create(mClass);
 			
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
-				if (feature.getEType() instanceof EClass ) {
-					//generator.link(iObject, (EReference) feature);
+				if (feature instanceof EAttribute ) {
+					generator.add(iObject, (EAttribute)feature);
 				} else {
-					//System.out.println(feature.getEType() instanceof EDataType);
-					generator.add(iObject, feature);				
+					System.out.println(feature instanceof EReference);	
 				}
 			}			
 

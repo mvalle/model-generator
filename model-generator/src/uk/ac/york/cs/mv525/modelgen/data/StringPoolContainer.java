@@ -62,7 +62,7 @@ public class StringPoolContainer {
 			state++;
 			return s;
 		} else {
-			return "";
+			return null;
 		}
 
 	}

@@ -33,13 +33,9 @@ public class Configuration implements Index {
 	private HashMap<String, HashMap<String, StringPoolContainer>> pools = new HashMap<>();
 	private HashMap<String, HashMap<String, Long>> refs = new HashMap<>();
 
-	// private int totalCount = 0;
 	private long targetElementsCount;
-	// private BigInteger averageNonOverriddenCount;
 	public MetaModelIndex metaModel;
 	private ModelConfiguration config;
-	private Generator generator;
-	
 	private String configFileLocation = "";
 	private StringPoolContainer defaultStringPool;
 
@@ -66,19 +62,38 @@ public class Configuration implements Index {
 	private void init() {
 		targetElementsCount = config.getTotalMinimumCount();
 
-		// Deal with exclusions
-		for (Object _excl : config.getModelElemetExclusions()) {
-			ModelElementExclusion excl = (ModelElementExclusion) _excl;
+		handleExcludes();
 
-			if (metaModel.exists(excl.getName())) {
+		long num = handleOverrides();
 
-				exclude(excl.getName());
-			} else {
-				System.err.println(excl.getName());
-				throw new InvalidConfigurationException(excl.getName());
-			}
+		handleCounts(num);
+	}
+
+	private void handleCounts(long num) {
+		// Deal with counts
+		long overrideClassCount = index.size();
+		long totalClassCount = metaModel.getCount();
+
+		long remainingClassCount = totalClassCount - overrideClassCount;
+
+		long countForEachNewElement = 0;
+
+		if (remainingClassCount > 0 && num < targetElementsCount) {
+			countForEachNewElement = (targetElementsCount - num) / remainingClassCount;
 		}
 
+		for (EClass mClass : metaModel.dump()) {
+			if (!index.containsKey(mClass.getName())) { // don't duplicate
+				add(mClass.getName(), countForEachNewElement);
+			}
+		}
+		
+		if (getNextState == null) {
+			initialiseGetNextState();
+		}
+	}
+
+	private long handleOverrides() {
 		// Deal with overrides
 		long num = 0;
 		for (Object _over : config.getModelElementOverrides()) {
@@ -92,75 +107,79 @@ public class Configuration implements Index {
 
 			num += over.getMinimumCount();
 
-			// Deal with StringPool
-			EList spools = over.getStringPools();
-			for (Object _sp : spools) {
-				StringPool sp = (StringPool) _sp;
+			handleStringPools(over);
+			handleReferences(over);
 
-				if (!metaModel.exists(over.getName(), sp.getName())) {
-					throw new InvalidConfigurationException(over.getName() + "::" + sp.getName());
-				}
+		}
+		return num;
+	}
 
-				if (!pools.containsKey(over.getName())) {
-					pools.put(over.getName(), new HashMap<String, StringPoolContainer>());
-				}
-				
-				HashMap<String, StringPoolContainer> pool = pools.get(over.getName());
-				
-				
-				if (sp instanceof EmbeddedStringPool) {
-					EmbeddedStringPool esp = (EmbeddedStringPool)sp; 
-					pool.put(sp.getName(), new StringPoolContainer(esp));
-				} else if (sp instanceof FileStringPool) {
-					FileStringPool fsp = (FileStringPool)sp; 
-					pool.put(sp.getName(), new StringPoolContainer(fsp.getLocation(), configFileLocation));
-				}
-				
+	private void handleReferences(ModelElementOverride over) {
+		// Deal with References
+		EList references = over.getReferences();
+		for (Object _refOver : references) {
+			ReferenceOverride refOver = (ReferenceOverride) _refOver;
+			String name = refOver.getName();
+			Long min = refOver.getMinimumCount();
+
+			if (!refs.containsKey(over.getName())) {
+				refs.put(over.getName(),
+						new HashMap<String, Long>());
 			}
-			StringPool sp = config.getDefaultStringPool();
+			HashMap<String, Long> ref = refs
+					.get(over.getName());
+			ref.put(name, min);
+		}
+	}
+
+	private void handleStringPools(ModelElementOverride over) {
+		// Deal with StringPool
+		EList spools = over.getStringPools();
+		for (Object _sp : spools) {
+			StringPool sp = (StringPool) _sp;
+
+			if (!metaModel.exists(over.getName(), sp.getName())) {
+				throw new InvalidConfigurationException(over.getName() + "::" + sp.getName());
+			}
+
+			if (!pools.containsKey(over.getName())) {
+				pools.put(over.getName(), new HashMap<String, StringPoolContainer>());
+			}
+			
+			HashMap<String, StringPoolContainer> pool = pools.get(over.getName());
+			
+			
 			if (sp instanceof EmbeddedStringPool) {
 				EmbeddedStringPool esp = (EmbeddedStringPool)sp; 
-				defaultStringPool = new StringPoolContainer(esp);
+				pool.put(sp.getName(), new StringPoolContainer(esp));
 			} else if (sp instanceof FileStringPool) {
 				FileStringPool fsp = (FileStringPool)sp; 
-				defaultStringPool = new StringPoolContainer(fsp.getLocation(), configFileLocation);
+				pool.put(sp.getName(), new StringPoolContainer(fsp.getLocation(), configFileLocation));
 			}
-			// Deal with References
-			EList references = over.getReferences();
-			for (Object _refOver : references) {
-				ReferenceOverride refOver = (ReferenceOverride) _refOver;
-				String name = refOver.getName();
-				Long min = refOver.getMinimumCount();
+			
+		}
+		StringPool sp = config.getDefaultStringPool();
+		if (sp instanceof EmbeddedStringPool) {
+			EmbeddedStringPool esp = (EmbeddedStringPool)sp; 
+			defaultStringPool = new StringPoolContainer(esp);
+		} else if (sp instanceof FileStringPool) {
+			FileStringPool fsp = (FileStringPool)sp; 
+			defaultStringPool = new StringPoolContainer(fsp.getLocation(), configFileLocation);
+		}
+	}
 
-				if (!refs.containsKey(over.getName())) {
-					refs.put(over.getName(),
-							new HashMap<String, Long>());
-				}
-				HashMap<String, Long> ref = refs
-						.get(over.getName());
-				ref.put(name, min);
+	private void handleExcludes() {
+		// Deal with exclusions
+		for (Object _excl : config.getModelElemetExclusions()) {
+			ModelElementExclusion excl = (ModelElementExclusion) _excl;
+
+			if (metaModel.exists(excl.getName())) {
+
+				exclude(excl.getName());
+			} else {
+				System.err.println(excl.getName());
+				throw new InvalidConfigurationException(excl.getName());
 			}
-
-		}
-
-		//
-		long overrideClassCount = index.size();
-		long totalClassCount = metaModel.getCount();
-
-		long remainingClassCount = totalClassCount - overrideClassCount;
-
-		long countForEachNewElement = 0;
-
-		if (remainingClassCount > 0 && num < targetElementsCount) {
-			countForEachNewElement = (targetElementsCount - num) / remainingClassCount;
-		}
-
-		for (EObject mObject : metaModel.dump()) {
-			add(((EClass) mObject).getName(), countForEachNewElement);
-		}
-		
-		if (getNextState == null) {
-			initialiseGetNextState();
 		}
 	}
 
@@ -229,7 +248,7 @@ public class Configuration implements Index {
 
 	public LinkedList<Pair<String, Long>> dump() {
 		
-		System.out.println("Configuration::dump()");
+		//System.out.println("Configuration::dump()");
 		
 		LinkedList<Pair<String, Long>> list = new LinkedList<>();
 		for (String key : index.keySet()) {

@@ -3,6 +3,7 @@ package uk.ac.york.cs.mv525.modelgen.generate;
 import java.util.Random;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
@@ -57,28 +58,30 @@ public class RandomGenerator extends Generator {
 		}
 	}
 
-	public Object add(EObject iObject, EStructuralFeature mAttribute) {
+	public Object add(EObject iObject, EAttribute mAttribute) {
 
 		if (!iObject.eIsSet(mAttribute)) {
-
-			if (mAttribute.getEType().getName() == "EString") {
-				// iObject.eSet(mAttribute, createEString());
+			
+			switch (mAttribute.getEType().getName()) {
+			case "EString":			
 				iObject.eSet(mAttribute, getString(mAttribute));
-
-				// TODO : Generate more EDataTypes
-				
-			} else if (mAttribute.getEType().getName() == "Long") {
+				break;
+			case "Long":
+			case "ELong":
 				iObject.eSet(mAttribute, getLong());
-			} else {
-				System.out.println("Unknown EDataType " + mAttribute.getEType().getName());
+				break;
+			default:
+				// TODO : Generate more EDataTypes				
+				System.out.println("Unknown EDataType " + mAttribute.getEType().getName());				
+				System.out.println(mAttribute.getName());
 			}
+			
 		}
 
 		return iObject.eGet(mAttribute);
 	}
 
 	private Object getLong() {
-		// TODO Auto-generated method stub
 		return rand.nextLong();
 	}
 
@@ -89,7 +92,23 @@ public class RandomGenerator extends Generator {
 				return c;
 			}
 		}
-		return "";
+		
+		return generateRandomString(2+(int)(rand.nextGaussian()*8));
+	}
+
+	private String generateRandomString(int i) {
+		System.out.println("Generate string");
+		System.out.println("  target: "+i);
+		String s = "";
+		while(i-- > 0) {
+			char c = (char)(rand.nextInt(126-32) + 32);
+			if (c<32 || c>126) {
+				System.out.println("  ! oversised char: "+c);
+			}
+			s = s+c;
+		}
+		System.out.println("  actual: "+s.length());
+		return s;
 	}
 
 	// requires iObjectContainter.eGet(mReference) == null;
@@ -116,9 +135,7 @@ public class RandomGenerator extends Generator {
 			@SuppressWarnings("unchecked")
 			EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 					.eGet(mReference);
-			//System.out.println(iObjectContainer.eClass().getName());
-			//System.out.println(mReference.getName());
-			System.out.println("upper["+upper+"] > size()["+iReferenceContainer.size()+"]");
+			
 			if (upper > iReferenceContainer.size()) {
 
 				// Add minimum references
@@ -127,21 +144,23 @@ public class RandomGenerator extends Generator {
 					link(iReferenceContainer, mReference);
 				}
 
+				// Add config defined references
 				long configMin = config.getMinimumReferences(mReference);
 				while (configMin > iReferenceContainer.size()
 						&& upper < iReferenceContainer.size()) {
 					link(iReferenceContainer, mReference);
 				}
-
+				
+				// Add random references
 				int c = (int) (upper * rand.nextGaussian());
 				while (c-- > 0) {
 					link(iReferenceContainer, mReference);
 				}
 			}
-			
-			System.out.print(iReferenceContainer.size());System.out.print(" : ");
-			System.out.println(((EList<EObject>)iObjectContainer.eGet(mReference)).size());
-			iObjectContainer.eSet(mReference, iReferenceContainer);
+			/* Having filled the EList, you might consider doing this next
+			 *   iObjectContainer.eSet(mReference, iReferenceContainer); 
+			 * but would clear the list, obviously.
+			 */
 		}
 		
 		return iObjectContainer.eGet(mReference);
@@ -155,23 +174,16 @@ public class RandomGenerator extends Generator {
 		
 	}
 
-	private void link(EList<EObject> iReferenceContainer, EReference mReference) {
-		//System.out.println("Linking " + iObject.eClass().getName() + iObject.hashCode() + " " + iObject.eContainer());
-		
-		if (!mReference.isContainment()) {		
-			EObject iObject = strategy.retrieaveObject((EClass) mReference
-				.getEType());	
-			iReferenceContainer.add(iObject);	
-		
-		} else {
+	private void link(EList<EObject> iReferenceContainer, EReference mReference) {		
+		if (mReference.isContainment()) {		
 			EObject iObject = strategy.retrieaveUncontainedObject((EClass) mReference
-				.getEType());
-			
-			iReferenceContainer.add(iObject);
-			
-		}
-		
-		//System.out.println("Linked  " + iObject.eClass().getName() + iObject.hashCode() + " " + iObject.eContainer());
+				.getEType());	
+			iReferenceContainer.add(iObject);		
+		} else {
+			EObject iObject = strategy.retrieaveObject((EClass) mReference
+				.getEType());			
+			iReferenceContainer.add(iObject);			
+		}		
 	}
 
 	@Override
@@ -183,4 +195,5 @@ public class RandomGenerator extends Generator {
 	public boolean after() {
 		return false;
 	}
+
 }

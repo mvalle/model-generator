@@ -51,7 +51,7 @@ public class ModelInstance {
 		
 		// Finally, index the object with all it's parent classes
 		for(EClass mSuperClass:  iObject.eClass().getEAllSuperTypes()) {
-			System.out.println("Indexing "+iObject.eClass().getName()+"\t as "+mSuperClass.getName());
+			//System.out.println("Indexing "+iObject.eClass().getName()+"\t as "+mSuperClass.getName());
 			insert(iObject, mSuperClass);
 		}
 	}
@@ -120,5 +120,14 @@ public class ModelInstance {
 		}
 		
 		return output;		
+	}
+
+	public int count(EClass mType) {
+		
+		if (iIndex.get(mType.getName()) == null){
+			return 0;
+		}
+		
+		return iIndex.get(mType.getName()).size();
 	}
 }

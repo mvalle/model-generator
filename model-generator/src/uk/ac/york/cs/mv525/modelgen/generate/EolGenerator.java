@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
@@ -107,7 +108,7 @@ public class EolGenerator extends Generator {
 		}
 	}
 
-	public Object add(EObject iObject, EStructuralFeature mAttribute) {
+	public Object add(EObject iObject, EAttribute mAttribute) {
 		try {
 
 			if (!iObject.eIsSet(mAttribute)) {

@@ -3,6 +3,7 @@ package uk.ac.york.cs.mv525.modelgen.generate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -72,7 +73,7 @@ public class CombinedGenerator extends Generator {
 
 
 
-	public Object add(EObject iObject, EStructuralFeature feature) {
+	public Object add(EObject iObject, EAttribute feature) {
 		for(Generator generator : generators) {
 			Object o = generator.add(iObject, feature);
 			

@@ -1,5 +1,6 @@
 package uk.ac.york.cs.mv525.modelgen.generate;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -13,7 +14,7 @@ public abstract class Generator {
 
 	public abstract EObject create(EClass mClass);	
 
-	public abstract Object add(EObject iObject, EStructuralFeature mAttribute);
+	public abstract Object add(EObject iObject, EAttribute mAttribute);
 	
 	public abstract Object link(EObject iObjectContainer, EReference mReference);
 

@@ -36,4 +36,21 @@ public class AlwaysRetrieve implements Strategy {
 		return output;
 	}
 
+	@Override
+	public EObject retrieaveUncontainedObject(EClass mType) {
+		int breaker = model.count(mType);
+		
+		EObject i = retrieaveObject(mType);
+		
+		while( i != null && i.eContainer() != null ) {
+			i = retrieaveObject(mType);
+			// retrieaveObject will cycle through all objects indefinatly
+			if(breaker-- <= 0) {
+				return null;
+			}
+		}
+		
+		return i;
+	}
+
 }

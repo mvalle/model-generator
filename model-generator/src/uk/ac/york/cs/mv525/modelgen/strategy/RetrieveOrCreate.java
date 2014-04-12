@@ -22,4 +22,13 @@ public class RetrieveOrCreate implements Strategy {
 		return o;
 	}
 
+	@Override
+	public EObject retrieaveUncontainedObject(EClass mType) {
+		EObject o = retriever.retrieaveUncontainedObject(mType);
+		if (o == null) {
+			o = creator.retrieaveUncontainedObject(mType);
+		}
+		return o;
+	}
+
 }
