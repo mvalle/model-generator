@@ -18,7 +18,7 @@ import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 public class EolIndexTester extends FileTester {
 
 	String modelLocation = dataDir+"output.model";
-	String metaModelLocation = dataDir+"orgchart.ecore";
+	String metaModelLocation = mmDir+"orgchart.ecore";
 	MetaModelIndex mIndex;
 	ModelInstance iModel;
 

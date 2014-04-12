@@ -23,7 +23,7 @@ import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 public class EolGeneratorConstructor extends FileTester {
 
 	String configLocation = dataDir + "test.config";
-	String metaModelLocation = dataDir + "orgchart.ecore";
+	String metaModelLocation = mmDir+"orgchart.ecore";
 	Configuration cIndex;
 	
 	MetaModelIndex mIndex;

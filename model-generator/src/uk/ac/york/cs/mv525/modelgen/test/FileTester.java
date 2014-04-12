@@ -11,6 +11,8 @@ public class FileTester {
 	
 	protected String dataDir = System.getProperty("user.dir") +
 			"/src/uk/ac/york/cs/mv525/modelgen/test/data/";
+	protected String mmDir = System.getProperty("user.dir") +
+			"/src/uk/ac/york/cs/mv525/modelgen/test/data/metamodels/";
 	
 	protected boolean createsFile = false;
 	@Test

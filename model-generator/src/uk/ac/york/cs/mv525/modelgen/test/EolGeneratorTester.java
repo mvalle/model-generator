@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -32,7 +33,7 @@ public class EolGeneratorTester extends FileTester {
 	public void setUp() throws Exception {
 		location = dataDir + "test2.eol";
 
-		mIndex = MetaModelParser.parse(dataDir+"orgchart.ecore");
+		mIndex = MetaModelParser.parse(mmDir+"orgchart.ecore");
 		
 		model = new ModelInstance(dataDir+"test.model");
 		
@@ -68,7 +69,7 @@ public class EolGeneratorTester extends FileTester {
 		EStructuralFeature mName = mClass.getEStructuralFeature("name");
 		
 		EObject person = eg.create(mClass);
-		Object name = eg.add(person, mName);		
+		Object name = eg.add(person, (EAttribute)mName);		
 		assertNotNull(name);
 		
 		Object actual = person.eGet(mName);

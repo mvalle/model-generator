@@ -28,7 +28,7 @@ public class GenerationFromConfigOnlyTester extends FileTester {
 	
 	String programLocation = dataDir +"test.eol";
 	//String metaModelLocation = dataDir + "orgchart.ecore";
-	String metaModelLocation = dataDir + "Config.ecore";
+	String metaModelLocation = mmDir+"Config.ecore";
 	//String location = dataDir +"testmodels.modelx";
 	String location = dataDir +"testmodels.config";
 	//String configLocation = dataDir + "default_generator.config";

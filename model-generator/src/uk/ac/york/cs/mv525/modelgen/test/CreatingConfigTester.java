@@ -30,7 +30,7 @@ import uk.ac.york.cs.mv525.modelgen.generate.CombinedGenerator;
 
 public class CreatingConfigTester extends FileTester {
 	
-	String configMM = dataDir + "Config.ecore";
+	String configMM = dataDir + "metamodel/Config.ecore";
 	String genEol = dataDir + "config_gen.eol";
 	String location = dataDir + "config_output.config";
 		

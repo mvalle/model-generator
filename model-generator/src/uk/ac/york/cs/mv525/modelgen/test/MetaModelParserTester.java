@@ -17,7 +17,7 @@ public class MetaModelParserTester extends FileTester {
 	
 	@Before
 	public void classSetUp() {	
-		location = dataDir + "orgchart.ecore";	
+		location = mmDir + "orgchart.ecore";	
 	}
 	
 	@Test

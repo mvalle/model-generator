@@ -22,7 +22,7 @@ public class ConfigIndexTester extends FileTester {
 	public void classSetUp() throws IOException {	
 		location = dataDir + "test.config";
 		
-		mmIndex = MetaModelParser.parse(dataDir + "orgchart.ecore");
+		mmIndex = MetaModelParser.parse(mmDir+"orgchart.ecore");
 	}
 	private Configuration newIndex() throws IOException {
 		Configuration c =  ConfigParser.parse(location);

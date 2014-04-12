@@ -26,7 +26,7 @@ import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 public class EmbeddedStringPoolTester extends FileTester {
 
 	String programLocation = dataDir +"test.eol";
-	String metaModelLocation = dataDir + "orgchart.ecore";
+	String metaModelLocation = mmDir+"orgchart.ecore";
 	String location = dataDir +"testmodels.modelx";
 	String configLocation = dataDir + "embeded_string_pool.config";
 	

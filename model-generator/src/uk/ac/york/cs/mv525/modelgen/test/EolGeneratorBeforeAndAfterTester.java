@@ -31,12 +31,12 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 	
 
 	String configLocation = dataDir + "test.config";
-	String metaModelLocation = dataDir + "orgchart.ecore";
+	String metaModelLocation = mmDir+"orgchart.ecore";
 	
 	@Before
 	public void setUp() throws Exception {
 		location = dataDir + "test_before.eol";
-		mIndex = MetaModelParser.parse(dataDir+"orgchart.ecore");
+		mIndex = MetaModelParser.parse(mmDir+"orgchart.ecore");
 		
 		model = new ModelInstance(dataDir+"test.model");
 	}

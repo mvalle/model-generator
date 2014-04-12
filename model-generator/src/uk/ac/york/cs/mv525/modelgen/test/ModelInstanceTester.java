@@ -17,7 +17,7 @@ import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 
 public class ModelInstanceTester extends FileTester {
 
-	String metaModel = dataDir + "orgchart.ecore";
+	String metaModel = mmDir+"orgchart.ecore";
 	MetaModelIndex index;
 	
 	@Before

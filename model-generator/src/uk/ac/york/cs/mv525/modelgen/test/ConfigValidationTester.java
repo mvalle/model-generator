@@ -23,7 +23,7 @@ public class ConfigValidationTester extends FileTester {
 	
 	@Before
 	public void classSetUp() throws IOException {
-		location = dataDir + "orgchart.ecore";
+		location = mmDir+"orgchart.ecore";
 		mmIndex =  MetaModelParser.parse(location);
 		
 		invalid_override = dataDir + "invalid_override.config";

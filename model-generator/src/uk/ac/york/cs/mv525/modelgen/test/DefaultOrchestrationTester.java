@@ -23,7 +23,7 @@ import uk.ac.york.cs.mv525.modelgen.orchestration.Orchastrator;
 public class DefaultOrchestrationTester extends FileTester {
 
 	String programLocation = dataDir +"test.eol";
-	String metaModelLocation = dataDir + "orgchart.ecore";
+	String metaModelLocation = mmDir+"orgchart.ecore";
 	String location = dataDir +"testmodels.modelx";
 	String configLocation = dataDir + "test.config";
 	

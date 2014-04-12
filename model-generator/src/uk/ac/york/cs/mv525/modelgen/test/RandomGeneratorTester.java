@@ -2,6 +2,7 @@ package uk.ac.york.cs.mv525.modelgen.test;
 
 import static org.junit.Assert.*;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -29,7 +30,7 @@ public class RandomGeneratorTester extends FileTester {
 	@Before
 	public void setUp() throws Exception {
 		
-		location = dataDir + "orgchart.ecore";
+		location = mmDir + "orgchart.ecore";
 
 		index = MetaModelParser.parse(location);
 		
@@ -56,7 +57,7 @@ public class RandomGeneratorTester extends FileTester {
 		EStructuralFeature mName = mClass.getEStructuralFeature("name");
 		
 		EObject person = rg.create(mClass);
-		Object name = rg.add(person, mName);		
+		Object name = rg.add(person, (EAttribute)mName);		
 		assertNotNull(name);
 		
 		Object actual = person.eGet(mName);		
