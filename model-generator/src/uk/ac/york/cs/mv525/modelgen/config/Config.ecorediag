@@ -155,6 +155,10 @@
         <element xmi:type="ecore:EAttribute" href="Config.ecore#//ReferenceOverride/MinimumCount"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_cDNggbLKEeOCmpqT2f05iQ"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_qtO-8MQjEeObkOzjECE9pA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Config.ecore#//ReferenceOverride/MaximumCount"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_qtO-8cQjEeObkOzjECE9pA"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_SwtjobHIEeOIGZBec5OvsA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_SwtjorHIEeOIGZBec5OvsA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_Swtjo7HIEeOIGZBec5OvsA"/>

@@ -87,33 +87,38 @@ public class Orchastrator {
 		while(mClass != null) {
 			EObject iObject = generator.create(mClass);
 			
+			if(mClass.getName().equals("EAnnotation")) {
+				System.out.println();
+			}
+			
+			
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
 				if (feature instanceof EAttribute ) {
 					generator.add(iObject, (EAttribute)feature);
 				} else {
-					System.out.println(feature instanceof EReference);	
+					//System.out.println(feature instanceof EReference);	
 				}
 			}			
 
 			mClass = cIndex.getNextInstantiable();
 		}
 		
+		//if (true) return;
+		
 		/* Finish by linking the objects together. 
 		 * This section may create more objects, 
 		 * depending on the strategy used. */
-		
-		// TODO : getNext from modelInstance.
-		
+				
 		ArrayList<EObject> iObjects = modelInstance.dump();
 		
 		for(EObject iObject : iObjects) {
 			
-			if (iObject.eClass().getName().equals("ModelConfiguration")) {
+			if (iObject.eClass().getName().equals("EAnnotation")) {
 				System.out.println("");
 			}
 			
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
-				if (feature.getEType() instanceof EClass ) {
+				if (feature.getEType() instanceof EClass && feature.isChangeable() ) {
 					generator.link(iObject, (EReference) feature);
 				}
 			}

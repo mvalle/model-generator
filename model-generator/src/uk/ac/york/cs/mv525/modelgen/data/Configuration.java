@@ -31,7 +31,7 @@ public class Configuration implements Index {
 	private HashMap<String, Long> index = new HashMap<String, Long>();
 	private HashSet<String> excludes = new HashSet<String>();
 	private HashMap<String, HashMap<String, StringPoolContainer>> pools = new HashMap<>();
-	private HashMap<String, HashMap<String, Long>> refs = new HashMap<>();
+	private HashMap<String, HashMap<String, Pair<Long, Long>>> refs = new HashMap<>();
 
 	private long targetElementsCount;
 	public MetaModelIndex metaModel;
@@ -119,16 +119,22 @@ public class Configuration implements Index {
 		EList references = over.getReferences();
 		for (Object _refOver : references) {
 			ReferenceOverride refOver = (ReferenceOverride) _refOver;
+			
+			if (!metaModel.exists(over.getName(), refOver.getName())) {
+				throw new InvalidConfigurationException(over.getName()+"::"+refOver.getName());
+			}
+			
 			String name = refOver.getName();
 			Long min = refOver.getMinimumCount();
-
+			Long max = refOver.getMaximumCount();
+			
 			if (!refs.containsKey(over.getName())) {
 				refs.put(over.getName(),
-						new HashMap<String, Long>());
+						new HashMap<String, Pair<Long, Long>>());
 			}
-			HashMap<String, Long> ref = refs
+			HashMap<String, Pair<Long, Long>> ref = refs
 					.get(over.getName());
-			ref.put(name, min);
+			ref.put(name, new Pair<Long, Long>(min, max));
 		}
 	}
 
@@ -359,7 +365,7 @@ public class Configuration implements Index {
 			return defaultStringPool.get();
 		}
 
-		return "";
+		return null;
 	}
 	
 	public uk.ac.york.cs.mv525.modelgen.config.config.Generator getGenerator() {
@@ -370,15 +376,27 @@ public class Configuration implements Index {
 				
 		//EClass mClass = (EClass)mReference.eContainingFeature();
 		EClass mClass = mReference.eContainer().eClass();
-		HashMap<String, Long> ref = refs.get(mClass.getName());
+		HashMap<String, Pair<Long, Long>> ref = refs.get(mClass.getName());
 		
 		if (ref != null && ref.containsKey(mReference.getName())) {			
-			return ref.get(mReference.getName());
+			return ref.get(mReference.getName()).getValue0();
 		}
 		
 		return -1;
 	}
 
+	public long getMaximumReferences(EReference mReference) {
+		
+		//EClass mClass = (EClass)mReference.eContainingFeature();
+		EClass mClass = mReference.eContainer().eClass();
+		HashMap<String, Pair<Long, Long>> ref = refs.get(mClass.getName());
+		
+		if (ref != null && ref.containsKey(mReference.getName())) {			
+			return ref.get(mReference.getName()).getValue1();
+		}
+		
+		return -1;
+	}
 	public long getMinimumCount() {
 		return targetElementsCount;
 	}
@@ -390,4 +408,5 @@ public class Configuration implements Index {
 	public void setDirectory(String dir) {
 		configFileLocation = dir;
 	}
+
 }

@@ -43,6 +43,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceOverride">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MinimumCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="MaximumCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Generator" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="strategy" lowerBound="1"

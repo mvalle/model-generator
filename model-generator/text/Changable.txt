@@ -1,0 +1,6 @@
+isChangable()
+-------------
+
+If an EStructuralFeature is changable, it can be set after construction.
+That means, if the object as a non changable feature, if it needs to be set, it has to be set in the createX() functions.
+It is intended for stuff that is readonly, either it is a calculated value or set in the constructor.

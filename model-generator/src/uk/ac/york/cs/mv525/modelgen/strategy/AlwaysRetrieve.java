@@ -19,6 +19,11 @@ public class AlwaysRetrieve implements Strategy {
 	
 	@Override
 	public EObject retrieaveObject(EClass mType) {
+		
+		if( mType.getName().equals("ENamedElement")) {
+			System.out.println();
+		}
+		
 		Integer i = state.get(mType.getName());
 		if(i == null) {
 			i = Integer.valueOf(0);

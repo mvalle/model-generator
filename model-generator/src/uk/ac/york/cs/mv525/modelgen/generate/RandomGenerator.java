@@ -60,7 +60,8 @@ public class RandomGenerator extends Generator {
 
 	public Object add(EObject iObject, EAttribute mAttribute) {
 
-		if (!iObject.eIsSet(mAttribute)) {
+		if (!iObject.eIsSet(mAttribute) && mAttribute.isChangeable()) {
+			
 			
 			switch (mAttribute.getEType().getName()) {
 			case "EString":			
@@ -69,6 +70,12 @@ public class RandomGenerator extends Generator {
 			case "Long":
 			case "ELong":
 				iObject.eSet(mAttribute, getLong());
+				break;
+			case "EInt":
+				iObject.eSet(mAttribute,  getInt());
+				break;
+			case "EBoolean":
+				iObject.eSet(mAttribute, getBoolean());
 				break;
 			default:
 				// TODO : Generate more EDataTypes				
@@ -81,7 +88,15 @@ public class RandomGenerator extends Generator {
 		return iObject.eGet(mAttribute);
 	}
 
-	private Object getLong() {
+	private Boolean getBoolean() {
+		return rand.nextBoolean();
+	}
+
+	private Integer getInt() {
+		return rand.nextInt();
+	}
+
+	private Long getLong() {
 		return rand.nextLong();
 	}
 
@@ -93,9 +108,16 @@ public class RandomGenerator extends Generator {
 			}
 		}
 		
-		return generateRandomString(2+(int)(rand.nextGaussian()*8));
+		return generateRandomString(2+(int)(getDouble()*8));
 	}
 
+	private Double getDouble() {
+		double original = rand.nextGaussian();
+		double scaled = original * 0.5;
+		Double shifted = scaled + 0.5;
+		return shifted;		
+	}
+	
 	private String generateRandomString(int i) {
 		System.out.println("Generate string");
 		System.out.println("  target: "+i);
@@ -121,11 +143,10 @@ public class RandomGenerator extends Generator {
 
 		long lower = mReference.getLowerBound();
 		long upper = mReference.getUpperBound();
-		// * == -1 // TODO
 		if (upper == -1) {
-			upper = config.getMinimumCount();
+			upper = Long.MAX_VALUE;
 		}
-
+		
 		if (upper == 1) {
 			// if multiplicity of 1, do one
 			linkOne(iObjectContainer, mReference);
@@ -152,8 +173,14 @@ public class RandomGenerator extends Generator {
 				}
 				
 				// Add random references
-				int c = (int) (upper * rand.nextGaussian());
-				while (c-- > 0) {
+				long max = config.getMaximumReferences(mReference);
+				if (max == -1) { 
+					max = config.getMinimumCount();
+				}
+				
+				
+				int c = (int) (max * getDouble());
+				while (c-- > 0 && iReferenceContainer.size() <= upper) {
 					link(iReferenceContainer, mReference);
 				}
 			}
