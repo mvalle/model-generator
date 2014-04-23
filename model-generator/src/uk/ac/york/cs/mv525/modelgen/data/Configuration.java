@@ -6,12 +6,10 @@ import java.util.LinkedList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.javatuples.Pair;
 
-import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
 import uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.FileStringPool;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
@@ -19,9 +17,6 @@ import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
-import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
-import uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl;
-import uk.ac.york.cs.mv525.modelgen.generate.Generator;
 import uk.ac.york.cs.mv525.modelgen.index.Index;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.InvalidConfigurationException;
@@ -116,9 +111,8 @@ public class Configuration implements Index {
 
 	private void handleReferences(ModelElementOverride over) {
 		// Deal with References
-		EList references = over.getReferences();
-		for (Object _refOver : references) {
-			ReferenceOverride refOver = (ReferenceOverride) _refOver;
+		EList<ReferenceOverride> references = over.getReferences();
+		for (ReferenceOverride refOver : references) {
 			
 			if (!metaModel.exists(over.getName(), refOver.getName())) {
 				throw new InvalidConfigurationException(over.getName()+"::"+refOver.getName());
@@ -140,9 +134,9 @@ public class Configuration implements Index {
 
 	private void handleStringPools(ModelElementOverride over) {
 		// Deal with StringPool
-		EList spools = over.getStringPools();
-		for (Object _sp : spools) {
-			StringPool sp = (StringPool) _sp;
+		EList<StringPool> spools = over.getStringPools();
+		for (StringPool sp : spools) {
+			//StringPool sp = (StringPool) _sp;
 
 			if (!metaModel.exists(over.getName(), sp.getName())) {
 				throw new InvalidConfigurationException(over.getName() + "::" + sp.getName());
@@ -176,8 +170,8 @@ public class Configuration implements Index {
 
 	private void handleExcludes() {
 		// Deal with exclusions
-		for (Object _excl : config.getModelElemetExclusions()) {
-			ModelElementExclusion excl = (ModelElementExclusion) _excl;
+		EList<ModelElementExclusion> excls = config.getModelElemetExclusions();
+		for (ModelElementExclusion excl : excls) {
 
 			if (metaModel.exists(excl.getName())) {
 
@@ -368,8 +362,8 @@ public class Configuration implements Index {
 		return null;
 	}
 	
-	public uk.ac.york.cs.mv525.modelgen.config.config.Generator getGenerator() {
-		return config.getGenerator();
+	public uk.ac.york.cs.mv525.modelgen.config.config.Producer getProducer() {
+		return config.getProducer();
 	}
 
 	public long getMinimumReferences(EReference mReference) {

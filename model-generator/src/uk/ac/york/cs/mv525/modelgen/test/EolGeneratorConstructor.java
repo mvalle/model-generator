@@ -14,10 +14,10 @@ import org.junit.Test;
 
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.producer.EolProducer;
 import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 
 public class EolGeneratorConstructor extends FileTester {
@@ -53,7 +53,7 @@ public class EolGeneratorConstructor extends FileTester {
 	@Test
 	public void test_constructor_create() throws IOException {
 
-		EolGenerator eg  = new EolGenerator(location, model, cIndex);
+		EolProducer eg  = new EolProducer(location, model, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 
 		EClass mClass = (EClass) mIndex.get("Person");
@@ -70,7 +70,7 @@ public class EolGeneratorConstructor extends FileTester {
 	@Test
 	public void test_constructor_atribute_as_been_created() throws IOException {
 
-		EolGenerator eg  = new EolGenerator(location, model, cIndex);
+		EolProducer eg  = new EolProducer(location, model, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 		//EObject person = eg.create((EClass) mIndex.get("Person"));
 		

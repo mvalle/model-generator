@@ -5,23 +5,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import uk.ac.york.cs.mv525.modelgen.generate.Generator;
+import uk.ac.york.cs.mv525.modelgen.producer.Producer;
 
 public class AlwaysCreate implements Strategy {
-	private Generator generator;
+	private Producer producer;
 	
-	public AlwaysCreate(Generator gen) {
-		generator = gen;
+	public AlwaysCreate(Producer pro) {
+		producer = pro;
 	}
 		
 	@Override
 	public EObject retrieaveObject(EClass mType) {
 		
-		EObject o = generator.create(mType);
+		EObject o = producer.create(mType);
 		
 		for(EStructuralFeature f : mType.getEStructuralFeatures()) {
 			if( f instanceof EAttribute) {
-				generator.add(o, (EAttribute)f);
+				producer.add(o, (EAttribute)f);
 			}
 		}
 		return o;		

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="uk.ac.york.cs.mv525.modelgen.config.config.presentation.ConfigModelWizardID"
+            name="%_UI_ConfigModelWizard_label"
+            class="uk.ac.york.cs.mv525.modelgen.config.config.presentation.ConfigModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ConfigModelFile.gif">
+         <description>%_UI_ConfigModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="uk.ac.york.cs.mv525.modelgen.config.config.presentation.ConfigEditorID"
+            name="%_UI_ConfigEditor_label"
+            icon="icons/full/obj16/ConfigModelFile.gif"
+            extensions="config"
+            class="uk.ac.york.cs.mv525.modelgen.config.config.presentation.ConfigEditor"
+            contributorClass="uk.ac.york.cs.mv525.modelgen.config.config.presentation.ConfigActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

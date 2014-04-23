@@ -15,13 +15,13 @@ import org.junit.Test;
 
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen.generate.CombinedGenerator;
-import uk.ac.york.cs.mv525.modelgen.generate.EolGenerator;
-import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.orchestration.Orchastrator;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.producer.CombinedProducer;
+import uk.ac.york.cs.mv525.modelgen.producer.EolProducer;
+import uk.ac.york.cs.mv525.modelgen.producer.RandomProducer;
 import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 
 public class EolGeneratorBeforeAndAfterTester extends FileTester {
@@ -61,7 +61,7 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mIndex);
 		
-		EolGenerator eg  = new EolGenerator(location, model, cIndex);
+		EolProducer eg  = new EolProducer(location, model, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 		assertTrue(eg.before());
 	}
@@ -73,7 +73,7 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mIndex);
 		
-		EolGenerator eg  = new EolGenerator(location, model, cIndex);
+		EolProducer eg  = new EolProducer(location, model, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 		assertTrue(eg.after());
 	}
@@ -85,16 +85,16 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mIndex);
 
-		RandomGenerator rand = new RandomGenerator(model, mIndex, cIndex);
+		RandomProducer rand = new RandomProducer(model, mIndex, cIndex);
 		AlwaysCreate a = new AlwaysCreate(rand);
 		rand.setStrategy(a);
 		
-		EolGenerator eg = new EolGenerator(location, model, cIndex);
+		EolProducer eg = new EolProducer(location, model, cIndex);
 		AlwaysCreate b = new AlwaysCreate(eg);		
 		eg.setStrategy(b);
 		
-		CombinedGenerator generator = new CombinedGenerator(rand);
-		generator.addGenerator(eg);
+		CombinedProducer generator = new CombinedProducer(rand);
+		generator.addProducer(eg);
 		
 
 		Orchastrator defaultOrchastration = new Orchastrator(model);
@@ -119,13 +119,13 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 		Configuration cIndex = ConfigParser.parse(configLocation);
 		cIndex.setMetaModel(mIndex);
 
-		RandomGenerator rand = new RandomGenerator(model, mIndex, cIndex);
+		RandomProducer rand = new RandomProducer(model, mIndex, cIndex);
 		rand.setStrategy(new AlwaysCreate(rand));
-		EolGenerator eg  = new EolGenerator(location, model, cIndex);
+		EolProducer eg  = new EolProducer(location, model, cIndex);
 		eg.setStrategy(new AlwaysCreate(eg));
 
-		CombinedGenerator generator = new CombinedGenerator(rand);
-		generator.addGenerator(eg);
+		CombinedProducer generator = new CombinedProducer(rand);
+		generator.addProducer(eg);
 		
 
 		Orchastrator defaultOrchastration = new Orchastrator(model);

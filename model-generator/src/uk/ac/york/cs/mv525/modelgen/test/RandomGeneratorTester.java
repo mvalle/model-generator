@@ -12,10 +12,10 @@ import org.junit.Test;
 
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.producer.RandomProducer;
 import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 import uk.ac.york.cs.mv525.modelgen.test.FileTester;
 
@@ -43,7 +43,7 @@ public class RandomGeneratorTester extends FileTester {
 	@Test
 	public void test_create_class() {
 		
-		RandomGenerator rg  = new RandomGenerator(model, index, cIndex);
+		RandomProducer rg  = new RandomProducer(model, index, cIndex);
 		EObject randObj = rg.create((EClass) index.get("Person"));
 		
 		assertNotNull(randObj);
@@ -52,7 +52,7 @@ public class RandomGeneratorTester extends FileTester {
 	@Test
 	public void test_create_attribute() {
 		
-		RandomGenerator rg  = new RandomGenerator(model, index, cIndex);
+		RandomProducer rg  = new RandomProducer(model, index, cIndex);
 		EClass mClass = (EClass) index.get("Person");
 		EStructuralFeature mName = mClass.getEStructuralFeature("name");
 		
@@ -66,7 +66,7 @@ public class RandomGeneratorTester extends FileTester {
 	
 	@Test
 	public void test_link() {
-		RandomGenerator rg  = new RandomGenerator(model, index, cIndex);
+		RandomProducer rg  = new RandomProducer(model, index, cIndex);
 		rg.setStrategy(new AlwaysCreate(rg));
 		EClass mClass = (EClass) index.get("Person");
 		EStructuralFeature mManages = mClass.getEStructuralFeature("manages");

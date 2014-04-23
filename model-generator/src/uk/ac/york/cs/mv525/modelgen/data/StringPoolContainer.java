@@ -50,7 +50,7 @@ public class StringPoolContainer {
 	public StringPoolContainer(EmbeddedStringPool sp) {
 		pool = new ArrayList<String>();
 
-		for (StringPoolEntry spe : sp.getStrings()) {
+		for (StringPoolEntry spe : sp.getEntries()) {
 			pool.add(spe.getString());
 		}
 	}

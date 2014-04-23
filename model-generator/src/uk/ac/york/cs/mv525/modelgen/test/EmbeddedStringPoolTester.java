@@ -15,12 +15,12 @@ import org.junit.Test;
 
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
-import uk.ac.york.cs.mv525.modelgen.generate.CombinedGenerator;
-import uk.ac.york.cs.mv525.modelgen.generate.RandomGenerator;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 import uk.ac.york.cs.mv525.modelgen.orchestration.Orchastrator;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
+import uk.ac.york.cs.mv525.modelgen.producer.CombinedProducer;
+import uk.ac.york.cs.mv525.modelgen.producer.RandomProducer;
 import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
 
 public class EmbeddedStringPoolTester extends FileTester {
@@ -52,17 +52,17 @@ public class EmbeddedStringPoolTester extends FileTester {
 		
 		ModelInstance model = new ModelInstance(location);
 				
-		RandomGenerator rand = new RandomGenerator(model, mmIndex, cIndex);
+		RandomProducer rand = new RandomProducer(model, mmIndex, cIndex);
         rand.setStrategy(new AlwaysCreate(rand));
 		//EolGenerator eol = new EolGenerator(programLocation, model, mmIndex);
 		//eol.setStrategy(new AlwaysCreate(eol));
 		
-        CombinedGenerator generator = new CombinedGenerator(rand);
+        CombinedProducer generator = new CombinedProducer(rand);
 		//generator.addGenerator(eol);
 		
 		Orchastrator defaultOrchastration = new Orchastrator(model);
 		defaultOrchastration.addConfiguration(cIndex);
-		defaultOrchastration.addGenerator(generator);
+		defaultOrchastration.addProducer(generator);
 				
 		defaultOrchastration.create();
 		

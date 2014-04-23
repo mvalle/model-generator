@@ -26,7 +26,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-import uk.ac.york.cs.mv525.modelgen.generate.CombinedGenerator;
+import uk.ac.york.cs.mv525.modelgen.producer.CombinedProducer;
 
 public class CreatingConfigTester extends FileTester {
 	
