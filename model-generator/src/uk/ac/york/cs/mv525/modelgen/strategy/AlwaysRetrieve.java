@@ -24,19 +24,31 @@ public class AlwaysRetrieve implements Strategy {
 			System.out.println();
 		}
 		
-		Integer i = state.get(mType.getName());
-		if(i == null) {
-			i = Integer.valueOf(0);
-			state.put(mType.getName(), i);
+		Integer s = state.get(mType.getName());
+		if(s == null) {
+			s = Integer.valueOf(0);
+			state.put(mType.getName(), s);
 		}
 		List<EObject> os = model.getObjects(mType.getName());
 		
 		
 		if(os == null) return null;
 		
-		EObject output = os.get(i%os.size());
+		EObject output = null;
+		try {
+			output = os.get(s%os.size());
+		} catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+			System.out.println(s);
+			System.out.println(os.size());
+			throw e;
+		}
 		
-		state.put(mType.getName(), i+1);
+		if (s == Integer.MAX_VALUE) {
+			s = 0;
+		}
+		
+		state.put(mType.getName(), s+1);
 		
 		return output;
 	}
