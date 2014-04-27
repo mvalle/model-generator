@@ -3,37 +3,35 @@
 package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
-import uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator;
+import uk.ac.york.cs.mv525.modelgen.config.config.EolProducer;
 import uk.ac.york.cs.mv525.modelgen.config.config.Strategy;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Eol Generator</b></em>'.
+ * An implementation of the model object '<em><b>Eol Producer</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl#getStrategy <em>Strategy</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl#getLocation <em>Location</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolProducerImpl#getStrategy <em>Strategy</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolProducerImpl#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
+public class EolProducerImpl extends EObjectImpl implements EolProducer {
 	/**
-	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' reference.
+	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getStrategy()
@@ -67,7 +65,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EolGeneratorImpl() {
+	protected EolProducerImpl() {
 		super();
 	}
 
@@ -78,7 +76,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfigPackage.Literals.EOL_GENERATOR;
+		return ConfigPackage.Literals.EOL_PRODUCER;
 	}
 
 	/**
@@ -87,14 +85,6 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * @generated
 	 */
 	public Strategy getStrategy() {
-		if (strategy != null && strategy.eIsProxy()) {
-			InternalEObject oldStrategy = (InternalEObject)strategy;
-			strategy = (Strategy)eResolveProxy(oldStrategy);
-			if (strategy != oldStrategy) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.EOL_GENERATOR__STRATEGY, oldStrategy, strategy));
-			}
-		}
 		return strategy;
 	}
 
@@ -103,8 +93,14 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Strategy basicGetStrategy() {
-		return strategy;
+	public NotificationChain basicSetStrategy(Strategy newStrategy, NotificationChain msgs) {
+		Strategy oldStrategy = strategy;
+		strategy = newStrategy;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.EOL_PRODUCER__STRATEGY, oldStrategy, newStrategy);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -113,10 +109,17 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * @generated
 	 */
 	public void setStrategy(Strategy newStrategy) {
-		Strategy oldStrategy = strategy;
-		strategy = newStrategy;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EOL_GENERATOR__STRATEGY, oldStrategy, strategy));
+		if (newStrategy != strategy) {
+			NotificationChain msgs = null;
+			if (strategy != null)
+				msgs = ((InternalEObject)strategy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.EOL_PRODUCER__STRATEGY, null, msgs);
+			if (newStrategy != null)
+				msgs = ((InternalEObject)newStrategy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.EOL_PRODUCER__STRATEGY, null, msgs);
+			msgs = basicSetStrategy(newStrategy, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EOL_PRODUCER__STRATEGY, newStrategy, newStrategy));
 	}
 
 	/**
@@ -137,7 +140,7 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 		String oldLocation = location;
 		location = newLocation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EOL_GENERATOR__LOCATION, oldLocation, location));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EOL_PRODUCER__LOCATION, oldLocation, location));
 	}
 
 	/**
@@ -145,54 +148,13 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject create(EClass mClass) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object add(EObject iObject, EStructuralFeature mAttribute) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object link(EObject iObjectContainer, EReference mReference) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean before() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean after() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ConfigPackage.EOL_PRODUCER__STRATEGY:
+				return basicSetStrategy(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -203,10 +165,9 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.EOL_GENERATOR__STRATEGY:
-				if (resolve) return getStrategy();
-				return basicGetStrategy();
-			case ConfigPackage.EOL_GENERATOR__LOCATION:
+			case ConfigPackage.EOL_PRODUCER__STRATEGY:
+				return getStrategy();
+			case ConfigPackage.EOL_PRODUCER__LOCATION:
 				return getLocation();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -220,10 +181,10 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.EOL_GENERATOR__STRATEGY:
+			case ConfigPackage.EOL_PRODUCER__STRATEGY:
 				setStrategy((Strategy)newValue);
 				return;
-			case ConfigPackage.EOL_GENERATOR__LOCATION:
+			case ConfigPackage.EOL_PRODUCER__LOCATION:
 				setLocation((String)newValue);
 				return;
 		}
@@ -238,10 +199,10 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EOL_GENERATOR__STRATEGY:
+			case ConfigPackage.EOL_PRODUCER__STRATEGY:
 				setStrategy((Strategy)null);
 				return;
-			case ConfigPackage.EOL_GENERATOR__LOCATION:
+			case ConfigPackage.EOL_PRODUCER__LOCATION:
 				setLocation(LOCATION_EDEFAULT);
 				return;
 		}
@@ -256,9 +217,9 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EOL_GENERATOR__STRATEGY:
+			case ConfigPackage.EOL_PRODUCER__STRATEGY:
 				return strategy != null;
-			case ConfigPackage.EOL_GENERATOR__LOCATION:
+			case ConfigPackage.EOL_PRODUCER__LOCATION:
 				return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
 		}
 		return super.eIsSet(featureID);
@@ -280,4 +241,4 @@ public class EolGeneratorImpl extends EObjectImpl implements EolGenerator {
 		return result.toString();
 	}
 
-} //EolGeneratorImpl
+} //EolProducerImpl

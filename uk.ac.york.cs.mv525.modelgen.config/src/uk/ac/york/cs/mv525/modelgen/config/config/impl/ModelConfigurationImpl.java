@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
-import uk.ac.york.cs.mv525.modelgen.config.config.Generator;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion;
 import uk.ac.york.cs.mv525.modelgen.config.config.ModelElementOverride;
+import uk.ac.york.cs.mv525.modelgen.config.config.Producer;
 import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
 
 /**
@@ -33,13 +33,11 @@ import uk.ac.york.cs.mv525.modelgen.config.config.StringPool;
  * The following features are implemented:
  * <ul>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getModelElementOverrides <em>Model Element Overrides</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#isDeterministic <em>Deterministic</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getTotalMinimumCount <em>Total Minimum Count</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getModelElemetExclusions <em>Model Elemet Exclusions</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#isDeterministic <em>Deterministic</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getDefaultStringPool <em>Default String Pool</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getMetaModelLocation <em>Meta Model Location</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getOutputModelLocation <em>Output Model Location</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getGenerator <em>Generator</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelConfigurationImpl#getProducer <em>Producer</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,6 +53,26 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * @ordered
 	 */
 	protected EList<ModelElementOverride> modelElementOverrides;
+
+	/**
+	 * The default value of the '{@link #isDeterministic() <em>Deterministic</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDeterministic()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DETERMINISTIC_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDeterministic() <em>Deterministic</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDeterministic()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean deterministic = DETERMINISTIC_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTotalMinimumCount() <em>Total Minimum Count</em>}' attribute.
@@ -87,26 +105,6 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	protected EList<ModelElementExclusion> modelElemetExclusions;
 
 	/**
-	 * The default value of the '{@link #isDeterministic() <em>Deterministic</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDeterministic()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean DETERMINISTIC_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isDeterministic() <em>Deterministic</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDeterministic()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean deterministic = DETERMINISTIC_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getDefaultStringPool() <em>Default String Pool</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,54 +115,14 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	protected StringPool defaultStringPool;
 
 	/**
-	 * The default value of the '{@link #getMetaModelLocation() <em>Meta Model Location</em>}' attribute.
+	 * The cached value of the '{@link #getProducer() <em>Producer</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMetaModelLocation()
+	 * @see #getProducer()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String META_MODEL_LOCATION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getMetaModelLocation() <em>Meta Model Location</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMetaModelLocation()
-	 * @generated
-	 * @ordered
-	 */
-	protected String metaModelLocation = META_MODEL_LOCATION_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getOutputModelLocation() <em>Output Model Location</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutputModelLocation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String OUTPUT_MODEL_LOCATION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getOutputModelLocation() <em>Output Model Location</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutputModelLocation()
-	 * @generated
-	 * @ordered
-	 */
-	protected String outputModelLocation = OUTPUT_MODEL_LOCATION_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getGenerator() <em>Generator</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGenerator()
-	 * @generated
-	 * @ordered
-	 */
-	protected Generator generator;
+	protected Producer producer;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,6 +160,27 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDeterministic() {
+		return deterministic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDeterministic(boolean newDeterministic) {
+		boolean oldDeterministic = deterministic;
+		deterministic = newDeterministic;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC, oldDeterministic, deterministic));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public long getTotalMinimumCount() {
 		return totalMinimumCount;
 	}
@@ -228,27 +207,6 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 			modelElemetExclusions = new EObjectContainmentEList<ModelElementExclusion>(ModelElementExclusion.class, this, ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS);
 		}
 		return modelElemetExclusions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isDeterministic() {
-		return deterministic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDeterministic(boolean newDeterministic) {
-		boolean oldDeterministic = deterministic;
-		deterministic = newDeterministic;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC, oldDeterministic, deterministic));
 	}
 
 	/**
@@ -299,8 +257,8 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMetaModelLocation() {
-		return metaModelLocation;
+	public Producer getProducer() {
+		return producer;
 	}
 
 	/**
@@ -308,53 +266,11 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMetaModelLocation(String newMetaModelLocation) {
-		String oldMetaModelLocation = metaModelLocation;
-		metaModelLocation = newMetaModelLocation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION, oldMetaModelLocation, metaModelLocation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getOutputModelLocation() {
-		return outputModelLocation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOutputModelLocation(String newOutputModelLocation) {
-		String oldOutputModelLocation = outputModelLocation;
-		outputModelLocation = newOutputModelLocation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION, oldOutputModelLocation, outputModelLocation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Generator getGenerator() {
-		return generator;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetGenerator(Generator newGenerator, NotificationChain msgs) {
-		Generator oldGenerator = generator;
-		generator = newGenerator;
+	public NotificationChain basicSetProducer(Producer newProducer, NotificationChain msgs) {
+		Producer oldProducer = producer;
+		producer = newProducer;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__GENERATOR, oldGenerator, newGenerator);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__PRODUCER, oldProducer, newProducer);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -365,40 +281,18 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGenerator(Generator newGenerator) {
-		if (newGenerator != generator) {
+	public void setProducer(Producer newProducer) {
+		if (newProducer != producer) {
 			NotificationChain msgs = null;
-			if (generator != null)
-				msgs = ((InternalEObject)generator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__GENERATOR, null, msgs);
-			if (newGenerator != null)
-				msgs = ((InternalEObject)newGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__GENERATOR, null, msgs);
-			msgs = basicSetGenerator(newGenerator, msgs);
+			if (producer != null)
+				msgs = ((InternalEObject)producer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__PRODUCER, null, msgs);
+			if (newProducer != null)
+				msgs = ((InternalEObject)newProducer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.MODEL_CONFIGURATION__PRODUCER, null, msgs);
+			msgs = basicSetProducer(newProducer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__GENERATOR, newGenerator, newGenerator));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void addModelElementOverride(ModelElementOverride modelElementOverride) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void addModelElementExclusion(ModelElementExclusion modelElementExclusion) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MODEL_CONFIGURATION__PRODUCER, newProducer, newProducer));
 	}
 
 	/**
@@ -415,8 +309,8 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 				return ((InternalEList<?>)getModelElemetExclusions()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return basicSetDefaultStringPool(null, msgs);
-			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
-				return basicSetGenerator(null, msgs);
+			case ConfigPackage.MODEL_CONFIGURATION__PRODUCER:
+				return basicSetProducer(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -431,20 +325,16 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
 				return getModelElementOverrides();
+			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
+				return isDeterministic();
 			case ConfigPackage.MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT:
 				return getTotalMinimumCount();
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS:
 				return getModelElemetExclusions();
-			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
-				return isDeterministic();
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return getDefaultStringPool();
-			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
-				return getMetaModelLocation();
-			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
-				return getOutputModelLocation();
-			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
-				return getGenerator();
+			case ConfigPackage.MODEL_CONFIGURATION__PRODUCER:
+				return getProducer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -462,6 +352,9 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 				getModelElementOverrides().clear();
 				getModelElementOverrides().addAll((Collection<? extends ModelElementOverride>)newValue);
 				return;
+			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
+				setDeterministic((Boolean)newValue);
+				return;
 			case ConfigPackage.MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT:
 				setTotalMinimumCount((Long)newValue);
 				return;
@@ -469,20 +362,11 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 				getModelElemetExclusions().clear();
 				getModelElemetExclusions().addAll((Collection<? extends ModelElementExclusion>)newValue);
 				return;
-			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
-				setDeterministic((Boolean)newValue);
-				return;
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				setDefaultStringPool((StringPool)newValue);
 				return;
-			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
-				setMetaModelLocation((String)newValue);
-				return;
-			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
-				setOutputModelLocation((String)newValue);
-				return;
-			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
-				setGenerator((Generator)newValue);
+			case ConfigPackage.MODEL_CONFIGURATION__PRODUCER:
+				setProducer((Producer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -499,26 +383,20 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
 				getModelElementOverrides().clear();
 				return;
+			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
+				setDeterministic(DETERMINISTIC_EDEFAULT);
+				return;
 			case ConfigPackage.MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT:
 				setTotalMinimumCount(TOTAL_MINIMUM_COUNT_EDEFAULT);
 				return;
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS:
 				getModelElemetExclusions().clear();
 				return;
-			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
-				setDeterministic(DETERMINISTIC_EDEFAULT);
-				return;
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				setDefaultStringPool((StringPool)null);
 				return;
-			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
-				setMetaModelLocation(META_MODEL_LOCATION_EDEFAULT);
-				return;
-			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
-				setOutputModelLocation(OUTPUT_MODEL_LOCATION_EDEFAULT);
-				return;
-			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
-				setGenerator((Generator)null);
+			case ConfigPackage.MODEL_CONFIGURATION__PRODUCER:
+				setProducer((Producer)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -534,20 +412,16 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 		switch (featureID) {
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES:
 				return modelElementOverrides != null && !modelElementOverrides.isEmpty();
+			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
+				return deterministic != DETERMINISTIC_EDEFAULT;
 			case ConfigPackage.MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT:
 				return totalMinimumCount != TOTAL_MINIMUM_COUNT_EDEFAULT;
 			case ConfigPackage.MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS:
 				return modelElemetExclusions != null && !modelElemetExclusions.isEmpty();
-			case ConfigPackage.MODEL_CONFIGURATION__DETERMINISTIC:
-				return deterministic != DETERMINISTIC_EDEFAULT;
 			case ConfigPackage.MODEL_CONFIGURATION__DEFAULT_STRING_POOL:
 				return defaultStringPool != null;
-			case ConfigPackage.MODEL_CONFIGURATION__META_MODEL_LOCATION:
-				return META_MODEL_LOCATION_EDEFAULT == null ? metaModelLocation != null : !META_MODEL_LOCATION_EDEFAULT.equals(metaModelLocation);
-			case ConfigPackage.MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION:
-				return OUTPUT_MODEL_LOCATION_EDEFAULT == null ? outputModelLocation != null : !OUTPUT_MODEL_LOCATION_EDEFAULT.equals(outputModelLocation);
-			case ConfigPackage.MODEL_CONFIGURATION__GENERATOR:
-				return generator != null;
+			case ConfigPackage.MODEL_CONFIGURATION__PRODUCER:
+				return producer != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -562,14 +436,10 @@ public class ModelConfigurationImpl extends EObjectImpl implements ModelConfigur
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (TotalMinimumCount: ");
-		result.append(totalMinimumCount);
-		result.append(", Deterministic: ");
+		result.append(" (Deterministic: ");
 		result.append(deterministic);
-		result.append(", MetaModelLocation: ");
-		result.append(metaModelLocation);
-		result.append(", OutputModelLocation: ");
-		result.append(outputModelLocation);
+		result.append(", TotalMinimumCount: ");
+		result.append(totalMinimumCount);
 		result.append(')');
 		return result.toString();
 	}

@@ -21,6 +21,7 @@ import uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride;
  * <ul>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ReferenceOverrideImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ReferenceOverrideImpl#getMinimumCount <em>Minimum Count</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ReferenceOverrideImpl#getMaximumCount <em>Maximum Count</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +67,26 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 	 * @ordered
 	 */
 	protected long minimumCount = MINIMUM_COUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMaximumCount() <em>Maximum Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaximumCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long MAXIMUM_COUNT_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getMaximumCount() <em>Maximum Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaximumCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected long maximumCount = MAXIMUM_COUNT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +154,27 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public long getMaximumCount() {
+		return maximumCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMaximumCount(long newMaximumCount) {
+		long oldMaximumCount = maximumCount;
+		maximumCount = newMaximumCount;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.REFERENCE_OVERRIDE__MAXIMUM_COUNT, oldMaximumCount, maximumCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -140,6 +182,8 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 				return getName();
 			case ConfigPackage.REFERENCE_OVERRIDE__MINIMUM_COUNT:
 				return getMinimumCount();
+			case ConfigPackage.REFERENCE_OVERRIDE__MAXIMUM_COUNT:
+				return getMaximumCount();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +201,9 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 				return;
 			case ConfigPackage.REFERENCE_OVERRIDE__MINIMUM_COUNT:
 				setMinimumCount((Long)newValue);
+				return;
+			case ConfigPackage.REFERENCE_OVERRIDE__MAXIMUM_COUNT:
+				setMaximumCount((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,6 +223,9 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 			case ConfigPackage.REFERENCE_OVERRIDE__MINIMUM_COUNT:
 				setMinimumCount(MINIMUM_COUNT_EDEFAULT);
 				return;
+			case ConfigPackage.REFERENCE_OVERRIDE__MAXIMUM_COUNT:
+				setMaximumCount(MAXIMUM_COUNT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,6 +242,8 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ConfigPackage.REFERENCE_OVERRIDE__MINIMUM_COUNT:
 				return minimumCount != MINIMUM_COUNT_EDEFAULT;
+			case ConfigPackage.REFERENCE_OVERRIDE__MAXIMUM_COUNT:
+				return maximumCount != MAXIMUM_COUNT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,6 +262,8 @@ public class ReferenceOverrideImpl extends EObjectImpl implements ReferenceOverr
 		result.append(name);
 		result.append(", MinimumCount: ");
 		result.append(minimumCount);
+		result.append(", MaximumCount: ");
+		result.append(maximumCount);
 		result.append(')');
 		return result.toString();
 	}

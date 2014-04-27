@@ -2,7 +2,6 @@
  */
 package uk.ac.york.cs.mv525.modelgen.config.config;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,12 +15,4 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Strategy extends EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	EObject retrieveObject(EClass mType);
-
 } // Strategy

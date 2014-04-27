@@ -47,12 +47,4 @@ public interface StringPool extends EObject {
 	 */
 	void setName(String value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	StringPoolEntry get();
-
 } // StringPool

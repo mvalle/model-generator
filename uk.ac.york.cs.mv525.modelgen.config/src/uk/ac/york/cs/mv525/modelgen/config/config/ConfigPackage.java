@@ -130,13 +130,22 @@ public interface ConfigPackage extends EPackage {
 	int MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES = 0;
 
 	/**
+	 * The feature id for the '<em><b>Deterministic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_CONFIGURATION__DETERMINISTIC = 1;
+
+	/**
 	 * The feature id for the '<em><b>Total Minimum Count</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT = 1;
+	int MODEL_CONFIGURATION__TOTAL_MINIMUM_COUNT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Model Elemet Exclusions</b></em>' containment reference list.
@@ -145,16 +154,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS = 2;
-
-	/**
-	 * The feature id for the '<em><b>Deterministic</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_CONFIGURATION__DETERMINISTIC = 3;
+	int MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Default String Pool</b></em>' containment reference.
@@ -166,31 +166,13 @@ public interface ConfigPackage extends EPackage {
 	int MODEL_CONFIGURATION__DEFAULT_STRING_POOL = 4;
 
 	/**
-	 * The feature id for the '<em><b>Meta Model Location</b></em>' attribute.
+	 * The feature id for the '<em><b>Producer</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_CONFIGURATION__META_MODEL_LOCATION = 5;
-
-	/**
-	 * The feature id for the '<em><b>Output Model Location</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION = 6;
-
-	/**
-	 * The feature id for the '<em><b>Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_CONFIGURATION__GENERATOR = 7;
+	int MODEL_CONFIGURATION__PRODUCER = 5;
 
 	/**
 	 * The number of structural features of the '<em>Model Configuration</em>' class.
@@ -199,7 +181,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_CONFIGURATION_FEATURE_COUNT = 8;
+	int MODEL_CONFIGURATION_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelElementExclusionImpl <em>Model Element Exclusion</em>}' class.
@@ -314,22 +296,13 @@ public interface ConfigPackage extends EPackage {
 	int EMBEDDED_STRING_POOL__NAME = STRING_POOL__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Strings</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMBEDDED_STRING_POOL__STRINGS = STRING_POOL_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMBEDDED_STRING_POOL__ENTRIES = STRING_POOL_FEATURE_COUNT + 1;
+	int EMBEDDED_STRING_POOL__ENTRIES = STRING_POOL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Embedded String Pool</em>' class.
@@ -338,7 +311,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMBEDDED_STRING_POOL_FEATURE_COUNT = STRING_POOL_FEATURE_COUNT + 2;
+	int EMBEDDED_STRING_POOL_FEATURE_COUNT = STRING_POOL_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.StringPoolEntryImpl <em>String Pool Entry</em>}' class.
@@ -397,69 +370,78 @@ public interface ConfigPackage extends EPackage {
 	int REFERENCE_OVERRIDE__MINIMUM_COUNT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Maximum Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_OVERRIDE__MAXIMUM_COUNT = 2;
+
+	/**
 	 * The number of structural features of the '<em>Reference Override</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE_OVERRIDE_FEATURE_COUNT = 2;
+	int REFERENCE_OVERRIDE_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator <em>Generator</em>}' class.
+	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Producer <em>Producer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Generator
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getGenerator()
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Producer
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getProducer()
 	 * @generated
 	 */
-	int GENERATOR = 8;
+	int PRODUCER = 8;
 
 	/**
-	 * The feature id for the '<em><b>Strategy</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERATOR__STRATEGY = 0;
-
-	/**
-	 * The number of structural features of the '<em>Generator</em>' class.
+	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GENERATOR_FEATURE_COUNT = 1;
+	int PRODUCER__STRATEGY = 0;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomGeneratorImpl <em>Random Generator</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomGeneratorImpl
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getRandomGenerator()
-	 * @generated
-	 */
-	int RANDOM_GENERATOR = 9;
-
-	/**
-	 * The feature id for the '<em><b>Strategy</b></em>' reference.
+	 * The number of structural features of the '<em>Producer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RANDOM_GENERATOR__STRATEGY = GENERATOR__STRATEGY;
+	int PRODUCER_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of structural features of the '<em>Random Generator</em>' class.
+	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomProducerImpl <em>Random Producer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomProducerImpl
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getRandomProducer()
+	 * @generated
+	 */
+	int RANDOM_PRODUCER = 9;
+
+	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RANDOM_GENERATOR_FEATURE_COUNT = GENERATOR_FEATURE_COUNT + 0;
+	int RANDOM_PRODUCER__STRATEGY = PRODUCER__STRATEGY;
+
+	/**
+	 * The number of structural features of the '<em>Random Producer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANDOM_PRODUCER_FEATURE_COUNT = PRODUCER_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Strategy <em>Strategy</em>}' class.
@@ -565,23 +547,23 @@ public interface ConfigPackage extends EPackage {
 	int ALWAYS_RETRIEVE_OR_CREATE_STRATEGY_FEATURE_COUNT = STRATEGY_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl <em>Eol Generator</em>}' class.
+	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolProducerImpl <em>Eol Producer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getEolGenerator()
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.EolProducerImpl
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getEolProducer()
 	 * @generated
 	 */
-	int EOL_GENERATOR = 14;
+	int EOL_PRODUCER = 14;
 
 	/**
-	 * The feature id for the '<em><b>Strategy</b></em>' reference.
+	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EOL_GENERATOR__STRATEGY = GENERATOR__STRATEGY;
+	int EOL_PRODUCER__STRATEGY = PRODUCER__STRATEGY;
 
 	/**
 	 * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -590,35 +572,35 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EOL_GENERATOR__LOCATION = GENERATOR_FEATURE_COUNT + 0;
+	int EOL_PRODUCER__LOCATION = PRODUCER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Eol Generator</em>' class.
+	 * The number of structural features of the '<em>Eol Producer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EOL_GENERATOR_FEATURE_COUNT = GENERATOR_FEATURE_COUNT + 1;
+	int EOL_PRODUCER_FEATURE_COUNT = PRODUCER_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.CombinedGeneratorImpl <em>Combined Generator</em>}' class.
+	 * The meta object id for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.CombinedProducerImpl <em>Combined Producer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.CombinedGeneratorImpl
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getCombinedGenerator()
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.CombinedProducerImpl
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getCombinedProducer()
 	 * @generated
 	 */
-	int COMBINED_GENERATOR = 15;
+	int COMBINED_PRODUCER = 15;
 
 	/**
-	 * The feature id for the '<em><b>Strategy</b></em>' reference.
+	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMBINED_GENERATOR__STRATEGY = GENERATOR__STRATEGY;
+	int COMBINED_PRODUCER__STRATEGY = PRODUCER__STRATEGY;
 
 	/**
 	 * The feature id for the '<em><b>Fallback</b></em>' containment reference.
@@ -627,25 +609,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMBINED_GENERATOR__FALLBACK = GENERATOR_FEATURE_COUNT + 0;
+	int COMBINED_PRODUCER__FALLBACK = PRODUCER_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Generators</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Producers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMBINED_GENERATOR__GENERATORS = GENERATOR_FEATURE_COUNT + 1;
+	int COMBINED_PRODUCER__PRODUCERS = PRODUCER_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Combined Generator</em>' class.
+	 * The number of structural features of the '<em>Combined Producer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMBINED_GENERATOR_FEATURE_COUNT = GENERATOR_FEATURE_COUNT + 2;
+	int COMBINED_PRODUCER_FEATURE_COUNT = PRODUCER_FEATURE_COUNT + 2;
 
 
 	/**
@@ -724,6 +706,17 @@ public interface ConfigPackage extends EPackage {
 	EReference getModelConfiguration_ModelElementOverrides();
 
 	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#isDeterministic <em>Deterministic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Deterministic</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#isDeterministic()
+	 * @see #getModelConfiguration()
+	 * @generated
+	 */
+	EAttribute getModelConfiguration_Deterministic();
+
+	/**
 	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getTotalMinimumCount <em>Total Minimum Count</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -746,17 +739,6 @@ public interface ConfigPackage extends EPackage {
 	EReference getModelConfiguration_ModelElemetExclusions();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#isDeterministic <em>Deterministic</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Deterministic</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#isDeterministic()
-	 * @see #getModelConfiguration()
-	 * @generated
-	 */
-	EAttribute getModelConfiguration_Deterministic();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getDefaultStringPool <em>Default String Pool</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -768,37 +750,15 @@ public interface ConfigPackage extends EPackage {
 	EReference getModelConfiguration_DefaultStringPool();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getMetaModelLocation <em>Meta Model Location</em>}'.
+	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getProducer <em>Producer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Meta Model Location</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getMetaModelLocation()
+	 * @return the meta object for the containment reference '<em>Producer</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getProducer()
 	 * @see #getModelConfiguration()
 	 * @generated
 	 */
-	EAttribute getModelConfiguration_MetaModelLocation();
-
-	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getOutputModelLocation <em>Output Model Location</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Output Model Location</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getOutputModelLocation()
-	 * @see #getModelConfiguration()
-	 * @generated
-	 */
-	EAttribute getModelConfiguration_OutputModelLocation();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getGenerator <em>Generator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Generator</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ModelConfiguration#getGenerator()
-	 * @see #getModelConfiguration()
-	 * @generated
-	 */
-	EReference getModelConfiguration_Generator();
+	EReference getModelConfiguration_Producer();
 
 	/**
 	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.ModelElementExclusion <em>Model Element Exclusion</em>}'.
@@ -874,17 +834,6 @@ public interface ConfigPackage extends EPackage {
 	EClass getEmbeddedStringPool();
 
 	/**
-	 * Returns the meta object for the reference list '{@link uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool#getStrings <em>Strings</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Strings</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool#getStrings()
-	 * @see #getEmbeddedStringPool()
-	 * @generated
-	 */
-	EReference getEmbeddedStringPool_Strings();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool#getEntries <em>Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -949,35 +898,46 @@ public interface ConfigPackage extends EPackage {
 	EAttribute getReferenceOverride_MinimumCount();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator <em>Generator</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMaximumCount <em>Maximum Count</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Generator</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Generator
+	 * @return the meta object for the attribute '<em>Maximum Count</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ReferenceOverride#getMaximumCount()
+	 * @see #getReferenceOverride()
 	 * @generated
 	 */
-	EClass getGenerator();
+	EAttribute getReferenceOverride_MaximumCount();
 
 	/**
-	 * Returns the meta object for the reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator#getStrategy <em>Strategy</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.Producer <em>Producer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Strategy</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Generator#getStrategy()
-	 * @see #getGenerator()
+	 * @return the meta object for class '<em>Producer</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Producer
 	 * @generated
 	 */
-	EReference getGenerator_Strategy();
+	EClass getProducer();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator <em>Random Generator</em>}'.
+	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.Producer#getStrategy <em>Strategy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Random Generator</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator
+	 * @return the meta object for the containment reference '<em>Strategy</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Producer#getStrategy()
+	 * @see #getProducer()
 	 * @generated
 	 */
-	EClass getRandomGenerator();
+	EReference getProducer_Strategy();
+
+	/**
+	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.RandomProducer <em>Random Producer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Random Producer</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.RandomProducer
+	 * @generated
+	 */
+	EClass getRandomProducer();
 
 	/**
 	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.Strategy <em>Strategy</em>}'.
@@ -1053,57 +1013,57 @@ public interface ConfigPackage extends EPackage {
 	EReference getAlwaysRetrieveOrCreateStrategy_Creator();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator <em>Eol Generator</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolProducer <em>Eol Producer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Eol Generator</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator
+	 * @return the meta object for class '<em>Eol Producer</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EolProducer
 	 * @generated
 	 */
-	EClass getEolGenerator();
+	EClass getEolProducer();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator#getLocation <em>Location</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolProducer#getLocation <em>Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Location</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator#getLocation()
-	 * @see #getEolGenerator()
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EolProducer#getLocation()
+	 * @see #getEolProducer()
 	 * @generated
 	 */
-	EAttribute getEolGenerator_Location();
+	EAttribute getEolProducer_Location();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator <em>Combined Generator</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer <em>Combined Producer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Combined Generator</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator
+	 * @return the meta object for class '<em>Combined Producer</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer
 	 * @generated
 	 */
-	EClass getCombinedGenerator();
+	EClass getCombinedProducer();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator#getFallback <em>Fallback</em>}'.
+	 * Returns the meta object for the containment reference '{@link uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer#getFallback <em>Fallback</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Fallback</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator#getFallback()
-	 * @see #getCombinedGenerator()
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer#getFallback()
+	 * @see #getCombinedProducer()
 	 * @generated
 	 */
-	EReference getCombinedGenerator_Fallback();
+	EReference getCombinedProducer_Fallback();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator#getGenerators <em>Generators</em>}'.
+	 * Returns the meta object for the containment reference list '{@link uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer#getProducers <em>Producers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Generators</em>'.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator#getGenerators()
-	 * @see #getCombinedGenerator()
+	 * @return the meta object for the containment reference list '<em>Producers</em>'.
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer#getProducers()
+	 * @see #getCombinedProducer()
 	 * @generated
 	 */
-	EReference getCombinedGenerator_Generators();
+	EReference getCombinedProducer_Producers();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1188,6 +1148,14 @@ public interface ConfigPackage extends EPackage {
 		EReference MODEL_CONFIGURATION__MODEL_ELEMENT_OVERRIDES = eINSTANCE.getModelConfiguration_ModelElementOverrides();
 
 		/**
+		 * The meta object literal for the '<em><b>Deterministic</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_CONFIGURATION__DETERMINISTIC = eINSTANCE.getModelConfiguration_Deterministic();
+
+		/**
 		 * The meta object literal for the '<em><b>Total Minimum Count</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1204,14 +1172,6 @@ public interface ConfigPackage extends EPackage {
 		EReference MODEL_CONFIGURATION__MODEL_ELEMET_EXCLUSIONS = eINSTANCE.getModelConfiguration_ModelElemetExclusions();
 
 		/**
-		 * The meta object literal for the '<em><b>Deterministic</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_CONFIGURATION__DETERMINISTIC = eINSTANCE.getModelConfiguration_Deterministic();
-
-		/**
 		 * The meta object literal for the '<em><b>Default String Pool</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1220,28 +1180,12 @@ public interface ConfigPackage extends EPackage {
 		EReference MODEL_CONFIGURATION__DEFAULT_STRING_POOL = eINSTANCE.getModelConfiguration_DefaultStringPool();
 
 		/**
-		 * The meta object literal for the '<em><b>Meta Model Location</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Producer</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MODEL_CONFIGURATION__META_MODEL_LOCATION = eINSTANCE.getModelConfiguration_MetaModelLocation();
-
-		/**
-		 * The meta object literal for the '<em><b>Output Model Location</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_CONFIGURATION__OUTPUT_MODEL_LOCATION = eINSTANCE.getModelConfiguration_OutputModelLocation();
-
-		/**
-		 * The meta object literal for the '<em><b>Generator</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL_CONFIGURATION__GENERATOR = eINSTANCE.getModelConfiguration_Generator();
+		EReference MODEL_CONFIGURATION__PRODUCER = eINSTANCE.getModelConfiguration_Producer();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.ModelElementExclusionImpl <em>Model Element Exclusion</em>}' class.
@@ -1308,14 +1252,6 @@ public interface ConfigPackage extends EPackage {
 		EClass EMBEDDED_STRING_POOL = eINSTANCE.getEmbeddedStringPool();
 
 		/**
-		 * The meta object literal for the '<em><b>Strings</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EMBEDDED_STRING_POOL__STRINGS = eINSTANCE.getEmbeddedStringPool_Strings();
-
-		/**
 		 * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1368,32 +1304,40 @@ public interface ConfigPackage extends EPackage {
 		EAttribute REFERENCE_OVERRIDE__MINIMUM_COUNT = eINSTANCE.getReferenceOverride_MinimumCount();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator <em>Generator</em>}' class.
+		 * The meta object literal for the '<em><b>Maximum Count</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.york.cs.mv525.modelgen.config.config.Generator
-		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getGenerator()
 		 * @generated
 		 */
-		EClass GENERATOR = eINSTANCE.getGenerator();
+		EAttribute REFERENCE_OVERRIDE__MAXIMUM_COUNT = eINSTANCE.getReferenceOverride_MaximumCount();
 
 		/**
-		 * The meta object literal for the '<em><b>Strategy</b></em>' reference feature.
+		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Producer <em>Producer</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see uk.ac.york.cs.mv525.modelgen.config.config.Producer
+		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getProducer()
 		 * @generated
 		 */
-		EReference GENERATOR__STRATEGY = eINSTANCE.getGenerator_Strategy();
+		EClass PRODUCER = eINSTANCE.getProducer();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomGeneratorImpl <em>Random Generator</em>}' class.
+		 * The meta object literal for the '<em><b>Strategy</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomGeneratorImpl
-		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getRandomGenerator()
 		 * @generated
 		 */
-		EClass RANDOM_GENERATOR = eINSTANCE.getRandomGenerator();
+		EReference PRODUCER__STRATEGY = eINSTANCE.getProducer_Strategy();
+
+		/**
+		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomProducerImpl <em>Random Producer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.RandomProducerImpl
+		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getRandomProducer()
+		 * @generated
+		 */
+		EClass RANDOM_PRODUCER = eINSTANCE.getRandomProducer();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.Strategy <em>Strategy</em>}' class.
@@ -1460,14 +1404,14 @@ public interface ConfigPackage extends EPackage {
 		EReference ALWAYS_RETRIEVE_OR_CREATE_STRATEGY__CREATOR = eINSTANCE.getAlwaysRetrieveOrCreateStrategy_Creator();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl <em>Eol Generator</em>}' class.
+		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EolProducerImpl <em>Eol Producer</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.EolGeneratorImpl
-		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getEolGenerator()
+		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.EolProducerImpl
+		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getEolProducer()
 		 * @generated
 		 */
-		EClass EOL_GENERATOR = eINSTANCE.getEolGenerator();
+		EClass EOL_PRODUCER = eINSTANCE.getEolProducer();
 
 		/**
 		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
@@ -1475,17 +1419,17 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EOL_GENERATOR__LOCATION = eINSTANCE.getEolGenerator_Location();
+		EAttribute EOL_PRODUCER__LOCATION = eINSTANCE.getEolProducer_Location();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.CombinedGeneratorImpl <em>Combined Generator</em>}' class.
+		 * The meta object literal for the '{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.CombinedProducerImpl <em>Combined Producer</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.CombinedGeneratorImpl
-		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getCombinedGenerator()
+		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.CombinedProducerImpl
+		 * @see uk.ac.york.cs.mv525.modelgen.config.config.impl.ConfigPackageImpl#getCombinedProducer()
 		 * @generated
 		 */
-		EClass COMBINED_GENERATOR = eINSTANCE.getCombinedGenerator();
+		EClass COMBINED_PRODUCER = eINSTANCE.getCombinedProducer();
 
 		/**
 		 * The meta object literal for the '<em><b>Fallback</b></em>' containment reference feature.
@@ -1493,15 +1437,15 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMBINED_GENERATOR__FALLBACK = eINSTANCE.getCombinedGenerator_Fallback();
+		EReference COMBINED_PRODUCER__FALLBACK = eINSTANCE.getCombinedProducer_Fallback();
 
 		/**
-		 * The meta object literal for the '<em><b>Generators</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Producers</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMBINED_GENERATOR__GENERATORS = eINSTANCE.getCombinedGenerator_Generators();
+		EReference COMBINED_PRODUCER__PRODUCERS = eINSTANCE.getCombinedProducer_Producers();
 
 	}
 
