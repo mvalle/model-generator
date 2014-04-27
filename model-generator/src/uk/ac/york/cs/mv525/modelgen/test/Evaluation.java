@@ -64,4 +64,54 @@ public class Evaluation {
 			
 		model.save();
 	}
+	
+	@Test
+	public void test_LargeUnstructured() throws IOException {
+		String dataDir = System.getProperty("user.dir") + "/src/uk/ac/york/cs/mv525/modelgen/test/data/";
+
+		String metaModelLoc = dataDir + "metamodels/Ecore.ecore";
+		String configLoc = dataDir + "evaluations/LargeUnstructured.config";
+		
+		String outputLoc = dataDir + "evaluations/large_unstructured.ecore";
+		
+		MetaModelIndex mmi = MetaModelParser.parse(metaModelLoc);
+		
+		Configuration c = ConfigParser.parse(configLoc);
+		c.setMetaModel(mmi);
+		
+		ModelInstance model = new ModelInstance(outputLoc);
+		
+		
+		Orchastrator d = new Orchastrator(model);
+		d.addConfiguration(c);
+		
+		d.create();
+			
+		model.save();
+	}
+	
+	@Test
+	public void test_LargeStructured() throws IOException {
+		String dataDir = System.getProperty("user.dir") + "/src/uk/ac/york/cs/mv525/modelgen/test/data/";
+
+		String metaModelLoc = dataDir + "metamodels/Ecore.ecore";
+		String configLoc = dataDir + "evaluations/LargeStructured.config";
+		
+		String outputLoc = dataDir + "evaluations/large_structured.ecore";
+		
+		MetaModelIndex mmi = MetaModelParser.parse(metaModelLoc);
+		
+		Configuration c = ConfigParser.parse(configLoc);
+		c.setMetaModel(mmi);
+		
+		ModelInstance model = new ModelInstance(outputLoc);
+		
+		
+		Orchastrator d = new Orchastrator(model);
+		d.addConfiguration(c);
+		
+		d.create();
+			
+		model.save();
+	}
 }

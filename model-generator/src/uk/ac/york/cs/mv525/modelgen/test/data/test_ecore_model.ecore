@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EClass name="%eiU{n]ce" instanceClassName="d{" instanceTypeName="KH" abstract="true" eSuperTypes="/0">
+    <eAnnotations source="">
+      <eAnnotations source="](%4.BA^"/>
+      <eAnnotations source="o]W2y"/>
+      <eAnnotations source="UM"/>
+      <eAnnotations source="qn"/>
+      <details key="c]eh[\dm" value="REd7"/>
+      <details key="%]/A.t>=`4" value="XJ["/>
+      <details key=")#]NJF" value="U`#"/>
+    </eAnnotations>
+    <eOperations name="w9Y!" unique="false" lowerBound="-1253265258" upperBound="-795180990" eType="/3">
+      <eAnnotations source="]&quot;3Zx&lt;x"/>
+      <eAnnotations source="A`D6rB8"/>
+      <eAnnotations source="."/>
+      <eAnnotations source="&lt;X*:V;"/>
+      <eAnnotations source="]4"/>
+    </eOperations>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sNkt/62" unique="false" lowerBound="-2069046262" upperBound="-1427576723" eType="/2" volatile="true" defaultValueLiteral="" derived="true" iD="true">
+      <eAnnotations source=""/>
+      <eAnnotations source="60`a]:,ZbN4"/>
+      <eAnnotations source="*mVD"/>
+      <eAnnotations source="c2"/>
+      <eAnnotations source="&lt;sLTZavMH:Co"/>
+      <eAnnotations source="xO$"/>
+    </eStructuralFeatures>
+  </ecore:EClass>
+  <ecore:EClass name="Xn%" instanceClassName="4Q6C;.Z#Dt4,w" instanceTypeName="g" abstract="true" interface="true">
+    <eAnnotations source="%Mw=">
+      <eAnnotations source="\v'I"/>
+      <eAnnotations source="pR"/>
+      <eAnnotations source="_*g;x!`a"/>
+      <details key="!m Dg2f" value="/:eHO{WAV"/>
+      <contents/>
+      <contents/>
+      <contents/>
+      <contents/>
+      <contents/>
+    </eAnnotations>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="&lt;!5FOOJmzkQJ" ordered="false" unique="false" lowerBound="-1826932651" upperBound="1306818916" eType="/4" changeable="false" volatile="true" defaultValueLiteral="p\!" derived="true" resolveProxies="false" eOpposite="/1/@eStructuralFeatures.0">
+      <eAnnotations source="dj_"/>
+      <eAnnotations source="eiZuAWT'>Y1%"/>
+      <eGenericType eTypeParameter="/84" eClassifier="/1"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral=";qgsp+*m," derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="" unsettable="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="YHd$xzg7j" instanceClassName="B-Dk&amp;E?a3" instanceTypeName="5u%vL&amp;t" interface="true">
+    <eAnnotations source="mE"/>
+    <eAnnotations source="{X#&amp;dt:qu"/>
+    <eAnnotations source=""/>
+    <eAnnotations source="C,D"/>
+    <eAnnotations source="I^vGsU\"/>
+    <eAnnotations source="D5IE G7">
+      <eAnnotations source="QG"/>
+      <eAnnotations source="LH4lm#FFg"/>
+      <eAnnotations source="e8Bh!gsR.$+"/>
+      <details key="upe S}" value="H]&amp;%Go"/>
+      <details key="oQ>`t" value="]_^waVX!|"/>
+      <details key="!6OjRmJ" value=""/>
+    </eAnnotations>
+    <eTypeParameters href="#/42"/>
+    <eTypeParameters href="#/43"/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="T_g\[&amp;&lt;t2@gm" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="ux$@:0*%$"/>
+  </ecore:EClass>
+  <ecore:EClass name="P+" instanceClassName="A=aUe2" instanceTypeName="7Tm:" abstract="true" interface="true">
+    <eAnnotations source="iWq^q">
+      <details key="e* [d[i" value="w}"/>
+      <details key=":.[c" value="L dH6T),r"/>
+      <details key=":+mQV2f&amp;" value="v\u/*"/>
+      <details key="@=Yb!." value="PTPD\g]"/>
+      <contents/>
+      <contents/>
+      <contents/>
+      <contents/>
+    </eAnnotations>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+  </ecore:EClass>
+  <ecore:EClass name="" instanceClassName="iQB&lt;a" instanceTypeName="d@,Y=q[v" abstract="true" interface="true">
+    <eAnnotations source="h%\e$^,=[">
+      <eAnnotations source=""/>
+      <eAnnotations source="_;77"/>
+    </eAnnotations>
+    <eTypeParameters href="#/44"/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="![CLf'v"/>
+  </ecore:EClass>
+  <ecore:EClass name="FCg1]]eLn=" instanceClassName="s-f&lt;`" instanceTypeName="XbA9+4}">
+    <eAnnotations source="PVJ$I&quot;"/>
+    <eAnnotations source="ka;,Az"/>
+    <eAnnotations source="v/;=CHj">
+      <eAnnotations source="@?.x"/>
+      <eAnnotations source="D6D.=D`"/>
+      <contents/>
+      <contents/>
+      <contents/>
+    </eAnnotations>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="+;;>OpU88" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" transient="true" defaultValueLiteral="8X:f&amp;f0E;j" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="j!b)$;7" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="Hy_0v-j5j" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="WiBfN44M!{" unsettable="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="$1|/C0" instanceClassName="NaR_ecKZ&quot;" instanceTypeName="l{4h4" eSuperTypes="/1">
+    <eAnnotations source="Z4-wo"/>
+    <eAnnotations source="\1"/>
+    <eAnnotations source="}g:Rn["/>
+    <eTypeParameters href="#/45"/>
+    <eTypeParameters href="#/47"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+  </ecore:EClass>
+  <ecore:EClass name="G" instanceClassName=",UNm6+&amp;dVNkv" instanceTypeName="&amp;&quot;tV/" abstract="true">
+    <eAnnotations source=":f"/>
+    <eTypeParameters href="#/48"/>
+    <eTypeParameters href="#/49"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+  </ecore:EClass>
+  <ecore:EClass name="xn" instanceClassName="" instanceTypeName="d/RyRZr" abstract="true" interface="true">
+    <eAnnotations source="K"/>
+    <eAnnotations source="^%3rANc9:"/>
+    <eAnnotations source="'/lN`qR"/>
+    <eAnnotations source="7uBKt"/>
+    <eAnnotations source="TN)!c"/>
+    <eTypeParameters href="#/50"/>
+    <eTypeParameters href="#/51"/>
+    <eTypeParameters href="#/52"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+  </ecore:EClass>
+  <ecore:EClass name="RB1P:C6" instanceClassName="Q,bL9P]" instanceTypeName="8G?XAIJ{dJ" abstract="true" interface="true">
+    <eAnnotations source="7OSu"/>
+    <eAnnotations source="L;"/>
+    <eAnnotations source="IE"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="3Nmxj3}" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="/c6+`[nk-`Ba]zIL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="'ApX5DZ9zAYb" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="5,ubMG2" unsettable="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="Z}]8" instanceClassName=" [fOVm" instanceTypeName="{#RN">
+    <eAnnotations source="c c9"/>
+    <eAnnotations source="`7fE"/>
+    <eAnnotations source="Bb{tFOH>1"/>
+    <eAnnotations source="!X>>9"/>
+    <eTypeParameters href="#/53"/>
+    <eTypeParameters href="#/54"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="&amp;fY23h1NSJj:" unsettable="true" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="`pL#`o" instanceClassName="hP(U}6/B" instanceTypeName="(]fqcy:F." abstract="true">
+    <eAnnotations source="(ZI9;b"/>
+    <eAnnotations source="Egh_?@lxP].=Aw"/>
+    <eAnnotations source="I?@1x2_M*"/>
+    <eAnnotations source="}ZTguPcN_`*"/>
+    <eAnnotations source=""/>
+    <eAnnotations source="0"/>
+    <eTypeParameters href="#/55"/>
+    <eTypeParameters href="#/56"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="Y=G%tYvmi@N?q" unsettable="true" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="X`B944j+" instanceClassName="" instanceTypeName="`?v:HW>;l" abstract="true">
+    <eAnnotations source="jd!"/>
+    <eAnnotations source="YW2oG/fC.6x7&lt;"/>
+    <eTypeParameters href="#/57"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="886M8)QY"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="_a.,G" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="}0>Q]8&amp;JD;Ql" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="77"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="@&lt;^K1t%#F" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="yWh5z9JvO`" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="Q0&lt;k&amp;_3"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="J" unsettable="true" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="xP" instanceClassName="zL7|" instanceTypeName="rI);" abstract="true" interface="true">
+    <eAnnotations source="UqN&amp;K\?'t"/>
+    <eAnnotations source="y(kl,LWb"/>
+    <eAnnotations source="r6"/>
+    <eTypeParameters href="#/58"/>
+    <eTypeParameters href="#/59"/>
+    <eTypeParameters href="#/60"/>
+    <eTypeParameters href="#/61"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="+eR/w}L7NK/P" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="Z\kz," derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="|6" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="HcP2"/>
+  </ecore:EClass>
+  <ecore:EClass name="RS}RI,tM.i" instanceClassName="mM+I" instanceTypeName="">
+    <eTypeParameters href="#/62"/>
+    <eTypeParameters href="#/63"/>
+    <eTypeParameters href="#/64"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+  </ecore:EClass>
+  <ecore:EClass name="T0qGW" instanceClassName="#987" instanceTypeName="Rh">
+    <eAnnotations source=""/>
+    <eTypeParameters href="#/65"/>
+    <eTypeParameters href="#/66"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="L!8o7.p2" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" defaultValueLiteral="O"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="G(a'N%H" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="tQYhE>9\"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral=".yJQ'w;"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" defaultValueLiteral="h3&amp;mhNvS" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" transient="true" defaultValueLiteral=">\GXnZL,`ZPxqS" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" transient="true" defaultValueLiteral="25YqG[mo" unsettable="true" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="1?tV;" instanceClassName="b(q/f1&quot; AWd" instanceTypeName="f$OwrD" interface="true">
+    <eAnnotations source="UznW>BR("/>
+    <eAnnotations source="XT"/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="EY} d^gbe&lt;!T" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="H.oqvZ"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="rbssze,WwI"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="(aRs^1p-zq/t7" unsettable="true" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="^|ss\1&amp;a&quot;,?{&quot;" instanceClassName="A*0QH&lt;;" instanceTypeName="." abstract="true">
+    <eAnnotations source="fG?"/>
+    <eAnnotations source=""/>
+    <eTypeParameters href="#/67"/>
+    <eTypeParameters href="#/68"/>
+    <eTypeParameters href="#/69"/>
+    <eTypeParameters href="#/70"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="^;GZ"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="TQ" unsettable="true"/>
+  </ecore:EClass>
+  <ecore:EClass name=";B" instanceClassName="#^jpsege" instanceTypeName="l2.V$y" interface="true">
+    <eAnnotations source="!|"/>
+    <eAnnotations source="5ggO"/>
+    <eAnnotations source="HF8b+w^!"/>
+    <eAnnotations source="/Id72F1y"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+  </ecore:EClass>
+  <ecore:EClass name="LY|^C&lt;k_w" instanceClassName="]}(kFp" instanceTypeName="# ;qY">
+    <eAnnotations source="d]#|&quot;"/>
+    <eAnnotations source=":="/>
+    <eAnnotations source="R3_H"/>
+    <eAnnotations source="jjjzTi4:1L#"/>
+    <eAnnotations source="%0_"/>
+    <eAnnotations source="y"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="Dd$yQ" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" transient="true" defaultValueLiteral="[hR9" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="w#V&lt;$iE9[9" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="LJd&lt;(a]^" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="[$%[%@XjN\F&amp;5" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="VeD8" instanceClassName="R[N *IL+$" instanceTypeName="7rZq" interface="true">
+    <eAnnotations source="ff4y"/>
+    <eTypeParameters href="#/71"/>
+    <eTypeParameters href="#/72"/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="&lt;TSI40" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" transient="true" defaultValueLiteral="%-"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="D$tQ" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="5B"/>
+  </ecore:EClass>
+  <ecore:EClass name="hl6_!Gqk.=" instanceClassName="}{Wvi>(h9O/" instanceTypeName="+a5" abstract="true" interface="true">
+    <eAnnotations source="|mm2J?G"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="LQTYc" unsettable="true" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="?E$4h\B" instanceClassName="A;7#r" instanceTypeName="(RV'" abstract="true" interface="true">
+    <eAnnotations source="d8_>6%`."/>
+    <eAnnotations source="L&amp;|q"/>
+    <eAnnotations source="HDYy]*oTJ:h"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="Ht:k 6&amp;1r" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="T6fh'[&lt;"/>
+  </ecore:EClass>
+  <ecore:EClass name="^#KgW3?" instanceClassName="`D" instanceTypeName="/ReRX+2,P" abstract="true" interface="true">
+    <eAnnotations source=";U6"/>
+    <eAnnotations source="KFq6c*"/>
+    <eAnnotations source="bZqo:8*"/>
+    <eAnnotations source="NqdSO1"/>
+    <eAnnotations source="E;r-Z057"/>
+    <eAnnotations source=")U1V"/>
+    <eAnnotations source="wB&quot;`H>$pn=j?"/>
+    <eAnnotations source="hf>KU"/>
+    <eTypeParameters href="#/73"/>
+    <eTypeParameters href="#/74"/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="&quot;1n}xfz"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="e7"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="vh`Fs1!" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="Sw#r" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="l#le[=P" unsettable="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="?^^Yu+" instanceClassName="cyt1|S" instanceTypeName="5>Cr>zbUf-" abstract="true" interface="true">
+    <eTypeParameters href="#/75"/>
+    <eTypeParameters href="#/76"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="J1D5FE3J^:" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" defaultValueLiteral="&quot;mR%"/>
+  </ecore:EClass>
+  <ecore:EClass name="" instanceClassName=";]J !6by" instanceTypeName="u" abstract="true" interface="true">
+    <eAnnotations source="J@v5>1"/>
+    <eAnnotations source="H&lt;S6qf*Ot"/>
+    <eAnnotations source="`.+4"/>
+    <eTypeParameters href="#/77"/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" defaultValueLiteral="" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="fl" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name=":o" instanceClassName="9dI+" instanceTypeName=" ">
+    <eAnnotations source="en&lt;>|"/>
+    <eAnnotations source="Cv$U"/>
+    <eTypeParameters href="#/78"/>
+  </ecore:EClass>
+  <ecore:EClass name="+s>7j $z" instanceClassName="&lt;ez6=O" instanceTypeName="|Pwc&amp;H/" abstract="true" interface="true">
+    <eTypeParameters href="#/79"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="b9Vy^" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="`e9s>" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" transient="true" defaultValueLiteral="wA-%6'0|" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="b +;" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="nUxYekt" instanceClassName="oh" instanceTypeName="Jcq:" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="{x:qWR),"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" defaultValueLiteral="zjMpSd-'"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="BkHQa3a>%sw\|" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="ayn" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="BBe$wS/Y(" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="Z@;@xO$wEpC31B" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral=" Yd;4 vLM" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="K-" instanceClassName="" instanceTypeName="}-rYHOl}*H3" abstract="true" interface="true" eSuperTypes="/2">
+    <eAnnotations source=" #ony|!]"/>
+    <eAnnotations source="=>zfNBL"/>
+    <eAnnotations source="\t+'*K$3GoDj"/>
+    <eAnnotations source="*^WiDGP"/>
+    <eTypeParameters href="#/80"/>
+    <eTypeParameters href="#/81"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+  </ecore:EClass>
+  <ecore:EClass name="OD{SC_ N[jGi,j" instanceClassName="6lE$" instanceTypeName="eN#WGf%" abstract="true">
+    <eAnnotations source="sfy:i"/>
+    <eAnnotations source="b\cgP1$6Ih"/>
+    <eAnnotations source="&amp;)>X@"/>
+    <eAnnotations source="!a-)"/>
+    <eTypeParameters href="#/82"/>
+    <eTypeParameters href="#/83"/>
+    <eOperations/>
+    <eOperations/>
+  </ecore:EClass>
+  <ecore:EClass name="|4)jB)MuEo" instanceClassName="l>X" instanceTypeName="_a">
+    <eTypeParameters href="#/84"/>
+    <eTypeParameters href="#/85"/>
+    <eTypeParameters href="#/86"/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="^+" instanceClassName="3)PJM?}0" instanceTypeName="GV">
+    <eTypeParameters href="#/87"/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="grm#oi)C8c" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral=";@{Ib" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" transient="true" defaultValueLiteral="kzBo5Gdq!" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="" instanceClassName="5&quot;FC@A/v" instanceTypeName="-X" abstract="true" interface="true">
+    <eAnnotations source="(km&lt;,*"/>
+    <eAnnotations source="G;"/>
+    <eAnnotations source=",YX.:/-*a}K"/>
+    <eTypeParameters href="#/88"/>
+    <eTypeParameters href="#/89"/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="|%W9"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="@}" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="lhcPA" unsettable="true" derived="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="[U_LAWrH" instanceClassName="" instanceTypeName="eR` {||h" interface="true">
+    <eAnnotations source="Gk>fob"/>
+    <eAnnotations source="-OVB$Vdd1R`"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" defaultValueLiteral="iz&amp;*n5x-yu%" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" transient="true" defaultValueLiteral="4M&quot;oAmiE" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="|0z$_`7W"/>
+  </ecore:EClass>
+  <ecore:EClass name=".RfDpn" instanceClassName="" instanceTypeName="O2vzux">
+    <eAnnotations source="3K"/>
+    <eTypeParameters href="#/90"/>
+    <eTypeParameters href="#/91"/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eOperations/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="(JPd?"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral="n%&quot;^" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" volatile="true" defaultValueLiteral="vknrSzjd+#Y"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" defaultValueLiteral="" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" volatile="true" transient="true" defaultValueLiteral="XA %iYe" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" transient="true" defaultValueLiteral="" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" changeable="false" defaultValueLiteral=""/>
+  </ecore:EClass>
+  <ecore:EDataType name="O4-d7l{}." instanceClassName="vG" instanceTypeName="`E5MA1" serializable="false">
+    <eTypeParameters href="#/92"/>
+    <eTypeParameters href="#/93"/>
+  </ecore:EDataType>
+  <ecore:EParameter name="raJaNRKw`T}+j" ordered="false" lowerBound="-1827820016" upperBound="222661208" eType="/0">
+    <eAnnotations source="\z%I\&amp;"/>
+    <eAnnotations source=""/>
+  </ecore:EParameter>
+  <ecore:EPackage name="s" nsURI="lO;." nsPrefix="bNsP_*">
+    <eAnnotations source="Wd"/>
+    <eAnnotations source="k}0k,5CapA"/>
+    <eAnnotations source="=-E2d"/>
+    <eAnnotations source="E(zn|V"/>
+  </ecore:EPackage>
+  <ecore:EPackage name="Z0" nsURI="PN^1[$5B&amp;q%2" nsPrefix="tM^,vF$`6vqV"/>
+  <ecore:EEnum name="" instanceClassName="v_6}%QX{ -#xpxo%])\wE" instanceTypeName="l:" serializable="false">
+    <eTypeParameters href="#/94"/>
+    <eTypeParameters href="#/95"/>
+  </ecore:EEnum>
+  <ecore:EFactory>
+    <eAnnotations source=".,"/>
+    <eAnnotations source="N&quot;"/>
+    <eAnnotations source="va#QT}"/>
+    <eAnnotations source="|-2"/>
+    <eAnnotations source="?V"/>
+    <eAnnotations source="8V"/>
+  </ecore:EFactory>
+  <ecore:ETypeParameter name="F">
+    <eAnnotations source="AcMNf"/>
+    <eAnnotations source="2,"/>
+    <eAnnotations source=")K,R&quot;a"/>
+    <eAnnotations source="V_:a$UUZhp4,y5"/>
+  </ecore:ETypeParameter>
+  <ecore:ETypeParameter name="0?pO%ea]>%"/>
+  <ecore:ETypeParameter name="by|pRb">
+    <eAnnotations source="gaw-V\"/>
+    <eAnnotations source="a}"/>
+    <eAnnotations source="F[3(A5v"/>
+    <eAnnotations source="FDE=_zk"/>
+    <eAnnotations source="Mv4@U@"/>
+  </ecore:ETypeParameter>
+  <ecore:ETypeParameter name="I(k">
+    <eAnnotations source="g.':O/8By;"/>
+    <eAnnotations source="4NOK!d/K}9|k"/>
+    <eAnnotations source=""/>
+    <eAnnotations source="@&amp;(`3Le'("/>
+    <eAnnotations source="%1"/>
+  </ecore:ETypeParameter>
+  <ecore:EEnumLiteral name="\@n73t@4bFgaGH+" value="-731219112" literal="cWz">
+    <eAnnotations source="'qXz\4"/>
+    <eAnnotations source="Mn/"/>
+  </ecore:EEnumLiteral>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+  <ecore:ETypeParameter/>
+</xmi:XMI>
