@@ -369,7 +369,10 @@ public class Configuration implements Index {
 	public long getMinimumReferences(EReference mReference) {
 				
 		//EClass mClass = (EClass)mReference.eContainingFeature();
-		EClass mClass = mReference.eContainer().eClass();
+		
+		//EClass mClass2 = mReference.eContainer().eClass();
+		EClass mClass = (EClass)mReference.eContainer();
+		
 		HashMap<String, Pair<Long, Long>> ref = refs.get(mClass.getName());
 		
 		if (ref != null && ref.containsKey(mReference.getName())) {			
@@ -382,7 +385,11 @@ public class Configuration implements Index {
 	public long getMaximumReferences(EReference mReference) {
 		
 		//EClass mClass = (EClass)mReference.eContainingFeature();
-		EClass mClass = mReference.eContainer().eClass();
+		
+		//EClass mClass = mReference.eContainer().eClass();
+		EClass mClass = (EClass)mReference.eContainer();
+		
+		
 		HashMap<String, Pair<Long, Long>> ref = refs.get(mClass.getName());
 		
 		if (ref != null && ref.containsKey(mReference.getName())) {			
@@ -401,6 +408,14 @@ public class Configuration implements Index {
 	
 	public void setDirectory(String dir) {
 		configFileLocation = dir;
+	}
+
+	public long getMinimumCount(EClass mClass) {
+		Long count = index.get(mClass.getName());
+		if(count == null){
+			return 0;			
+		}
+		return count;
 	}
 
 }

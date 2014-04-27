@@ -1,0 +1,39 @@
+operation EAnnotation createdetails() {
+	
+	"createdetails".println();
+	("yay "+self.eModelElement.eClass.name).println();
+	("yay "+self.eModelElement).println();
+
+	switch (self.source) {
+		case "gmf.node": 
+			if(self.eModelElement.eStructuralFeatures.size>0) {
+				self.details.put("label", self.eModelElement.eStructuralFeatures[0].name);
+			} else {
+				
+			}		
+		case "gmf.link": 
+			if(self.eModelElement.eStructuralFeatures.size>0) {
+				self.details.put("label", self.eModelElement.eStructuralFeatures[0].name);
+			} else {
+				
+			}	
+		default : throw null;
+		/*
+		case "gmf":
+			if(not self.eModelElement.name.equals("EPackage")) {
+				// Only EPackages can have a "gmf" annotation.
+				self.source = "";
+				//("yay"+self.eModelElement.eClass).println();
+			}	
+		
+		case "gmf.diagram": 
+		case "gmf.compartment": 
+		case "gmf.affixed": 
+		case "gmf.label": 
+*/
+		//default : 	"unidentified source".println();
+	}
+}
+
+
+

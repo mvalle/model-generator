@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_rVnnEM4HEeO06pOc89s40Q" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_rWvBYM4HEeO06pOc89s40Q" type="1002">
+    <children xmi:type="notation:Node" xmi:id="_rXE_oM4HEeO06pOc89s40Q" type="4006"/>
+    <children xmi:type="notation:Node" xmi:id="_rXG00M4HEeO06pOc89s40Q" type="5003">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_rXG00c4HEeO06pOc89s40Q"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_rXG00s4HEeO06pOc89s40Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_rXG0084HEeO06pOc89s40Q"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_rWvBYc4HEeO06pOc89s40Q" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13150135" lineColor="4210752"/>
+    <styles xmi:type="notation:MultiDiagramLinkStyle" xmi:id="_rWvBYs4HEeO06pOc89s40Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rWvBY84HEeO06pOc89s40Q"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_rVoOIM4HEeO06pOc89s40Q"/>
+  <element xmi:type="ecore:EPackage" href="small_unstructured.ecore#/9"/>
+</notation:Diagram>

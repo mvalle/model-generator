@@ -5,6 +5,7 @@ import java.util.Random;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -161,6 +162,9 @@ public class RandomProducer extends Producer {
 				// Add minimum references
 				while (lower > iReferenceContainer.size()
 						&& upper < iReferenceContainer.size()) {
+					
+					//System.out.println("l "+lower);
+					
 					link(iReferenceContainer, mReference);
 				}
 
@@ -168,18 +172,24 @@ public class RandomProducer extends Producer {
 				long configMin = config.getMinimumReferences(mReference);
 				while (configMin > iReferenceContainer.size()
 						&& upper < iReferenceContainer.size()) {
+					
+					//System.out.println("c "+configMin);
+					
 					link(iReferenceContainer, mReference);
 				}
 				
 				// Add random references
 				long max = config.getMaximumReferences(mReference);
 				if (max == -1) { 
-					max = config.getMinimumCount();
+					max = config.getMinimumCount((EClass)mReference.getEType());
 				}
 				
 				
 				int c = (int) (max * getDouble());
 				while (c-- > 0 && iReferenceContainer.size() <= upper) {
+					
+					//System.out.println("m "+c);
+					
 					link(iReferenceContainer, mReference);
 				}
 			}
@@ -202,6 +212,7 @@ public class RandomProducer extends Producer {
 
 	private void link(EList<EObject> iReferenceContainer, EReference mReference) {		
 		if (mReference.isContainment()) {		
+			
 			EObject iObject = strategy.retrieaveUncontainedObject((EClass) mReference
 				.getEType());
 			// It's possible the no uncontained objects are retrieved

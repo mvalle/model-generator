@@ -1,0 +1,13 @@
+
+operation EClass createeSuperTypes(superType : EClass) {
+	
+	"createeSuperTypes".println();
+	
+	if(self == superType) {
+		return;
+	} else {
+		self.println();
+		self.eSuperTypes.println();
+		self.eSuperTypes.add(superType);
+	}
+} 

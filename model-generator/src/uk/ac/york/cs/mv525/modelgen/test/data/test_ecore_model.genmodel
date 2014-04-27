@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel">
+  <genmodel:GenModel copyrightText="" modelDirectory="/uk.ac.york.cs.mv525.modelgen/src"
+      modelPluginID="uk.ac.york.cs.mv525.modelgen" modelName="S" importerID="org.eclipse.emf.importer.ecore"
+      complianceLevel="6.0" copyrightFields="false">
+    <foreignModel>test_ecore_model.ecore</foreignModel>
+    <genPackages prefix="S" disposableProviderFactory="true" ecorePackage="test_ecore_model.ecore#/39"/>
+    <genPackages prefix="Z0" disposableProviderFactory="true" ecorePackage="test_ecore_model.ecore#/40"/>
+  </genmodel:GenModel>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenFeature createChild="false"/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenOperation/>
+  <genmodel:GenEnum/>
+  <genmodel:GenEnumLiteral/>
+  <genmodel:GenDataType/>
+</xmi:XMI>

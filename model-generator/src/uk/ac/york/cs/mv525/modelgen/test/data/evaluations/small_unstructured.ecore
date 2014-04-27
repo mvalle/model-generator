@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EClass name="hupij" instanceClassName="jepmo" instanceTypeName="vgrin">
+    <eAnnotations source="qiiwb">
+      <eAnnotations source="ekkpe"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="lgann" instanceClassName="mbmpw" instanceTypeName="dyvuv">
+    <eAnnotations source="qfyza">
+      <eAnnotations source="irnjc"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="trfjw" instanceClassName="orwcu" instanceTypeName="jheqh">
+    <eAnnotations source="tygvx">
+      <eAnnotations source="jblrp"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="btpyr" instanceClassName="xpkld" instanceTypeName="yntbs">
+    <eAnnotations source="vylyx"/>
+  </ecore:EClass>
+  <ecore:EClass name="nyupv" instanceClassName="kkkbg" instanceTypeName="djznx">
+    <eAnnotations source="qmyhh"/>
+  </ecore:EClass>
+  <ecore:EClass name="iptwj" instanceClassName="fsxfl" instanceTypeName="nillx">
+    <eAnnotations source="vnmsr"/>
+  </ecore:EClass>
+  <ecore:EObject/>
+  <ecore:EDataType name="yqkmq" instanceClassName="jjqag" instanceTypeName="wybyy">
+    <eAnnotations source="xlrce"/>
+  </ecore:EDataType>
+  <ecore:EParameter name="abova" eType="/0">
+    <eAnnotations source="ikiuj"/>
+  </ecore:EParameter>
+  <ecore:EPackage name="txhal" nsURI="vlugt" nsPrefix="eoiww">
+    <eSubpackages href="#/9"/>
+  </ecore:EPackage>
+  <ecore:EPackage name="bcyww" nsURI="fkrka" nsPrefix="waqxe"/>
+  <ecore:EEnum name="mxvsa" instanceClassName="ifale" instanceTypeName="cykmi"/>
+  <ecore:EAttribute name="otjct" eType="/2" defaultValueLiteral="csxoe"/>
+  <ecore:EFactory/>
+  <ecore:EOperation name="uxcql" eType="/3"/>
+  <ecore:ETypeParameter name="hskcg"/>
+  <ecore:EEnumLiteral name="ymvwc" literal="tlvlf"/>
+  <ecore:EReference name="zppyk" eType="/4" defaultValueLiteral="ispxx" eOpposite="/17">
+    <eGenericType eTypeParameter="/15" eClassifier="/1"/>
+  </ecore:EReference>
+  <ecore:EStringToStringMapEntry key="kkeib" value="xyiuy"/>
+</xmi:XMI>
