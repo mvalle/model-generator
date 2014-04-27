@@ -15,10 +15,6 @@ import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 
 public class ConfigParser {
 	
-	@Deprecated
-	public ConfigParser() {
-		
-	}
 	public static Configuration parse(String location) throws IOException {
 		
 		// Initialise the ConfigPackage

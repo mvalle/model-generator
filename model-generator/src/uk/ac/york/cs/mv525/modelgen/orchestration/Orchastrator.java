@@ -205,7 +205,7 @@ public class Orchastrator {
 		
 		return output;
 	}
-
+/*
 	@Deprecated
 	public Orchastrator() {					
 	}
@@ -219,7 +219,7 @@ public class Orchastrator {
 	public void addModel(ModelInstance model) {
 		modelInstance = model;		
 	}
-
+*/
 	@Deprecated
 	public void addProducer(Producer producer) {
 		this.producer = producer;

@@ -143,6 +143,7 @@ public class GenerateModels {
 	
 	@Test
 	public void test_BigEcore() throws IOException {
+		//return;
 		String dataDir = System.getProperty("user.dir") + "/src/uk/ac/york/cs/mv525/modelgen/test/data/";
 
 		String metaModelLoc = dataDir + "metamodels/Ecore.ecore";
@@ -161,8 +162,8 @@ public class GenerateModels {
 		Orchastrator d = new Orchastrator(model);
 		d.addConfiguration(c);
 		
-		d.create();
+		//d.create();
 			
-		model.save();
+		//model.save();
 	}
 }

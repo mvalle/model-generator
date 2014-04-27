@@ -20,9 +20,9 @@ public class AlwaysRetrieve implements Strategy {
 	@Override
 	public EObject retrieaveObject(EClass mType) {
 		
-		if( mType.getName().equals("ENamedElement")) {
-			System.out.println();
-		}
+		//if( mType.getName().equals("ENamedElement")) {
+		//	System.out.println();
+		//}
 		
 		Integer s = state.get(mType.getName());
 		if(s == null) {
@@ -34,15 +34,7 @@ public class AlwaysRetrieve implements Strategy {
 		
 		if(os == null) return null;
 		
-		EObject output = null;
-		try {
-			output = os.get(s%os.size());
-		} catch (ArrayIndexOutOfBoundsException e) {
-			e.printStackTrace();
-			System.out.println(s);
-			System.out.println(os.size());
-			throw e;
-		}
+		EObject output = output = os.get(s%os.size());
 		
 		if (s == Integer.MAX_VALUE) {
 			s = 0;

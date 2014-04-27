@@ -34,17 +34,6 @@ public class Configuration implements Index {
 	private String configFileLocation = "";
 	private StringPoolContainer defaultStringPool;
 
-	public Configuration(ModelConfiguration config, MetaModelIndex mmIndex) {
-		metaModel = mmIndex;
-		this.config = config;
-		
-		init();
-	}
-	
-	@Deprecated
-	public void setMetaModel(String metaModelLocation) {
-	//	config.setMetaModelLocation(metaModelLocation);
-	}
 	public void setMetaModel(MetaModelIndex mmIndex) {
 		metaModel = mmIndex;
 		init();
