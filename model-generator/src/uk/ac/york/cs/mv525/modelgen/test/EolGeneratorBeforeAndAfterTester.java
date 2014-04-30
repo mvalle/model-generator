@@ -99,7 +99,7 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 
 		Orchastrator defaultOrchastration = new Orchastrator(model);
 		defaultOrchastration.addConfiguration(cIndex);
-		
+		defaultOrchastration.addProducer(generator);
 
 		defaultOrchastration.create();
 
@@ -130,15 +130,20 @@ public class EolGeneratorBeforeAndAfterTester extends FileTester {
 
 		Orchastrator defaultOrchastration = new Orchastrator(model);
 		defaultOrchastration.addConfiguration(cIndex);
+		defaultOrchastration.addProducer(generator);
 
 		defaultOrchastration.create();
 
 		EClass mClass = (EClass) mIndex.get("Person");
 		EStructuralFeature mName = mClass.getEStructuralFeature("name");
+		for(EObject p : model.getObjects("Person")) {
+			String f = (String) p.eGet(mName);
+			System.out.println(f);
+		}
 		
 		for(EObject p : model.getObjects("Person")) {
 			String f = (String) p.eGet(mName);
-			assertEquals(f, "Called from After operation");
+			assertEquals("Called from After operation", f);
 		}
 	}
 

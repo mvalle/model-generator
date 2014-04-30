@@ -47,7 +47,7 @@ public class Orchastrator {
 		try {
 			if (cIndex.getProducer() == null) {
 				addDefaultProducer();
-			} else {
+			} else if (this.producer == null) {
 				addProducer(cIndex.getProducer());				
 			}
 		} catch (IOException e) {
@@ -67,7 +67,7 @@ public class Orchastrator {
 		
 		p.setStrategy(roc);
 		
-		this.producer = p;
+		this.producer = p;		
 		
 	}
 

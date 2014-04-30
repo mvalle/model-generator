@@ -51,7 +51,8 @@ public class EolParser implements Parser {
 		EolIndex pIndex = new EolIndex(context);
 
 		context.getModelRepository().addModel(
-				new InMemoryEmfModel("X", resource, ePackage));
+				//new InMemoryEmfModel("X", resource, ePackage));
+				new InMemoryEmfModel("*", resource, ePackage));
 
 		for (EolOperation op : mModule.getOperations()) {			
 			try {
