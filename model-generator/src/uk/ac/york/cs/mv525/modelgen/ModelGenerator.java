@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen.orchestration;
+package uk.ac.york.cs.mv525.modelgen;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysRetrieve;
 import uk.ac.york.cs.mv525.modelgen.strategy.RetrieveOrCreate;
 import uk.ac.york.cs.mv525.modelgen.strategy.Strategy;
 // TODO : Rename to ...
-public class Orchastrator {
+public class ModelGenerator {
 
 	protected MetaModelIndex mIndex;
 	protected Configuration cIndex;
@@ -31,7 +31,7 @@ public class Orchastrator {
 	
 	protected Producer producer;
 	
-	public Orchastrator(ModelInstance model) {
+	public ModelGenerator(ModelInstance model) {
 		modelInstance = model;
 	}
 	
@@ -47,7 +47,7 @@ public class Orchastrator {
 		try {
 			if (cIndex.getProducer() == null) {
 				addDefaultProducer();
-			} else {
+			} else if (this.producer == null) {
 				addProducer(cIndex.getProducer());				
 			}
 		} catch (IOException e) {
@@ -67,7 +67,7 @@ public class Orchastrator {
 		
 		p.setStrategy(roc);
 		
-		this.producer = p;
+		this.producer = p;		
 		
 	}
 
@@ -82,19 +82,27 @@ public class Orchastrator {
 		
 		/* Start by creating the minimum amount of classes. */
 		
+		System.out.println("START GENERATE OBJECTS");
+		
 		EClass mClass = cIndex.getNextInstantiable();
 		
 		while(mClass != null) {
 			EObject iObject = producer.create(mClass);
-			
+
 			if(mClass.getName().equals("EAnnotation")) {
+				System.out.println();
+			}
+			if(mClass.getName().equals("EStringToStringMapEntry")) {
 				System.out.println();
 			}
 			
 			
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
-				if (feature instanceof EAttribute ) {
+				
+				if (feature instanceof EAttribute && !iObject.eIsSet(feature) ) {
+					
 					producer.add(iObject, (EAttribute)feature);
+					
 				} else {
 					//System.out.println(feature instanceof EReference);	
 				}
@@ -103,6 +111,8 @@ public class Orchastrator {
 			mClass = cIndex.getNextInstantiable();
 		}
 		
+
+		System.out.println("END GENERATE OBJECTS");
 		//if (true) return;
 		
 		/* Finish by linking the objects together. 
@@ -110,30 +120,48 @@ public class Orchastrator {
 		 * depending on the strategy used. */
 				
 		ArrayList<EObject> iObjects = modelInstance.dump();
-		
+		System.out.println("START GENERATE LINKS : " + iObjects.size());
+		long c = 0;
 		for(EObject iObject : iObjects) {
-			
+			c++;
+			if ((c % 1000) == 0) {
+				System.out.println(c);
+			}
 			if (iObject.eClass().getName().equals("EAnnotation")) {
 				System.out.println("");
 			}
+
 			
+			
+			long f = 0;
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
+				f++;
+				
+				
 				if (feature.getEType() instanceof EClass && feature.isChangeable() ) {
+
+					//System.out.println(" "+f);
 					producer.link(iObject, (EReference) feature);
 				}
 			}
 			
 		
 		}
-			
+
+		System.out.println("END GENERATE LINKS");
 		producer.after();
 	}	
 	
 
 	protected Producer convert(uk.ac.york.cs.mv525.modelgen.config.config.Producer root) throws IOException {
 		Producer output = null;
-
-		if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.EolProducer) {
+		
+		if (root == null){
+			System.out.println("Using default producer");
+			output = new RandomProducer(modelInstance, mIndex, cIndex);
+			output.setStrategy(convert(null, output));
+		}
+		else if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.EolProducer) {
 			uk.ac.york.cs.mv525.modelgen.config.config.EolProducer pro = (uk.ac.york.cs.mv525.modelgen.config.config.EolProducer)root;			
 			output = new EolProducer(pro.getLocation(), modelInstance, cIndex);
 			output.setStrategy(convert(pro.getStrategy(), output));
@@ -143,7 +171,7 @@ public class Orchastrator {
 			output = new RandomProducer(modelInstance, mIndex, cIndex);
 			output.setStrategy(convert(root.getStrategy(), output));
 		}
-		else if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator) {
+		else if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer) {
 
 			uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer pro = (uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer)root;			
 			output = new CombinedProducer();
@@ -153,9 +181,7 @@ public class Orchastrator {
 			for(uk.ac.york.cs.mv525.modelgen.config.config.Producer g : pro.getProducers()) {
 				((CombinedProducer)output).addProducer(convert(g));
 			}		
-		} else {
-			System.err.println("Unable to find generator");
-		}
+		} 
 		
 		return output;
 	}
@@ -163,7 +189,10 @@ public class Orchastrator {
 	protected Strategy convert(uk.ac.york.cs.mv525.modelgen.config.config.Strategy root, Producer pro) {
 		Strategy output = null;
 		
-		if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy) {
+		if (root == null) {
+			System.out.println("Using default strategy");
+			output = new AlwaysRetrieve(modelInstance);			
+		} else if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy) {
 			output = new AlwaysCreate(pro);
 		} else if (root instanceof uk.ac.york.cs.mv525.modelgen.config.config.AlwaysRetrieveStrategy) {
 			output = new AlwaysRetrieve(modelInstance);
@@ -176,7 +205,7 @@ public class Orchastrator {
 		
 		return output;
 	}
-
+/*
 	@Deprecated
 	public Orchastrator() {					
 	}
@@ -190,7 +219,7 @@ public class Orchastrator {
 	public void addModel(ModelInstance model) {
 		modelInstance = model;		
 	}
-
+*/
 	@Deprecated
 	public void addProducer(Producer producer) {
 		this.producer = producer;

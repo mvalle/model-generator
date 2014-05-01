@@ -5,7 +5,6 @@ package uk.ac.york.cs.mv525.modelgen.config.config.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -13,7 +12,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy;
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
-import uk.ac.york.cs.mv525.modelgen.config.config.Generator;
+import uk.ac.york.cs.mv525.modelgen.config.config.Producer;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +36,7 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * @generated
 	 * @ordered
 	 */
-	protected Generator generator;
+	protected Producer generator;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,10 +62,10 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Generator getGenerator() {
+	public Producer getGenerator() {
 		if (generator != null && generator.eIsProxy()) {
 			InternalEObject oldGenerator = (InternalEObject)generator;
-			generator = (Generator)eResolveProxy(oldGenerator);
+			generator = (Producer)eResolveProxy(oldGenerator);
 			if (generator != oldGenerator) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR, oldGenerator, generator));
@@ -80,7 +79,7 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Generator basicGetGenerator() {
+	public Producer basicGetGenerator() {
 		return generator;
 	}
 
@@ -89,22 +88,11 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGenerator(Generator newGenerator) {
-		Generator oldGenerator = generator;
+	public void setGenerator(Producer newGenerator) {
+		Producer oldGenerator = generator;
 		generator = newGenerator;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR, oldGenerator, generator));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EObject retrieveObject(EClass mType) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -131,7 +119,7 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR:
-				setGenerator((Generator)newValue);
+				setGenerator((Producer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -146,7 +134,7 @@ public class AlwaysCreateStrategyImpl extends EObjectImpl implements AlwaysCreat
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigPackage.ALWAYS_CREATE_STRATEGY__GENERATOR:
-				setGenerator((Generator)null);
+				setGenerator((Producer)null);
 				return;
 		}
 		super.eUnset(featureID);

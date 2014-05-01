@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EClass name="hupij" instanceClassName="jepmo" instanceTypeName="vgrin" eGenericSuperTypes="">
+    <eAnnotations source="bxhfk">
+      <eAnnotations source="qiiwb" references="/2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+    <eOperations name="hvwog" eType="/16"/>
+    <eOperations name="hupij" eType="/17" eExceptions="/18">
+      <eParameters name="kinid" eType="/0">
+        <eAnnotations source="jjqag"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="jepmo" eType="/19">
+      <eParameters name="axuup" eType="/1">
+        <eAnnotations source="wybyy"/>
+      </eParameters>
+      <eParameters name="ihail" eType="/2">
+        <eAnnotations source="abova" references="/3/@eAnnotations.0/@contents.0 /4/@eAnnotations.0/@contents.0"/>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kpray" eType="/13" defaultValueLiteral="sjdrx"/>
+  </ecore:EClass>
+  <ecore:EClass name="lgann" instanceClassName="mbmpw" instanceTypeName="dyvuv">
+    <eAnnotations source="joyqo" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0 /3/@eAnnotations.0/@contents.0">
+      <eAnnotations source="qfyza" references="/3/@eAnnotations.0/@contents.0"/>
+      <details key="nillx" value="yqkmq"/>
+      <details key="jjqag" value="wybyy"/>
+      <details key="abova" value="qiiwb"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="trfjw" instanceClassName="orwcu" instanceTypeName="jheqh">
+    <eAnnotations source="ixlsa">
+      <eAnnotations source="tygvx"/>
+      <contents/>
+    </eAnnotations>
+    <eTypeParameters href="#/66"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hkqtz" eType="/14" defaultValueLiteral="vrneu"/>
+  </ecore:EClass>
+  <ecore:EClass name="btpyr" instanceClassName="xpkld" instanceTypeName="yntbs" eGenericSuperTypes="">
+    <eAnnotations source="muybk" references="/4/@eAnnotations.0/@contents.0">
+      <eAnnotations source="vylyx" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0"/>
+      <contents/>
+    </eAnnotations>
+    <eTypeParameters href="#/67"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qhnwr" eType="/15" defaultValueLiteral="oqpcf"/>
+  </ecore:EClass>
+  <ecore:EClass name="nyupv" instanceClassName="kkkbg" instanceTypeName="djznx" eGenericSuperTypes="">
+    <eAnnotations source="tudfz" references="/2/@eAnnotations.0/@contents.0 /3/@eAnnotations.0/@contents.0">
+      <eAnnotations source="qmyhh"/>
+      <contents/>
+    </eAnnotations>
+    <eTypeParameters href="#/68"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="yntbs" eType="/20" defaultValueLiteral="nyupv" eOpposite="/4/@eStructuralFeatures.0" eKeys="/0/@eStructuralFeatures.0">
+      <eGenericType eTypeParameter="/67" eClassifier="/11"/>
+    </eStructuralFeatures>
+  </ecore:EClass>
+  <ecore:EClass name="iptwj" instanceClassName="fsxfl" instanceTypeName="nillx">
+    <eAnnotations source="arfjy" references="/3/@eAnnotations.0/@contents.0 /4/@eAnnotations.0/@contents.0">
+      <eAnnotations source="vnmsr" references="/4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="yqkmq" instanceClassName="jjqag" instanceTypeName="wybyy">
+    <eAnnotations source="mxbgy" references="/2/@eAnnotations.0/@contents.0 /3/@eAnnotations.0/@contents.0">
+      <eAnnotations source="xlrce" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="abova" instanceClassName="qiiwb" instanceTypeName="qfyza">
+    <eAnnotations source="kuosu" references="/4/@eAnnotations.0/@contents.0">
+      <eAnnotations source="ikiuj"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="tygvx" instanceClassName="vylyx" instanceTypeName="qmyhh">
+    <eAnnotations source="cjcjb">
+      <eAnnotations source="ekkpe"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kkkbg" eType="/21" defaultValueLiteral="djznx" eOpposite="/8/@eStructuralFeatures.0">
+      <eGenericType eTypeParameter="/68" eClassifier="/12"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="iptwj" eType="/22" defaultValueLiteral="fsxfl" eOpposite="/8/@eStructuralFeatures.1">
+      <eGenericType eTypeParameter="/66" eClassifier="/10"/>
+    </eStructuralFeatures>
+  </ecore:EClass>
+  <ecore:EClass name="vnmsr" instanceClassName="xlrce" instanceTypeName="ikiuj">
+    <eAnnotations source="gczyl" references="/3/@eAnnotations.0/@contents.0">
+      <eAnnotations source="irnjc"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="ekkpe" instanceClassName="irnjc" instanceTypeName="jblrp">
+    <eAnnotations source="gjqvn" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0">
+      <eAnnotations source="jblrp" references="/4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="txhal" instanceClassName="vlugt" instanceTypeName="eoiww">
+    <eAnnotations source="fabid" references="/3/@eAnnotations.0/@contents.0">
+      <eAnnotations source="txhal" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="bcyww" instanceClassName="fkrka" instanceTypeName="waqxe">
+    <eAnnotations source="nocqs">
+      <eAnnotations source="vlugt"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="mxvsa" instanceClassName="ifale" instanceTypeName="cykmi">
+    <eAnnotations source="fqnle" references="/3/@eAnnotations.0/@contents.0 /4/@eAnnotations.0/@contents.0">
+      <eAnnotations source="eoiww"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="otjct" instanceClassName="csxoe" instanceTypeName="uxcql">
+    <eAnnotations source="uvihl">
+      <eAnnotations source="bcyww"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="hskcg" instanceClassName="ymvwc" instanceTypeName="tlvlf">
+    <eAnnotations source="doggb">
+      <eAnnotations source="fkrka" references="/3/@eAnnotations.0/@contents.0 /4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="zppyk" instanceClassName="ispxx" instanceTypeName="kkeib">
+    <eAnnotations source="hatlx">
+      <eAnnotations source="waqxe" references="/2/@eAnnotations.0/@contents.0 /3/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="xyiuy" instanceClassName="qhfvq" instanceTypeName="wjwiv">
+    <eAnnotations source="kizxb">
+      <eAnnotations source="mxvsa" references="/4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="zveyw" instanceClassName="nfbbr" instanceTypeName="sivum">
+    <eAnnotations source="dpicx" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0 /3/@eAnnotations.0/@contents.0">
+      <eAnnotations source="ifale" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="wwfng" instanceClassName="rbwpf" instanceTypeName="kfgre">
+    <eAnnotations source="dktqj" references="/4/@eAnnotations.0/@contents.0">
+      <eAnnotations source="cykmi" references="/2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="hjewp" instanceClassName="hkype" instanceTypeName="kinid">
+    <eAnnotations source="cokac">
+      <eAnnotations source="otjct" references="/2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="axuup" instanceClassName="ihail" instanceTypeName="bxhfk">
+    <eAnnotations source="qzlpx">
+      <eAnnotations source="csxoe" references="/2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="joyqo" instanceClassName="ixlsa" instanceTypeName="muybk">
+    <eAnnotations source="ehsyg">
+      <eAnnotations source="uxcql" references="/2/@eAnnotations.0/@contents.0 /3/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="tudfz" instanceClassName="arfjy" instanceTypeName="mxbgy">
+    <eAnnotations source="gxhfn">
+      <eAnnotations source="hskcg"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="kuosu" instanceClassName="cjcjb" instanceTypeName="gczyl">
+    <eAnnotations source="wgfgh" references="/2/@eAnnotations.0/@contents.0">
+      <eAnnotations source="ymvwc" references="/3/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="gjqvn" instanceClassName="fabid" instanceTypeName="nocqs">
+    <eAnnotations source="jnyoi" references="/3/@eAnnotations.0/@contents.0">
+      <eAnnotations source="tlvlf" references="/3/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="fqnle" instanceClassName="uvihl" instanceTypeName="doggb">
+    <eAnnotations source="sdptt">
+      <eAnnotations source="zppyk" references="/4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="hatlx" instanceClassName="kizxb" instanceTypeName="dpicx">
+    <eAnnotations source="ssvkr">
+      <eAnnotations source="ispxx" references="/4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="dktqj" instanceClassName="cokac" instanceTypeName="qzlpx">
+    <eAnnotations source="kpray">
+      <eAnnotations source="kkeib"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="ehsyg" instanceClassName="gxhfn" instanceTypeName="wgfgh">
+    <eAnnotations source="sjdrx" references="/4/@eAnnotations.0/@contents.0">
+      <eAnnotations source="xyiuy" references="/4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="jnyoi" instanceClassName="sdptt" instanceTypeName="ssvkr">
+    <eAnnotations source="hkqtz" references="/4/@eAnnotations.0/@contents.0">
+      <eAnnotations source="qhfvq"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="kpray" instanceClassName="sjdrx" instanceTypeName="hkqtz">
+    <eAnnotations source="vrneu">
+      <eAnnotations source="wjwiv" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="vrneu" instanceClassName="qhnwr" instanceTypeName="oqpcf">
+    <eAnnotations source="qhnwr" references="/2/@eAnnotations.0/@contents.0">
+      <eAnnotations source="zveyw" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="hvwog" instanceClassName="hupij" instanceTypeName="jepmo">
+    <eAnnotations source="oqpcf">
+      <eAnnotations source="nfbbr" references="/4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="vgrin" instanceClassName="lgann" instanceTypeName="mbmpw">
+    <eAnnotations source="hvwog" references="/3/@eAnnotations.0/@contents.0">
+      <eAnnotations source="sivum" references="/3/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="dyvuv" instanceClassName="trfjw" instanceTypeName="orwcu">
+    <eAnnotations source="hupij" references="/4/@eAnnotations.0/@contents.0">
+      <eAnnotations source="wwfng"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="jheqh" instanceClassName="btpyr" instanceTypeName="xpkld">
+    <eAnnotations source="jepmo">
+      <eAnnotations source="rbwpf"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="yntbs" instanceClassName="nyupv" instanceTypeName="kkkbg">
+    <eAnnotations source="vgrin">
+      <eAnnotations source="kfgre"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="djznx" instanceClassName="iptwj" instanceTypeName="fsxfl">
+    <eAnnotations source="lgann" references="/2/@eAnnotations.0/@contents.0">
+      <eAnnotations source="hjewp" references="/2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="nillx" instanceClassName="yqkmq" instanceTypeName="jjqag">
+    <eAnnotations source="mbmpw" references="/3/@eAnnotations.0/@contents.0">
+      <eAnnotations source="hkype" references="/4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="wybyy" instanceClassName="abova" instanceTypeName="qiiwb">
+    <eAnnotations source="dyvuv" references="/4/@eAnnotations.0/@contents.0">
+      <eAnnotations source="kinid" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="qfyza" instanceClassName="tygvx" instanceTypeName="vylyx">
+    <eAnnotations source="trfjw" references="/4/@eAnnotations.0/@contents.0 /2/@eAnnotations.0/@contents.0">
+      <eAnnotations source="axuup" references="/3/@eAnnotations.0/@contents.0 /4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="qmyhh" instanceClassName="vnmsr" instanceTypeName="xlrce">
+    <eAnnotations source="orwcu">
+      <eAnnotations source="ihail"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="ikiuj" instanceClassName="ekkpe" instanceTypeName="irnjc">
+    <eAnnotations source="jheqh" references="/2/@eAnnotations.0/@contents.0">
+      <eAnnotations source="bxhfk" references="/4/@eAnnotations.0/@contents.0"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="jblrp" instanceClassName="txhal" instanceTypeName="vlugt">
+    <eAnnotations source="btpyr" references="/3/@eAnnotations.0/@contents.0 /4/@eAnnotations.0/@contents.0"/>
+  </ecore:EClass>
+  <ecore:EClass name="eoiww" instanceClassName="bcyww" instanceTypeName="fkrka">
+    <eAnnotations source="xpkld" references="/2/@eAnnotations.0/@contents.0"/>
+  </ecore:EClass>
+  <ecore:EClass name="waqxe" instanceClassName="mxvsa" instanceTypeName="ifale">
+    <eAnnotations source="yntbs" references="/4/@eAnnotations.0/@contents.0"/>
+  </ecore:EClass>
+  <ecore:EClass name="cykmi" instanceClassName="otjct" instanceTypeName="csxoe">
+    <eAnnotations source="nyupv" references="/2/@eAnnotations.0/@contents.0"/>
+  </ecore:EClass>
+  <ecore:EClass name="uxcql" instanceClassName="hskcg" instanceTypeName="ymvwc">
+    <eAnnotations source="kkkbg"/>
+  </ecore:EClass>
+  <ecore:EClass name="tlvlf" instanceClassName="zppyk" instanceTypeName="ispxx">
+    <eAnnotations source="djznx"/>
+  </ecore:EClass>
+  <ecore:EClass name="kkeib" instanceClassName="xyiuy" instanceTypeName="qhfvq">
+    <eAnnotations source="iptwj" references="/4/@eAnnotations.0/@contents.0"/>
+  </ecore:EClass>
+  <ecore:EDataType name="wjwiv" instanceClassName="zveyw" instanceTypeName="nfbbr">
+    <eAnnotations source="fsxfl"/>
+  </ecore:EDataType>
+  <ecore:EDataType name="sivum" instanceClassName="wwfng" instanceTypeName="rbwpf">
+    <eAnnotations source="nillx" references="/2/@eAnnotations.0/@contents.0 /3/@eAnnotations.0/@contents.0"/>
+  </ecore:EDataType>
+  <ecore:EDataType name="kfgre" instanceClassName="hjewp" instanceTypeName="hkype">
+    <eAnnotations source="yqkmq" references="/4/@eAnnotations.0/@contents.0"/>
+  </ecore:EDataType>
+  <ecore:EPackage name="joyqo" nsURI="ixlsa" nsPrefix="muybk">
+    <eClassifiers xsi:type="ecore:EClass" href="#/3"/>
+    <eSubpackages href="#/54"/>
+  </ecore:EPackage>
+  <ecore:EPackage name="tudfz" nsURI="arfjy" nsPrefix="mxbgy">
+    <eClassifiers xsi:type="ecore:EClass" href="#/4"/>
+    <eClassifiers xsi:type="ecore:EClass" href="#/5"/>
+  </ecore:EPackage>
+  <ecore:EPackage name="kuosu" nsURI="cjcjb" nsPrefix="gczyl">
+    <eClassifiers xsi:type="ecore:EClass" href="#/6"/>
+    <eClassifiers xsi:type="ecore:EClass" href="#/7"/>
+  </ecore:EPackage>
+  <ecore:EPackage name="gjqvn" nsURI="fabid" nsPrefix="nocqs">
+    <eSubpackages href="#/55"/>
+  </ecore:EPackage>
+  <ecore:EPackage name="fqnle" nsURI="uvihl" nsPrefix="doggb">
+    <eClassifiers xsi:type="ecore:EClass" href="#/8"/>
+    <eSubpackages href="#/56"/>
+  </ecore:EPackage>
+  <ecore:EPackage name="hatlx" nsURI="kizxb" nsPrefix="dpicx">
+    <eClassifiers xsi:type="ecore:EClass" href="#/9"/>
+  </ecore:EPackage>
+  <ecore:EEnum name="dktqj" instanceClassName="cokac" instanceTypeName="qzlpx">
+    <eLiterals name="dyvuv" literal="trfjw"/>
+  </ecore:EEnum>
+  <ecore:EEnum name="ehsyg" instanceClassName="gxhfn" instanceTypeName="wgfgh">
+    <eLiterals name="orwcu" literal="jheqh"/>
+  </ecore:EEnum>
+  <ecore:EEnum name="jnyoi" instanceClassName="sdptt" instanceTypeName="ssvkr">
+    <eLiterals name="btpyr" literal="xpkld"/>
+  </ecore:EEnum>
+  <ecore:EFactory/>
+  <ecore:EFactory/>
+  <ecore:EFactory/>
+  <ecore:ETypeParameter name="vgrin"/>
+  <ecore:ETypeParameter name="lgann"/>
+  <ecore:ETypeParameter name="mbmpw"/>
+</xmi:XMI>

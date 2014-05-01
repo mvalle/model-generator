@@ -5,21 +5,21 @@ package uk.ac.york.cs.mv525.modelgen.config.config;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Eol Generator</b></em>'.
+ * A representation of the model object '<em><b>Eol Producer</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator#getLocation <em>Location</em>}</li>
+ *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.EolProducer#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
  *
- * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getEolGenerator()
+ * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getEolProducer()
  * @model
  * @generated
  */
-public interface EolGenerator extends Generator {
+public interface EolProducer extends Producer {
 	/**
 	 * Returns the value of the '<em><b>Location</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -30,14 +30,14 @@ public interface EolGenerator extends Generator {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Location</em>' attribute.
 	 * @see #setLocation(String)
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getEolGenerator_Location()
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getEolProducer_Location()
 	 * @model
 	 * @generated
 	 */
 	String getLocation();
 
 	/**
-	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator#getLocation <em>Location</em>}' attribute.
+	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolProducer#getLocation <em>Location</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Location</em>' attribute.
@@ -46,4 +46,4 @@ public interface EolGenerator extends Generator {
 	 */
 	void setLocation(String value);
 
-} // EolGenerator
+} // EolProducer

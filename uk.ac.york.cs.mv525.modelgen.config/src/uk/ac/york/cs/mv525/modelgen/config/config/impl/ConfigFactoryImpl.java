@@ -63,12 +63,12 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 			case ConfigPackage.EMBEDDED_STRING_POOL: return createEmbeddedStringPool();
 			case ConfigPackage.STRING_POOL_ENTRY: return createStringPoolEntry();
 			case ConfigPackage.REFERENCE_OVERRIDE: return createReferenceOverride();
-			case ConfigPackage.RANDOM_GENERATOR: return createRandomGenerator();
+			case ConfigPackage.RANDOM_PRODUCER: return createRandomProducer();
 			case ConfigPackage.ALWAYS_CREATE_STRATEGY: return createAlwaysCreateStrategy();
 			case ConfigPackage.ALWAYS_RETRIEVE_STRATEGY: return createAlwaysRetrieveStrategy();
 			case ConfigPackage.ALWAYS_RETRIEVE_OR_CREATE_STRATEGY: return createAlwaysRetrieveOrCreateStrategy();
-			case ConfigPackage.EOL_GENERATOR: return createEolGenerator();
-			case ConfigPackage.COMBINED_GENERATOR: return createCombinedGenerator();
+			case ConfigPackage.EOL_PRODUCER: return createEolProducer();
+			case ConfigPackage.COMBINED_PRODUCER: return createCombinedProducer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -149,9 +149,9 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RandomGenerator createRandomGenerator() {
-		RandomGeneratorImpl randomGenerator = new RandomGeneratorImpl();
-		return randomGenerator;
+	public RandomProducer createRandomProducer() {
+		RandomProducerImpl randomProducer = new RandomProducerImpl();
+		return randomProducer;
 	}
 
 	/**
@@ -189,9 +189,9 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EolGenerator createEolGenerator() {
-		EolGeneratorImpl eolGenerator = new EolGeneratorImpl();
-		return eolGenerator;
+	public EolProducer createEolProducer() {
+		EolProducerImpl eolProducer = new EolProducerImpl();
+		return eolProducer;
 	}
 
 	/**
@@ -199,9 +199,9 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CombinedGenerator createCombinedGenerator() {
-		CombinedGeneratorImpl combinedGenerator = new CombinedGeneratorImpl();
-		return combinedGenerator;
+	public CombinedProducer createCombinedProducer() {
+		CombinedProducerImpl combinedProducer = new CombinedProducerImpl();
+		return combinedProducer;
 	}
 
 	/**

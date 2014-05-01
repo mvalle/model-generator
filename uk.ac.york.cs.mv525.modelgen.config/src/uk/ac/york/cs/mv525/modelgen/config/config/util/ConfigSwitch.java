@@ -116,16 +116,16 @@ public class ConfigSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.GENERATOR: {
-				Generator generator = (Generator)theEObject;
-				T result = caseGenerator(generator);
+			case ConfigPackage.PRODUCER: {
+				Producer producer = (Producer)theEObject;
+				T result = caseProducer(producer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.RANDOM_GENERATOR: {
-				RandomGenerator randomGenerator = (RandomGenerator)theEObject;
-				T result = caseRandomGenerator(randomGenerator);
-				if (result == null) result = caseGenerator(randomGenerator);
+			case ConfigPackage.RANDOM_PRODUCER: {
+				RandomProducer randomProducer = (RandomProducer)theEObject;
+				T result = caseRandomProducer(randomProducer);
+				if (result == null) result = caseProducer(randomProducer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -156,17 +156,17 @@ public class ConfigSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.EOL_GENERATOR: {
-				EolGenerator eolGenerator = (EolGenerator)theEObject;
-				T result = caseEolGenerator(eolGenerator);
-				if (result == null) result = caseGenerator(eolGenerator);
+			case ConfigPackage.EOL_PRODUCER: {
+				EolProducer eolProducer = (EolProducer)theEObject;
+				T result = caseEolProducer(eolProducer);
+				if (result == null) result = caseProducer(eolProducer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.COMBINED_GENERATOR: {
-				CombinedGenerator combinedGenerator = (CombinedGenerator)theEObject;
-				T result = caseCombinedGenerator(combinedGenerator);
-				if (result == null) result = caseGenerator(combinedGenerator);
+			case ConfigPackage.COMBINED_PRODUCER: {
+				CombinedProducer combinedProducer = (CombinedProducer)theEObject;
+				T result = caseCombinedProducer(combinedProducer);
+				if (result == null) result = caseProducer(combinedProducer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -295,32 +295,32 @@ public class ConfigSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Generator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Producer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Generator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Producer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGenerator(Generator object) {
+	public T caseProducer(Producer object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Random Generator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Random Producer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Random Generator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Random Producer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRandomGenerator(RandomGenerator object) {
+	public T caseRandomProducer(RandomProducer object) {
 		return null;
 	}
 
@@ -385,32 +385,32 @@ public class ConfigSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Eol Producer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Eol Generator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Eol Producer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEolGenerator(EolGenerator object) {
+	public T caseEolProducer(EolProducer object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Combined Generator</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Combined Producer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Combined Generator</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Combined Producer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCombinedGenerator(CombinedGenerator object) {
+	public T caseCombinedProducer(CombinedProducer object) {
 		return null;
 	}
 

@@ -15,11 +15,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
 
 public class MetaModelParser{
-
-	@Deprecated
-	public MetaModelParser() {
-		
-	}
 	
 	public static MetaModelIndex parse(String location) throws IOException {
 		Resource resource;

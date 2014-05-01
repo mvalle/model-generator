@@ -13,10 +13,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import uk.ac.york.cs.mv525.modelgen.ModelGenerator;
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
-import uk.ac.york.cs.mv525.modelgen.orchestration.Orchastrator;
 import uk.ac.york.cs.mv525.modelgen.parse.ConfigParser;
 import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 import uk.ac.york.cs.mv525.modelgen.producer.CombinedProducer;
@@ -60,7 +60,7 @@ public class EmbeddedStringPoolTester extends FileTester {
         CombinedProducer generator = new CombinedProducer(rand);
 		//generator.addGenerator(eol);
 		
-		Orchastrator defaultOrchastration = new Orchastrator(model);
+		ModelGenerator defaultOrchastration = new ModelGenerator(model);
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addProducer(generator);
 				

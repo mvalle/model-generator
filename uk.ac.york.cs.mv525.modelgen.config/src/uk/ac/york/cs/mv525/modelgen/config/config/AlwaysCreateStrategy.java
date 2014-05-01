@@ -29,12 +29,12 @@ public interface AlwaysCreateStrategy extends Strategy {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Generator</em>' reference.
-	 * @see #setGenerator(Generator)
+	 * @see #setGenerator(Producer)
 	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getAlwaysCreateStrategy_Generator()
 	 * @model required="true"
 	 * @generated
 	 */
-	Generator getGenerator();
+	Producer getGenerator();
 
 	/**
 	 * Sets the value of the '{@link uk.ac.york.cs.mv525.modelgen.config.config.AlwaysCreateStrategy#getGenerator <em>Generator</em>}' reference.
@@ -44,6 +44,6 @@ public interface AlwaysCreateStrategy extends Strategy {
 	 * @see #getGenerator()
 	 * @generated
 	 */
-	void setGenerator(Generator value);
+	void setGenerator(Producer value);
 
 } // AlwaysCreateStrategy

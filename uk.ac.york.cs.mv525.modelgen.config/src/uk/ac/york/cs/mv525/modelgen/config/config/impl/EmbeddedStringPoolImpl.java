@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
@@ -31,7 +30,6 @@ import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
  * The following features are implemented:
  * <ul>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EmbeddedStringPoolImpl#getName <em>Name</em>}</li>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EmbeddedStringPoolImpl#getStrings <em>Strings</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.impl.EmbeddedStringPoolImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  * </p>
@@ -58,16 +56,6 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getStrings() <em>Strings</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStrings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<StringPoolEntry> strings;
 
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
@@ -124,34 +112,11 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<StringPoolEntry> getStrings() {
-		if (strings == null) {
-			strings = new EObjectResolvingEList<StringPoolEntry>(StringPoolEntry.class, this, ConfigPackage.EMBEDDED_STRING_POOL__STRINGS);
-		}
-		return strings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<StringPoolEntry> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<StringPoolEntry>(StringPoolEntry.class, this, ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES);
 		}
 		return entries;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StringPoolEntry get() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -178,8 +143,6 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
 				return getName();
-			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
-				return getStrings();
 			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
 				return getEntries();
 		}
@@ -197,10 +160,6 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
 				setName((String)newValue);
-				return;
-			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
-				getStrings().clear();
-				getStrings().addAll((Collection<? extends StringPoolEntry>)newValue);
 				return;
 			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
 				getEntries().clear();
@@ -221,9 +180,6 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
-				getStrings().clear();
-				return;
 			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
 				getEntries().clear();
 				return;
@@ -241,8 +197,6 @@ public class EmbeddedStringPoolImpl extends EObjectImpl implements EmbeddedStrin
 		switch (featureID) {
 			case ConfigPackage.EMBEDDED_STRING_POOL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ConfigPackage.EMBEDDED_STRING_POOL__STRINGS:
-				return strings != null && !strings.isEmpty();
 			case ConfigPackage.EMBEDDED_STRING_POOL__ENTRIES:
 				return entries != null && !entries.isEmpty();
 		}

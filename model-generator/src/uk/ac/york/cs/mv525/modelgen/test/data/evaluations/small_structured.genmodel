@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel">
+  <genmodel:GenModel modelDirectory="/uk.ac.york.cs.mv525.modelgen/src" modelPluginID="uk.ac.york.cs.mv525.modelgen"
+      modelName="Qiiwb" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+      copyrightFields="false">
+    <foreignModel>small_structured.ecore</foreignModel>
+    <genPackages prefix="Vylyx" disposableProviderFactory="true" ecorePackage="small_structured.ecore#/10">
+      <nestedGenPackages prefix="Qiiwb" disposableProviderFactory="true" ecorePackage="small_structured.ecore#/9"/>
+      <nestedGenPackages/>
+    </genPackages>
+  </genmodel:GenModel>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenClass/>
+  <genmodel:GenEnum/>
+  <genmodel:GenEnumLiteral/>
+  <genmodel:GenDataType/>
+</xmi:XMI>

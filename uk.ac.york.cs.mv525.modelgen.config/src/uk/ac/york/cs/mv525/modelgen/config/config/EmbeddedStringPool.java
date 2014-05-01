@@ -12,7 +12,6 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool#getStrings <em>Strings</em>}</li>
  *   <li>{@link uk.ac.york.cs.mv525.modelgen.config.config.EmbeddedStringPool#getEntries <em>Entries</em>}</li>
  * </ul>
  * </p>
@@ -22,22 +21,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface EmbeddedStringPool extends StringPool {
-	/**
-	 * Returns the value of the '<em><b>Strings</b></em>' reference list.
-	 * The list contents are of type {@link uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Strings</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Strings</em>' reference list.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage#getEmbeddedStringPool_Strings()
-	 * @model required="true"
-	 * @generated
-	 */
-	EList<StringPoolEntry> getStrings();
-
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
 	 * The list contents are of type {@link uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry}.

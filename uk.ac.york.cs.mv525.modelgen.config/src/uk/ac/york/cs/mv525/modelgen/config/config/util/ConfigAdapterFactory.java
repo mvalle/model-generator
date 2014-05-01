@@ -100,12 +100,12 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 				return createReferenceOverrideAdapter();
 			}
 			@Override
-			public Adapter caseGenerator(Generator object) {
-				return createGeneratorAdapter();
+			public Adapter caseProducer(Producer object) {
+				return createProducerAdapter();
 			}
 			@Override
-			public Adapter caseRandomGenerator(RandomGenerator object) {
-				return createRandomGeneratorAdapter();
+			public Adapter caseRandomProducer(RandomProducer object) {
+				return createRandomProducerAdapter();
 			}
 			@Override
 			public Adapter caseStrategy(Strategy object) {
@@ -124,12 +124,12 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 				return createAlwaysRetrieveOrCreateStrategyAdapter();
 			}
 			@Override
-			public Adapter caseEolGenerator(EolGenerator object) {
-				return createEolGeneratorAdapter();
+			public Adapter caseEolProducer(EolProducer object) {
+				return createEolProducerAdapter();
 			}
 			@Override
-			public Adapter caseCombinedGenerator(CombinedGenerator object) {
-				return createCombinedGeneratorAdapter();
+			public Adapter caseCombinedProducer(CombinedProducer object) {
+				return createCombinedProducerAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -264,30 +264,30 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.Generator <em>Generator</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.Producer <em>Producer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Generator
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.Producer
 	 * @generated
 	 */
-	public Adapter createGeneratorAdapter() {
+	public Adapter createProducerAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator <em>Random Generator</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.RandomProducer <em>Random Producer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.RandomGenerator
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.RandomProducer
 	 * @generated
 	 */
-	public Adapter createRandomGeneratorAdapter() {
+	public Adapter createRandomProducerAdapter() {
 		return null;
 	}
 
@@ -348,30 +348,30 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator <em>Eol Generator</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.EolProducer <em>Eol Producer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EolGenerator
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.EolProducer
 	 * @generated
 	 */
-	public Adapter createEolGeneratorAdapter() {
+	public Adapter createEolProducerAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator <em>Combined Generator</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer <em>Combined Producer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.york.cs.mv525.modelgen.config.config.CombinedGenerator
+	 * @see uk.ac.york.cs.mv525.modelgen.config.config.CombinedProducer
 	 * @generated
 	 */
-	public Adapter createCombinedGeneratorAdapter() {
+	public Adapter createCombinedProducerAdapter() {
 		return null;
 	}
 

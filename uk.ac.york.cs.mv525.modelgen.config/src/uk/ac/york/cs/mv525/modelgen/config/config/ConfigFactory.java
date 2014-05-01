@@ -85,13 +85,13 @@ public interface ConfigFactory extends EFactory {
 	ReferenceOverride createReferenceOverride();
 
 	/**
-	 * Returns a new object of class '<em>Random Generator</em>'.
+	 * Returns a new object of class '<em>Random Producer</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Random Generator</em>'.
+	 * @return a new object of class '<em>Random Producer</em>'.
 	 * @generated
 	 */
-	RandomGenerator createRandomGenerator();
+	RandomProducer createRandomProducer();
 
 	/**
 	 * Returns a new object of class '<em>Always Create Strategy</em>'.
@@ -121,22 +121,22 @@ public interface ConfigFactory extends EFactory {
 	AlwaysRetrieveOrCreateStrategy createAlwaysRetrieveOrCreateStrategy();
 
 	/**
-	 * Returns a new object of class '<em>Eol Generator</em>'.
+	 * Returns a new object of class '<em>Eol Producer</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Eol Generator</em>'.
+	 * @return a new object of class '<em>Eol Producer</em>'.
 	 * @generated
 	 */
-	EolGenerator createEolGenerator();
+	EolProducer createEolProducer();
 
 	/**
-	 * Returns a new object of class '<em>Combined Generator</em>'.
+	 * Returns a new object of class '<em>Combined Producer</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Combined Generator</em>'.
+	 * @return a new object of class '<em>Combined Producer</em>'.
 	 * @generated
 	 */
-	CombinedGenerator createCombinedGenerator();
+	CombinedProducer createCombinedProducer();
 
 	/**
 	 * Returns the package supported by this factory.

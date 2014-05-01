@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import uk.ac.york.cs.mv525.modelgen.config.config.ConfigPackage;
 import uk.ac.york.cs.mv525.modelgen.config.config.FileStringPool;
-import uk.ac.york.cs.mv525.modelgen.config.config.StringPoolEntry;
 
 /**
  * <!-- begin-user-doc -->
@@ -127,17 +126,6 @@ public class FileStringPoolImpl extends EObjectImpl implements FileStringPool {
 		location = newLocation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.FILE_STRING_POOL__LOCATION, oldLocation, location));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StringPoolEntry get() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**

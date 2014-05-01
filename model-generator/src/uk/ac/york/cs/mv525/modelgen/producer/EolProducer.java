@@ -25,7 +25,7 @@ public class EolProducer extends Producer {
 
 	EFactory iClassFactory;
 	EolIndex opIndex;
-	
+
 	MetaModelIndex mIndex;
 	ModelInstance iModel;
 	Strategy strategy;
@@ -33,10 +33,10 @@ public class EolProducer extends Producer {
 
 	public EolProducer(String programLocation, ModelInstance modelInstance,
 			Configuration config) throws IOException {
-		
-		//System.out.print(modelInstance);
-		//System.out.println(" EolProducer()");
-		
+
+		// System.out.print(modelInstance);
+		// System.out.println(" EolProducer()");
+
 		mIndex = config.metaModel;
 		iModel = modelInstance;
 		iClassFactory = mIndex.getEPackage().getEFactoryInstance();
@@ -47,15 +47,16 @@ public class EolProducer extends Producer {
 			opIndex = parser.parse(programLocation);
 		} catch (IOException e) {
 			String configDir = config.getDirectory();
-			
+
 			File f = new File(configDir);
-			if(f.isFile()) {				
-				opIndex = parser.parse(f.getParent() + f.separator + programLocation);
+			if (f.isFile()) {
+				opIndex = parser.parse(f.getParent() + f.separator
+						+ programLocation);
 			} else {
 				opIndex = parser.parse(config.getDirectory() + programLocation);
 			}
 		}
-		
+
 		this.config = config;
 	}
 
@@ -71,26 +72,27 @@ public class EolProducer extends Producer {
 	public EObject create(EClass mClass) {
 		try {
 			EObject iObject = null;
-			
+
 			EolOperation constructOp = opIndex.getConstructor(mClass);
 			if (constructOp != null) {
-				iObject = (EObject) constructOp.execute(null, Arrays.asList(iObject), opIndex.getEolContext());
+				iObject = (EObject) constructOp.execute(null,
+						Arrays.asList(iObject), opIndex.getEolContext());
 			}
 
 			EolOperation createOp = opIndex.get(mClass.getName());
 			if (createOp != null) {
-				
-				//System.out.println(iClassGenerator.getEPackage());
-				//System.out.println(mClass.getEPackage());
+
+				// System.out.println(iClassGenerator.getEPackage());
+				// System.out.println(mClass.getEPackage());
 				if (iObject == null) {
 					iObject = iClassFactory.create(mClass);
 				}
-				
+
 				createOp.execute(iObject, Collections.emptyList(),
 						opIndex.getEolContext());
-				
+
 			}
-			
+
 			if (iObject != null) {
 				iModel.add(iObject);
 			}
@@ -113,12 +115,11 @@ public class EolProducer extends Producer {
 				if (attributeOp != null) {
 					attributeOp.execute(iObject, Collections.emptyList(),
 							opIndex.getEolContext());
-					//System.out. 
-					if(opIndex.getEolContext().getErrorStream().checkError()) {
-						System.out.println("ERROR");
-						
+					// System.out.
+					if (opIndex.getEolContext().getErrorStream().checkError()) {
+						return null;
 					}
-					
+
 				}
 			}
 
@@ -129,14 +130,13 @@ public class EolProducer extends Producer {
 		}
 	}
 
-	public Object link(EObject iObjectContainer, EReference mReference) {		
-		if (null == opIndex.get(mReference.getEContainingClass(), mReference))
-		{
+	public Object link(EObject iObjectContainer, EReference mReference) {
+		if (null == opIndex.get(mReference.getEContainingClass(), mReference)) {
 			// If there's no EOL function for this reference,
 			// then there's nothing to do.
 			return null;
 		}
-		
+
 		/*
 		 * +------------------+ +---------------------+---------+ |
 		 * iObjectContainer |---->| iReferenceContainer | iObject |
@@ -145,58 +145,80 @@ public class EolProducer extends Producer {
 		long lower = mReference.getLowerBound();
 		long upper = mReference.getUpperBound();
 		// * == -1
-		if (upper == -1) {upper = config.getMinimumCount();}
-		
-		
-		
+		if (upper == -1) {
+			upper = Long.MAX_VALUE;
+		}
+
 		@SuppressWarnings("unchecked")
 		EList<EObject> iReferenceContainer = (EList<EObject>) iObjectContainer
 				.eGet(mReference);
-		
-		if (lower == upper && upper == 1) {
-			// if multiplicity of 1, do one
-			if(iReferenceContainer.size() < 1) {
-				callLink(iObjectContainer, mReference);
+		try {
+			if (upper == 1) {
+				// if multiplicity of 1, do one
+				if (iReferenceContainer.size() < 1) {
+					callLink(iObjectContainer, mReference);
+				}
+			} else if (upper > iReferenceContainer.size()) {
+
+				// Add minimum references
+				while (lower > iReferenceContainer.size()
+						&& upper < iReferenceContainer.size()) {
+					callLink(iObjectContainer, mReference);
+				}
+
+				long configMin = config.getMinimumReferences(mReference);
+				long configMax = config.getMaximumReferences(mReference);
+
+				if (configMin == -1) {
+					configMin = 1;
+				}
+				if (configMax == -1) {
+					configMax = config.getMinimumCount((EClass) mReference
+							.getEType());
+				}
+
+				/*
+				 * callLink may not actually add a link. Therfore, we simulate
+				 * the size of the list as a delimiter of how many times to call
+				 * the callLink. If we use the actual size we will end up with
+				 * an infinite loop
+				 */
+
+				long simulatedSize = iReferenceContainer.size();
+
+				while (configMin > simulatedSize && configMax > simulatedSize
+						&& upper > simulatedSize) {
+					callLink(iObjectContainer, mReference);
+					simulatedSize++;
+				}
+
 			}
-		} else if (upper < iReferenceContainer.size())	{
-			// Add minimum references
-			while(lower > iReferenceContainer.size() && upper < iReferenceContainer.size()) {
-				callLink(iObjectContainer, mReference);
-			}
-			
-			long configMin = config.getMinimumReferences(mReference);
-			while(configMin > iReferenceContainer.size() && upper < iReferenceContainer.size()) {
-				callLink(iObjectContainer, mReference);
-			}			
+		} catch (EolRuntimeException e) {
+			return null;
 		}
-		
-		return iObjectContainer.eGet(mReference); 
+
+		return iObjectContainer.eGet(mReference);
 	}
 
-	private void callLink(EObject iObjectContainer, EReference mReference) {
+	private void callLink(EObject iObjectContainer, EReference mReference)
+			throws EolRuntimeException {
 		EObject iObject = strategy.retrieaveObject((EClass) mReference
 				.getEType());
 
-		try {
-			EolOperation linkOp = opIndex.get(iObject.eClass(),
-					mReference);
+		EolOperation linkOp = opIndex
+				.get(iObjectContainer.eClass(), mReference);
 
-			if (linkOp != null) {
-				linkOp.execute(iObjectContainer, Arrays.asList(iObject),
-						opIndex.getEolContext());
-				//System.out. 
-				if(opIndex.getEolContext().getErrorStream().checkError()) {
-					System.out.println("ERROR");					
-				}
-				
+		if (linkOp != null) {
+			linkOp.execute(iObjectContainer, Arrays.asList(iObject),
+					opIndex.getEolContext());
+			// System.out.
+			if (opIndex.getEolContext().getErrorStream().checkError()) {
+				throw new EolRuntimeException();
 			}
-		} catch (EolRuntimeException e) {
-			System.err.println(e.getMessage());
-		}
-		
-	}
 
-	
+		}
+
+	}
 
 	@Override
 	public boolean before() {
