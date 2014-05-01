@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import uk.ac.york.cs.mv525.modelgen.ModelGenerator;
 import uk.ac.york.cs.mv525.modelgen.data.Configuration;
 import uk.ac.york.cs.mv525.modelgen.data.ModelInstance;
 import uk.ac.york.cs.mv525.modelgen.index.MetaModelIndex;
@@ -18,7 +19,6 @@ import uk.ac.york.cs.mv525.modelgen.producer.CombinedProducer;
 import uk.ac.york.cs.mv525.modelgen.producer.EolProducer;
 import uk.ac.york.cs.mv525.modelgen.producer.RandomProducer;
 import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysCreate;
-import uk.ac.york.cs.mv525.modelgen.orchestration.Orchastrator;
 
 public class DefaultOrchestrationTester extends FileTester {
 
@@ -58,7 +58,7 @@ public class DefaultOrchestrationTester extends FileTester {
 		CombinedProducer generator = new CombinedProducer(rand);
 		generator.addProducer(eol);
 		
-		Orchastrator defaultOrchastration = new Orchastrator(model);
+		ModelGenerator defaultOrchastration = new ModelGenerator(model);
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addProducer(generator);
 		
@@ -89,7 +89,7 @@ public class DefaultOrchestrationTester extends FileTester {
 		//generator.setFallback();
 		generator.addProducer(eol);
 		
-		Orchastrator defaultOrchastration = new Orchastrator(model);
+		ModelGenerator defaultOrchastration = new ModelGenerator(model);
 		defaultOrchastration.addConfiguration(cIndex);
 		defaultOrchastration.addProducer(generator);
 				

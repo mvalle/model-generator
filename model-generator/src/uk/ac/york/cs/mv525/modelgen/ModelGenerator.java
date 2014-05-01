@@ -1,4 +1,4 @@
-package uk.ac.york.cs.mv525.modelgen.orchestration;
+package uk.ac.york.cs.mv525.modelgen;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import uk.ac.york.cs.mv525.modelgen.strategy.AlwaysRetrieve;
 import uk.ac.york.cs.mv525.modelgen.strategy.RetrieveOrCreate;
 import uk.ac.york.cs.mv525.modelgen.strategy.Strategy;
 // TODO : Rename to ...
-public class Orchastrator {
+public class ModelGenerator {
 
 	protected MetaModelIndex mIndex;
 	protected Configuration cIndex;
@@ -31,7 +31,7 @@ public class Orchastrator {
 	
 	protected Producer producer;
 	
-	public Orchastrator(ModelInstance model) {
+	public ModelGenerator(ModelInstance model) {
 		modelInstance = model;
 	}
 	
