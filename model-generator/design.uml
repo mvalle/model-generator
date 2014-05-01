@@ -22,22 +22,27 @@
     <ownedOperation xmi:id="_ADT4cJwTEeO9NIbfBysmJQ" name="create"/>
     <ownedOperation xmi:id="_jXy70J2qEeOx6JMHnAxwiA" name="getModel">
       <ownedParameter xmi:id="_nwW3gJ2qEeOx6JMHnAxwiA" name="model" direction="return">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EResourceSet"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EResource"/>
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_1HlKsJwSEeO9NIbfBysmJQ" name="Index">
     <ownedOperation xmi:id="_DLJzIJwTEeO9NIbfBysmJQ" name="add">
-      <ownedParameter xmi:id="_IjLNIJ2GEeOx6JMHnAxwiA" name="name">
+      <ownedParameter xmi:id="_IjLNIJ2GEeOx6JMHnAxwiA" name="name" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5iOvgNFkEeOC5Y5I5KMF5g" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5iNhYNFkEeOC5Y5I5KMF5g"/>
       </ownedParameter>
-      <ownedParameter xmi:id="_iP_woJ2GEeOx6JMHnAxwiA">
+      <ownedParameter xmi:id="_iP_woJ2GEeOx6JMHnAxwiA" name="object" isUnique="false">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EObject"/>
       </ownedParameter>
     </ownedOperation>
     <ownedOperation xmi:id="_EQDlsJwTEeO9NIbfBysmJQ" name="get">
-      <ownedParameter xmi:id="_kzExYJ2GEeOx6JMHnAxwiA" name="name">
+      <ownedParameter xmi:id="_kzExYJ2GEeOx6JMHnAxwiA" name="name" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_oBJo8NFlEeOC5Y5I5KMF5g" name="" isUnique="false" direction="out">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EObject"/>
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
@@ -70,13 +75,13 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8DEtJp2GEeOx6JMHnAxwiA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Realization" xmi:id="_KC17MJ2pEeOx6JMHnAxwiA" name="Realization1" supplier="_2NKSsJwSEeO9NIbfBysmJQ" client="_BqoA8J2GEeOx6JMHnAxwiA"/>
-  <packagedElement xmi:type="uml:Realization" xmi:id="_KkGOIJ2pEeOx6JMHnAxwiA" name="Realization2" supplier="_2NKSsJwSEeO9NIbfBysmJQ" client="_zDbHAJ2FEeOx6JMHnAxwiA"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_KC17MJ2pEeOx6JMHnAxwiA" name="" supplier="_2NKSsJwSEeO9NIbfBysmJQ" client="_BqoA8J2GEeOx6JMHnAxwiA"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_KkGOIJ2pEeOx6JMHnAxwiA" name="" supplier="_2NKSsJwSEeO9NIbfBysmJQ" client="_zDbHAJ2FEeOx6JMHnAxwiA"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_MFQe4J2pEeOx6JMHnAxwiA" name="EolGenerator" clientDependency="_OoU4kJ2pEeOx6JMHnAxwiA"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_OoU4kJ2pEeOx6JMHnAxwiA" name="" supplier="_xy2qkJwSEeO9NIbfBysmJQ" client="_MFQe4J2pEeOx6JMHnAxwiA"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_O4BhcJ2pEeOx6JMHnAxwiA" name="RandomGenerator" clientDependency="_RDM_kJ2pEeOx6JMHnAxwiA"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_RDM_kJ2pEeOx6JMHnAxwiA" name="" supplier="_xy2qkJwSEeO9NIbfBysmJQ" client="_O4BhcJ2pEeOx6JMHnAxwiA"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_T4dVcJ2pEeOx6JMHnAxwiA" name="MetaModelInterface" clientDependency="_YBjRwJ2pEeOx6JMHnAxwiA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_T4dVcJ2pEeOx6JMHnAxwiA" name="MetaModelIntex" clientDependency="_YBjRwJ2pEeOx6JMHnAxwiA"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_VN43UJ2pEeOx6JMHnAxwiA" name="ProgramIndex" clientDependency="_YgR1IJ2pEeOx6JMHnAxwiA"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_YBjRwJ2pEeOx6JMHnAxwiA" name="" supplier="_1HlKsJwSEeO9NIbfBysmJQ" client="_T4dVcJ2pEeOx6JMHnAxwiA"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_YgR1IJ2pEeOx6JMHnAxwiA" name="" supplier="_1HlKsJwSEeO9NIbfBysmJQ" client="_VN43UJ2pEeOx6JMHnAxwiA">
