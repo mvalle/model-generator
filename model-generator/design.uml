@@ -109,4 +109,32 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_a78v0555EeO2i6Jwz4Gn-Q" value="1"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_Jm4M8NFnEeOC5Y5I5KMF5g" name="Index"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_MGGocNFnEeOC5Y5I5KMF5g" name="Parser"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_Nt4ekNFnEeOC5Y5I5KMF5g" name="Producer">
+    <ownedOperation xmi:id="_rpv1YNFnEeOC5Y5I5KMF5g" name="create" visibility="public">
+      <ownedParameter xmi:id="_xBXaUNFnEeOC5Y5I5KMF5g" name="mClass" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_PYRj0NFnEeOC5Y5I5KMF5g" name="Strategy"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Q7rQQNFnEeOC5Y5I5KMF5g" name="ModelGenerator"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Y2i1ENFnEeOC5Y5I5KMF5g" name="RandomProducer"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_aTyPINFnEeOC5Y5I5KMF5g" name="EolProducer"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_bgHfYNFnEeOC5Y5I5KMF5g" name="CombinedProducer"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_8YcAQNFnEeOC5Y5I5KMF5g" name="AlwaysCreate"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_979ogNFnEeOC5Y5I5KMF5g" name="AlwaysRetrieve"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="__tTqUNFnEeOC5Y5I5KMF5g" name="RetrieveOrCreate"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FABhINFoEeOC5Y5I5KMF5g" name="ConfigParser"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GJ2P8NFoEeOC5Y5I5KMF5g" name="EolParser"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_HAPscNFoEeOC5Y5I5KMF5g" name="MetaModelParser"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IKkKgNFoEeOC5Y5I5KMF5g" name="Class1"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_KflhINFoEeOC5Y5I5KMF5g" name="ConfigurationIndex"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Lh4EkNFoEeOC5Y5I5KMF5g" name="ModelIndex"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MkKoANFoEeOC5Y5I5KMF5g" name="MetaModelIndex"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_SCuicNFoEeOC5Y5I5KMF5g" name="EolIndex"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_XAvUkNFoEeOC5Y5I5KMF5g" name="StringPool"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_aPPQ4NFoEeOC5Y5I5KMF5g" name="FileStringPool"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_bQwYQNFoEeOC5Y5I5KMF5g" name="EmbeddedStringPool"/>
 </uml:Model>
