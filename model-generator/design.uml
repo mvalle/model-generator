@@ -110,31 +110,160 @@
     </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_Jm4M8NFnEeOC5Y5I5KMF5g" name="Index"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_MGGocNFnEeOC5Y5I5KMF5g" name="Parser"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_MGGocNFnEeOC5Y5I5KMF5g" name="Parser">
+    <ownedOperation xmi:id="_SaAxUNF5EeOh5_8axk4KIg" name="parse" visibility="public">
+      <ownedParameter xmi:id="_V7UU4NF5EeOh5_8axk4KIg" name="location">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_ZTDFsNF5EeOh5_8axk4KIg" type="_ueGKsJwREeO9NIbfBysmJQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_Nt4ekNFnEeOC5Y5I5KMF5g" name="Producer">
     <ownedOperation xmi:id="_rpv1YNFnEeOC5Y5I5KMF5g" name="create" visibility="public">
       <ownedParameter xmi:id="_xBXaUNFnEeOC5Y5I5KMF5g" name="mClass" isUnique="false">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
       </ownedParameter>
     </ownedOperation>
+    <ownedOperation xmi:id="__b5o4NF1EeOh5_8axk4KIg" name="add">
+      <ownedParameter xmi:id="_HP2tYNF2EeOh5_8axk4KIg" name="iObject" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_TuWOYNF2EeOh5_8axk4KIg" name="mAttribute" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EAttribute"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_vH-AANF4EeOh5_8axk4KIg" name="return" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Av3yMNF2EeOh5_8axk4KIg" name="link" visibility="public">
+      <ownedParameter xmi:id="_MH-dcNF3EeOh5_8axk4KIg" name="iObject" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_QW3fwNF3EeOh5_8axk4KIg" name="mReference" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EReference"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_270MQNF3EeOh5_8axk4KIg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_CoNz4NF2EeOh5_8axk4KIg" name="before">
+      <ownedParameter xmi:id="_7fjAsNF4EeOh5_8axk4KIg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Boolean"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_D_YbINF2EeOh5_8axk4KIg" name="after">
+      <ownedParameter xmi:id="_9frscNF4EeOh5_8axk4KIg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Boolean"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_PYRj0NFnEeOC5Y5I5KMF5g" name="Strategy"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_PYRj0NFnEeOC5Y5I5KMF5g" name="Strategy">
+    <ownedOperation xmi:id="_ABhhoNF6EeOh5_8axk4KIg" name="retrieveObject">
+      <ownedParameter xmi:id="_OqFGcNF6EeOh5_8axk4KIg" name="mClass" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_AVVOcNF6EeOh5_8axk4KIg" name="retrievedUncontainedObject" visibility="public">
+      <ownedParameter xmi:id="_K6i5oNF6EeOh5_8axk4KIg" name="mClass" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Q7rQQNFnEeOC5Y5I5KMF5g" name="ModelGenerator"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_Y2i1ENFnEeOC5Y5I5KMF5g" name="RandomProducer"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_aTyPINFnEeOC5Y5I5KMF5g" name="EolProducer"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_bgHfYNFnEeOC5Y5I5KMF5g" name="CombinedProducer"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_8YcAQNFnEeOC5Y5I5KMF5g" name="AlwaysCreate"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_979ogNFnEeOC5Y5I5KMF5g" name="AlwaysRetrieve"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="__tTqUNFnEeOC5Y5I5KMF5g" name="RetrieveOrCreate"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_8YcAQNFnEeOC5Y5I5KMF5g" name="AlwaysCreate">
+    <ownedOperation xmi:id="_VJmuoNF6EeOh5_8axk4KIg" name="AlwaysCreate">
+      <ownedParameter xmi:id="_bZKoMNF6EeOh5_8axk4KIg" type="_Nt4ekNFnEeOC5Y5I5KMF5g" isUnique="false"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_979ogNFnEeOC5Y5I5KMF5g" name="AlwaysRetrieve">
+    <ownedOperation xmi:id="_mR0MwNF6EeOh5_8axk4KIg" name="AlwaysRetrieve">
+      <ownedParameter xmi:id="_s5S3ENF6EeOh5_8axk4KIg" type="_Lh4EkNFoEeOC5Y5I5KMF5g" isUnique="false"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="__tTqUNFnEeOC5Y5I5KMF5g" name="RetrieveOrCreate">
+    <ownedOperation xmi:id="_0kAgANF6EeOh5_8axk4KIg" name="RetrieveOrCreate" visibility="public">
+      <ownedParameter xmi:id="_6L8_8NF6EeOh5_8axk4KIg" name="creator" type="_PYRj0NFnEeOC5Y5I5KMF5g" isUnique="false"/>
+      <ownedParameter xmi:id="_8vBZoNF6EeOh5_8axk4KIg" name="retriever" type="_PYRj0NFnEeOC5Y5I5KMF5g" isUnique="false"/>
+    </ownedOperation>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_FABhINFoEeOC5Y5I5KMF5g" name="ConfigParser"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_GJ2P8NFoEeOC5Y5I5KMF5g" name="EolParser"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_HAPscNFoEeOC5Y5I5KMF5g" name="MetaModelParser"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_IKkKgNFoEeOC5Y5I5KMF5g" name="Class1"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_KflhINFoEeOC5Y5I5KMF5g" name="ConfigurationIndex"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_Lh4EkNFoEeOC5Y5I5KMF5g" name="ModelIndex"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_MkKoANFoEeOC5Y5I5KMF5g" name="MetaModelIndex"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_SCuicNFoEeOC5Y5I5KMF5g" name="EolIndex"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MkKoANFoEeOC5Y5I5KMF5g" name="MetaModelIndex">
+    <ownedOperation xmi:id="_btwQwNF9EeOh5_8axk4KIg" name="add">
+      <ownedParameter xmi:id="_t7B5gNF9EeOh5_8axk4KIg" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_cWBxsNF9EeOh5_8axk4KIg" name="get">
+      <ownedParameter xmi:id="_yrk3YNF9EeOh5_8axk4KIg" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_0b5lgNF9EeOh5_8axk4KIg" direction="return">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_c-4hcNF9EeOh5_8axk4KIg" name="exists" visibility="public">
+      <ownedParameter xmi:id="_uM4pENF-EeOh5_8axk4KIg" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_xRtE8NF-EeOh5_8axk4KIg" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Boolean"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_eQG4wNF9EeOh5_8axk4KIg" name="getConcreteClass">
+      <ownedParameter xmi:id="_aCsAoNF-EeOh5_8axk4KIg" direction="return">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_n4vxgNF-EeOh5_8axk4KIg" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_psgqoNF9EeOh5_8axk4KIg" name="dump">
+      <ownedParameter xmi:id="_rJxdYNF-EeOh5_8axk4KIg" type="_cw7vkNF-EeOh5_8axk4KIg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_SCuicNFoEeOC5Y5I5KMF5g" name="EolIndex">
+    <ownedOperation xmi:id="_04E2ENF7EeOh5_8axk4KIg" name="add" visibility="public">
+      <ownedParameter xmi:id="_cwCpoNF8EeOh5_8axk4KIg" name="" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_elz4cNF8EeOh5_8axk4KIg" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EStructuralFeature"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_4EyNMNF8EeOh5_8axk4KIg" type="_JNU38NF8EeOh5_8axk4KIg" isUnique="false"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1_LBANF7EeOh5_8axk4KIg" name="get">
+      <ownedParameter xmi:id="_mOm10NF8EeOh5_8axk4KIg" name="" type="_JNU38NF8EeOh5_8axk4KIg" direction="return"/>
+      <ownedParameter xmi:id="_orjZYNF8EeOh5_8axk4KIg" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_qPl_ANF8EeOh5_8axk4KIg" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EStructuralFeature"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_2Wi_MNF7EeOh5_8axk4KIg" name="getBefore" visibility="public">
+      <ownedParameter xmi:id="_V61FUNF8EeOh5_8axk4KIg" type="_JNU38NF8EeOh5_8axk4KIg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_3FBOwNF7EeOh5_8axk4KIg" name="getAfter">
+      <ownedParameter xmi:id="_TsQ8ANF8EeOh5_8axk4KIg" type="_JNU38NF8EeOh5_8axk4KIg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_4VsMcNF7EeOh5_8axk4KIg" name="getConstructor">
+      <ownedParameter xmi:id="_us-JQNF8EeOh5_8axk4KIg" name="" isUnique="false">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EClass"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_zDT3YNF8EeOh5_8axk4KIg" type="_JNU38NF8EeOh5_8axk4KIg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_XAvUkNFoEeOC5Y5I5KMF5g" name="StringPool"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_aPPQ4NFoEeOC5Y5I5KMF5g" name="FileStringPool"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_bQwYQNFoEeOC5Y5I5KMF5g" name="EmbeddedStringPool"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JNU38NF8EeOh5_8axk4KIg" name="EolOperation"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cw7vkNF-EeOh5_8axk4KIg" name="Collection&lt;EClass>"/>
 </uml:Model>

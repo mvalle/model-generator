@@ -50,7 +50,7 @@ public class MetaModelIndex implements Index {
 	}
 	*/
 	
-	public EObject get(String name) {
+	public EClass get(String name) {
 		
 		if (index.containsKey(name)) {
 			ArrayList<EClass> l = index.get(name);
