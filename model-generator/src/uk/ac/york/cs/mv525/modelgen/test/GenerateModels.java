@@ -15,6 +15,10 @@ import uk.ac.york.cs.mv525.modelgen.parse.MetaModelParser;
 
 public class GenerateModels {
 
+	
+	
+	
+	
 	@Test
 	public void test_config() throws IOException {
 		String dataDir = System.getProperty("user.dir") + "/src/uk/ac/york/cs/mv525/modelgen/test/data/";

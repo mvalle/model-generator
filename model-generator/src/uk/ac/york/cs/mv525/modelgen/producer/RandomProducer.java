@@ -79,7 +79,7 @@ public class RandomProducer extends Producer {
 				break;
 			default:
 				// TODO : Produce more EDataTypes				
-				System.out.println("Unknown EDataType " + mAttribute.getEType().getName());				
+				System.out.print("Unknown EDataType " + mAttribute.getEType().getName());				
 				System.out.println(mAttribute.getName());
 			}
 			
@@ -125,7 +125,7 @@ public class RandomProducer extends Producer {
 		while(i-- > 0) {
 			char c = (char)(rand.nextInt(126-32) + 32);
 			if (c<32 || c>126) {
-				System.out.println("  ! oversised char: "+c);
+				//System.out.println("  ! oversised char: "+c);
 			}
 			s = s+c;
 		}

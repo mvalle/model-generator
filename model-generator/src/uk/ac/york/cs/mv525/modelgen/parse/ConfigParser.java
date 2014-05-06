@@ -31,14 +31,35 @@ public class ConfigParser {
 
 		resource.load(null);
 		
+
+		Object configx =  resource.getContents().get(0);
 		
+		if (configx instanceof ModelConfiguration) {
 		
-		ModelConfiguration config = (ModelConfiguration) resource.getContents().get(0);
+		ModelConfiguration config = (ModelConfiguration) configx; //resource.getContents().get(0);
 		
 		Configuration cIndex = new Configuration(config);
 		cIndex.setDirectory(location);
 		
 		return cIndex;
+		
+		} else {
+			
+			for(Object o : resource.getContents()) {
+				if (o instanceof ModelConfiguration) {
+					ModelConfiguration config = (ModelConfiguration) o; //resource.getContents().get(0);
+					
+					Configuration cIndex = new Configuration(config);
+					cIndex.setDirectory(location);
+					
+					return cIndex;
+				}
+			}
+			
+			return null;
+			
+		}
+		
 
 	}
 	

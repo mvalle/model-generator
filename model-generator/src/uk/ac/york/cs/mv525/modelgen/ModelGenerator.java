@@ -89,12 +89,12 @@ public class ModelGenerator {
 		while(mClass != null) {
 			EObject iObject = producer.create(mClass);
 
-			if(mClass.getName().equals("EAnnotation")) {
-				System.out.println();
-			}
-			if(mClass.getName().equals("EStringToStringMapEntry")) {
-				System.out.println();
-			}
+			//if(mClass.getName().equals("EAnnotation")) {
+			//	System.out.println();
+			//}
+			//if(mClass.getName().equals("EStringToStringMapEntry")) {
+			//	System.out.println();
+			//}
 			
 			
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
@@ -127,19 +127,29 @@ public class ModelGenerator {
 			if ((c % 1000) == 0) {
 				System.out.println(c);
 			}
-			if (iObject.eClass().getName().equals("EAnnotation")) {
-				System.out.println("");
-			}
+			//if (iObject.eClass().getName().equals("EAnnotation")) {
+			//	System.out.println("");
+			//}
 
 			
 			
-			long f = 0;
+			//long f = 0;
 			for(EStructuralFeature feature : iObject.eClass().getEAllStructuralFeatures() ) {
-				f++;
+				//f++;
 				
 				
 				if (feature.getEType() instanceof EClass && feature.isChangeable() ) {
-
+					
+					//if(feature.eContents() != null) {
+					//	System.out.println(feature.getName());
+					//}
+					//if(feature.eContainer() != null) {
+					//	System.out.println(feature.getName());
+					//}
+					//if(feature. != null) {
+					//	System.out.println(feature.getName());
+					//}
+					
 					//System.out.println(" "+f);
 					producer.link(iObject, (EReference) feature);
 				}
