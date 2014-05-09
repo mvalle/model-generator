@@ -20,6 +20,5 @@ Import-Package: org.junit
 Export-Package: uk.ac.york.cs.mv525.modelgen.data,
  uk.ac.york.cs.mv525.modelgen.index,
  uk.ac.york.cs.mv525.modelgen.main,
- uk.ac.york.cs.mv525.modelgen.orchestration,
  uk.ac.york.cs.mv525.modelgen.parse,
  uk.ac.york.cs.mv525.modelgen.test
